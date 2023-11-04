@@ -11,7 +11,7 @@
     "repo": "https://github.com/Arborsm/arborcore"
   },
   "license": "MIT",
-  "icon": "assets/ArborCore/icon.png",
+  "icon": "assets/arborcore/icon.png",
   "environment": "client",
   "entrypoints": {
     "main": [
