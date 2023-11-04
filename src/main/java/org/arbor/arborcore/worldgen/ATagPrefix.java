@@ -11,14 +11,14 @@ import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("unused")
 public class ATagPrefix{
-    public static final TagPrefix oreMoonStone = new TagPrefix("moon_stone")
+    public static final TagPrefix oreMoonStone = TagPrefix.oreTagPrefix("moon_stone")
             .langValue("MoonStone %s Ore")
             .materialIconType(MaterialIconType.ore)
             .miningToolTag(BlockTags.MINEABLE_WITH_PICKAXE)
             .unificationEnabled(true)
             .generationCondition(TagPrefix.Conditions.hasOreProperty)
             .registerOre(() -> ModBlocks.MOON_STONE.get().defaultBlockState(), false, MapColor.STONE, SoundType.STONE, false);
-    public static final TagPrefix oreVenusStone = new TagPrefix("venus_stone")
+    public static final TagPrefix oreVenusStone = TagPrefix.oreTagPrefix("venus_stone")
             .langValue("VenusStone %s Ore")
             .materialIconType(MaterialIconType.ore)
             .miningToolTag(BlockTags.MINEABLE_WITH_PICKAXE)

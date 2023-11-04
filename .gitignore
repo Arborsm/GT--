@@ -4,3 +4,5 @@
 /.vscode/*
 /build/*
 /.gradle/*
+/run/kubejs/
+/run/mods/

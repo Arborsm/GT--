@@ -5,10 +5,10 @@ import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import org.arbor.arborcore.worldgen.ATagPrefix;
 
 @GTAddon
-public class Addon implements IGTAddon {
+public class ArborCoreGTAddon implements IGTAddon {
     @Override
     public void initializeAddon() {
-        ArborCore.LOGGER.info("ArborCore Addon Loaded!");
+        ArborCore.LOGGER.info("ArborCore ArborCoreGTAddon Loaded!");
     }
 
     @Override
