@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "ad_astra:fuel",
+    "minecraft:water",
+    {
+      "required": false,
+      "id": "#ad_astra_platform:diesel"
+    },
+    {
+      "required": false,
+      "id": "#ad_astra_platform:biodiesel"
+    }
+  ]
+}
