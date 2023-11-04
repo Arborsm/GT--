@@ -16,6 +16,9 @@
   "entrypoints": {
     "main": [
       "org.arbor.arborcore.ArborCore"
+    ],
+    "gtceu_addon": [
+      "org.arbor.arborcore.Addon"
     ]
   },
   "depends": {

@@ -34,9 +34,14 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    maven {
-        url "https://api.modrinth.com/maven"
-        content {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
             includeGroup "maven.modrinth"
         }
     }
@@ -68,9 +73,9 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation "earth.terrarium.adastra:ad_astra-fabric-$minecraft_version:$ad_astra_version"
-    modCompileOnly "curse.maven:gregtechceu-modern-890405:4838342"
-    modCompileOnly "curse.maven:ldlib-626676:4744585"
+    modImplementation "earth.terrarium.adastra:ad_astra-fabric-${minecraft_version}:${ad_astra_version}"
+    modCompileOnly "maven.modrinth:gregtechceu-modern:${gtm_version}"
+    modCompileOnly "maven.modrinth:ldlib:${ldlib_version}"
     modCompileOnly "dev.emi:emi-fabric:${emi_version}"
     modImplementation(include("com.tterrag.registrate_fabric:Registrate:${registrate_Version}"))
 

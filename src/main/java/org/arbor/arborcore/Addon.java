@@ -8,7 +8,7 @@ import org.arbor.arborcore.worldgen.ATagPrefix;
 public class Addon implements IGTAddon {
     @Override
     public void initializeAddon() {
-        System.out.println("ArborCore addon init!");
+        ArborCore.LOGGER.info("ArborCore Addon Loaded!");
     }
 
     @Override
@@ -18,6 +18,7 @@ public class Addon implements IGTAddon {
 
     @Override
     public void registerTagPrefixes() {
+        IGTAddon.super.registerTagPrefixes();
         ATagPrefix.init();
     }
 }
