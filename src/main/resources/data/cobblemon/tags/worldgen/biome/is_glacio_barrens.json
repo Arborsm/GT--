@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "ad_astra:glacio_snowy_barrens",
+      "required": false
+    }
+  ]
+}

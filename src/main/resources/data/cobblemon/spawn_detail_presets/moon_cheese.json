@@ -1,0 +1,7 @@
+{
+  "condition": {
+    "neededNearbyBlocks": [
+      "ad_astra:moon_cheese_ore"
+    ]
+  }
+}

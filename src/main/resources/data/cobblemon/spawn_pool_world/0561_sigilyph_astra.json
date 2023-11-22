@@ -1,0 +1,24 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+      {
+        "id": "sigilyph-astra-1",
+        "pokemon": "sigilyph",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "rare",
+        "level": "24-49",
+        "weight": 5.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_mars_canyon",
+            "#cobblemon:is_mars_polar",
+            "#cobblemon:is_mars_wastes"
+          ]
+        }
+      }
+    ]
+}

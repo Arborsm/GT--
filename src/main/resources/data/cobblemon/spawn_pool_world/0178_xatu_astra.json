@@ -1,0 +1,25 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "xatu-astra-1",
+            "pokemon": "xatu",
+            "presets": [
+                "natural"
+            ],
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "25-47",
+            "weight": 5.0,
+          "condition": {
+            "canSeeSky":  true,
+            "biomes": [
+              "#cobblemon:is_mars_wastes"
+            ]
+          }
+        }
+    ]
+}

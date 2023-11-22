@@ -1,0 +1,25 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "magneton-astra-1",
+            "pokemon": "magneton",
+            "presets": [
+              "redstone",
+              "moon"
+            ],
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "30-47",
+            "weight": 10.0,
+          "condition": {
+            "biomes": [
+              "#cobblemon:is_moon"
+            ]
+          }
+        }
+    ]
+}

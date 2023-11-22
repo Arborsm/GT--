@@ -1,0 +1,37 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+      {
+        "id": "magmortar-astra-1",
+        "pokemon": "magmortar",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "rare",
+        "level": "45-54",
+        "weight": 33.4,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_mercury"
+          ]
+        }
+      },
+      {
+        "id": "magmortar-astra-2",
+        "pokemon": "magmortar",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "rare",
+        "level": "45-54",
+        "weight": 50.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_venus_barrens"
+          ]
+        }
+      }
+    ]
+}

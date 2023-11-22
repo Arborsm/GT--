@@ -1,0 +1,25 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "nosepass-astra-1",
+            "pokemon": "nosepass",
+            "presets": [
+                "natural"
+            ],
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "13-38",
+            "weight": 5.0,
+          "condition": {
+            "canSeeSky": true,
+            "biomes": [
+              "#cobblemon:is_mars_canyon"
+            ]
+          }
+        }
+    ]
+}

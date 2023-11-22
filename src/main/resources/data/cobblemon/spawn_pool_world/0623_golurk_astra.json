@@ -1,0 +1,24 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+      {
+        "id": "golurk-astra-1",
+        "pokemon": "golurk",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "rare",
+        "level": "43-48",
+        "weight": 15.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_mars_canyon",
+            "#cobblemon:is_mars_polar",
+            "#cobblemon:is_mars_wastes"
+          ]
+        }
+      }
+    ]
+}

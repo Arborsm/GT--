@@ -1,0 +1,22 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "parasect-astra-1",
+            "pokemon": "parasect",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "24-41",
+            "weight": 25.0,
+          "condition": {
+            "canSeeSky": true,
+            "biomes": [
+              "#cobblemon:is_venus_wastes"
+            ]
+          }
+        }
+    ]
+}

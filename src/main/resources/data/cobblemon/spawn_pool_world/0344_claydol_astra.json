@@ -1,0 +1,21 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "claydol-astra-1",
+            "pokemon": "claydol",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "36-50",
+            "weight": 20.0,
+          "condition": {
+            "biomes": [
+              "#cobblemon:is_mars_wastes"
+            ]
+          }
+        }
+    ]
+}

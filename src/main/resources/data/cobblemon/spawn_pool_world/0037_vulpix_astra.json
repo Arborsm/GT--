@@ -1,0 +1,22 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "vulpix-alolan-astra-1",
+            "pokemon": "vulpix alolan",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "5-30",
+            "weight": 20.0,
+          "condition": {
+            "canSeeSky": true,
+            "biomes": [
+              "#cobblemon:is_glacio_barrens"
+            ]
+          }
+        }
+    ]
+}

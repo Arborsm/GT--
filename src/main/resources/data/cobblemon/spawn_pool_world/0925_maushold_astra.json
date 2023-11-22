@@ -1,0 +1,24 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "maushold-astra-1",
+            "pokemon": "maushold",
+            "presets": [
+              "moon_cheese"
+            ],
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "25-47",
+            "weight": 5.0,
+          "condition": {
+            "biomes": [
+              "#cobblemon:is_moon"
+            ]
+          }
+        }
+    ]
+}

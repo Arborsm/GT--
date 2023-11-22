@@ -1,0 +1,37 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+      {
+        "id": "magcargo-astra-1",
+        "pokemon": "magcargo",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "uncommon",
+        "level": "38-43",
+        "weight": 20.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_mercury"
+          ]
+        }
+      },
+      {
+        "id": "magcargo-astra-2",
+        "pokemon": "magcargo",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "uncommon",
+        "level": "38-43",
+        "weight": 25.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_venus_barrens"
+          ]
+        }
+      }
+    ]
+}

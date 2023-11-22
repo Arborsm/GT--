@@ -1,0 +1,25 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "kadabra-astra-1",
+            "pokemon": "kadabra",
+            "presets": [
+                "natural"
+            ],
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "16-40",
+            "weight": 10.0,
+          "condition": {
+            "canSeeSky":  true,
+            "biomes": [
+              "#cobblemon:is_mars_wastes"
+            ]
+          }
+        }
+    ]
+}

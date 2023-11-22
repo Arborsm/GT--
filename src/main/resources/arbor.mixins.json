@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.arbor.arborcore.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "arbor.refmap.json",
+  "plugin": "org.arbor.arborcore.mixin.ArborMixinPlugin",
+  "mixins": [
+    "AdAstraMixin",
+    "CreateFanMixin",
+    "EMIMixin",
+    "GTOreMIXIN"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

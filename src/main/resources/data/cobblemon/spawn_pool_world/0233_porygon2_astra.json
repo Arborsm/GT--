@@ -1,0 +1,29 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+  "spawns": [
+    {
+      "id": "porygon2-astra-1",
+      "pokemon": "porygon2",
+      "presets": [
+        "redstone",
+        "moon",
+        "mars"
+      ],
+      "type": "pokemon",
+      "context": "grounded",
+      "bucket": "uncommon",
+      "level": "35-52",
+      "weight": 5.0,
+      "condition": {
+        "biomes": [
+          "#cobblemon:is_moon",
+          "#cobblemon:is_mars_canyon",
+          "#cobblemon:is_mars_polar",
+          "#cobblemon:is_mars_wastes"
+        ]
+      }
+    }
+  ]
+}

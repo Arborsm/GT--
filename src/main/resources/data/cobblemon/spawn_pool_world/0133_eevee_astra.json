@@ -1,0 +1,22 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "eevee-astra-1",
+            "pokemon": "eevee",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "5-33",
+            "weight": 10.0,
+          "condition": {
+            "canSeeSky": true,
+            "biomes": [
+              "#cobblemon:is_glacio_barrens"
+            ]
+          }
+        }
+    ]
+}

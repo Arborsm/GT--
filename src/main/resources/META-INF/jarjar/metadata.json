@@ -1,0 +1,15 @@
+{
+  "jars": [
+    {
+      "identifier": {
+        "group": "org.arbor",
+        "artifact": "arbormixin"
+      },
+      "version": {
+        "range": "[1.0,)",
+        "artifactVersion": "1.0"
+      },
+      "path": "META-INF/jars/arbormixin.jar"
+    }
+  ]
+}

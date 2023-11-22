@@ -1,0 +1,22 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "weavile-astra-1",
+            "pokemon": "weavile",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "rare",
+            "level": "38-51",
+            "weight": 20.0,
+          "condition": {
+            "canSeeSky": true,
+            "biomes": [
+              "#cobblemon:is_glacio_barrens"
+            ]
+          }
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "naclstack-astra-1",
+            "pokemon": "naclstack",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "24-36",
+            "weight": 5.0,
+          "condition": {
+            "biomes": [
+              "#cobblemon:is_mars_canyon"
+            ]
+          }
+        }
+    ]
+}

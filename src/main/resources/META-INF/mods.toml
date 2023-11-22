@@ -1,0 +1,38 @@
+modLoader = "javafml" #mandatory
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+
+[[mods]]
+modId = "arbor"
+version = "${mod_version}"
+displayName = "${mod_name}" #mandatory
+authors = "${mod_authors}"
+description = '''${mod_description}'''
+
+[[dependencies.arbor]]
+modId = "forge"
+mandatory = true
+versionRange = "${forge_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.arbor]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.arbor]]
+modId="gtceu"
+mandatory=true
+versionRange="[1.0.14.a,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.arbor]]
+modId="ad_astra"
+mandatory=true
+versionRange="[1.15.4,)"
+ordering="NONE"
+side="BOTH"

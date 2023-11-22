@@ -1,0 +1,37 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+      {
+        "id": "weezing-astra-1",
+        "pokemon": "weezing",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "rare",
+        "level": "35-49",
+        "weight": 100.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_venus_wastes"
+          ]
+        }
+      },
+      {
+        "id": "weezing-astra-2",
+        "pokemon": "weezing",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "rare",
+        "level": "35-49",
+        "weight": 50.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_venus_barrens"
+          ]
+        }
+      }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "empoleon-astra-1",
+            "pokemon": "empoleon",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "rare",
+            "level": "36-53",
+            "weight": 5.0,
+          "condition": {
+            "canSeeSky": true,
+            "biomes": [
+              "#cobblemon:is_glacio_barrens"
+            ]
+          }
+        }
+    ]
+}

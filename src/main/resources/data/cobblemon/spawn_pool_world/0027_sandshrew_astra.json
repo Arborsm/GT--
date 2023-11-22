@@ -1,0 +1,22 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "sandshrew-astra-1",
+            "pokemon": "sandshrew",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "5-30",
+            "weight": 33.4,
+          "condition": {
+            "canSeeSky": true,
+            "biomes": [
+              "#cobblemon:is_venus_wastes"
+            ]
+          }
+        }
+    ]
+}

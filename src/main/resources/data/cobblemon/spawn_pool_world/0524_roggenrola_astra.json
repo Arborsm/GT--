@@ -1,0 +1,22 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+      {
+        "id": "roggenrola-astra-1",
+        "pokemon": "roggenrola",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "common",
+        "level": "3-28",
+        "weight": 25.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_mercury"
+          ]
+        }
+      }
+    ]
+}

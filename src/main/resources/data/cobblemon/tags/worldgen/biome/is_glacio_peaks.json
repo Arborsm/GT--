@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "ad_astra:glacio_ice_peaks",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+      {
+        "id": "metagross-astra-1",
+        "pokemon": "metagross",
+        "presets": [
+          "redstone",
+          "moon",
+          "mars"
+        ],
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "rare",
+        "level": "45-60",
+        "weight": 15.0,
+        "condition": {
+          "biomes": [
+            "#cobblemon:is_mars_canyon",
+            "#cobblemon:is_mars_wastes"
+          ]
+        }
+      }
+    ]
+}

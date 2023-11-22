@@ -1,0 +1,37 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+      {
+        "id": "torkoal-astra-1",
+        "pokemon": "torkoal",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "uncommon",
+        "level": "22-47",
+        "weight": 20.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_mercury"
+          ]
+        }
+      },
+      {
+        "id": "torkoal-astra-2",
+        "pokemon": "torkoal",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "uncommon",
+        "level": "22-47",
+        "weight": 25.0,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_venus_barrens"
+          ]
+        }
+      }
+    ]
+}

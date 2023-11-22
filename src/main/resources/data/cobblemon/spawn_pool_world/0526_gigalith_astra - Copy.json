@@ -1,0 +1,22 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+      {
+        "id": "gigalith-astra-1",
+        "pokemon": "gigalith",
+        "type": "pokemon",
+        "context": "grounded",
+        "bucket": "rare",
+        "level": "34-52",
+        "weight": 33.3,
+        "condition": {
+          "canSeeSky": true,
+          "biomes": [
+            "#cobblemon:is_mercury"
+          ]
+        }
+      }
+    ]
+}
