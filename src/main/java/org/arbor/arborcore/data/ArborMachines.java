@@ -19,12 +19,19 @@ import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.machine.multiblock.part.SteamItemBusPartMachine;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Blocks;
-import org.arbor.arborcore.api.block.IPlantCasing;
+import net.minecraft.world.level.block.state.BlockState;
+import org.arbor.arborcore.api.block.ITier;
+import org.arbor.arborcore.block.BlockTier;
+import org.arbor.arborcore.block.MachineCasing;
+import org.arbor.arborcore.block.PipeBlock;
 import org.arbor.arborcore.block.PlantCasingBlock;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.autoAbilities;
 
 public class ArborMachines {
@@ -49,23 +56,24 @@ public class ArborMachines {
             .recipeTypes(ArborRecipes.CHEMICAL_PLANT_RECIPES)
             .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
             .pattern(definition -> FactoryBlockPattern.start()
-            .aisle("VVVVVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
-            .aisle("VBBBBBV", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
-            .aisle("VBBBBBV", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
-            .aisle("VBBBBBV", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
-            .aisle("VBBBBBV", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
-            .aisle("VBBBBBV", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
-            .aisle("VVVSVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
-            .where("S", Predicates.controller(Predicates.blocks(definition.get())))
-            .where("V", Predicates.blocks(GTBlocks.CASING_BRONZE_BRICKS.get())
-                    .or(autoAbilities(definition.getRecipeTypes()))
-                    .or(autoAbilities(true, false, false)))
-            .where("A", Predicates.blocks(GTBlocks.CASING_BRONZE_BRICKS.get()))
-            .where("B", Predicates.blocks(GTBlocks.CASING_STEEL_PIPE.get()).setMinGlobalLimited(5))
-            .where("C", Predicates.heatingCoils())
-            .where("D", Predicates.blocks(GTBlocks.MACHINE_CASING_LV.get()).setMinGlobalLimited(5))
-            .where("#", Predicates.air())
-            .build())
+                    .aisle("VVVVVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
+                    .aisle("VVVSVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
+                    .where("S", Predicates.controller(Predicates.blocks(definition.get())))
+                    .where("V", Predicates.blocks(GTBlocks.CASING_BRONZE_BRICKS.get()).setMinGlobalLimited(8)
+                            .or(autoAbilities(definition.getRecipeTypes()))
+                            .or(autoAbilities(true, false, false))
+                            .or(abilities(PartAbility.INPUT_ENERGY).setMinGlobalLimited(1)))
+                    .where("A", Predicates.blocks(GTBlocks.CASING_BRONZE_BRICKS.get()))
+                    .where("D", Predicates.blocks(GTBlocks.CASING_STEEL_PIPE.get()))
+                    .where("C", Predicates.heatingCoils())
+                    .where("B", Predicates.blocks(GTBlocks.MACHINE_CASING_LV.get()))
+                    .where("#", Predicates.air())
+                    .build())
             .shapeInfos(definition -> {
                 List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
                 var builder = MultiblockShapeInfo.builder()
@@ -76,9 +84,6 @@ public class ArborMachines {
                         .aisle("ABBBBBA", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
                         .aisle("ABBBBBA", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
                         .aisle("AAAOAAA", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
-                        .where('B', GTBlocks.CASING_STEEL_PIPE.getDefaultState())
-                        .where('D', GTBlocks.MACHINE_CASING_LV.getDefaultState())
-                        .where('X', GTBlocks.CASING_BRONZE_BRICKS.getDefaultState())
                         .where('S', definition, Direction.NORTH)
                         .where('#', Blocks.AIR.defaultBlockState())
                         .where('J', GTMachines.MAINTENANCE_HATCH, Direction.NORTH)
@@ -88,11 +93,25 @@ public class ArborMachines {
                         .where('N', GTMachines.FLUID_EXPORT_HATCH[GTValues.LV], Direction.NORTH)
                         .where('O', GTMachines.ENERGY_INPUT_HATCH[GTValues.LV], Direction.SOUTH)
                         .where('P', CATALYTIC_HATCH, Direction.NORTH);
+                Map<Integer, BlockState> shapeBlock = new HashMap<>();
+                for (ITier casing : PlantCasingBlock.AllPlantCasings.keySet()) {
+                    shapeBlock.put(casing.getTier() + 10, PlantCasingBlock.AllPlantCasings.get(casing).get().defaultBlockState().getBlock().defaultBlockState());
+                }
+                for (ITier machineCasing : MachineCasing.AllMachineCasing.keySet()) {
+                    shapeBlock.put(machineCasing.getTier() + 20, MachineCasing.AllMachineCasing.get(machineCasing).get().defaultBlockState().getBlock().defaultBlockState());
+                }
                 for (ICoilType coil : GTBlocks.ALL_COILS.keySet()) {
-                    for (IPlantCasing casing : PlantCasingBlock.AllPlantCasings.keySet()) {
-                        builder.where('A', PlantCasingBlock.AllPlantCasings.get(casing).get());
-                    }
-                    builder.where('C', GTBlocks.ALL_COILS.get(coil));
+                    shapeBlock.put(coil.getTier() + 30, GTBlocks.ALL_COILS.get(coil).get().defaultBlockState().getBlock().defaultBlockState());
+                }
+                for (ITier pipe : PipeBlock.AllPipes.keySet()) {
+                    shapeBlock.put(pipe.getTier() + 40, PipeBlock.AllPipes.get(pipe).get().defaultBlockState().getBlock().defaultBlockState());
+                }
+                for(BlockTier tier : BlockTier.values()){
+                    // builder.where('V', shapeBlock.get(tier.getTier() + 10) == null ? shapeBlock.get(16) : shapeBlock.get(tier.getTier() + 10));
+                    builder.where('A', shapeBlock.get(tier.getTier() + 10) == null ? shapeBlock.get(16) : shapeBlock.get(tier.getTier() + 10));
+                    builder.where('D', shapeBlock.get(tier.getTier() + 20) == null ? shapeBlock.get(27) : shapeBlock.get(tier.getTier() + 20));
+                    builder.where('C', shapeBlock.get(tier.getTier() + 30) == null ? shapeBlock.get(37) : shapeBlock.get(tier.getTier() + 30));
+                    builder.where('B', shapeBlock.get(tier.getTier() + 40) == null ? shapeBlock.get(44) : shapeBlock.get(tier.getTier() + 40));
                     shapeInfo.add(builder.build());
                 }
                 return shapeInfo;

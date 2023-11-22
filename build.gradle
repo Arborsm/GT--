@@ -78,6 +78,7 @@ mixin {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenLocal()
     maven { url = 'https://maven.minecraftforge.net/' }
     maven {
         name "cf"
@@ -86,7 +87,6 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    mavenLocal()
     // mavens for Forge-exclusives
     maven { // Create Forge and Registrate Forge
         url = "https://maven.tterrag.com/"
