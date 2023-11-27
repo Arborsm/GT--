@@ -17,10 +17,11 @@ import java.util.Set;
 public abstract class EMIMixin {
     @Unique
     private static final Set<EmiStack> arborCore$CATALYST = new HashSet<>();
+
     static {
         arborCore$CATALYST.add(EmiStack.of(GTItems.INTEGRATED_CIRCUIT.asStack()));
     }
-    
+
     @SuppressWarnings("SuspiciousMethodCalls")
     @Inject(method = "isCatalyst", at = @At("HEAD"), cancellable = true, remap = false)
     private static void $isCatalyst(EmiIngredient ing, CallbackInfoReturnable<Boolean> info) {

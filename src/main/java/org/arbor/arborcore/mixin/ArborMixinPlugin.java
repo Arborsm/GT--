@@ -23,6 +23,10 @@ public class ArborMixinPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.contains("org.arbor.arborcore.mixin.EMIMixin")) {
             return MixinPluginShared.isClassFound("dev.emi.emi.api.EmiPlugin");
+        } else if (mixinClassName.contains("org.arbor.arborcore.mixin.CreateFanMixin")) {
+            return MixinPluginShared.isClassFound("com.simibubi.create.compat.Mods");
+        } else if (mixinClassName.contains("org.arbor.arborcore.mixin.AdastraMixin")) {
+            return MixinPluginShared.isClassFound("earth.terrarium.ad_astra.forge.AdAstraForge");
         }
         return true;
     }

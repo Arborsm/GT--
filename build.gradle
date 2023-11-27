@@ -63,7 +63,8 @@ minecraft {
 
         data {
             workingDirectory project.file('run-data')
-
+            property 'forge.logging.markers', 'REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
             args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), "-mixin.config=arbor.mixins.json"
         }
     }
@@ -110,6 +111,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.28'
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     implementation fg.deobf("com.gregtechceu.gtceu:gtceu-forge-${minecraft_version}:${gtCeuVersion}"){ transitive = false }

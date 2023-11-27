@@ -4,5 +4,5 @@ public interface ITier {
     /**
      * @return the Tier as an integer
      */
-    int getTier();
+    int tier();
 }

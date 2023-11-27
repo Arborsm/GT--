@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {
-      "id": "ad_astra:mercury_deltas",
-      "required": false
-    }
-  ]
-}

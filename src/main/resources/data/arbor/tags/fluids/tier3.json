@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "gtceu:dense_hydrazine_mixed_fuel",
+    "#arbor:tier4"
+  ]
+}

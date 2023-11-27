@@ -19,19 +19,19 @@ public abstract class AdAstraMixin {
     @Inject(method = "tryInsertingIntoTank()V", at = @At("HEAD"), cancellable = true, remap = false)
     @SuppressWarnings("deprecation")
     public void arbor$TryInsertingIntoTank(CallbackInfo ci) {
-        if (((Vehicle)(Object)this).getInventorySize() > 1 && !((Vehicle)(Object)this).getInventory().getItem(0).isEmpty()) {
-            if (!((Vehicle)(Object)this).level().isClientSide) {
-                FluidUtils.insertItemFluidToTank(((Vehicle)(Object)this).getTank(), ((Vehicle)(Object)this).getInventory(), 0, 1, 0, f -> f.is(fuel()));
-                FluidUtils.extractTankFluidToItem(((Vehicle)(Object)this).getTank(), ((Vehicle)(Object)this).getInventory(), 0, 1, 0, f -> true);
+        if (((Vehicle) (Object) this).getInventorySize() > 1 && !((Vehicle) (Object) this).getInventory().getItem(0).isEmpty()) {
+            if (!((Vehicle) (Object) this).level().isClientSide) {
+                FluidUtils.insertItemFluidToTank(((Vehicle) (Object) this).getTank(), ((Vehicle) (Object) this).getInventory(), 0, 1, 0, f -> f.is(fuel()));
+                FluidUtils.extractTankFluidToItem(((Vehicle) (Object) this).getTank(), ((Vehicle) (Object) this).getInventory(), 0, 1, 0, f -> true);
             }
         }
         ci.cancel();
     }
 
     @Unique
-    public TagKey<Fluid> fuel(){
-        if(((Vehicle)(Object)this).getInventorySize() == 10){
-            int tier = ((Rocket)(Object)this).getTier();
+    public TagKey<Fluid> fuel() {
+        if (((Vehicle) (Object) this).getInventorySize() == 10) {
+            int tier = ((Rocket) (Object) this).getTier();
             return switch (tier) {
                 case 1 -> ArborTags.TIER1;
                 case 2 -> ArborTags.TIER2;
@@ -39,6 +39,6 @@ public abstract class AdAstraMixin {
                 case 4 -> ArborTags.TIER4;
                 default -> ModTags.FUELS;
             };
-        }else return ModTags.FUELS;
+        } else return ModTags.FUELS;
     }
 }

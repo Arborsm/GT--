@@ -3,13 +3,14 @@ package org.arbor.arborcore.block;
 import org.arbor.arborcore.api.block.ITier;
 
 public enum BlockTier implements ITier {
-    TIER1 (1),
-    TIER2 (2),
-    TIER3 (3),
-    TIER4 (4),
-    TIER5 (5),
-    TIER6 (6),
-    TIER7 (7);
+    TIER0(0),
+    TIER1(1),
+    TIER2(2),
+    TIER3(3),
+    TIER4(4),
+    TIER5(5),
+    TIER6(6),
+    TIER7(7);
 
     private final int tier;
 
@@ -18,7 +19,7 @@ public enum BlockTier implements ITier {
     }
 
     @Override
-    public int getTier() {
+    public int tier() {
         return tier;
     }
 }

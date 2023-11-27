@@ -4,12 +4,14 @@ import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.addon.events.KJSRecipeKeyEvent;
 import com.gregtechceu.gtceu.api.addon.events.MaterialCasingCollectionEvent;
+import com.lowdragmc.lowdraglib.LDLib;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import org.arbor.arborcore.data.ArborElement;
 import org.arbor.arborcore.data.ArborMaterials;
 import org.arbor.arborcore.data.ArborRecipes;
-import org.arbor.arborcore.data.ArborTagPrefix;
+import org.arbor.arborcore.data.ArborRecipesTypes;
+import org.arbor.arborcore.data.misc.AdAstraTagPrefix;
 import org.arbor.arborcore.data.misc.MetaTileEntityLoader;
 import org.arbor.arborcore.init.CommonProxy;
 
@@ -31,7 +33,9 @@ public class ArborCoreGTAddon implements IGTAddon {
     @Override
     public void registerTagPrefixes() {
         IGTAddon.super.registerTagPrefixes();
-        ArborTagPrefix.init();
+        if (LDLib.isModLoaded("ad_astra")) {
+            AdAstraTagPrefix.init();
+        }
     }
 
     @Override
@@ -44,6 +48,20 @@ public class ArborCoreGTAddon implements IGTAddon {
     public void registerMaterials() {
         IGTAddon.super.registerMaterials();
         ArborMaterials.init();
+    }
+
+    @Override
+    public void addRecipes(Consumer<FinishedRecipe> provider) {
+        ArborRecipesTypes.init();
+        ArborRecipes.init(provider);
+        IGTAddon.super.addRecipes(provider);
+        MetaTileEntityLoader.init(provider);
+    }
+
+    @Override
+    public void removeRecipes(Consumer<ResourceLocation> consumer) {
+        IGTAddon.super.removeRecipes(consumer);
+        ArborRecipes.remove(consumer);
     }
 
     @Override
@@ -64,18 +82,6 @@ public class ArborCoreGTAddon implements IGTAddon {
     @Override
     public void registerVeinGenerators() {
         IGTAddon.super.registerVeinGenerators();
-    }
-
-    @Override
-    public void addRecipes(Consumer<FinishedRecipe> provider) {
-        IGTAddon.super.addRecipes(provider);
-        MetaTileEntityLoader.init(provider);
-        ArborRecipes.init();
-    }
-
-    @Override
-    public void removeRecipes(Consumer<ResourceLocation> consumer) {
-        IGTAddon.super.removeRecipes(consumer);
     }
 
     @Override

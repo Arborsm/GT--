@@ -1,5 +1,6 @@
 package org.arbor.arborcore.mixin;
 
+import com.simibubi.create.content.kinetics.fan.processing.AllFanProcessingTypes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -10,10 +11,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Collections;
 import java.util.List;
 
-@Mixin(targets = "com.simibubi.create.content.kinetics.fan.processing.AllFanProcessingTypes$BlastingType")
+@Mixin(AllFanProcessingTypes.BlastingType.class)
 public abstract class CreateFanMixin {
-    @Inject(method = "process(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;)Ljava/util/List;", at = @At ( value = "INVOKE", target = "Lnet/minecraft/world/item/crafting/RecipeManager;getRecipeFor(Lnet/minecraft/world/item/crafting/RecipeType;Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Ljava/util/Optional;", ordinal = 1), cancellable = true)
-    public void cancelBlastingRecipe (ItemStack stack, Level level, CallbackInfoReturnable<List<ItemStack>> cir) {
+    @Inject(method = "process(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;)Ljava/util/List;", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/crafting/RecipeManager;getRecipeFor(Lnet/minecraft/world/item/crafting/RecipeType;Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Ljava/util/Optional;", ordinal = 1), cancellable = true)
+    public void cancelBlastingRecipe(ItemStack stack, Level level, CallbackInfoReturnable<List<ItemStack>> cir) {
         cir.setReturnValue(Collections.emptyList()); // cancel recipe
     }
 }

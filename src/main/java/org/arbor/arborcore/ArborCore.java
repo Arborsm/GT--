@@ -16,10 +16,6 @@ public class ArborCore {
     public static final String MODID = "arbor";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static ResourceLocation id(String path) {
-        return new ResourceLocation(MODID, FormattingUtil.toLowerCaseUnder(path));
-    }
-
     public ArborCore() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -28,6 +24,10 @@ public class ArborCore {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MODID, FormattingUtil.toLowerCaseUnder(path));
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
