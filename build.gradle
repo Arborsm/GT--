@@ -93,8 +93,7 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    // mavens for Forge-exclusives
-    maven { // Create Forge and Registrate Forge
+    maven {
         url = "https://maven.tterrag.com/"
         content {
             includeGroup("com.tterrag.registrate")
@@ -107,7 +106,6 @@ repositories {
         url = "https://maven.terraformersmc.com/"
     }
     maven {
-        // Location of the maven that hosts Terrarium and Team Resourceful's files.
         name = "Resourceful Bees Maven"
         url = "https://maven.resourcefulbees.com/repository/maven-public/"
     }
