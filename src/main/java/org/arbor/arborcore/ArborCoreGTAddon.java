@@ -11,7 +11,7 @@ import org.arbor.arborcore.data.ArborElement;
 import org.arbor.arborcore.data.ArborMaterials;
 import org.arbor.arborcore.data.ArborRecipes;
 import org.arbor.arborcore.data.ArborRecipesTypes;
-import org.arbor.arborcore.data.misc.AdAstraTagPrefix;
+import org.arbor.arborcore.data.misc.AdAstraAddon;
 import org.arbor.arborcore.data.misc.MetaTileEntityLoader;
 import org.arbor.arborcore.init.CommonProxy;
 
@@ -34,7 +34,7 @@ public class ArborCoreGTAddon implements IGTAddon {
     public void registerTagPrefixes() {
         IGTAddon.super.registerTagPrefixes();
         if (LDLib.isModLoaded("ad_astra")) {
-            AdAstraTagPrefix.init();
+            AdAstraAddon.init();
         }
     }
 

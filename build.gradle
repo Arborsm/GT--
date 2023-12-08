@@ -1,3 +1,4 @@
+//file:noinspection GroovyAssignabilityCheck
 buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
@@ -17,8 +18,8 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-group = mod_version
-version = mod_group_id
+group = mod_name
+version = mod_version
 
 base {
     archivesName = mod_id
@@ -28,10 +29,11 @@ java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
+jarJar.enable()
+
 minecraft {
     mappings channel: mapping_channel, version: mapping_version
     copyIdeResources = true
-
     runs {
         configureEach {
             workingDirectory project.file('run')
@@ -79,6 +81,9 @@ mixin {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    flatDir {
+        dir 'libs'
+    }
     mavenLocal()
     maven { url = 'https://maven.minecraftforge.net/' }
     maven {
@@ -135,6 +140,9 @@ dependencies {
     implementation fg.deobf("com.teamresourceful.resourcefulconfig:resourcefulconfig-forge-${minecraft_version}:${resourcefulconfig_version}")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.1"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.3.1")) { jarJar.ranged(it, "[0.3.1,)") }
+    implementation(jarJar("org.arbor:arbormixin:1.0")) { jarJar.ranged(it, "[1.0,)") }
 }
 
 // Example for how to replace properties in your mods.toml file
@@ -151,7 +159,12 @@ tasks.named('processResources', ProcessResources).configure {
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]
-    }}
+    }
+}
+
+tasks.named('jarJar') {
+    // ...
+}
 
 // Example for how to get properties into the manifest for reading at runtime.
 tasks.named('jar', Jar).configure {
@@ -166,6 +179,11 @@ tasks.named('jar', Jar).configure {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+
+    // The settings below make sure that your build is reproducible
+    // More information at https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
 
     // This is the preferred method to reobfuscate your jar file
     finalizedBy 'reobfJar'

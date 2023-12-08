@@ -13,7 +13,7 @@ import java.util.List;
 
 @Mixin(AllFanProcessingTypes.BlastingType.class)
 public abstract class CreateFanMixin {
-    @Inject(method = "process(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;)Ljava/util/List;", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/crafting/RecipeManager;getRecipeFor(Lnet/minecraft/world/item/crafting/RecipeType;Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Ljava/util/Optional;", ordinal = 1), cancellable = true)
+        @Inject(method = "process(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;)Ljava/util/List;", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/crafting/RecipeManager;getRecipeFor(Lnet/minecraft/world/item/crafting/RecipeType;Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Ljava/util/Optional;", ordinal = 1), cancellable = true)
     public void cancelBlastingRecipe(ItemStack stack, Level level, CallbackInfoReturnable<List<ItemStack>> cir) {
         cir.setReturnValue(Collections.emptyList()); // cancel recipe
     }

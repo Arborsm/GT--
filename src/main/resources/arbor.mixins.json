@@ -12,6 +12,9 @@
     "GTOreMIXIN"
   ],
   "client": [
+    "ChatMixin",
+    "ToastKiller",
+    "ToastKiller$ToastInstance"
   ],
   "injectors": {
     "defaultRequire": 1
