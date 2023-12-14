@@ -114,7 +114,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.28'
+    compileOnly(annotationProcessor('org.projectlombok:lombok:1.18.30'))
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     implementation fg.deobf("com.gregtechceu.gtceu:gtceu-forge-${minecraft_version}:${gtCeuVersion}"){ transitive = false }

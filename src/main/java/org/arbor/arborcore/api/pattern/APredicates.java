@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-
+@SuppressWarnings("unused")
 public class APredicates {
     public static TraceabilityPredicate plantCasings() {
         return new TraceabilityPredicate(blockWorldState -> {
@@ -75,7 +75,7 @@ public class APredicates {
     }
 
     public static TraceabilityPredicate ability(PartAbility ability) {
-        int[] tiers = Stream.of(ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV).filter(t -> t <= +1).mapToInt(Integer::intValue).toArray();
+        int[] tiers = Stream.of(ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV).filter(t -> t <= 1).mapToInt(Integer::intValue).toArray();
         return Predicates.blocks((tiers.length == 0 ? ability.getAllBlocks() : ability.getBlocks(tiers)).toArray(Block[]::new));
     }
 }

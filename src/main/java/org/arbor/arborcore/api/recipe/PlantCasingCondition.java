@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.RecipeCondition;
 import com.gregtechceu.gtceu.config.ConfigHolder;
+import lombok.Getter;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.GsonHelper;
@@ -15,6 +16,7 @@ import org.arbor.arborcore.api.machine.feature.IChemicalPlantProvider;
 import org.arbor.arborcore.block.PlantCasingBlock;
 import org.jetbrains.annotations.NotNull;
 
+@Getter
 public class PlantCasingCondition extends RecipeCondition {
     public final static PlantCasingCondition INSTANCE = new PlantCasingCondition();
 
@@ -28,10 +30,6 @@ public class PlantCasingCondition extends RecipeCondition {
 
     public PlantCasingCondition() {
         super();
-    }
-
-    public PlantCasingBlock.PlantCasing getPlantCasing() {
-        return this.plantCasing;
     }
 
     @Override

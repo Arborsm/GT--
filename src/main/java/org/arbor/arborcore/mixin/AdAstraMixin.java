@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@SuppressWarnings("all")
 @Mixin(Vehicle.class)
 public abstract class AdAstraMixin {
 
@@ -21,7 +22,7 @@ public abstract class AdAstraMixin {
     public void arbor$TryInsertingIntoTank(CallbackInfo ci) {
         if (((Vehicle) (Object) this).getInventorySize() > 1 && !((Vehicle) (Object) this).getInventory().getItem(0).isEmpty()) {
             if (!((Vehicle) (Object) this).level().isClientSide) {
-                FluidUtils.insertItemFluidToTank(((Vehicle) (Object) this).getTank(), ((Vehicle) (Object) this).getInventory(), 0, 1, 0, f -> f.is(fuel()));
+                FluidUtils.insertItemFluidToTank(((Vehicle) (Object) this).getTank(), ((Vehicle) (Object) this).getInventory(), 0, 1, 0, f -> f.is(arborCore$fuel()));
                 FluidUtils.extractTankFluidToItem(((Vehicle) (Object) this).getTank(), ((Vehicle) (Object) this).getInventory(), 0, 1, 0, f -> true);
             }
         }
@@ -29,7 +30,7 @@ public abstract class AdAstraMixin {
     }
 
     @Unique
-    public TagKey<Fluid> fuel() {
+    private TagKey<Fluid> arborCore$fuel() {
         if (((Vehicle) (Object) this).getInventorySize() == 10) {
             int tier = ((Rocket) (Object) this).getTier();
             return switch (tier) {

@@ -8,10 +8,13 @@
   "mixins": [
     "AdAstraMixin",
     "CreateFanMixin",
-    "EMIMixin",
-    "GTOreMIXIN"
+    "EMITreeCostMixin",
+    "FluidEmiStackMixin",
+    "GTOreMIXIN",
+    "MGTOreProcessingEmiCategory"
   ],
   "client": [
+    "AEmiApi",
     "ChatMixin",
     "ToastKiller",
     "ToastKiller$ToastInstance"
