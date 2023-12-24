@@ -33,11 +33,12 @@ jarJar.enable()
 
 minecraft {
     mappings channel: mapping_channel, version: mapping_version
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     copyIdeResources = true
     runs {
         configureEach {
             workingDirectory project.file('run')
-
+            jvmArg "-XX:+AllowEnhancedClassRedefinition"
             property 'forge.logging.markers', 'REGISTRIES'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"

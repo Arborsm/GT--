@@ -4,6 +4,8 @@
   "arbor.multiblock.pattern.error.plant_casings": "所有外壳必须相同",
   "arbor.recipe.condition.plant_casing.tooltip": "外壳等级: %s (%s)",
   "block.gtceu.chemical_plant": "埃克森美孚化工厂",
+  "config.arbor.option.ExtraHeartRenderer": "ExtraHeartRenderer",
+  "config.arbor.option.Client": "Client",
   "gtceu.chemical_plant": "埃克森美孚化工厂",
   "gtceu.multiblock.chemical_plant.energy_hatch": "§e支持能源仓: %s §e及以下",
   "gtceu.multiblock.chemical_plant.heating_coil": "§6提速: %s%%",
@@ -14,6 +16,7 @@
   "gtceu.multiblock.chemical_plant.tooltip4": "§5机械方块：配方电压支持等级",
   "material.andesite_alloy": "安山合金",
   "material.anthracene": "蒽",
+  "material.black_matter": "黑物质",
   "material.calorite": "耐热金属",
   "material.dense_hydrazine_mixed_fuel": "浓缩肼混合燃料",
   "material.desh": "戴斯",
@@ -41,6 +44,5 @@
   "tagprefix.mercury_stone": "旱海岩%s矿石",
   "tagprefix.moon_stone": "月岩%s矿石",
   "tagprefix.soul_soil": "含%s灵魂土",
-  "tagprefix.venus_stone": "锃金岩%s矿石",
-  "material.black_matter": "黑物质"
+  "tagprefix.venus_stone": "锃金岩%s矿石"
 }

@@ -4,4 +4,4 @@
 /build/
 /run-data/
 /run/
-/src/
+/src/generated/resources/.cache

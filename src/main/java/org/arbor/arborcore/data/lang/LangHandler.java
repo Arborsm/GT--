@@ -1,8 +1,17 @@
 package org.arbor.arborcore.data.lang;
 
+import dev.toma.configuration.Configuration;
+import dev.toma.configuration.config.format.ConfigFormats;
+import dev.toma.configuration.config.value.ConfigValue;
+import dev.toma.configuration.config.value.ObjectValue;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import org.arbor.arborcore.ArborCore;
+import org.arbor.arborcore.config.ConfigHandler;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class LangHandler extends LanguageProvider {
 
@@ -14,6 +23,10 @@ public class LangHandler extends LanguageProvider {
     protected void addTranslations() {
         addMachine();
         addMaterial();
+        Config();
+    }
+    public void Config() {
+        dfs(new HashSet<>(), Configuration.registerConfig(ConfigHandler.class, ConfigFormats.yaml()).getValueMap());
     }
 
     private void addMachine() {
@@ -64,5 +77,17 @@ public class LangHandler extends LanguageProvider {
         add("material.phthalic_anhydride", "邻苯二甲酸酐");
         add("material.vanadium_pentoxide", "五氧化二钒");
         add("material.black_matter", "黑物质");
+    }
+
+    private void dfs(Set<String> added, Map<String, ConfigValue<?>> map) {
+        for (var entry : map.entrySet()) {
+            var id = entry.getValue().getId();
+            if (added.add(id)) {
+                add(String.format("config.%s.option.%s", ArborCore.MODID, id), id);
+            }
+            if (entry.getValue() instanceof ObjectValue objectValue) {
+                dfs(added, objectValue.get());
+            }
+        }
     }
 }

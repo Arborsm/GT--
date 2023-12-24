@@ -8,16 +8,16 @@
   "mixins": [
     "AdAstraMixin",
     "CreateFanMixin",
-    "EMITreeCostMixin",
+    "EmiTreeCostMixin",
     "FluidEmiStackMixin",
     "GTOreMIXIN",
-    "MGTOreProcessingEmiCategory"
+    "MEmiPlayerInventory"
   ],
   "client": [
-    "AEmiApi",
-    "ChatMixin",
-    "ToastKiller",
-    "ToastKiller$ToastInstance"
+    "Client.AEmiApi",
+    "Client.ChatMixin",
+    "Client.ToastKiller",
+    "Client.ToastKiller$ToastInstance"
   ],
   "injectors": {
     "defaultRequire": 1
