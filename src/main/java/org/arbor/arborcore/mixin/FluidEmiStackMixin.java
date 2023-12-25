@@ -7,12 +7,12 @@ import net.minecraft.world.level.material.Fluid;
 import org.spongepowered.asm.mixin.*;
 
 @SuppressWarnings("all")
-@Mixin(value = FluidEmiStack.class, remap = false)
+@Mixin(FluidEmiStack.class)
 public abstract class FluidEmiStackMixin extends EmiStack {
     @Unique
     private ItemStack arborCore$stack;
     @Mutable
-    @Shadow
+    @Shadow(remap = false)
     private @Final Fluid fluid;
 
     protected FluidEmiStackMixin(Fluid fluid){

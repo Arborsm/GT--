@@ -10,8 +10,7 @@
     "CreateFanMixin",
     "EmiTreeCostMixin",
     "FluidEmiStackMixin",
-    "GTOreMIXIN",
-    "MEmiPlayerInventory"
+    "GTOreMIXIN"
   ],
   "client": [
     "Client.AEmiApi",

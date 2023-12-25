@@ -17,7 +17,6 @@ import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.arbor.arborcore.ArborCore;
@@ -61,7 +60,7 @@ public class ExtraHeartRenderHandler {
    * Event listener
    * @param event  Event instance
    */
-  @SubscribeEvent(priority = EventPriority.LOW)
+  @SubscribeEvent(priority = EventPriority.LOW, receiveCanceled = true)
   public void renderHealthbar(RenderGuiOverlayEvent.Pre event) {
     GuiGraphics guiGraphics = event.getGuiGraphics();
     if (event.isCanceled() || !ConfigHandler.INSTANCE.Client.ExtraHeartRenderer || event.getOverlay() != VanillaGuiOverlay.PLAYER_HEALTH.type()) {
@@ -72,7 +71,7 @@ public class ExtraHeartRenderHandler {
       return;
     }
     Entity renderViewEnity = this.mc.getCameraEntity();
-    if (!(renderViewEnity instanceof Player player)) {
+    if (!(renderViewEnity instanceof Player player) ) {
       return;
     }
     gui.setupOverlayRenderState(true, false);
@@ -192,9 +191,7 @@ public class ExtraHeartRenderHandler {
     event.setCanceled(true);
     RenderSystem.disableBlend();
     this.mc.getProfiler().pop();
-    Event e = new RenderGuiOverlayEvent.Pre(event.getWindow(), guiGraphics, event.getPartialTick(), VanillaGuiOverlay.PLAYER_HEALTH.type());
-    e.setCanceled(true);
-    MinecraftForge.EVENT_BUS.post(e);
+    MinecraftForge.EVENT_BUS.post(new RenderGuiOverlayEvent.Post(event.getWindow(), guiGraphics, event.getPartialTick(), VanillaGuiOverlay.PLAYER_HEALTH.type()));
   }
 
   /**
