@@ -1,4 +1,4 @@
-package org.arbor.arborcore.mixin;
+package org.arbor.arborcore.mixin.emi;
 
 import com.gregtechceu.gtceu.common.data.GTItems;
 import dev.emi.emi.api.stack.EmiIngredient;

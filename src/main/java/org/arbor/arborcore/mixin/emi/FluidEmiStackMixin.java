@@ -1,4 +1,4 @@
-package org.arbor.arborcore.mixin;
+package org.arbor.arborcore.mixin.emi;
 
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.stack.FluidEmiStack;

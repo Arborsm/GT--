@@ -13,9 +13,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class LangHandler extends LanguageProvider {
+public class LangHandlerCN extends LanguageProvider {
 
-    public LangHandler(DataGenerator gen, String locale) {
+    public LangHandlerCN(DataGenerator gen, String locale) {
         super(gen.getPackOutput(), ArborCore.MODID, locale);
     }
 

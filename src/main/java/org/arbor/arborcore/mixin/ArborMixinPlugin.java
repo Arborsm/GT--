@@ -21,7 +21,7 @@ public class ArborMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.contains("org.arbor.arborcore.mixin.EMIMixin")) {
+        if (mixinClassName.contains("org.arbor.arborcore.mixin.emi")) {
             return MixinPluginShared.isClassFound("dev.emi.emi.api.EmiPlugin");
         } else if (mixinClassName.contains("org.arbor.arborcore.mixin.CreateFanMixin")) {
             return MixinPluginShared.isClassFound("com.simibubi.create.compat.Mods");

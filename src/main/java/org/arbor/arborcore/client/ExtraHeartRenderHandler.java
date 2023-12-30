@@ -3,7 +3,6 @@ package org.arbor.arborcore.client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -29,7 +28,7 @@ import java.util.Random;
 public class ExtraHeartRenderHandler {
   private static final ResourceLocation ICON_HEARTS = ArborCore.id("textures/gui/hearts.png");
   private static final ResourceLocation ICON_ABSORB = ArborCore.id("textures/gui/absorb.png");
-  private static final ResourceLocation ICON_VANILLA = Gui.GUI_ICONS_LOCATION;
+  private static final ResourceLocation ICON_VANILLA = new ResourceLocation("textures/gui/icons.png");
   private final Minecraft mc = Minecraft.getInstance();
 
   private int playerHealth = 0;
@@ -148,33 +147,33 @@ public class ExtraHeartRenderHandler {
       if (health <= 4) y += this.rand.nextInt(2);
       if (i == this.regen) y -= 2;
 
-      this.blit(guiGraphics, Gui.GUI_ICONS_LOCATION, x, y, BACKGROUND, TOP, 9, 9);
+      this.blit(guiGraphics, ICON_VANILLA, x, y, BACKGROUND, TOP, 9, 9);
 
       if (highlight) {
         if (i * 2 + 1 < healthLast) {
-          this.blit(guiGraphics, Gui.GUI_ICONS_LOCATION, x, y, MARGIN + 54, TOP, 9, 9); //6
+          this.blit(guiGraphics, ICON_VANILLA, x, y, MARGIN + 54, TOP, 9, 9); //6
         }
         else if (i * 2 + 1 == healthLast) {
-          this.blit(guiGraphics, Gui.GUI_ICONS_LOCATION, x, y, MARGIN + 63, TOP, 9, 9); //7
+          this.blit(guiGraphics, ICON_VANILLA, x, y, MARGIN + 63, TOP, 9, 9); //7
         }
       }
 
       if (absorbRemaining > 0.0F) {
         if (absorbRemaining == absorb && absorb % 2.0F == 1.0F) {
-          this.blit(guiGraphics, Gui.GUI_ICONS_LOCATION, x, y, MARGIN + 153, TOP, 9, 9); //17
+          this.blit(guiGraphics, ICON_VANILLA, x, y, MARGIN + 153, TOP, 9, 9); //17
           absorbRemaining -= 1.0F;
         }
         else {
-          this.blit(guiGraphics, Gui.GUI_ICONS_LOCATION, x, y, MARGIN + 144, TOP, 9, 9); //16
+          this.blit(guiGraphics, ICON_VANILLA, x, y, MARGIN + 144, TOP, 9, 9); //16
           absorbRemaining -= 2.0F;
         }
       }
       else {
         if (i * 2 + 1 < health) {
-          this.blit(guiGraphics, Gui.GUI_ICONS_LOCATION, x, y, MARGIN + 36, TOP, 9, 9); //4
+          this.blit(guiGraphics, ICON_VANILLA, x, y, MARGIN + 36, TOP, 9, 9); //4
         }
         else if (i * 2 + 1 == health) {
-          this.blit(guiGraphics, Gui.GUI_ICONS_LOCATION, x, y, MARGIN + 45, TOP, 9, 9); //5
+          this.blit(guiGraphics, ICON_VANILLA, x, y, MARGIN + 45, TOP, 9, 9); //5
         }
       }
     }

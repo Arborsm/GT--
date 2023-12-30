@@ -127,6 +127,7 @@ dependencies {
 
     implementation fg.deobf("dev.emi:emi-forge:${emiVersion}")
     runtimeOnly fg.deobf("curse.maven:jei-238222:4712868")
+    implementation fg.deobf("curse.maven:applied-energistics-2-223794:4857895")
     // implementation fg.deobf("curse.maven:avaritia-reforged-623969:4750870")
 
     implementation fg.deobf("com.simibubi.create:create-1.20.1:0.5.1.f-26:slim") { transitive = false }

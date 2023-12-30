@@ -8,8 +8,8 @@
   "mixins": [
     "AdAstraMixin",
     "CreateFanMixin",
-    "EmiTreeCostMixin",
-    "FluidEmiStackMixin",
+    "emi.EmiTreeCostMixin",
+    "emi.FluidEmiStackMixin",
     "GTOreMIXIN"
   ],
   "client": [
