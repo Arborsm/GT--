@@ -127,14 +127,15 @@ dependencies {
 
     implementation fg.deobf("dev.emi:emi-forge:${emiVersion}")
     runtimeOnly fg.deobf("curse.maven:jei-238222:4712868")
-    implementation fg.deobf("curse.maven:applied-energistics-2-223794:4857895")
+    // implementation fg.deobf("curse.maven:applied-energistics-2-223794:4857895")
+    implementation fg.deobf("curse.maven:shimmer-627824:4923047")
     // implementation fg.deobf("curse.maven:avaritia-reforged-623969:4750870")
 
     implementation fg.deobf("com.simibubi.create:create-1.20.1:0.5.1.f-26:slim") { transitive = false }
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-1.20.1:0.6.10-7")
 
-    implementation fg.deobf("earth.terrarium.botarium:botarium-forge-${minecraft_version}:${botarium_version}")
-    implementation fg.deobf("curse.maven:cloth-config-348521:4633444")
+     implementation fg.deobf("earth.terrarium.botarium:botarium-forge-${minecraft_version}:${botarium_version}")
+    // implementation fg.deobf("curse.maven:cloth-config-348521:4633444")
     implementation fg.deobf("curse.maven:ad-astra-635042:${ad_astra_cf_version}")
     implementation fg.deobf("com.teamresourceful.resourcefullib:resourcefullib-forge-${minecraft_version}:${resourcefullib_version}")
     implementation fg.deobf("com.teamresourceful.resourcefulconfig:resourcefulconfig-forge-${minecraft_version}:${resourcefulconfig_version}")

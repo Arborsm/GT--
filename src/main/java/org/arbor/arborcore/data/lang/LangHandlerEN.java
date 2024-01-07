@@ -43,6 +43,10 @@ public class LangHandlerEN extends LanguageProvider {
         add("gtceu.multiblock.chemical_plant.energy_hatch", "§eSupport Energy Hatch: %s §eand following");
         add("gtceu.multiblock.chemical_plant.parallel_level", "§bParallel: %s");
         add("gtceu.multiblock.chemical_plant.heating_coil", "§6Speed: %s%%");
+        add("gtceu.machine.neutron_accelerator.tooltip1", "Input EU to Accelerate the Neutron!");
+        add("gtceu.machine.neutron_accelerator.tooltip2", "Max EU input: %s");
+        add("gtceu.machine.neutron_accelerator.tooltip3", "Max EU consumption: %s");
+        add("gtceu.machine.neutron_accelerator.tooltip4", "Every EU can be transformed into 10~20 eV Neutron Kinetic Energy.");
     }
 
     private void addMaterial() {

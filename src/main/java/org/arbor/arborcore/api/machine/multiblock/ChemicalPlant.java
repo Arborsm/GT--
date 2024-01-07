@@ -2,6 +2,7 @@ package org.arbor.arborcore.api.machine.multiblock;
 
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
+import lombok.Setter;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import org.arbor.arborcore.api.block.MachineCasingType;
 import org.arbor.arborcore.api.block.PipeType;
@@ -15,6 +16,7 @@ import java.util.Set;
 @MethodsReturnNonnullByDefault
 public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine implements IChemicalPlantProvider {
     private MachineCasingType machineCasingType;
+    @Setter
     private int tier = this.getMachineCasingTier();
     private PipeType pipeType;
     private PlantCasingType plantCasingType;
@@ -68,10 +70,6 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
     @Override
     public int getTier() {
         return tier;
-    }
-
-    public void setTier(int tier) {
-        this.tier = tier;
     }
 
     @Override
