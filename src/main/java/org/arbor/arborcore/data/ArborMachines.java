@@ -26,21 +26,22 @@ import org.arbor.arborcore.ArborCore;
 import org.arbor.arborcore.api.machine.multiblock.APartAbility;
 import org.arbor.arborcore.api.machine.multiblock.ChemicalPlant;
 import org.arbor.arborcore.api.machine.multiblock.NeutronActivator;
+import org.arbor.arborcore.api.machine.multiblock.part.HighSpeedPipeBlock;
 import org.arbor.arborcore.api.machine.multiblock.part.NeutronAccelerator;
 import org.arbor.arborcore.api.pattern.APredicates;
-import org.arbor.arborcore.api.registry.ArborRegistries;
 import org.arbor.arborcore.block.BlockTier;
 import org.arbor.arborcore.block.MachineCasingBlock;
 import org.arbor.arborcore.block.PipeBlock;
 import org.arbor.arborcore.block.PlantCasingBlock;
+import org.arbor.arborcore.client.renderer.machine.BlockMachineRenderer;
 
 import java.util.*;
 import java.util.function.BiFunction;
 
-import static com.gregtechceu.gtceu.api.GTValues.V;
-import static com.gregtechceu.gtceu.api.GTValues.VNF;
+import static com.gregtechceu.gtceu.api.GTValues.*;
+import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
-import static com.gregtechceu.gtceu.api.pattern.Predicates.autoAbilities;
+import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
 import static org.arbor.arborcore.api.registry.ArborRegistries.REGISTRATE;
 
 @SuppressWarnings("unused")
@@ -68,6 +69,11 @@ public class ArborMachines {
                     .register(),
             NA_TIERS);
 
+    public static final MachineDefinition HIGH_SPEED_PIPE_BLOCK = REGISTRATE.machine("high_speed_pipe_block", HighSpeedPipeBlock::new)
+            .renderer(() -> new BlockMachineRenderer(ArborCore.id("block/machine/part/high_speed_pipe_block")))
+            .rotationState(RotationState.Y_AXIS)
+            .register();
+
     // public static final MachineDefinition CATALYTIC_HATCH = GTRegistries.REGISTRATE.machine("catalytic_hatch",
     //                 (holder) -> new SteamItemBusPartMachine(holder, IO.IN))
     //         .rotationState(RotationState.ALL)
@@ -88,7 +94,7 @@ public class ArborMachines {
             .tooltips(Component.translatable("gtceu.multiblock.chemical_plant.tooltip3"))
             .tooltips(Component.translatable("gtceu.multiblock.chemical_plant.tooltip4"))
             .recipeTypes(ArborRecipesTypes.CHEMICAL_PLANT_RECIPES)
-            .recipeModifier(ArborRecipeModifiers::chemicalPlantRecipe)
+            .recipeModifier(ChemicalPlant::chemicalPlantRecipe)
             .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("VVVVVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
@@ -162,7 +168,6 @@ public class ArborMachines {
                 if (controller instanceof ChemicalPlant chemicalPlant && controller.isFormed()) {
                     components.add(Component.translatable("gtceu.multiblock.chemical_plant.heating_coil", chemicalPlant.getCoilTier() * 50));
                     components.add(Component.translatable("gtceu.multiblock.chemical_plant.parallel_level", chemicalPlant.getPipeTier() * 2));
-                    // components.add(Component.translatable("gtceu.multiblock.chemical_plant.energy_hatch", chemicalPlant.getEnergyHatchLevel()));
                 }
             })
             .register();
@@ -174,24 +179,25 @@ public class ArborMachines {
              .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip3"))
              .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip4"))
              .recipeTypes(ArborRecipesTypes.NEUTRON_ACTIVATOR_RECIPES)
+             .recipeModifier(NeutronActivator::neutronActivatorRecipe)
              .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
-             .pattern(definition -> FactoryBlockPattern.start()
-                     .aisle("AAAAA", "C###C", "C###C", "C###C", "C###C", "C###C", "VVVVV")
-                     .aisle("ABBBA", "#DDD#", "#DDD#", "#DDD#", "#DDD#", "#DDD#", "VBBBV")
-                     .aisle("ABBBA", "#DED#", "#DED#", "#DED#", "#DED#", "#DED#", "VBBBV")
-                     .aisle("ABBBA", "#DDD#", "#DDD#", "#DDD#", "#DDD#", "#DDD#", "VBBBV")
-                     .aisle("AASAA", "C###C", "C###C", "C###C", "C###C", "C###C", "VVVVV")
+             .pattern(definition -> FactoryBlockPattern.start(RIGHT, BACK, UP)
+                     .aisle("AASAA", "ABBBA", "ABBBA", "ABBBA", "AAAAA")
+                     .aisle("C###C", "#DDD#", "#DED#", "#DDD#", "C###C").setRepeatable(4, 24)
+                     .aisle("VVVVV", "VBBBV", "VBBBV", "VBBBV", "VVVVV")
                      .where("S", Predicates.controller(Predicates.blocks(definition.get())))
                      .where("V", Predicates.blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
-                             .or(autoAbilities(definition.getRecipeTypes()))
-                             .or(autoAbilities(true, false, false)))
+                             .or(abilities(PartAbility.IMPORT_FLUIDS))
+                             .or(abilities(PartAbility.IMPORT_ITEMS)))
                      .where("A", Predicates.blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
-                             .or(autoAbilities(definition.getRecipeTypes()))
+                             .or(abilities(PartAbility.EXPORT_FLUIDS))
+                             .or(abilities(PartAbility.EXPORT_ITEMS))
+                             .or(abilities(APartAbility.NEUTRON_ACCELERATOR))
                              .or(autoAbilities(true, false, false)))
                      .where("B", Predicates.blocks(GTBlocks.CASING_STEEL_SOLID.get()))
                      .where("C", Predicates.blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTMaterials.Steel)))
                      .where("D", Predicates.blocks(GTBlocks.CASING_LAMINATED_GLASS.get()))
-                     .where("E", Predicates.blocks(GTBlocks.CASING_BRONZE_BRICKS.get()))
+                     .where("E", Predicates.blocks(HIGH_SPEED_PIPE_BLOCK.get()))
                      .where("#", Predicates.air())
                      .build())
              .workableCasingRenderer(
@@ -205,7 +211,7 @@ public class ArborMachines {
                                                              int... tiers) {
         MachineDefinition[] definitions = new MachineDefinition[GTValues.TIER_COUNT];
         for (int tier : tiers) {
-            var register = ArborRegistries.REGISTRATE.machine(GTValues.VN[tier].toLowerCase(Locale.ROOT) + "_" + name, holder -> factory.apply(holder, tier))
+            var register = REGISTRATE.machine(GTValues.VN[tier].toLowerCase(Locale.ROOT) + "_" + name, holder -> factory.apply(holder, tier))
                     .tier(tier);
             definitions[tier] = builder.apply(tier, register);
         }

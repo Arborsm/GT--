@@ -48,5 +48,8 @@
   "tagprefix.mercury_stone": "Mercury Stone %s Ores",
   "tagprefix.moon_stone": "Moon Stone %s Ores",
   "tagprefix.soul_soil": "SoulSoil %s Ores",
-  "tagprefix.venus_stone": "Venus Stone %s Ores"
+  "tagprefix.venus_stone": "Venus Stone %s Ores",
+  "gtceu.multiblock.neutronactivator.ev": "Current Neutron Energy: %deV",
+  "gtceu.multiblock.neutronactivator.heigh": "Height: %s",
+  "arbor.recipe.condition.neutron_activator_condition_tooltip": "Minimum Neutron Kinetic Energy:\n%s MeV\nMaximum Neutron Kinetic Energy:\n%s MeV"
 }

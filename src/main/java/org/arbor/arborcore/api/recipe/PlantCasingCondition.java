@@ -6,7 +6,6 @@ import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController;
 import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.RecipeCondition;
-import com.gregtechceu.gtceu.config.ConfigHolder;
 import lombok.Getter;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -46,8 +45,7 @@ public class PlantCasingCondition extends RecipeCondition {
     public boolean test(@NotNull GTRecipe recipe, @NotNull RecipeLogic recipeLogic) {
         MetaMachine machine = recipeLogic.getMachine();
         if (machine instanceof IChemicalPlantReciver receiver && this.plantCasing != null) {
-            if (ConfigHolder.INSTANCE.machines.cleanMultiblocks && machine instanceof IMultiController) return true;
-
+            if (machine instanceof IMultiController) return true;
             IChemicalPlantProvider provider = receiver.getChemicalPlant();
             return provider != null;
         }

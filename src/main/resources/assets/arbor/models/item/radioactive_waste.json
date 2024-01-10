@@ -1,0 +1,8 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "arbor:item/radioactive_waste"
+	},
+	"display": {}
+}
