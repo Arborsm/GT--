@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class LangHandlerEN extends LanguageProvider {
-
     public LangHandlerEN(DataGenerator gen, String locale) {
         super(gen.getPackOutput(), ArborCore.MODID, locale);
     }
@@ -25,6 +24,7 @@ public class LangHandlerEN extends LanguageProvider {
         addMaterial();
         Config();
     }
+
     public void Config() {
         dfs(new HashSet<>(), Configuration.registerConfig(ConfigHandler.class, ConfigFormats.yaml()).getValueMap());
     }
@@ -47,6 +47,9 @@ public class LangHandlerEN extends LanguageProvider {
         add("gtceu.machine.neutron_accelerator.tooltip2", "Max EU input: %s");
         add("gtceu.machine.neutron_accelerator.tooltip3", "Max EU consumption: %s");
         add("gtceu.machine.neutron_accelerator.tooltip4", "Every EU can be transformed into 10~20 eV Neutron Kinetic Energy.");
+        add("gtceu.multiblock.neutronactivator.ev", "Current Neutron Energy: %deV");
+        add("gtceu.multiblock.neutronactivator.heigh", "Height: %s");
+        add("arbor.recipe.condition.neutron_activator_condition_tooltip", "Minimum Neutron Kinetic Energy:\n%s MeV\nMaximum Neutron Kinetic Energy:\n%s MeV");
     }
 
     private void addMaterial() {
@@ -83,7 +86,7 @@ public class LangHandlerEN extends LanguageProvider {
         add("material.black_matter", "Black Matter");
     }
 
-    private void dfs(Set<String> added, Map<String, ConfigValue<?>> map) {
+    public void dfs(Set<String> added, Map<String, ConfigValue<?>> map) {
         for (var entry : map.entrySet()) {
             var id = entry.getValue().getId();
             if (added.add(id)) {

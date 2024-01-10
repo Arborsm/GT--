@@ -9,7 +9,7 @@ import org.arbor.arborcore.data.lang.LangHandlerCN;
 import org.arbor.arborcore.data.lang.LangHandlerEN;
 
 @Mod.EventBusSubscriber(modid = ArborCore.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ArborDatagen {
+public class ArborDataGen {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
