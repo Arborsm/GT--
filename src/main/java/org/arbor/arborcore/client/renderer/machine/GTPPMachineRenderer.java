@@ -53,12 +53,9 @@ public class GTPPMachineRenderer extends MachineRenderer implements IControllerR
     public void renderMachine(List<BakedQuad> quads, MachineDefinition definition, @Nullable MetaMachine machine,
                               Direction frontFacing, @Nullable Direction side, RandomSource rand, Direction modelFacing, ModelState modelState) {
         super.renderMachine(quads, definition, machine, frontFacing, side, rand, modelFacing, modelState);
-        if (machine instanceof IGTPPMachine && machine instanceof MultiblockControllerMachine multiblockControllerMachine) {
-            if (multiblockControllerMachine.isFormed()){
+        if (machine instanceof IGTPPMachine igtppMachine && machine instanceof MultiblockControllerMachine multiblockControllerMachine) {
+            if (multiblockControllerMachine.isFormed() && igtppMachine.getTier() != 0){
                 render(quads, machine, modelState);
-                if (((IGTPPMachine)machine).getTier() != 0){
-                    int i = 1 + 1;
-                }
             }
         }
         if (machine instanceof IWorkable workable) {

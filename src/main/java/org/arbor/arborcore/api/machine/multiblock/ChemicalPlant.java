@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.capability.recipe.EURecipeCapability;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
+import com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
@@ -12,6 +13,7 @@ import com.gregtechceu.gtceu.api.syncdata.RequireRerender;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
+import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
 import lombok.Getter;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import org.arbor.arborcore.api.block.MachineCasingType;
@@ -30,7 +32,12 @@ import java.util.Set;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine implements IChemicalPlantProvider, IGTPPMachine {
-    @Getter @Persisted @DescSynced @RequireRerender
+    private static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(ChemicalPlant.class, WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
+
+    @Getter
+    @Persisted
+    @DescSynced
+    @RequireRerender
     private int tier;
     private MachineCasingType machineCasingType;
     private PipeType pipeType;
@@ -45,6 +52,7 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
     //////////////////////////////////////
     @Override
     public void onStructureFormed() {
+        scheduleRenderUpdate();
         super.onStructureFormed();
         if (getMultiblockState().getMatchContext().get("MachineCasing") instanceof MachineCasingType machineCasing) {
             this.machineCasingType = machineCasing;
@@ -56,6 +64,11 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
             this.plantCasingType = plantCasing;
         }
         this.tier = getPlantCasingTier();
+    }
+
+    @Override
+    public void scheduleRenderUpdate(){
+        scheduleRenderUpdate(this);
     }
 
     public int getMachineCasingTier() {
@@ -121,4 +134,12 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
         return null;
     }
 
+    //////////////////////////////////////
+    //******       NBT SAVE      *******//
+    //////////////////////////////////////
+
+    @Override
+    public ManagedFieldHolder getFieldHolder() {
+        return MANAGED_FIELD_HOLDER;
+    }
 }

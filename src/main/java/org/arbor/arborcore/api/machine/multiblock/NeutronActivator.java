@@ -218,7 +218,7 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
     }
 
     //////////////////////////////////////
-    //******        NBT SAVE       *******//
+    //******       NBT SAVE      *******//
     //////////////////////////////////////
 
     @Override
