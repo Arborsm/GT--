@@ -13,11 +13,11 @@ import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.lowdragmc.lowdraglib.client.bakedpipeline.FaceQuad;
 import com.lowdragmc.lowdraglib.client.model.ModelFactory;
 import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.resources.model.ModelState;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.arbor.arborcore.api.machine.feature.IGTPPMachine;
@@ -78,7 +78,7 @@ public class GTPPMachineRenderer extends MachineRenderer implements IControllerR
     @OnlyIn(Dist.CLIENT)
     public void onPrepareTextureAtlas(ResourceLocation atlasName, Consumer<ResourceLocation> register) {
         super.onPrepareTextureAtlas(atlasName, register);
-        if (atlasName.equals(TextureAtlas.LOCATION_BLOCKS)) {
+        if (atlasName.equals(InventoryMenu.BLOCK_ATLAS)) {
             this.overlayModel.registerTextureAtlas(register);
         }
     }
