@@ -8,8 +8,11 @@ import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
 import com.gregtechceu.gtceu.api.recipe.content.Content;
+import com.gregtechceu.gtceu.api.syncdata.RequireRerender;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
-import lombok.Setter;
+import com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced;
+import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
+import lombok.Getter;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import org.arbor.arborcore.api.block.MachineCasingType;
 import org.arbor.arborcore.api.block.PipeType;
@@ -27,9 +30,9 @@ import java.util.Set;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine implements IChemicalPlantProvider, IGTPPMachine {
+    @Getter @Persisted @DescSynced @RequireRerender
+    private int tier;
     private MachineCasingType machineCasingType;
-    @Setter
-    private int tier = this.getMachineCasingTier();
     private PipeType pipeType;
     private PlantCasingType plantCasingType;
 
@@ -52,6 +55,7 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
         if (getMultiblockState().getMatchContext().get("PlantCasing") instanceof PlantCasingType plantCasing) {
             this.plantCasingType = plantCasing;
         }
+        this.tier = getPlantCasingTier();
     }
 
     public int getMachineCasingTier() {
@@ -62,22 +66,17 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
     }
 
     public int getPipeTier() {
-        if (this.machineCasingType != null) {
+        if (this.pipeType != null) {
             return this.pipeType.getTier();
-        }
-        return -1;
-    }
-
-    public int getPlantCasingTier() {
-        if (this.machineCasingType != null) {
-            return this.plantCasingType.getTier();
         }
         return 0;
     }
 
-    @Override
-    public int getTier() {
-        return getPlantCasingTier();
+    public int getPlantCasingTier() {
+        if (this.plantCasingType != null) {
+            return this.plantCasingType.getTier();
+        }
+        return 0;
     }
 
     @Override
@@ -121,4 +120,5 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
         }
         return null;
     }
+
 }

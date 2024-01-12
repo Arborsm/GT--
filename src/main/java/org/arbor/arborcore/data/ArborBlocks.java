@@ -9,7 +9,6 @@ import com.lowdragmc.lowdraglib.client.renderer.IRenderer;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
@@ -19,25 +18,25 @@ import org.arbor.arborcore.ArborCore;
 
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Supplier;
 
 import static org.arbor.arborcore.api.registry.ArborRegistries.REGISTRATE;
 
 @SuppressWarnings("unused")
 public class ArborBlocks {
+    static {
+        REGISTRATE.creativeModeTab(() -> ArborCreativeModeTabs.ArborCreativeModeTab);
+    }
     public static final BlockEntry<Block> PROCESS_MACHINE_CASING = createCasingBlock("clean_machine_casing", ArborCore.id("block/casings/solid/process_machine_casing"));
 
     public static BlockEntry<Block> createCasingBlock(String name, ResourceLocation texture) {
-        return createCasingBlock(name, RendererBlock::new, texture, () -> Blocks.IRON_BLOCK, () -> RenderType::cutoutMipped);
+        return createCasingBlock(name, RendererBlock::new, texture, () -> Blocks.IRON_BLOCK);
     }
 
-    @SuppressWarnings("all")
-    public static BlockEntry<Block> createCasingBlock(String name, BiFunction<BlockBehaviour.Properties, IRenderer, ? extends RendererBlock> blockSupplier, ResourceLocation texture, NonNullSupplier<? extends Block> properties, Supplier<Supplier<RenderType>> type) {
+    public static BlockEntry<Block> createCasingBlock(String name, BiFunction<BlockBehaviour.Properties, IRenderer, ? extends RendererBlock> blockSupplier, ResourceLocation texture, NonNullSupplier<? extends Block> properties) {
         return REGISTRATE.block(name, p -> (Block) blockSupplier.apply(p,
                         Platform.isClient() ? new TextureOverrideRenderer(new ResourceLocation("block/cube_all"),
                                 Map.of("all", texture)) : null))
                 .initialProperties(properties)
-                .addLayer(type)
                 .blockstate(NonNullBiConsumer.noop())
                 .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
                 .item(RendererBlockItem::new)
