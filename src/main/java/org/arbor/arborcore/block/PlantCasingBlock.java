@@ -1,7 +1,9 @@
 package org.arbor.arborcore.block;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import org.arbor.arborcore.api.block.ITier;
 import org.arbor.arborcore.api.block.PlantCasingType;
@@ -15,31 +17,37 @@ import static org.arbor.arborcore.block.BlockTier.*;
 
 public class PlantCasingBlock extends Block {
     private static final Map<String, PlantCasing> All_PlantCasing = new Object2ObjectOpenHashMap<>();
+    private static final Map<Integer, PlantCasing> All_PlantCasing_Tier = new Object2ObjectOpenHashMap<>();
 
     public PlantCasingBlock(Properties properties) {
         super(properties);
     }
 
     public enum PlantCasing implements PlantCasingType {
-        BRONZE(TIER0, CASING_BRONZE_BRICKS, "Bronze"),
-        STEEL(TIER1, CASING_STEEL_SOLID, "Steel"),
-        ALUMINIUM(TIER2, CASING_ALUMINIUM_FROSTPROOF, "Aluminium"),
-        STAINLESS(TIER3, CASING_STAINLESS_CLEAN, "Stainless"),
-        TITANIUM(TIER4, CASING_TITANIUM_STABLE, "Titanium"),
-        TUNGSTENSTEEL(TIER5, CASING_TUNGSTENSTEEL_ROBUST, "Tungstensteel"),
-        CHROME(TIER6, CASING_TUNGSTENSTEEL_ROBUST, "Chrome"),
-        IRIDIUM(TIER7, CASING_TUNGSTENSTEEL_ROBUST, "Iridium");
+        BRONZE(TIER0, CASING_BRONZE_BRICKS, "Bronze", GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks")),
+        STEEL(TIER1, CASING_STEEL_SOLID, "Steel", GTCEu.id("block/casings/solid/machine_casing_solid_steel")),
+        ALUMINIUM(TIER2, CASING_ALUMINIUM_FROSTPROOF, "Aluminium", GTCEu.id("block/casings/solid/machine_casing_frost_proof")),
+        STAINLESS(TIER3, CASING_STAINLESS_CLEAN, "Stainless", GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel")),
+        TITANIUM(TIER4, CASING_TITANIUM_STABLE, "Titanium", GTCEu.id("block/casings/solid/machine_casing_stable_titanium")),
+        TUNGSTENSTEEL(TIER5, CASING_TUNGSTENSTEEL_ROBUST, "Tungstensteel", GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel")),
+        CHROME(TIER6, CASING_TUNGSTENSTEEL_ROBUST, "Chrome", GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel")),
+        IRIDIUM(TIER7, CASING_TUNGSTENSTEEL_ROBUST, "Iridium", GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"));
 
         private final ITier tier;
         private final BlockEntry<Block> plantCasing;
         private final String name;
+        private final ResourceLocation resourceLocation;
 
-        PlantCasing(ITier tier, BlockEntry<Block> plantCasing, String name) {
+        PlantCasing(ITier tier, BlockEntry<Block> plantCasing, String name, ResourceLocation resourceLocation) {
             this.tier = tier;
             this.plantCasing = plantCasing;
             this.name = name;
-
+            this.resourceLocation = resourceLocation;
             All_PlantCasing.put(name, this);
+            All_PlantCasing_Tier.put(tier.tier(), this);
+        }
+        public static PlantCasing getByTier(int tier){
+            return All_PlantCasing_Tier.get(tier);
         }
 
         @Nullable
@@ -77,6 +85,11 @@ public class PlantCasingBlock extends Block {
 
         public BlockEntry<Block> getPlantCasing(int tier) {
             return PlantCasing.values()[tier].getPlantCasing();
+        }
+
+        @Override
+        public ResourceLocation getResourceLocation() {
+            return resourceLocation;
         }
     }
 }

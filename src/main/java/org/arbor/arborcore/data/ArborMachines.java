@@ -34,13 +34,15 @@ import org.arbor.arborcore.block.MachineCasingBlock;
 import org.arbor.arborcore.block.PipeBlock;
 import org.arbor.arborcore.block.PlantCasingBlock;
 import org.arbor.arborcore.client.renderer.machine.BlockMachineRenderer;
+import org.arbor.arborcore.client.renderer.machine.GTPPMachineRenderer;
 
 import java.util.*;
 import java.util.function.BiFunction;
 
-import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
+import static com.gregtechceu.gtceu.api.GTValues.V;
+import static com.gregtechceu.gtceu.api.GTValues.VNF;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
+import static com.gregtechceu.gtceu.api.pattern.Predicates.autoAbilities;
 import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
 import static org.arbor.arborcore.api.registry.ArborRegistries.REGISTRATE;
 
@@ -105,7 +107,7 @@ public class ArborMachines {
                     .aisle("ABBBBBA", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
                     .aisle("VVVSVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
                     .where("S", Predicates.controller(Predicates.blocks(definition.get())))
-                    .where("V", Predicates.blocks(GTBlocks.CASING_BRONZE_BRICKS.get())
+                    .where("V", APredicates.plantCasings()
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, false))
                             .or(abilities(PartAbility.INPUT_ENERGY).setMinGlobalLimited(1))
@@ -129,9 +131,8 @@ public class ArborMachines {
                         .aisle("ABBBBBA", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
                         .aisle("ABBBBBA", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
                         .aisle("ABBBBBA", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
-                        .aisle("VVVVVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
+                        .aisle("AAAAAAA", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
                         .where('S', definition, Direction.NORTH)
-                        .where('V', GTBlocks.CASING_BRONZE_BRICKS)
                         .where('#', Blocks.AIR.defaultBlockState())
                         .where('J', GTMachines.MAINTENANCE_HATCH, Direction.NORTH);
                 Map<Integer, BlockState> shapeBlock = new HashMap<>();
@@ -161,9 +162,8 @@ public class ArborMachines {
                 }
                 return shapeInfo;
             })
-            .workableCasingRenderer(
-                    GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
-                    ArborCore.id("block/multiblock/chemical_plant"), false)
+            .renderer(() -> new GTPPMachineRenderer(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
+                    ArborCore.id("block/multiblock/chemical_plant"), false))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof ChemicalPlant chemicalPlant && controller.isFormed()) {
                     components.add(Component.translatable("gtceu.multiblock.chemical_plant.heating_coil", chemicalPlant.getCoilTier() * 50));
@@ -178,12 +178,13 @@ public class ArborMachines {
              .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip2"))
              .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip3"))
              .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip4"))
+             .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip5"))
              .recipeTypes(ArborRecipesTypes.NEUTRON_ACTIVATOR_RECIPES)
              .recipeModifier(NeutronActivator::neutronActivatorRecipe)
              .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
              .pattern(definition -> FactoryBlockPattern.start(RIGHT, BACK, UP)
                      .aisle("AASAA", "ABBBA", "ABBBA", "ABBBA", "AAAAA")
-                     .aisle("C###C", "#DDD#", "#DED#", "#DDD#", "C###C").setRepeatable(4, 24)
+                     .aisle("C###C", "#DDD#", "#DED#", "#DDD#", "C###C").setRepeatable(4, 34)
                      .aisle("VVVVV", "VBBBV", "VBBBV", "VBBBV", "VVVVV")
                      .where("S", Predicates.controller(Predicates.blocks(definition.get())))
                      .where("V", Predicates.blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
@@ -194,7 +195,7 @@ public class ArborMachines {
                              .or(abilities(PartAbility.EXPORT_ITEMS))
                              .or(abilities(APartAbility.NEUTRON_ACCELERATOR))
                              .or(autoAbilities(true, false, false)))
-                     .where("B", Predicates.blocks(GTBlocks.CASING_STEEL_SOLID.get()))
+                     .where("B", Predicates.blocks(ArborBlocks.PROCESS_MACHINE_CASING.get()))
                      .where("C", Predicates.blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTMaterials.Steel)))
                      .where("D", Predicates.blocks(GTBlocks.CASING_LAMINATED_GLASS.get()))
                      .where("E", Predicates.blocks(HIGH_SPEED_PIPE_BLOCK.get()))

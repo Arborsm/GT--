@@ -15,6 +15,7 @@ import org.arbor.arborcore.api.block.MachineCasingType;
 import org.arbor.arborcore.api.block.PipeType;
 import org.arbor.arborcore.api.block.PlantCasingType;
 import org.arbor.arborcore.api.machine.feature.IChemicalPlantProvider;
+import org.arbor.arborcore.api.machine.feature.IGTPPMachine;
 import org.arbor.arborcore.api.recipe.PlantCasingCondition;
 
 import javax.annotation.Nonnull;
@@ -25,7 +26,7 @@ import java.util.Set;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine implements IChemicalPlantProvider {
+public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine implements IChemicalPlantProvider, IGTPPMachine {
     private MachineCasingType machineCasingType;
     @Setter
     private int tier = this.getMachineCasingTier();
@@ -71,12 +72,12 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
         if (this.machineCasingType != null) {
             return this.plantCasingType.getTier();
         }
-        return -1;
+        return 0;
     }
 
     @Override
     public int getTier() {
-        return tier;
+        return getPlantCasingTier();
     }
 
     @Override

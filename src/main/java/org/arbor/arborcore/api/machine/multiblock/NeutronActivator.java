@@ -55,6 +55,7 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
     protected int eV = 0, mCeil = 0, mFloor = 0;
     protected ConditionalSubscriptionHandler tickSubscription;
     private int aTick = 0;
+    private float efficiency = 0;
     public final int maxNeutronKineticEnergy = 1200000000;
     public NeutronActivator(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
@@ -82,6 +83,7 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
             }
             if (part instanceof HighSpeedPipeBlock) height++;
         }
+        efficiency = (float) Math.pow(0.9f, height - 4);
     }
 
     @Override
@@ -165,7 +167,8 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
                 textList.add(Component.translatable("gtceu.multiblock.waiting").setStyle(Style.EMPTY.withColor(ChatFormatting.RED)));
             }
             textList.add(Component.translatable("gtceu.multiblock.neutronactivator.ev", processNumber(eV)));
-            textList.add(Component.translatable("gtceu.multiblock.neutronactivator.heigh", FormattingUtil.formatNumbers(height)));
+            textList.add(Component.translatable("gtceu.multiblock.neutronactivator.height", FormattingUtil.formatNumbers(height)));
+            textList.add(Component.translatable("gtceu.multiblock.neutronactivator.efficiency", FormattingUtil.formatNumbers(efficiency * 100)));
         }
         getDefinition().getAdditionalDisplay().accept(this, textList);
     }
@@ -241,6 +244,7 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
         compound.putInt("Height", height);
         compound.putInt("Floor", mFloor);
         compound.putInt("Ceil",mCeil);
+        compound.putFloat("Efficiency", efficiency);
         return compound;
     }
 
@@ -249,6 +253,7 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
         height = compound.getInt("Height");
         mFloor = compound.getInt("Floor");
         mCeil = compound.getInt("Ceil");
+        efficiency = compound.getFloat("Efficiency");
     }
 
     //////////////////////////////////////
@@ -264,7 +269,7 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
     public static GTRecipe neutronActivatorRecipe(MetaMachine machine, GTRecipe recipe){
         if (machine instanceof NeutronActivator neutronActivator){
             GTRecipe recipe1 = recipe.copy();
-            recipe1.duration = Math.max((int) (recipe1.duration * Math.pow(0.9f, neutronActivator.height - 4)), 1);
+            recipe1.duration = (int) Math.max(recipe1.duration * neutronActivator.efficiency, 1);
             if (recipe1.conditions.get(0) instanceof NeutronActivatorCondition neutronActivatorCondition){
                 neutronActivator.mFloor = (neutronActivatorCondition.getEvRange() % 10000) * 1000000;
                 neutronActivator.mCeil = (neutronActivatorCondition.getEvRange() / 10000) * 1000000;
