@@ -42,8 +42,9 @@ public class LangHandlerCN extends LanguageProvider {
         add("gtceu.multiblock.chemical_plant.tooltip3", "§b管道方块：§e+2§b 并行/级");
         add("gtceu.multiblock.chemical_plant.tooltip4", "§5机械方块：配方电压支持等级");
         add("gtceu.multiblock.chemical_plant.energy_hatch", "§e支持能源仓: %s §e及以下");
-        add("gtceu.multiblock.chemical_plant.parallel_level", "§b并行: %s");
+        add("gtceu.multiblock.chemical_plant.parallel_level", "§5并行: %s");
         add("gtceu.multiblock.chemical_plant.heating_coil", "§6提速: %s%%");
+        add("gtceu.multiblock.chemical_plant.tier", "§e配方电压最大支持: %s");
         add("block.arbor.lv_neutron_accelerator", "§7LV中子加速器");
         add("block.arbor.mv_neutron_accelerator", "§bMV中子加速器");
         add("block.arbor.hv_neutron_accelerator", "§6HV中子加速器");
@@ -65,7 +66,7 @@ public class LangHandlerCN extends LanguageProvider {
         add("gtceu.multiblock.neutron_activator.tooltip5", "§6当中子动能超过§41200MeV§6后将会爆炸！");
         add("gtceu.multiblock.neutronactivator.ev", "当前中子动能: %deV");
         add("gtceu.multiblock.neutronactivator.height", "高度: %s");
-        add("gtceu.multiblock.neutronactivator.efficiency", "效率: %s%%");
+        add("gtceu.multiblock.neutronactivator.efficiency", "耗时: %s%%");
         add("arbor.recipe.condition.neutron_activator_condition_tooltip", "最小中子动能:\n%s MeV\n最大中子动能:\n%s MeV");
     }
 

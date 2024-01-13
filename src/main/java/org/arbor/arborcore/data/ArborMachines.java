@@ -100,21 +100,21 @@ public class ArborMachines {
             .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("VVVVVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
-                    .aisle("ABBBBBA", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
-                    .aisle("ABBBBBA", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
-                    .aisle("ABBBBBA", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
-                    .aisle("ABBBBBA", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
-                    .aisle("ABBBBBA", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
-                    .aisle("VVVSVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
+                    .aisle("VBBBBBV", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
+                    .aisle("AVVSVVA", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
                     .where("S", Predicates.controller(Predicates.blocks(definition.get())))
                     .where("V", APredicates.plantCasings()
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, false))
-                            .or(abilities(PartAbility.INPUT_ENERGY).setMinGlobalLimited(1))
-                            .or(abilities(PartAbility.IMPORT_ITEMS).setMinGlobalLimited(1))
-                            .or(abilities(PartAbility.IMPORT_FLUIDS).setMinGlobalLimited(1))
-                            .or(abilities(PartAbility.EXPORT_ITEMS).setMinGlobalLimited(1))
-                            .or(abilities(PartAbility.EXPORT_FLUIDS).setMinGlobalLimited(1))
+                            .or(abilities(PartAbility.INPUT_ENERGY))
+                            .or(abilities(PartAbility.IMPORT_ITEMS))
+                            .or(abilities(PartAbility.EXPORT_ITEMS))
+                            .or(abilities(PartAbility.IMPORT_FLUIDS))
+                            .or(abilities(PartAbility.EXPORT_FLUIDS))
                     )
                     .where("A", APredicates.plantCasings())
                     .where("D", APredicates.pipeBlock())
@@ -125,9 +125,9 @@ public class ArborMachines {
             .shapeInfos(definition -> {
                 List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
                 var builder = MultiblockShapeInfo.builder()
-                        .aisle("JKLSMNO", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
-                        .aisle("ABBBBBA", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
-                        .aisle("ABBBBBA", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
+                        .aisle("AAOSJAA", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
+                        .aisle("MBBBBBN", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
+                        .aisle("KBBBBBL", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
                         .aisle("ABBBBBA", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
                         .aisle("ABBBBBA", "#BCCCB#", "##DDD##", "##CCC##", "##DDD##", "#BCCCB#", "AAAAAAA")
                         .aisle("ABBBBBA", "#BBBBB#", "#######", "#######", "#######", "#BBBBB#", "AAAAAAA")
@@ -168,6 +168,7 @@ public class ArborMachines {
                 if (controller instanceof ChemicalPlant chemicalPlant && controller.isFormed()) {
                     components.add(Component.translatable("gtceu.multiblock.chemical_plant.heating_coil", chemicalPlant.getCoilTier() * 50));
                     components.add(Component.translatable("gtceu.multiblock.chemical_plant.parallel_level", chemicalPlant.getPipeTier() * 2));
+                    components.add(Component.translatable("gtceu.multiblock.chemical_plant.tier", VNF[chemicalPlant.getPlantCasingTier()]));
                 }
             })
             .register();
