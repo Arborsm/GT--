@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.arbor.gtnn.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "gtnn.refmap.json",
+  "plugin": "org.arbor.gtnn.mixin.GTNNMixinPlugin",
+  "mixins": [
+    "AdAstraMixin",
+    "CreateFanMixin",
+    "GTOreMIXIN",
+    "emi.EmiTreeCostMixin",
+    "emi.FluidEmiStackMixin"
+  ],
+  "client": [
+    "Client.AEmiApi",
+    "Client.ChatMixin",
+    "Client.ToastKiller",
+    "Client.ToastKiller$ToastInstance"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

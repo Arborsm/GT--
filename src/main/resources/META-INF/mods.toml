@@ -3,34 +3,34 @@ loaderVersion = "${loader_version_range}"
 license = "${mod_license}"
 
 [[mods]]
-modId = "arbor"
+modId = "gtnn"
 version = "${mod_version}"
 displayName = "${mod_name}" #mandatory
 authors = "${mod_authors}"
 description = '''${mod_description}'''
 
-[[dependencies.arbor]]
+[[dependencies.gtnn]]
 modId = "forge"
 mandatory = true
 versionRange = "${forge_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.arbor]]
+[[dependencies.gtnn]]
 modId = "minecraft"
 mandatory = true
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.arbor]]
+[[dependencies.gtnn]]
 modId = "gtceu"
 mandatory = true
 versionRange = "[1.0.14.a,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.arbor]]
+[[dependencies.gtnn]]
 modId = "ad_astra"
 mandatory = false
 versionRange = "[1.15.4,)"
