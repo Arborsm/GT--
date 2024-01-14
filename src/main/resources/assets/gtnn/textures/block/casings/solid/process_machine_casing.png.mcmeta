@@ -1,0 +1,5 @@
+{
+    "ldlib": {
+        "connection": "gtnn:block/casings/solid/process_machine_casing_ctm"
+    }
+}
