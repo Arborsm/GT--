@@ -24,7 +24,7 @@ import static org.arbor.gtnn.api.registry.GTNNRegistries.REGISTRATE;
 @SuppressWarnings("unused")
 public class GTNNBlocks {
     static {
-        REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.ArborCreativeModeTab);
+        REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.MAIN_TAB);
     }
     public static final BlockEntry<Block> PROCESS_MACHINE_CASING = createCasingBlock("clean_machine_casing", GTNN.id("block/casings/solid/process_machine_casing"));
 

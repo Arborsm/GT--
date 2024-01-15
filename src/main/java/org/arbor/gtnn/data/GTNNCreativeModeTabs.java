@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import static org.arbor.gtnn.api.registry.GTNNRegistries.REGISTRATE;
 
 public class GTNNCreativeModeTabs {
-    public static RegistryEntry<CreativeModeTab> ArborCreativeModeTab = REGISTRATE.defaultCreativeTab(GTNN.MODID,
+    public static RegistryEntry<CreativeModeTab> MAIN_TAB = REGISTRATE.defaultCreativeTab(GTNN.MODID,
                     builder -> builder.displayItems(new RegistrateDisplayItemsGenerator(GTNN.MODID, REGISTRATE))
                             .icon(GTNNMachines.CHEMICAL_PLANT::asStack)
                             .build())

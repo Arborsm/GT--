@@ -39,7 +39,7 @@ minecraft {
         configureEach {
             workingDirectory project.file('run')
             jvmArg "-XX:+AllowEnhancedClassRedefinition"
-            property 'forge.logging.markers', 'REGISTRIES'
+            // property 'forge.logging.markers', 'REGISTRIES'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             property 'forge.logging.console.level', 'debug'

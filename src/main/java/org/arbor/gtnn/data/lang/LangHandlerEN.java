@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+@Deprecated
 public class LangHandlerEN extends LanguageProvider {
     public LangHandlerEN(DataGenerator gen, String locale) {
         super(gen.getPackOutput(), GTNN.MODID, locale);

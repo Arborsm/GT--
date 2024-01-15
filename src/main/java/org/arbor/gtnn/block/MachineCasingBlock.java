@@ -1,6 +1,7 @@
 package org.arbor.gtnn.block;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
+import lombok.Getter;
 import net.minecraft.world.level.block.Block;
 import org.arbor.gtnn.api.block.ITier;
 import org.arbor.gtnn.api.block.MachineCasingType;
@@ -25,6 +26,7 @@ public class MachineCasingBlock extends Block {
 
         private final ITier tier;
         private final BlockEntry<Block> machineCasing;
+        @Getter
         private final String energyHatchLevel;
 
         MachineCasing(ITier tier, BlockEntry<Block> machineCasing, String energyHatchLevel) {

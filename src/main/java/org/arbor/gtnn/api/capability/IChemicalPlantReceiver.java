@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 /**
  * Implement this interface in order to make a BlockEntity into a block that receives a ChemicalPlant from other blocks
  */
-public interface IChemicalPlantReciver {
+public interface IChemicalPlantReceiver {
     /**
      * @return the cleanroom the machine is receiving from
      */

@@ -50,7 +50,7 @@ import static org.arbor.gtnn.api.registry.GTNNRegistries.REGISTRATE;
 public class GTNNMachines {
     public static final int[] NA_TIERS = GTValues.tiersBetween(1, 8);
     static {
-        REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.ArborCreativeModeTab);
+        REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.MAIN_TAB);
     }
     //////////////////////////////////////
     //**********     Part     **********//

@@ -10,7 +10,7 @@ import lombok.Getter;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.GsonHelper;
-import org.arbor.gtnn.api.capability.IChemicalPlantReciver;
+import org.arbor.gtnn.api.capability.IChemicalPlantReceiver;
 import org.arbor.gtnn.api.machine.feature.IChemicalPlantProvider;
 import org.arbor.gtnn.block.PlantCasingBlock;
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +44,7 @@ public class PlantCasingCondition extends RecipeCondition {
     @Override
     public boolean test(@NotNull GTRecipe recipe, @NotNull RecipeLogic recipeLogic) {
         MetaMachine machine = recipeLogic.getMachine();
-        if (machine instanceof IChemicalPlantReciver receiver && this.plantCasing != null) {
+        if (machine instanceof IChemicalPlantReceiver receiver && this.plantCasing != null) {
             if (machine instanceof IMultiController) return true;
             IChemicalPlantProvider provider = receiver.getChemicalPlant();
             return provider != null;

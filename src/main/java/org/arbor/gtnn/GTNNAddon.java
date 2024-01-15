@@ -5,6 +5,7 @@ import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.addon.events.KJSRecipeKeyEvent;
 import com.gregtechceu.gtceu.api.addon.events.MaterialCasingCollectionEvent;
 import com.lowdragmc.lowdraglib.LDLib;
+import com.lowdragmc.lowdraglib.Platform;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import org.arbor.gtnn.data.GTNNElement;
@@ -12,7 +13,7 @@ import org.arbor.gtnn.data.GTNNMaterials;
 import org.arbor.gtnn.data.GTNNRecipes;
 import org.arbor.gtnn.data.GTNNRecipesTypes;
 import org.arbor.gtnn.data.misc.adastra.AdAstraAddon;
-import org.arbor.gtnn.init.CommonProxy;
+import org.arbor.gtnn.init.AddonProxy;
 
 import java.util.function.Consumer;
 
@@ -21,7 +22,9 @@ public class GTNNAddon implements IGTAddon {
     @Override
     public void initializeAddon() {
         org.arbor.gtnn.GTNN.LOGGER.info("GTNN Loaded!");
-        CommonProxy.init();
+        if (!Platform.isDatagen()){
+            AddonProxy.init();
+        }
     }
 
     @Override
