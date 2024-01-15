@@ -34,9 +34,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+@OnlyIn(Dist.CLIENT)
 public class GTPPMachineRenderer extends MachineRenderer implements IControllerRenderer {
     protected final WorkableOverlayModel overlayModel;
-    @OnlyIn(Dist.CLIENT)
     private void render(List<BakedQuad> quads, MetaMachine machine, ModelState modelState){
         var sprite = ModelFactory.getBlockSprite(PlantCasingBlock.PlantCasing.getByTier(((IGTPPMachine)machine).getTier()).getResourceLocation());
         quads.add(FaceQuad.bakeFace(Direction.DOWN, sprite, modelState));
@@ -56,7 +56,6 @@ public class GTPPMachineRenderer extends MachineRenderer implements IControllerR
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void renderMachine(List<BakedQuad> quads, MachineDefinition definition, @Nullable MetaMachine machine,
                               Direction frontFacing, @Nullable Direction side, RandomSource rand, Direction modelFacing, ModelState modelState) {
         super.renderMachine(quads, definition, machine, frontFacing, side, rand, modelFacing, modelState);
@@ -74,14 +73,12 @@ public class GTPPMachineRenderer extends MachineRenderer implements IControllerR
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void renderPartModel(List<BakedQuad> quads, IMultiController machine, IMultiPart part, Direction frontFacing,
                                 @org.jetbrains.annotations.Nullable Direction side, RandomSource rand, Direction modelFacing, ModelState modelState) {
         render(quads, machine.self(), modelState);
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void onPrepareTextureAtlas(ResourceLocation atlasName, Consumer<ResourceLocation> register) {
         super.onPrepareTextureAtlas(atlasName, register);
         if (atlasName.equals(InventoryMenu.BLOCK_ATLAS)) {

@@ -12,6 +12,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
@@ -25,6 +27,7 @@ import java.util.Random;
 
 // Code Source: https://github.com/SlimeKnights/Mantle
 @SuppressWarnings("all")
+@OnlyIn(Dist.CLIENT)
 public class ExtraHeartRenderHandler {
   private static final ResourceLocation ICON_HEARTS = GTNN.id("textures/gui/hearts.png");
   private static final ResourceLocation ICON_ABSORB = GTNN.id("textures/gui/absorb.png");

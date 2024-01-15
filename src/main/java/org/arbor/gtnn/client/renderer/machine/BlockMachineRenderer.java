@@ -14,6 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
+@OnlyIn(Dist.CLIENT)
 public class BlockMachineRenderer extends MachineRenderer implements IPartRenderer {
     public BlockMachineRenderer(ResourceLocation modelLocation) {
         super(modelLocation);
