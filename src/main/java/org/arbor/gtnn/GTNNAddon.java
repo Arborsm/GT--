@@ -4,12 +4,16 @@ import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.addon.events.KJSRecipeKeyEvent;
 import com.gregtechceu.gtceu.api.addon.events.MaterialCasingCollectionEvent;
+import com.gregtechceu.gtceu.api.registry.GTRegistries;
+import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.lowdragmc.lowdraglib.LDLib;
 import com.lowdragmc.lowdraglib.Platform;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import org.arbor.gtnn.api.recipe.NeutronActivatorCondition;
+import org.arbor.gtnn.api.recipe.PlantCasingCondition;
+import org.arbor.gtnn.api.registry.GTNNRegistries;
 import org.arbor.gtnn.data.GTNNElement;
-import org.arbor.gtnn.data.GTNNMaterials;
 import org.arbor.gtnn.data.GTNNRecipes;
 import org.arbor.gtnn.data.GTNNRecipesTypes;
 import org.arbor.gtnn.data.misc.adastra.AdAstraAddon;
@@ -19,6 +23,11 @@ import java.util.function.Consumer;
 
 @GTAddon
 public class GTNNAddon implements IGTAddon {
+    @Override
+    public GTRegistrate getRegistrate() {
+        return GTNNRegistries.REGISTRATE;
+    }
+
     @Override
     public void initializeAddon() {
         org.arbor.gtnn.GTNN.LOGGER.info("GTNN Loaded!");
@@ -47,12 +56,6 @@ public class GTNNAddon implements IGTAddon {
     }
 
     @Override
-    public void registerMaterials() {
-        IGTAddon.super.registerMaterials();
-        GTNNMaterials.init();
-    }
-
-    @Override
     public void addRecipes(Consumer<FinishedRecipe> provider) {
         GTNNRecipesTypes.init();
         GTNNRecipes.init(provider);
@@ -66,6 +69,16 @@ public class GTNNAddon implements IGTAddon {
     }
 
     @Override
+    public void registerOreVeins() {
+        IGTAddon.super.registerOreVeins();
+    }
+
+    @Override
+    public void registerFluidVeins() {
+        IGTAddon.super.registerFluidVeins();
+    }
+
+    @Override
     public void registerSounds() {
         IGTAddon.super.registerSounds();
     }
@@ -76,6 +89,18 @@ public class GTNNAddon implements IGTAddon {
     }
 
     @Override
+    public void registerRecipeCapabilities() {
+        IGTAddon.super.registerRecipeCapabilities();
+    }
+
+    @Override
+    public void registerRecipeConditions() {
+        IGTAddon.super.registerRecipeConditions();
+        GTRegistries.RECIPE_CONDITIONS.register(PlantCasingCondition.INSTANCE.getType(), PlantCasingCondition.class);
+        GTRegistries.RECIPE_CONDITIONS.register(NeutronActivatorCondition.INSTANCE.getType(), NeutronActivatorCondition.class);
+    }
+
+    @Override
     public void registerWorldgenLayers() {
         IGTAddon.super.registerWorldgenLayers();
     }
@@ -83,6 +108,11 @@ public class GTNNAddon implements IGTAddon {
     @Override
     public void registerVeinGenerators() {
         IGTAddon.super.registerVeinGenerators();
+    }
+
+    @Override
+    public void registerIndicatorGenerators() {
+        IGTAddon.super.registerIndicatorGenerators();
     }
 
     @Override

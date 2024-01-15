@@ -26,8 +26,7 @@ public class GTNNRegistrate extends GTRegistrate {
 
     @Nonnull
     public static GTNNRegistrate create(String modId) {
-        return new GTNNRegistrate(modId) {
-        };
+        return new GTNNRegistrate(modId);
     }
 
     public void registerRegistrate(){
