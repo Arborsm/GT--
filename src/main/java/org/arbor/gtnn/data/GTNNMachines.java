@@ -44,7 +44,7 @@ import static com.gregtechceu.gtceu.api.GTValues.VNF;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.autoAbilities;
 import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
-import static org.arbor.gtnn.api.registry.GTNNRegistries.REGISTRATE;
+import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 
 @SuppressWarnings("unused")
 public class GTNNMachines {
@@ -59,13 +59,13 @@ public class GTNNMachines {
     public static final MachineDefinition[] NEUTRON_ACCELERATOR = registerTieredMachines("neutron_accelerator",
             NeutronAccelerator::new,
             (tier, builder) ->builder
-                    .langValue(VNF[tier] + "Neutron Accelerator")
+                    .langValue(VNF[tier] + " 中子加速器")
                     .rotationState(RotationState.ALL)
                     .abilities(APartAbility.NEUTRON_ACCELERATOR)
-                    .tooltips(Component.translatable("gtceu.machine.neutron_accelerator.tooltip1"))
-                    .tooltips(Component.translatable("gtceu.machine.neutron_accelerator.tooltip2", V[tier]))
-                    .tooltips(Component.translatable("gtceu.machine.neutron_accelerator.tooltip3", V[tier] * 8 / 10))
-                    .tooltips(Component.translatable("gtceu.machine.neutron_accelerator.tooltip4"))
+                    .tooltips(Component.translatable("gtnn.machine.neutron_accelerator.tooltip1"))
+                    .tooltips(Component.translatable("gtnn.machine.neutron_accelerator.tooltip2", V[tier]))
+                    .tooltips(Component.translatable("gtnn.machine.neutron_accelerator.tooltip3", V[tier] * 8 / 10))
+                    .tooltips(Component.translatable("gtnn.machine.neutron_accelerator.tooltip4"))
                     .overlayTieredHullRenderer("neutron_accelerator")
                     .compassNode("neutron_accelerator")
                     .register(),
@@ -91,10 +91,10 @@ public class GTNNMachines {
     //////////////////////////////////////
     public static final MultiblockMachineDefinition CHEMICAL_PLANT = REGISTRATE.multiblock("chemical_plant", ChemicalPlant::new)
             .rotationState(RotationState.NON_Y_AXIS)
-            .tooltips(Component.translatable("gtceu.multiblock.chemical_plant.tooltip1"))
-            .tooltips(Component.translatable("gtceu.multiblock.chemical_plant.tooltip2"))
-            .tooltips(Component.translatable("gtceu.multiblock.chemical_plant.tooltip3"))
-            .tooltips(Component.translatable("gtceu.multiblock.chemical_plant.tooltip4"))
+            .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip1"))
+            .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip2"))
+            .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip3"))
+            .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip4"))
             .recipeTypes(GTNNRecipesTypes.CHEMICAL_PLANT_RECIPES)
             .recipeModifier(ChemicalPlant::chemicalPlantRecipe)
             .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -166,20 +166,20 @@ public class GTNNMachines {
                     GTNN.id("block/multiblock/chemical_plant"), false))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof ChemicalPlant chemicalPlant && controller.isFormed()) {
-                    components.add(Component.translatable("gtceu.multiblock.chemical_plant.heating_coil", chemicalPlant.getCoilTier() * 50));
-                    components.add(Component.translatable("gtceu.multiblock.chemical_plant.parallel_level", chemicalPlant.getPipeTier() * 2));
-                    components.add(Component.translatable("gtceu.multiblock.chemical_plant.tier", VNF[chemicalPlant.getPlantCasingTier()]));
+                    components.add(Component.translatable("gtnn.multiblock.chemical_plant.heating_coil", chemicalPlant.getCoilTier() * 50));
+                    components.add(Component.translatable("gtnn.multiblock.chemical_plant.parallel_level", chemicalPlant.getPipeTier() * 2));
+                    components.add(Component.translatable("gtnn.multiblock.chemical_plant.tier", VNF[chemicalPlant.getPlantCasingTier()]));
                 }
             })
             .register();
 
      public static final MultiblockMachineDefinition NEUTRON_ACTIVATOR = REGISTRATE.multiblock("neutron_activator", NeutronActivator::new)
              .rotationState(RotationState.NON_Y_AXIS)
-             .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip1"))
-             .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip2"))
-             .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip3"))
-             .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip4"))
-             .tooltips(Component.translatable("gtceu.multiblock.neutron_activator.tooltip5"))
+             .tooltips(Component.translatable("gtnn.multiblock.neutron_activator.tooltip1"))
+             .tooltips(Component.translatable("gtnn.multiblock.neutron_activator.tooltip2"))
+             .tooltips(Component.translatable("gtnn.multiblock.neutron_activator.tooltip3"))
+             .tooltips(Component.translatable("gtnn.multiblock.neutron_activator.tooltip4"))
+             .tooltips(Component.translatable("gtnn.multiblock.neutron_activator.tooltip5"))
              .recipeTypes(GTNNRecipesTypes.NEUTRON_ACTIVATOR_RECIPES)
              .recipeModifier(NeutronActivator::neutronActivatorRecipe)
              .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)

@@ -19,7 +19,7 @@ import org.arbor.gtnn.GTNN;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-import static org.arbor.gtnn.api.registry.GTNNRegistries.REGISTRATE;
+import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 
 @SuppressWarnings("unused")
 public class GTNNCasingBlocks {
@@ -37,6 +37,7 @@ public class GTNNCasingBlocks {
                         Platform.isClient() ? new TextureOverrideRenderer(new ResourceLocation("block/cube_all"),
                                 Map.of("all", texture)) : null))
                 .initialProperties(properties)
+                .lang("洁净机器方块")
                 .blockstate(NonNullBiConsumer.noop())
                 .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
                 .item(RendererBlockItem::new)

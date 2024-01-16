@@ -1,10 +1,13 @@
 package org.arbor.gtnn;
 
+import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.arbor.gtnn.config.ConfigHandler;
 import org.arbor.gtnn.init.CommonProxy;
 import org.slf4j.Logger;
@@ -17,6 +20,8 @@ public class GTNN {
 
     public GTNN() {
         MinecraftForge.EVENT_BUS.register(this);
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        eventBus.addGenericListener(MachineDefinition.class, GTNNRegistries::registerMachine);
         CommonProxy.init();
         ConfigHandler.init();
     }

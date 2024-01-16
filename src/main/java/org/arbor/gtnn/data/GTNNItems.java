@@ -10,7 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
-import static org.arbor.gtnn.api.registry.GTNNRegistries.REGISTRATE;
+import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 
 @SuppressWarnings("unused")
 public class GTNNItems {

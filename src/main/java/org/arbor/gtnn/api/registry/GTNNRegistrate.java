@@ -1,4 +1,4 @@
-package org.arbor.gtnn.api.registry.registrate;
+package org.arbor.gtnn.api.registry;
 
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.tterrag.registrate.builders.NoConfigBuilder;

@@ -6,10 +6,10 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.*;
 import org.arbor.gtnn.GTNN;
-import org.arbor.gtnn.api.registry.registrate.GTNNRegistrate;
+import org.arbor.gtnn.api.registry.GTNNRegistrate;
 import org.jetbrains.annotations.NotNull;
 
-import static org.arbor.gtnn.api.registry.GTNNRegistries.REGISTRATE;
+import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 
 public class GTNNCreativeModeTabs {
     public static RegistryEntry<CreativeModeTab> MAIN_TAB = REGISTRATE.defaultCreativeTab(GTNN.MODID,

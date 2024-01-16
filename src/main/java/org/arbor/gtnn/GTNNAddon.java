@@ -12,7 +12,6 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import org.arbor.gtnn.api.recipe.NeutronActivatorCondition;
 import org.arbor.gtnn.api.recipe.PlantCasingCondition;
-import org.arbor.gtnn.api.registry.GTNNRegistries;
 import org.arbor.gtnn.data.GTNNCasingBlocks;
 import org.arbor.gtnn.data.GTNNElement;
 import org.arbor.gtnn.data.GTNNRecipes;
@@ -111,9 +110,7 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void collectMaterialCasings(MaterialCasingCollectionEvent event) {
-        if (!Platform.isDatagen()){
-            GTNNCasingBlocks.init();
-        }
+        GTNNCasingBlocks.init();
     }
 
     @Override

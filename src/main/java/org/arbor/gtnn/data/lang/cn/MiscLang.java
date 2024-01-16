@@ -1,13 +1,11 @@
-package org.arbor.gtnn.data.lang;
+package org.arbor.gtnn.data.lang.cn;
 
-import com.tterrag.registrate.providers.RegistrateLangProvider;
-
-import static com.gregtechceu.gtceu.data.lang.LangHandler.replace;
+import org.arbor.gtnn.api.registry.CNLangProvider;
 
 public class MiscLang {
-    public static void init(RegistrateLangProvider provider) {
-        replace(provider, "block.gtnn.high_speed_pipe_block", "高速管道方块");
-        replace(provider, "block.gtnn.clean_machine_casing", "洁净机器方块");
+    public static void init(CNLangProvider provider) {
+        provider.add("block.gtnn.high_speed_pipe_block", "高速管道方块");
+        provider.add("block.gtnn.clean_machine_casing", "洁净机器方块");
         provider.add("item.gtnn.heavy_ingot_t1.tooltip", "§7用于制作T1重型合金板");
         provider.add("item.gtnn.heavy_ingot_t2.tooltip", "§7用于制作T2重型合金板");
         provider.add("item.gtnn.heavy_ingot_t3.tooltip", "§7用于制作T3重型合金板");
