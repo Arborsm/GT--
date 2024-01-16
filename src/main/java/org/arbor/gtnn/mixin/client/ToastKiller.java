@@ -1,4 +1,4 @@
-package org.arbor.gtnn.mixin.Client;
+package org.arbor.gtnn.mixin.client;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;

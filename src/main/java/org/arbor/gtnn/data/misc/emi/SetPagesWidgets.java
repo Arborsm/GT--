@@ -9,7 +9,7 @@ import dev.emi.emi.runtime.EmiSidebars;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.network.chat.Component;
-import org.arbor.gtnn.mixin.Client.AEmiApi;
+import org.arbor.gtnn.mixin.client.AEmiApi;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;

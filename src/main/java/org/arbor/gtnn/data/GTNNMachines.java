@@ -196,7 +196,7 @@ public class GTNNMachines {
                              .or(abilities(PartAbility.EXPORT_ITEMS))
                              .or(abilities(APartAbility.NEUTRON_ACCELERATOR))
                              .or(autoAbilities(true, false, false)))
-                     .where("B", Predicates.blocks(GTNNBlocks.PROCESS_MACHINE_CASING.get()))
+                     .where("B", Predicates.blocks(GTNNCasingBlocks.PROCESS_MACHINE_CASING.get()))
                      .where("C", Predicates.blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTMaterials.Steel)))
                      .where("D", Predicates.blocks(GTBlocks.CASING_LAMINATED_GLASS.get()))
                      .where("E", Predicates.blocks(HIGH_SPEED_PIPE_BLOCK.get()))

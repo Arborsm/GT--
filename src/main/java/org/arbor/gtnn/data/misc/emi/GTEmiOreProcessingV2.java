@@ -12,9 +12,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
-import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.gregtechceu.gtceu.common.unification.material.MaterialRegistryManager;
 import com.gregtechceu.gtceu.integration.emi.oreprocessing.GTOreProcessingEmiCategory;
 import com.gregtechceu.gtceu.integration.emi.recipe.GTRecipeTypeEmiCategory;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
@@ -73,7 +71,7 @@ public class GTEmiOreProcessingV2 implements EmiRecipe {
         //STONE_DUSTS
         List<EmiIngredient> stoneDustStacks = new ArrayList<>();
         for (TagPrefix tagPrefix : TagPrefix.ORES.keySet()) {
-            Material stoneDustMaterial = MaterialRegistryManager.getInstance().getMaterial(FormattingUtil.toLowerCaseUnder(tagPrefix.name));
+            Material stoneDustMaterial = GTCEuAPI.materialManager.getMaterial(FormattingUtil.toLowerCaseUnder(tagPrefix.name));
             if (stoneDustMaterial != null) {
                 stoneDustStacks.add(EmiStack.of(ChemicalHelper.get(TagPrefix.dust, stoneDustMaterial)));
             }
@@ -143,7 +141,7 @@ public class GTEmiOreProcessingV2 implements EmiRecipe {
     @ApiStatus.Internal
     public static void register(EmiRegistry registry) {
         registry.removeRecipes(GTEmiOreProcessingV2::remove);
-        for (Material mat : MaterialRegistryManager.getInstance().getRegisteredMaterials()) {
+        for (Material mat : GTCEuAPI.materialManager.getRegisteredMaterials()) {
             if (mat.hasProperty(ORE)) {
                 registry.addRecipe(new GTEmiOreProcessingV2(mat));
             }

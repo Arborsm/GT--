@@ -1,4 +1,4 @@
-package org.arbor.gtnn.mixin;
+package org.arbor.gtnn.mixin.adastra;
 
 import earth.terrarium.ad_astra.common.entity.vehicle.Rocket;
 import earth.terrarium.ad_astra.common.entity.vehicle.Vehicle;

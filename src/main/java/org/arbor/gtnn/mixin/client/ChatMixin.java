@@ -1,4 +1,4 @@
-package org.arbor.gtnn.mixin.Client;
+package org.arbor.gtnn.mixin.client;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.client.GuiMessage;

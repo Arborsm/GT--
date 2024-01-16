@@ -1,4 +1,4 @@
-package org.arbor.gtnn.mixin;
+package org.arbor.gtnn.mixin.create;
 
 import com.simibubi.create.content.kinetics.fan.processing.AllFanProcessingTypes;
 import net.minecraft.world.item.ItemStack;

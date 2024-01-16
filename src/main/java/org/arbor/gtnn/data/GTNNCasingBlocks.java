@@ -22,7 +22,7 @@ import java.util.function.BiFunction;
 import static org.arbor.gtnn.api.registry.GTNNRegistries.REGISTRATE;
 
 @SuppressWarnings("unused")
-public class GTNNBlocks {
+public class GTNNCasingBlocks {
     static {
         REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.MAIN_TAB);
     }

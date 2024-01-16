@@ -45,7 +45,7 @@ public class GTPPMachineRenderer extends MachineRenderer implements IControllerR
         quads.add(FaceQuad.bakeFace(Direction.SOUTH, sprite, modelState));
         quads.add(FaceQuad.bakeFace(Direction.WEST, sprite, modelState));
         quads.add(FaceQuad.bakeFace(Direction.EAST, sprite, modelState));
-        BlockEntry<Block> casing = PlantCasingBlock.PlantCasing.getByTier(((IGTPPMachine)machine).getTier()).getPlantCasing();
+        BlockEntry<Block> casing = PlantCasingBlock.PlantCasing.getByTier(((IGTPPMachine)machine).getTier()).getPlantCasing(((IGTPPMachine)machine).getTier());
         machine.self().getDefinition().setAppearance(casing::getDefaultState);
     }
 

@@ -13,9 +13,9 @@ import net.minecraft.resources.ResourceLocation;
 import org.arbor.gtnn.api.recipe.NeutronActivatorCondition;
 import org.arbor.gtnn.api.recipe.PlantCasingCondition;
 import org.arbor.gtnn.api.registry.GTNNRegistries;
+import org.arbor.gtnn.data.GTNNCasingBlocks;
 import org.arbor.gtnn.data.GTNNElement;
 import org.arbor.gtnn.data.GTNNRecipes;
-import org.arbor.gtnn.data.GTNNRecipesTypes;
 import org.arbor.gtnn.data.misc.adastra.AdAstraAddon;
 import org.arbor.gtnn.init.AddonProxy;
 
@@ -43,7 +43,6 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void registerTagPrefixes() {
-        IGTAddon.super.registerTagPrefixes();
         if (LDLib.isModLoaded("ad_astra")) {
             AdAstraAddon.init();
         }
@@ -51,20 +50,16 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void registerElements() {
-        IGTAddon.super.registerElements();
         GTNNElement.init();
     }
 
     @Override
     public void addRecipes(Consumer<FinishedRecipe> provider) {
-        GTNNRecipesTypes.init();
         GTNNRecipes.init(provider);
-        IGTAddon.super.addRecipes(provider);
     }
 
     @Override
     public void removeRecipes(Consumer<ResourceLocation> consumer) {
-        IGTAddon.super.removeRecipes(consumer);
         GTNNRecipes.remove(consumer);
     }
 
@@ -95,7 +90,6 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void registerRecipeConditions() {
-        IGTAddon.super.registerRecipeConditions();
         GTRegistries.RECIPE_CONDITIONS.register(PlantCasingCondition.INSTANCE.getType(), PlantCasingCondition.class);
         GTRegistries.RECIPE_CONDITIONS.register(NeutronActivatorCondition.INSTANCE.getType(), NeutronActivatorCondition.class);
     }
@@ -117,7 +111,9 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void collectMaterialCasings(MaterialCasingCollectionEvent event) {
-        IGTAddon.super.collectMaterialCasings(event);
+        if (!Platform.isDatagen()){
+            GTNNCasingBlocks.init();
+        }
     }
 
     @Override

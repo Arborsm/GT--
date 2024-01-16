@@ -13,12 +13,13 @@ public interface PlantCasingType {
     /**
      * @return Block of the Plant Casing
      */
-    BlockEntry<Block> getPlantCasing();
+    BlockEntry<Block> getPlantCasing(int tier);
 
     /**
      * @return the Name of the Plant Casing
      */
     String getName();
+
 
     /**
      * @return the ResourceLocation of the Plant Casing
