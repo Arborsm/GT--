@@ -7,7 +7,6 @@ import com.gregtechceu.gtceu.api.addon.events.MaterialCasingCollectionEvent;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.lowdragmc.lowdraglib.LDLib;
-import com.lowdragmc.lowdraglib.Platform;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import org.arbor.gtnn.api.recipe.NeutronActivatorCondition;
@@ -16,7 +15,6 @@ import org.arbor.gtnn.data.GTNNCasingBlocks;
 import org.arbor.gtnn.data.GTNNElement;
 import org.arbor.gtnn.data.GTNNRecipes;
 import org.arbor.gtnn.data.misc.adastra.AdAstraAddon;
-import org.arbor.gtnn.init.AddonProxy;
 
 import java.util.function.Consumer;
 
@@ -30,9 +28,6 @@ public class GTNNAddon implements IGTAddon {
     @Override
     public void initializeAddon() {
         org.arbor.gtnn.GTNN.LOGGER.info("GTNN Loaded!");
-        if (!Platform.isDatagen()){
-            AddonProxy.init();
-        }
     }
 
     @Override

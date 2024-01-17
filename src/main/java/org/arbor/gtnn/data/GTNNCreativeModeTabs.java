@@ -12,9 +12,10 @@ import org.jetbrains.annotations.NotNull;
 import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 
 public class GTNNCreativeModeTabs {
-    public static RegistryEntry<CreativeModeTab> MAIN_TAB = REGISTRATE.defaultCreativeTab(GTNN.MODID,
-                    builder -> builder.displayItems(new RegistrateDisplayItemsGenerator(GTNN.MODID, REGISTRATE))
+    public static RegistryEntry<CreativeModeTab> MAIN_TAB = REGISTRATE.defaultCreativeTab("main",
+                    builder -> builder.displayItems(new RegistrateDisplayItemsGenerator("main", REGISTRATE))
                             .icon(GTNNMachines.CHEMICAL_PLANT::asStack)
+                            .title(REGISTRATE.addLang("itemGroup", GTNN.id("main"), "GTNN"))
                             .build())
             .register();
 

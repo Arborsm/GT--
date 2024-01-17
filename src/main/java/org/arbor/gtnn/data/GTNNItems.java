@@ -1,9 +1,7 @@
 package org.arbor.gtnn.data;
 
 import com.gregtechceu.gtceu.api.item.ComponentItem;
-import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.common.item.TooltipBehavior;
-import com.lowdragmc.lowdraglib.Platform;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import net.minecraft.network.chat.Component;
@@ -95,10 +93,7 @@ public class GTNNItems {
             .register();
 
     private static NonNullConsumer<? super ComponentItem> attach(TooltipBehavior components) {
-        if (!Platform.isDatagen()){
-            return GTItems.attach(components);
-        }
-        return Item::asItem;
+        return (item) -> item.attachComponents(components);
     }
 
     public static void init() {

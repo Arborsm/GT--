@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "gtnn:dense_hydrazine_mixed_fuel",
-    "#arbor:tier4"
-  ]
-}

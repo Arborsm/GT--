@@ -27,7 +27,8 @@ public class GTNNMixinPlugin implements IMixinConfigPlugin {
             return MixinPluginShared.isClassFound("com.simibubi.create.compat.Mods");
         } else if (mixinClassName.contains("org.arbor.gtnn.mixin.AdastraMixin")) {
             return MixinPluginShared.isClassFound("earth.terrarium.ad_astra.forge.AdAstraForge");
-        }
+        } else if (mixinClassName.contains("org.arbor.gtnn.mixin.client.ShimmerMixin"))
+            return MixinPluginShared.isClassFound("com.lowdragmc.shimmer.Utils");
         return true;
     }
 
