@@ -12,6 +12,7 @@ public class GTNNDataGen {
     public static void init() {
         REGISTRATE.addDataGenerator(ProviderType.LANG, LangHandlerEN::init);
         REGISTRATE.addDataGenerator(CN_LANG, LangHandlerCN::init);
+        REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, GTNNTags::initBlock);
     }
 
 }

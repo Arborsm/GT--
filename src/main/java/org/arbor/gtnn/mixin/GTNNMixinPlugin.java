@@ -11,7 +11,6 @@ import java.util.Set;
 public class GTNNMixinPlugin implements IMixinConfigPlugin {
     @Override
     public void onLoad(String mixinPackage) {
-
     }
 
     @Override
@@ -23,12 +22,13 @@ public class GTNNMixinPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.contains("org.arbor.gtnn.mixin.emi")) {
             return MixinPluginShared.isClassFound("dev.emi.emi.api.EmiPlugin");
-        } else if (mixinClassName.contains("org.arbor.gtnn.mixin.create.CreateFanMixin")) {
+        } else if (mixinClassName.contains("org.arbor.gtnn.mixin.create")) {
             return MixinPluginShared.isClassFound("com.simibubi.create.compat.Mods");
-        } else if (mixinClassName.contains("org.arbor.gtnn.mixin.AdastraMixin")) {
+        } else if (mixinClassName.contains("org.arbor.gtnn.mixin.adastra")) {
             return MixinPluginShared.isClassFound("earth.terrarium.ad_astra.forge.AdAstraForge");
-        } else if (mixinClassName.contains("org.arbor.gtnn.mixin.client.ShimmerMixin"))
+        } else if (mixinClassName.contains("org.arbor.gtnn.mixin.client.ShimmerMixin")){
             return MixinPluginShared.isClassFound("com.lowdragmc.shimmer.Utils");
+        }
         return true;
     }
 

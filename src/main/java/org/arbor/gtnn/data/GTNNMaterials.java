@@ -4,8 +4,10 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import org.arbor.gtnn.GTNN;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
@@ -334,7 +336,15 @@ public class GTNNMaterials {
         addOre(Rutile);
         addOre(Tungsten);
         addOre(Chromium);
-        addOre(EnrichedNaquadahSolution);
+        addOre(NaquadahEnriched);
+        addFluid(RutheniumTetroxide);
+        addFluid(OsmiumTetroxide);
+        addFluid(AmmoniumChloride);
+        addFluid(CalciumChloride);
+    }
+    private static void addFluid(Material material){
+        material.setProperty(PropertyKey.FLUID, new FluidProperty());
+        material.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.LIQUID);
     }
     private static void addOre(Material material){
         material.setProperty(PropertyKey.ORE, new OreProperty());

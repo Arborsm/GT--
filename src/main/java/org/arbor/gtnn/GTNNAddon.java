@@ -6,14 +6,11 @@ import com.gregtechceu.gtceu.api.addon.events.KJSRecipeKeyEvent;
 import com.gregtechceu.gtceu.api.addon.events.MaterialCasingCollectionEvent;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
-import com.lowdragmc.lowdraglib.LDLib;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import org.arbor.gtnn.api.recipe.NeutronActivatorCondition;
 import org.arbor.gtnn.api.recipe.PlantCasingCondition;
-import org.arbor.gtnn.data.GTNNCasingBlocks;
-import org.arbor.gtnn.data.GTNNElement;
-import org.arbor.gtnn.data.GTNNRecipes;
+import org.arbor.gtnn.data.*;
 import org.arbor.gtnn.data.misc.adastra.AdAstraAddon;
 
 import java.util.function.Consumer;
@@ -37,7 +34,7 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void registerTagPrefixes() {
-        if (LDLib.isModLoaded("ad_astra")) {
+        if (GTNN.isAdAstraLoaded()) {
             AdAstraAddon.init();
         }
     }
@@ -59,7 +56,7 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void registerOreVeins() {
-        IGTAddon.super.registerOreVeins();
+        GTNNOres.init();
     }
 
     @Override
@@ -90,7 +87,9 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void registerWorldgenLayers() {
-        IGTAddon.super.registerWorldgenLayers();
+        if (GTNN.isAdAstraLoaded()){
+            GTNNWorld.GTNNWorldGenLayers.init();
+        }
     }
 
     @Override

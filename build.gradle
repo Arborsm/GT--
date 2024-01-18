@@ -124,7 +124,7 @@ dependencies {
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrateForgeVersion}")
     runtimeOnly fg.deobf("curse.maven:jade-324717:4986594")
     runtimeOnly fg.deobf("curse.maven:jei-238222:4712868")
-    implementation fg.deobf("dev.emi:emi-forge:${emiVersion}")
+    compileOnly fg.deobf("dev.emi:emi-forge:${emiVersion}")
     implementation fg.deobf("curse.maven:shimmer-627824:4923047")
     implementation fg.deobf("com.simibubi.create:create-1.20.1:0.5.1.f-26:slim") { transitive = false }
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-1.20.1:0.6.10-7")

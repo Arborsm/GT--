@@ -1,0 +1,15 @@
+{
+    "type":"forge:remove_features",
+    "biomes":[
+        "ad_astra:martian_wastelands",
+        "ad_astra:martian_canyon_creek",
+        "ad_astra:martian_polar_caps"
+    ],
+    "features":[
+        "ad_astra:mars_iron_ore",
+        "ad_astra:mars_diamond_ore",
+        "ad_astra:mars_ostrum_ore",
+        "ad_astra:mars_ice_shard_ore"
+    ],
+    "step":"raw_generation"
+}
