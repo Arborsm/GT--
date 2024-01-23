@@ -167,8 +167,8 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
                 textList.add(Component.translatable("gtceu.multiblock.waiting").setStyle(Style.EMPTY.withColor(ChatFormatting.RED)));
             }
             textList.add(Component.translatable("gtceu.multiblock.neutronactivator.ev", processNumber(eV)));
-            textList.add(Component.translatable("gtceu.multiblock.neutronactivator.height", FormattingUtil.formatNumbers(height)));
-            textList.add(Component.translatable("gtceu.multiblock.neutronactivator.efficiency", FormattingUtil.formatNumbers(efficiency * 100)));
+            textList.add(Component.translatable("gtnn.multiblock.neutronactivator.height", FormattingUtil.formatNumbers(height)));
+            textList.add(Component.translatable("gtnn.multiblock.neutronactivator.efficiency", FormattingUtil.formatNumbers(efficiency * 100)));
         }
         getDefinition().getAdditionalDisplay().accept(this, textList);
     }

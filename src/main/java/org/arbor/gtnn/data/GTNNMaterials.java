@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import org.arbor.gtnn.GTNN;
 
@@ -135,10 +136,9 @@ public class GTNNMaterials {
             .blastTemp(1230)
             .buildAndRegister();
     public static final Material SodiumPyrosulfate = Builder("sodium_pyrosulfate")
-            .dust().fluid()
+            .dust().fluid(FluidStorageKeys.MOLTEN, new FluidBuilder())
             .components(Potassium, 2, Sulfur, 2, Oxygen, 7)
             .color(0xff9900).iconSet(METALLIC)
-            .blastTemp(1123)
             .buildAndRegister();
     public static final Material SodiumSulfate = Builder("sodium_sulfate")
             .dust()
@@ -344,7 +344,7 @@ public class GTNNMaterials {
     }
     private static void addFluid(Material material){
         material.setProperty(PropertyKey.FLUID, new FluidProperty());
-        material.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.LIQUID);
+        material.getProperty(PropertyKey.FLUID).getStorage().enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
     }
     private static void addOre(Material material){
         material.setProperty(PropertyKey.ORE, new OreProperty());
