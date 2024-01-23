@@ -219,7 +219,6 @@ public class GTNNMaterials {
     public static final Material MetalSludge = Builder("metal_sludge")
             .dust()
             .color(0x362605).iconSet(SAND)
-            .flags(DISABLE_DECOMPOSITION)
             .buildAndRegister();
     public static final Material PlatinumSlag = Builder("platinum_slag")
             .dust()

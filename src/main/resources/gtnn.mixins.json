@@ -6,7 +6,6 @@
   "refmap": "gtnn.refmap.json",
   "plugin": "org.arbor.gtnn.mixin.GTNNMixinPlugin",
   "mixins": [
-    "adastra.OreConfigurationMixin",
     "create.CreateFanMixin",
     "emi.EmiTreeCostMixin",
     "emi.FluidEmiStackMixin",

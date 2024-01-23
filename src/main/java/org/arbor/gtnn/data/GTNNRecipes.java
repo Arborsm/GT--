@@ -42,6 +42,4 @@ public class GTNNRecipes {
         PlantCasingBlock.PlantCasing plantCasing = PlantCasingBlock.PlantCasing.getByName(name);
         return new PlantCasingCondition(plantCasing);
     }
-
-
 }
