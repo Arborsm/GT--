@@ -1,5 +1,6 @@
 package org.arbor.gtnn.data;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
@@ -9,14 +10,17 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import org.arbor.gtnn.GTNN;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 
 @SuppressWarnings("unused")
 public class GTNNMaterials {
+    static {
+        REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.MAIN_TAB);
+    }
     // MaterialIconSet
     public static final MaterialIconSet InfinityIcon = new MaterialIconSet("infinity", SHINY);
     // region first degree mats
@@ -349,6 +353,6 @@ public class GTNNMaterials {
         material.setProperty(PropertyKey.ORE, new OreProperty());
     }
     private static Material.Builder Builder(String id) {
-        return new Material.Builder(GTNN.id(id));
+        return new Material.Builder(GTCEu.id(id));
     }
 }

@@ -10,7 +10,9 @@
     "emi.EmiTreeCostMixin",
     "emi.FluidEmiStackMixin",
     "gt.GTOreMixin",
-    "gt.GTRecipeTypeMixin"
+    "gt.GTRecipeTypeMixin",
+    "mc.MinecraftServerMixin",
+    "mc.WorldLoaderPackConfigMixin"
   ],
   "client": [
     "client.AEmiApi",
