@@ -34,8 +34,7 @@ public final class GTNNRegistries {
             assert inputStream != null;
             FileUtils.copyInputStreamToFile(inputStream, tempFile);
             inputStream.close();
-            PackResources AdAstra = new FilePackResources(tempFile.getPath(), tempFile, false);
-            packResources.add(AdAstra);
+            packResources.add(new FilePackResources(tempFile.getName(), tempFile, false));
         } catch (IOException e) {
             GTNN.LOGGER.error("ad_astra.zip wrong!", e);
         }
