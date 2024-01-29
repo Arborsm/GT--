@@ -18,27 +18,28 @@ import org.arbor.gtnn.data.GTNNMaterials;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = GTNN.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class GTNNRegistries {
     public static final GTNNRegistrate REGISTRATE = GTNNRegistrate.create(GTNN.MODID);
     public static MaterialRegistry MATERIAL_REGISTRY;
 
-    public static PackResources getAllPackResources(){
-        File tempFile = null;
+    public static List<PackResources> getAllPackResources() {
+        List<PackResources> packResources = new ArrayList<>();
         try {
             InputStream inputStream = GTNNRegistries.class.getResourceAsStream("/data/gtnn/ad_astra.zip");
-            tempFile = File.createTempFile("temp", ".tmp");
+            File tempFile = File.createTempFile("temp", ".tmp");
             assert inputStream != null;
             FileUtils.copyInputStreamToFile(inputStream, tempFile);
             inputStream.close();
+            PackResources AdAstra = new FilePackResources(tempFile.getPath(), tempFile, false);
+            packResources.add(AdAstra);
         } catch (IOException e) {
-            GTNN.LOGGER.error("getAllPackResources() wrong!", e);
+            GTNN.LOGGER.error("ad_astra.zip wrong!", e);
         }
-        if (tempFile != null) {
-            return new FilePackResources(tempFile.getPath(), tempFile, false);
-        }
-        return null;
+        return packResources;
     }
 
     public static void registerMachine(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> ignoredEvent){
