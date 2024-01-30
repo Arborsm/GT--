@@ -1,25 +1,27 @@
-modLoader = "javafml" #mandatory
-loaderVersion = "${loader_version_range}"
-license = "${mod_license}"
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "MIT"
 
 [[mods]]
 modId = "gtnn"
-version = "${mod_version}"
-displayName = "${mod_name}" #mandatory
-authors = "${mod_authors}"
+version = "${version}"
+displayName = "GT--"
+authors = "Arborsm"
 description = '''${mod_description}'''
+#logoFile = ""
 
 [[dependencies.gtnn]]
 modId = "forge"
 mandatory = true
-versionRange = "${forge_version_range}"
+versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.gtnn]]
 modId = "minecraft"
 mandatory = true
-versionRange = "${minecraft_version_range}"
+versionRange = "[1.20.1,)"
 ordering = "NONE"
 side = "BOTH"
 

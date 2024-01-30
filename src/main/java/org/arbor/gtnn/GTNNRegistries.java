@@ -28,7 +28,7 @@ public final class GTNNRegistries {
 
     public static List<PackResources> getAllPackResources() {
         List<PackResources> packResources = new ArrayList<>();
-        try {
+        if (GTNN.isAdAstraLoaded()) try {
             InputStream inputStream = GTNNRegistries.class.getResourceAsStream("/data/gtnn/ad_astra.zip");
             File tempFile = File.createTempFile("temp", ".tmp");
             assert inputStream != null;
