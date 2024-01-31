@@ -11,6 +11,7 @@
   "block.gtnn.lv_neutron_accelerator": "§7LV 中子加速器",
   "block.gtnn.mv_neutron_accelerator": "§bMV 中子加速器",
   "block.gtnn.neutron_activator": "Neutron Activator",
+  "block.gtnn.neutron_sensor": "Neutron Sensor",
   "block.gtnn.uv_neutron_accelerator": "§3UV 中子加速器",
   "block.gtnn.zpm_neutron_accelerator": "§cZPM 中子加速器",
   "config.gtnn.option.Client": "Client",
