@@ -60,10 +60,11 @@ dependencies {
     modImplementation(forge.gtm) { transitive = false }
 
     // AdAstra
-    compileOnly(forge.ad.astra) { transitive = false }
+    modImplementation(forge.ad.astra) { transitive = false }
     modImplementation(forge.resourcefullib) { transitive = false }
     modImplementation(forge.resourcefulconfig)
     modImplementation(forge.botarium)
+    forgeRuntimeLibrary("com.teamresourceful:ByteCodecs:1.0.2")
 
     // lib
     modImplementation("org.arbor:arbormixin:1.0")
