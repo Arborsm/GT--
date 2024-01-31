@@ -5,13 +5,13 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
+import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.FilePackResources;
 import net.minecraft.server.packs.PackResources;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.commons.io.FileUtils;
-import org.arbor.gtnn.api.registry.GTNNRegistrate;
 import org.arbor.gtnn.data.GTNNMachines;
 import org.arbor.gtnn.data.GTNNMaterials;
 
@@ -23,13 +23,12 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(modid = GTNN.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class GTNNRegistries {
-    public static final GTNNRegistrate REGISTRATE = GTNNRegistrate.create(GTNN.MODID);
+    public static final GTRegistrate REGISTRATE = GTRegistrate.create(GTNN.MODID);
     public static MaterialRegistry MATERIAL_REGISTRY;
 
     public static List<PackResources> getAllPackResources() {
         List<PackResources> packResources = new ArrayList<>();
-        if (GTNN.isAdAstraLoaded()) try {
-            InputStream inputStream = GTNNRegistries.class.getResourceAsStream("/data/gtnn/ad_astra.zip");
+        if (GTNN.isAdAstraLoaded()) try (InputStream inputStream = GTNNRegistries.class.getResourceAsStream("/data/gtnn/ad_astra.zip")) {
             File tempFile = File.createTempFile("temp", ".tmp");
             assert inputStream != null;
             FileUtils.copyInputStreamToFile(inputStream, tempFile);

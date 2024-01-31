@@ -5,6 +5,8 @@ import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
+import com.gregtechceu.gtceu.api.pattern.MultiblockState;
+import com.gregtechceu.gtceu.api.pattern.util.PatternMatchContext;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
@@ -46,24 +48,33 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
         super(holder);
     }
 
-    //////////////////////////////////////
+        //////////////////////////////////////
     //***    Multiblock LifeCycle    ***//
     //////////////////////////////////////
+
     @Override
     public void onStructureFormed() {
         scheduleRenderUpdate();
         super.onStructureFormed();
-        if (getMultiblockState().getMatchContext().get("MachineCasing") instanceof MachineCasingType machineCasing) {
-            this.machineCasingType = machineCasing;
-        }
-        if (getMultiblockState().getMatchContext().get("Pipe") instanceof PipeType pipe) {
-            this.pipeType = pipe;
-        }
-        if (getMultiblockState().getMatchContext().get("PlantCasing") instanceof PlantCasingType plantCasing) {
-            this.plantCasingType = plantCasing;
-        }
+
+        // Retrieve the multiblock state
+        MultiblockState multiblockState = getMultiblockState();
+        PatternMatchContext matchContext = multiblockState.getMatchContext();
+
+        // Get and store type objects to avoid repeated retrieval
+        MachineCasingType machineCasingType = matchContext.get("MachineCasing") instanceof MachineCasingType ? (MachineCasingType) matchContext.get("MachineCasing") : null;
+        PipeType pipeType = matchContext.get("Pipe") instanceof PipeType ? (PipeType) matchContext.get("Pipe") : null;
+        PlantCasingType plantCasingType = matchContext.get("PlantCasing") instanceof PlantCasingType ? (PlantCasingType) matchContext.get("PlantCasing") : null;
+
+        // Set type variables
+        this.machineCasingType = machineCasingType;
+        this.pipeType = pipeType;
+        this.plantCasingType = plantCasingType;
+
+        // Get the plant casing tier
         this.tier = getPlantCasingTier();
     }
+
 
     @Override
     public void scheduleRenderUpdate(){
@@ -125,7 +136,7 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
                 return pair;
             }), recipe, chemicalPlant.getMaxVoltage());
         }
-        return null;
+        throw new RuntimeException("Machine is not a ChemicalPlant");
     }
 
     //////////////////////////////////////

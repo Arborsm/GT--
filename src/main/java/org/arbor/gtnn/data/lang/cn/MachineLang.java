@@ -6,6 +6,7 @@ public class MachineLang {
     public static void init(CNLangProvider provider) {
         provider.add("block.gtnn.chemical_plant", "埃克森美孚化工厂");
         provider.add("block.gtnn.neutron_activator", "中子活化器");
+        provider.add("block.gtnn.neutron_sensor", "中子传感器");
         provider.add("gtnn.chemical_plant", "埃克森美孚化工厂");
         provider.add("gtnn.recipe.condition.plant_casing.tooltip", "外壳等级: %s (%s)");
         provider.add("gtnn.multiblock.pattern.error.plant_casings", "所有外壳必须相同");
@@ -33,5 +34,11 @@ public class MachineLang {
         provider.add("gtnn.multiblock.neutronactivator.height", "高度: %s");
         provider.add("gtnn.multiblock.neutronactivator.efficiency", "耗时: %s%%");
         provider.add("gtnn.recipe.condition.neutron_activator_condition_tooltip", "最小中子动能:\n%s MeV\n最大中子动能:\n%s MeV");
+        provider.add("block.gtnn.neutron_sensor.tooltip1", "§7可安装在§b中子活化器§7上");
+        provider.add("block.gtnn.neutron_sensor.tooltip2", "基于§6中子动能§7输出红石信号，右键以打开GUI进行设置。");
+        provider.add("gtnn.universal.desc.neutron_kinetic_energy.min", "最小中子动能\n(%s)");
+        provider.add("gtnn.universal.desc.neutron_kinetic_energy.max", "最大中子动能\n(%s)");
+        provider.add("gui.gtnn.neutron_sensor.invert.enabled", "输出：反转\n\n切换以反转红石逻辑\n默认情况下，中子动能介于所设定的最小值和最大值之间时传感器将发出红石信号，小于最小值时则停止发出红石信号");
+        provider.add("gui.gtnn.neutron_sensor.invert.disabled", "输出：正常\n\n切换以反转红石逻辑\n默认情况下，中子动能介于所设定的最小值和最大值之间时传感器将发出红石信号，小于最小值时则停止发出红石信号");
     }
 }

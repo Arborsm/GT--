@@ -27,7 +27,8 @@ import org.arbor.gtnn.api.machine.multiblock.APartAbility;
 import org.arbor.gtnn.api.machine.multiblock.ChemicalPlant;
 import org.arbor.gtnn.api.machine.multiblock.NeutronActivator;
 import org.arbor.gtnn.api.machine.multiblock.part.HighSpeedPipeBlock;
-import org.arbor.gtnn.api.machine.multiblock.part.NeutronAccelerator;
+import org.arbor.gtnn.api.machine.multiblock.part.NeutronAcceleratorMachine;
+import org.arbor.gtnn.api.machine.multiblock.part.NeutronSensorMachine;
 import org.arbor.gtnn.api.pattern.APredicates;
 import org.arbor.gtnn.block.BlockTier;
 import org.arbor.gtnn.block.MachineCasingBlock;
@@ -57,7 +58,7 @@ public class GTNNMachines {
     //////////////////////////////////////
 
     public static final MachineDefinition[] NEUTRON_ACCELERATOR = registerTieredMachines("neutron_accelerator",
-            NeutronAccelerator::new,
+            NeutronAcceleratorMachine::new,
             (tier, builder) ->builder
                     .langValue(VNF[tier] + " 中子加速器")
                     .rotationState(RotationState.ALL)
@@ -74,6 +75,16 @@ public class GTNNMachines {
     public static final MachineDefinition HIGH_SPEED_PIPE_BLOCK = REGISTRATE.machine("high_speed_pipe_block", HighSpeedPipeBlock::new)
             .renderer(() -> new BlockMachineRenderer(GTNN.id("block/machine/part/high_speed_pipe_block")))
             .rotationState(RotationState.Y_AXIS)
+            .register();
+
+    public final static MachineDefinition NEUTRON_SENSOR = REGISTRATE.machine("neutron_sensor", NeutronSensorMachine::new)
+            .langValue("Neutron Sensor")
+            .tier(GTValues.IV)
+            .rotationState(RotationState.ALL)
+            .abilities(APartAbility.NEUTRON_SENSOR)
+            .overlayTieredHullRenderer("neutron_sensor")
+            .tooltips(Component.translatable("block.gtnn.neutron_sensor.tooltip1"))
+            .tooltips(Component.translatable("block.gtnn.neutron_sensor.tooltip2"))
             .register();
 
     // public static final MachineDefinition CATALYTIC_HATCH = GTRegistries.REGISTRATE.machine("catalytic_hatch",
@@ -153,10 +164,10 @@ public class GTNNMachines {
                     builder.where('B', shapeBlock.get(tier.tier() + 20));
                     builder.where('C', shapeBlock.get(tier.tier() + 30));
                     builder.where('D', shapeBlock.get(tier.tier() + 40));
-                    builder.where('K', GTMachines.ITEM_IMPORT_BUS[tier.tier()], Direction.NORTH);
-                    builder.where('L', GTMachines.ITEM_EXPORT_BUS[tier.tier()], Direction.NORTH);
-                    builder.where('M', GTMachines.FLUID_IMPORT_HATCH[tier.tier()], Direction.NORTH);
-                    builder.where('N', GTMachines.FLUID_EXPORT_HATCH[tier.tier()], Direction.NORTH);
+                    builder.where('K', GTMachines.ITEM_IMPORT_BUS[tier.tier()], Direction.WEST);
+                    builder.where('L', GTMachines.ITEM_EXPORT_BUS[tier.tier()], Direction.EAST);
+                    builder.where('M', GTMachines.FLUID_IMPORT_HATCH[tier.tier()], Direction.WEST);
+                    builder.where('N', GTMachines.FLUID_EXPORT_HATCH[tier.tier()], Direction.EAST);
                     builder.where('O', GTMachines.ENERGY_INPUT_HATCH[tier.tier()], Direction.NORTH);
                     shapeInfo.add(builder.shallowCopy().build());
                 }
@@ -181,7 +192,6 @@ public class GTNNMachines {
              .tooltips(Component.translatable("gtnn.multiblock.neutron_activator.tooltip4"))
              .tooltips(Component.translatable("gtnn.multiblock.neutron_activator.tooltip5"))
              .recipeTypes(GTNNRecipesTypes.NEUTRON_ACTIVATOR_RECIPES)
-             .recipeModifier(NeutronActivator::neutronActivatorRecipe)
              .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
              .pattern(definition -> FactoryBlockPattern.start(RIGHT, BACK, UP)
                      .aisle("AASAA", "ABBBA", "ABBBA", "ABBBA", "AAAAA")
@@ -195,6 +205,7 @@ public class GTNNMachines {
                              .or(abilities(PartAbility.EXPORT_FLUIDS))
                              .or(abilities(PartAbility.EXPORT_ITEMS))
                              .or(abilities(APartAbility.NEUTRON_ACCELERATOR))
+                             .or(abilities(APartAbility.NEUTRON_SENSOR))
                              .or(autoAbilities(true, false, false)))
                      .where("B", Predicates.blocks(GTNNCasingBlocks.PROCESS_MACHINE_CASING.get()))
                      .where("C", Predicates.blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTMaterials.Steel)))
