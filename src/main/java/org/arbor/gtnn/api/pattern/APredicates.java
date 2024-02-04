@@ -20,7 +20,7 @@ public class APredicates {
     public static TraceabilityPredicate plantCasings() {
         return new TraceabilityPredicate(blockWorldState -> {
             var blockState = blockWorldState.getBlockState();
-            for (var entry : PlantCasingBlock.PlantCasing.values()) {
+            for (var entry : PlantCasingBlock.values()) {
                 if (blockState.is(entry.getPlantCasing(entry.getTier()).get())) {
                     var stats = entry.plantCasingType();
                     Object currentPlantCasing = blockWorldState.getMatchContext().getOrPut("PlantCasing", stats);
@@ -32,7 +32,7 @@ public class APredicates {
                 }
             }
             return false;
-        }, () -> Arrays.stream(PlantCasingBlock.PlantCasing.values()).map(plantCasing -> BlockInfo.fromBlockState(plantCasing.getPlantCasing(plantCasing.getTier()).get().defaultBlockState())).toArray(BlockInfo[]::new))
+        }, () -> Arrays.stream(PlantCasingBlock.values()).map(plantCasing -> BlockInfo.fromBlockState(plantCasing.getPlantCasing(plantCasing.getTier()).get().defaultBlockState())).toArray(BlockInfo[]::new))
                 .addTooltips(Component.translatable("gtnn.multiblock.pattern.error.plant_casings"));
     }
 

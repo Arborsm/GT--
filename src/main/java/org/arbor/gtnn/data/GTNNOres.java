@@ -945,7 +945,7 @@ public class GTNNOres {
                     .buildLayerPattern(pattern -> pattern
                             .layer(l -> l.weight(2).mat(GTMaterials.Neutronium).size(1, 2))
                             .layer(l -> l.weight(1).mat(InfinityCatalyst).size(1, 2))
-                            .layer(l -> l.weight(1).mat(GTMaterials.Naquadah).size(1, 2))
+                            .layer(l -> l.weight(1).mat(GTMaterials.Naquadria).size(1, 2))
                             .layer(l -> l.weight(1).mat(GTMaterials.Titanium).size(1, 2))
                     )));
     // 铌

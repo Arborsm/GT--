@@ -19,9 +19,9 @@ import org.jetbrains.annotations.NotNull;
 public class PlantCasingCondition extends RecipeCondition {
     public final static PlantCasingCondition INSTANCE = new PlantCasingCondition();
 
-    private PlantCasingBlock.PlantCasing plantCasing = PlantCasingBlock.PlantCasing.BRONZE;
+    private PlantCasingBlock plantCasing = PlantCasingBlock.BRONZE;
 
-    public PlantCasingCondition(PlantCasingBlock.PlantCasing plantCasing) {
+    public PlantCasingCondition(PlantCasingBlock plantCasing) {
         super();
         this.plantCasing = plantCasing;
     }
@@ -68,7 +68,7 @@ public class PlantCasingCondition extends RecipeCondition {
     @Override
     public RecipeCondition deserialize(@NotNull JsonObject config) {
         super.deserialize(config);
-        this.plantCasing = PlantCasingBlock.PlantCasing.getByName(
+        this.plantCasing = PlantCasingBlock.getByName(
                 GsonHelper.getAsString(config, "plantCasing", "plantCasing"));
         return this;
     }
@@ -82,7 +82,7 @@ public class PlantCasingCondition extends RecipeCondition {
     @Override
     public RecipeCondition fromNetwork(FriendlyByteBuf buf) {
         super.fromNetwork(buf);
-        this.plantCasing = PlantCasingBlock.PlantCasing.getByNameOrDefault(buf.readUtf());
+        this.plantCasing = PlantCasingBlock.getByNameOrDefault(buf.readUtf());
         return this;
     }
 }

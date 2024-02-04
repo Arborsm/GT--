@@ -25,51 +25,7 @@ public class PlatinumLine {
     }
 
     private static void replace(Consumer<FinishedRecipe> provider) {
-        overWrite(provider);
-        MACERATOR_RECIPES.recipeBuilder("macerate_platinum_refined_ore_to_dust")
-                .duration(dur(20))
-                .inputItems(ChemicalHelper.get(TagPrefix.crushedRefined, Platinum))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PlatinumMetal))
-                .chancedOutput(TagPrefix.dust, Cobalt, 1400, 850)
-                .EUt(2).save(provider);
-        MACERATOR_RECIPES.recipeBuilder("macerate_nickel_refined_ore_to_dust")
-                .duration(dur(20))
-                .inputItems(ChemicalHelper.get(TagPrefix.crushedRefined, Nickel))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, Nickel))
-                .chancedOutput(TagPrefix.dust, PlatinumMetal, 1400, 850)
-                .EUt(2).save(provider);
-        CENTRIFUGE_RECIPES.recipeBuilder("centrifuge_platinum_dirty_dust_to_dust")
-                .duration(dur(39))
-                .inputItems(ChemicalHelper.get(TagPrefix.dustImpure, Platinum))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PlatinumMetal), ChemicalHelper.get(TagPrefix.dustTiny, Nickel))
-                .EUt(24).save(provider);
-        CENTRIFUGE_RECIPES.recipeBuilder("centrifuge_platinum_pure_dust_to_dust")
-                .duration(dur(5))
-                .inputItems(ChemicalHelper.get(TagPrefix.dustPure, Platinum))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PlatinumMetal), ChemicalHelper.get(TagPrefix.dustTiny, Nickel))
-                .EUt(5).save(provider);
-        CHEMICAL_BATH_RECIPES.recipeBuilder("bathe_nickel_crushed_ore_to_purified_ore")
-                .duration(dur(10))
-                .inputItems(ChemicalHelper.get(TagPrefix.crushed, Nickel))
-                .outputItems(ChemicalHelper.get(TagPrefix.crushedPurified, Nickel))
-                .chancedOutput(TagPrefix.dust, PlatinumMetal, 7000, 580)
-                .chancedOutput(TagPrefix.dust, Stone, 4000, 650)
-                .EUt(30).save(provider);
-        FORGE_HAMMER_RECIPES.recipeBuilder("hammer_platinum_refined_ore_to_dust")
-                .duration(10)
-                .inputItems(ChemicalHelper.get(TagPrefix.crushedRefined, Platinum))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PlatinumMetal))
-                .EUt(16).save(provider);
-        ORE_WASHER_RECIPES.recipeBuilder("wash_platinum_dirty_dust_to_dust")
-                .duration(8)
-                .inputItems(ChemicalHelper.get(TagPrefix.dustImpure, Platinum))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PlatinumMetal))
-                .EUt(4).save(provider);
-        ORE_WASHER_RECIPES.recipeBuilder("wash_platinum_pure_dust_to_dust")
-                .duration(8)
-                .inputItems(ChemicalHelper.get(TagPrefix.dustPure, Platinum))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PlatinumMetal))
-                .EUt(4).save(provider);
+        remove(provider);
         ELECTROLYZER_RECIPES.recipeBuilder("decomposition_electrolyzing_cooperite")
                 .duration(648)
                 .inputItems(ChemicalHelper.get(TagPrefix.dust, Cooperite))
@@ -80,95 +36,6 @@ public class PlatinumLine {
                 GTToolType.HARD_HAMMER.itemTags.get(0), new UnificationEntry(TagPrefix.crushedRefined, Platinum));
         VanillaRecipeHelper.addShapelessRecipe(provider, "centrifuged_ore_to_dust_palladium", ChemicalHelper.get(TagPrefix.dust, PalladiumMetal),
                 GTToolType.HARD_HAMMER.itemTags.get(0), new UnificationEntry(TagPrefix.crushedRefined, Palladium));
-        CENTRIFUGE_RECIPES.recipeBuilder("centrifuge_palladium_pure_dust_to_dust")
-                .duration(dur(5))
-                .inputItems(ChemicalHelper.get(TagPrefix.dustPure, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PalladiumMetal),ChemicalHelper.get(TagPrefix.dustTiny, PalladiumMetal))
-                .EUt(5).save(provider);
-        CENTRIFUGE_RECIPES.recipeBuilder("centrifuge_palladium_dirty_dust_to_dust")
-                .duration(dur(5))
-                .inputItems(ChemicalHelper.get(TagPrefix.dustImpure, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PalladiumMetal),ChemicalHelper.get(TagPrefix.dustTiny, PalladiumMetal))
-                .EUt(5).save(provider);
-        CHEMICAL_BATH_RECIPES.recipeBuilder("bathe_platinum_crushed_ore_to_purified_ore")
-                .duration(dur(10))
-                .inputItems(ChemicalHelper.get(TagPrefix.crushed, Platinum))
-                .inputFluids(Mercury.getFluid(100))
-                .outputItems(ChemicalHelper.get(TagPrefix.crushedPurified, Platinum))
-                .chancedOutput(ChemicalHelper.get(TagPrefix.dust, PalladiumMetal), 7000, 580)
-                .chancedOutput(ChemicalHelper.get(TagPrefix.dust, Stone), 4000, 650)
-                .EUt(30).save(provider);
-        CHEMICAL_BATH_RECIPES.recipeBuilder("bathe_cooperite_crushed_ore_to_purified_ore")
-                .duration(dur(10))
-                .inputItems(ChemicalHelper.get(TagPrefix.crushed, Cooperite))
-                .inputFluids(Mercury.getFluid(100))
-                .outputItems(ChemicalHelper.get(TagPrefix.crushedPurified, Cooperite))
-                .chancedOutput(ChemicalHelper.get(TagPrefix.dust, PalladiumMetal), 7000, 580)
-                .chancedOutput(ChemicalHelper.get(TagPrefix.dust, Stone), 4000, 650)
-                .EUt(30).save(provider);
-        FORGE_HAMMER_RECIPES.recipeBuilder("hammer_palladium_refined_ore_to_dust")
-                .duration(10)
-                .inputItems(ChemicalHelper.get(TagPrefix.crushedRefined, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PalladiumMetal))
-                .EUt(16).save(provider);
-        MACERATOR_RECIPES.recipeBuilder("macerate_deepslate_palladium_ore_to_raw_ore")
-                .duration(dur(20))
-                .inputItems(ChemicalHelper.get(TagPrefix.oreDeepslate, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.crushed, Palladium, 2))
-                .chancedOutput(TagPrefix.dust, PalladiumMetal, 1400, 850)
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, Deepslate))
-                .EUt(2).save(provider);
-        MACERATOR_RECIPES.recipeBuilder("macerate_palladium_refined_ore_to_dust")
-                .duration(dur(20))
-                .inputItems(ChemicalHelper.get(TagPrefix.crushedRefined, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PalladiumMetal))
-                .chancedOutput(TagPrefix.dust, PalladiumMetal, 1400, 850)
-                .EUt(2).save(provider);
-        MACERATOR_RECIPES.recipeBuilder("macerate_palladium_crushed_ore_to_impure_dust")
-                .duration(dur(20))
-                .inputItems(ChemicalHelper.get(TagPrefix.crushed, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.dustImpure, Palladium))
-                .chancedOutput(TagPrefix.dust, PalladiumMetal, 1400, 850)
-                .EUt(2).save(provider);
-        MACERATOR_RECIPES.recipeBuilder("macerate_palladium_ore_to_raw_ore")
-                .duration(dur(20))
-                .inputItems(ChemicalHelper.get(TagPrefix.ore, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.crushed, Palladium, 2))
-                .chancedOutput(TagPrefix.dust, PalladiumMetal, 1400, 850)
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, Stone))
-                .EUt(2).save(provider);
-        MACERATOR_RECIPES.recipeBuilder("macerate_palladium_crushed_ore_to_dust")
-                .duration(dur(20))
-                .inputItems(ChemicalHelper.get(TagPrefix.crushedPurified, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.dustPure, Palladium))
-                .chancedOutput(TagPrefix.dust, PalladiumMetal, 1400, 850)
-                .EUt(2).save(provider);
-        MACERATOR_RECIPES.recipeBuilder("macerate_endstone_palladium_ore_to_raw_ore")
-                .duration(dur(20))
-                .inputItems(ChemicalHelper.get(TagPrefix.oreEndstone, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.crushed, Palladium, 4))
-                .chancedOutput(TagPrefix.dust, PalladiumMetal, 1400, 850)
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, Endstone))
-                .EUt(2).save(provider);
-        MACERATOR_RECIPES.recipeBuilder("macerate_netherrack_palladium_ore_to_raw_ore")
-                .duration(dur(20))
-                .inputItems(ChemicalHelper.get(TagPrefix.oreNetherrack, Palladium))
-                .outputItems(ChemicalHelper.get(TagPrefix.crushed, Palladium, 4))
-                .chancedOutput(TagPrefix.dust, PalladiumMetal, 1400, 850)
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, Netherrack))
-                .EUt(2).save(provider);
-        ORE_WASHER_RECIPES.recipeBuilder("wash_palladium_pure_dust_to_dust")
-                .duration(8)
-                .inputItems(ChemicalHelper.get(TagPrefix.dustPure, Palladium))
-                .inputFluids(Water.getFluid(100))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PalladiumMetal))
-                .circuitMeta(2).EUt(4).save(provider);
-        ORE_WASHER_RECIPES.recipeBuilder("wash_palladium_dirty_dust_to_dust")
-                .duration(8)
-                .inputItems(ChemicalHelper.get(TagPrefix.dustImpure, Palladium))
-                .inputFluids(Water.getFluid(100))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, PalladiumMetal))
-                .circuitMeta(2).EUt(4).save(provider);
     }
     public static void platinumLineProcesses(Consumer<FinishedRecipe> provider) {
 
@@ -777,7 +644,7 @@ public class PlatinumLine {
                 .outputItems(dust, SodiumSulfate,7)
                 .duration(15).EUt(VA[LV]).save(provider);
     }
-    private static void overWrite(Consumer<FinishedRecipe> provider){
+    private static void remove(Consumer<FinishedRecipe> provider){
         GCyMRecipeTypes.ALLOY_BLAST_RECIPES.recipeBuilder("sodium_pyrosulfate").save(provider);
         EXTRACTOR_RECIPES.recipeBuilder("extract_osmium_tetroxide_dust").save(provider);
         ELECTROLYZER_RECIPES.recipeBuilder("raw_platinum_separation").save(provider);
@@ -789,7 +656,6 @@ public class PlatinumLine {
         LARGE_CHEMICAL_RECIPES.recipeBuilder("rarest_metal_mixture_separation").save(provider);
         CENTRIFUGE_RECIPES.recipeBuilder("iridium_metal_residue_separation").save(provider);
         ELECTROLYZER_RECIPES.recipeBuilder("rhodium_sulfate_separation").save(provider);
-        //ARC_FURNACE_RECIPES.recipeBuilder("arc_platinum_dust").save(provider);
         chemicalRemoval(provider, "osmium_tetroxide_separation");
         chemicalRemoval(provider, "inert_metal_mixture_separation");
         chemicalRemoval(provider, "iridium_chloride_separation");

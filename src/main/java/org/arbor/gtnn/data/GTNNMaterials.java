@@ -302,6 +302,25 @@ public class GTNNMaterials {
             .gas()
             .color(0x9B9B9B).iconSet(ROUGH)
             .buildAndRegister();
+    // Naquadah
+    public static final Material NaquadahOxideMixture = Builder("naquadah_oxide_mixture")
+            .dust()
+            .color(0x4c4c4c).iconSet(ROUGH)
+            .flags(DISABLE_DECOMPOSITION)
+            .buildAndRegister()
+            .setFormula("??NqTiGaAd??");
+    public static final Material EnrichedNaquadahOxideMixture = Builder("enriched_naquadah_oxide_mixture")
+            .dust()
+            .color(0x826868).iconSet(ROUGH)
+            .flags(DISABLE_DECOMPOSITION)
+            .buildAndRegister()
+            .setFormula("??KeNq+??");
+    public static final Material NaquadriaOxideMixture = Builder("naquadria_oxide_mixture")
+            .dust()
+            .color(0x4d4d55).iconSet(RADIOACTIVE)
+            .flags(DISABLE_DECOMPOSITION)
+            .buildAndRegister()
+            .setFormula("??*Nq*BaIn??");
 
     public static void init() {
         RhodiumFilterCake.setFormula("?Ru?");
@@ -336,6 +355,7 @@ public class GTNNMaterials {
         addOre(Tungsten);
         addOre(Chromium);
         addOre(NaquadahEnriched);
+        addOre(Naquadria);
         addFluid(RutheniumTetroxide);
         addFluid(OsmiumTetroxide);
         addFluid(AmmoniumChloride);

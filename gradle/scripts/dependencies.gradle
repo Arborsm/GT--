@@ -32,16 +32,16 @@ dependencies {
     // JEI
     modCompileOnly(forge.jei.common.api) { transitive = false }
     modCompileOnly(forge.jei.forge.api) { transitive = false }
-    modImplementation(forge.jei.forge.impl) { transitive = false }
+    modCompileOnly(forge.jei.forge.impl) { transitive = false }
 
     // REI
     modCompileOnly forge.rei.plugin
     modCompileOnly forge.rei.api
-    modCompileOnly forge.rei.forge
+    modImplementation forge.rei.forge
 
     // EMI
     modCompileOnly("dev.emi:emi-forge:${forge.versions.emi.get()}:api")
-    modImplementation forge.emi
+    modCompileOnly forge.emi
 
     // Jade
     modImplementation(forge.jade)
@@ -65,6 +65,7 @@ dependencies {
     modImplementation(forge.resourcefulconfig)
     modImplementation(forge.botarium)
     forgeRuntimeLibrary("com.teamresourceful:ByteCodecs:1.0.2")
+    forgeRuntimeLibrary("com.teamresourceful:yabn:1.0.3")
 
     // lib
     modImplementation("org.arbor:arbormixin:1.0")

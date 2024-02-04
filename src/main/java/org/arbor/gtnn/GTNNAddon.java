@@ -51,7 +51,7 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void removeRecipes(Consumer<ResourceLocation> consumer) {
-        GTNNRecipes.remove(consumer);
+        IGTAddon.super.removeRecipes(consumer);
     }
 
     @Override

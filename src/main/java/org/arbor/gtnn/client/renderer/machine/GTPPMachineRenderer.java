@@ -12,7 +12,6 @@ import com.gregtechceu.gtceu.client.renderer.machine.IControllerRenderer;
 import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.lowdragmc.lowdraglib.client.bakedpipeline.FaceQuad;
 import com.lowdragmc.lowdraglib.client.model.ModelFactory;
-import com.lowdragmc.lowdraglib.utils.FacadeBlockAndTintGetter;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.ModelState;
@@ -38,14 +37,14 @@ import java.util.function.Consumer;
 public class GTPPMachineRenderer extends MachineRenderer implements IControllerRenderer {
     protected final WorkableOverlayModel overlayModel;
     private void render(List<BakedQuad> quads, MetaMachine machine, ModelState modelState){
-        var sprite = ModelFactory.getBlockSprite(PlantCasingBlock.PlantCasing.getByTier(((IGTPPMachine)machine).getTier()).getResourceLocation());
+        var sprite = ModelFactory.getBlockSprite(PlantCasingBlock.getByTier(((IGTPPMachine)machine).getTier()).getResourceLocation());
         quads.add(FaceQuad.bakeFace(Direction.DOWN, sprite, modelState));
         quads.add(FaceQuad.bakeFace(Direction.UP, sprite, modelState));
         quads.add(FaceQuad.bakeFace(Direction.NORTH, sprite, modelState));
         quads.add(FaceQuad.bakeFace(Direction.SOUTH, sprite, modelState));
         quads.add(FaceQuad.bakeFace(Direction.WEST, sprite, modelState));
         quads.add(FaceQuad.bakeFace(Direction.EAST, sprite, modelState));
-        BlockEntry<Block> casing = PlantCasingBlock.PlantCasing.getByTier(((IGTPPMachine)machine).getTier()).getPlantCasing(((IGTPPMachine)machine).getTier());
+        BlockEntry<Block> casing = PlantCasingBlock.getByTier(((IGTPPMachine)machine).getTier()).getPlantCasing(((IGTPPMachine)machine).getTier());
         machine.self().getDefinition().setAppearance(casing::getDefaultState);
     }
 
@@ -88,8 +87,6 @@ public class GTPPMachineRenderer extends MachineRenderer implements IControllerR
 
     @Override
     public boolean isConnected(BlockAndTintGetter level, BlockState state, BlockPos pos, BlockState sourceState, BlockPos sourcePos, Direction side) {
-        BlockState stateAppearance = FacadeBlockAndTintGetter.getAppearance(state, level, pos, side, sourceState, sourcePos);
-        BlockState sourceStateAppearance = FacadeBlockAndTintGetter.getAppearance(sourceState, level, sourcePos, side, state, pos);
-        return stateAppearance == sourceStateAppearance;
+        return super.isConnected(level, state, pos, sourceState, sourcePos, side);
     }
 }

@@ -147,7 +147,7 @@ public class GTNNMachines {
                         .where('#', Blocks.AIR.defaultBlockState())
                         .where('J', GTMachines.MAINTENANCE_HATCH, Direction.NORTH);
                 Map<Integer, BlockState> shapeBlock = new HashMap<>();
-                for (PlantCasingBlock.PlantCasing casing : PlantCasingBlock.PlantCasing.values()) {
+                for (PlantCasingBlock casing : PlantCasingBlock.values()) {
                     shapeBlock.put(casing.getTier() + 10, casing.getPlantCasing(casing.getTier()).getDefaultState());
                 }
                 for (MachineCasingBlock.MachineCasing machineCasing : MachineCasingBlock.MachineCasing.values()) {

@@ -1,7 +1,6 @@
 package org.arbor.gtnn.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.resources.ResourceLocation;
 import org.arbor.gtnn.api.recipe.NeutronActivatorCondition;
 import org.arbor.gtnn.api.recipe.PlantCasingCondition;
 import org.arbor.gtnn.block.PlantCasingBlock;
@@ -17,14 +16,6 @@ public class GTNNRecipes {
         PlatinumLine.init(provider);
     }
 
-    public static void remove(Consumer<ResourceLocation> consumer) {
-        // not work fk
-        // consumer.accept(GTCEu.id("alloy_blast_smelter/sodium_pyrosulfate"));
-        // consumer.accept(GTCEu.id("chemical_reactor/osmium_tetroxide_separation"));
-        // consumer.accept(GTCEu.id("extractor/extract_osmium_tetroxide_dust"));
-        // consumer.accept(GTCEu.id("large_chemical_reactor/osmium_tetroxide_separation"));
-    }
-
     public static int dur(int seconds) {
         return seconds * 20;
     }
@@ -34,12 +25,12 @@ public class GTNNRecipes {
         return new NeutronActivatorCondition(max, min);
     }
 
-    public static PlantCasingCondition setPlantCasing(PlantCasingBlock.PlantCasing plantCasing) {
+    public static PlantCasingCondition setPlantCasing(PlantCasingBlock plantCasing) {
         return new PlantCasingCondition(plantCasing);
     }
 
     public static PlantCasingCondition setPlantCasing(String name) {
-        PlantCasingBlock.PlantCasing plantCasing = PlantCasingBlock.PlantCasing.getByName(name);
+        PlantCasingBlock plantCasing = PlantCasingBlock.getByName(name);
         return new PlantCasingCondition(plantCasing);
     }
 }

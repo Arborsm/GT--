@@ -12,6 +12,7 @@
     "gt.GTOreMixin",
     "gt.GTRecipeTypeMixin",
     "mc.MinecraftServerMixin",
+    "mc.RecipeManagerMixin",
     "mc.WorldLoaderPackConfigMixin"
   ],
   "client": [

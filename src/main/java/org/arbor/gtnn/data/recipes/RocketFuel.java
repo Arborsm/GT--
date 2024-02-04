@@ -41,7 +41,7 @@ public class RocketFuel {
 
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder("rp_1_mixed_fuel")
-                .addCondition(setPlantCasing(PlantCasingBlock.PlantCasing.STAINLESS))
+                .addCondition(setPlantCasing(PlantCasingBlock.STAINLESS))
                 .inputFluids(Oxygen.getFluid(2000))
                 .inputFluids(RP1RocketFuel.getFluid(500))
                 .outputFluids(RP1.getFluid(1000))
@@ -61,7 +61,7 @@ public class RocketFuel {
                 .duration(16).EUt(VA[MV]).save(provider);
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder("dense_hydrazine_mixed_fuel")
-                .addCondition(setPlantCasing(PlantCasingBlock.PlantCasing.TITANIUM))
+                .addCondition(setPlantCasing(PlantCasingBlock.TITANIUM))
                 .inputFluids(Methanol.getFluid(6000))
                 .inputFluids(Hydrazine.getFluid(4000))
                 .outputFluids(DenseHydrazineMixedFuel.getFluid(10000))
@@ -69,7 +69,7 @@ public class RocketFuel {
                 .duration(dur(30)).EUt(VA[HV]).save(provider);
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder("hydrazine")
-                .addCondition(setPlantCasing(PlantCasingBlock.PlantCasing.STEEL))
+                .addCondition(setPlantCasing(PlantCasingBlock.STEEL))
                 .inputFluids(Ammonia.getFluid(1000))
                 .inputFluids(HydrogenPeroxide.getFluid(1000))
                 .outputFluids(Hydrazine.getFluid(1000))
@@ -77,7 +77,7 @@ public class RocketFuel {
                 .duration(dur(10)).EUt(VA[HV]).save(provider);
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder("hydrogen_peroxide_oxygen")
-                .addCondition(setPlantCasing(PlantCasingBlock.PlantCasing.STEEL))
+                .addCondition(setPlantCasing(PlantCasingBlock.STEEL))
                 .inputFluids(Oxygen.getFluid(10000))
                 .inputFluids(EthylAnthraHydroQuinone.getFluid(5000))
                 .inputFluids(Anthracene.getFluid(50))
@@ -87,7 +87,7 @@ public class RocketFuel {
                 .duration(dur(5)).EUt(VA[HV]).save(provider);
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder("hydrogen_peroxide_air")
-                .addCondition(setPlantCasing(PlantCasingBlock.PlantCasing.STEEL))
+                .addCondition(setPlantCasing(PlantCasingBlock.STEEL))
                 .inputFluids(Air.getFluid(20000))
                 .inputFluids(EthylAnthraHydroQuinone.getFluid(5000))
                 .inputFluids(Anthracene.getFluid(50))
@@ -97,7 +97,7 @@ public class RocketFuel {
                 .duration(dur(30)).EUt(VA[HV]).save(provider);
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder("ethyl_anthra_quinone")
-                .addCondition(setPlantCasing(PlantCasingBlock.PlantCasing.ALUMINIUM))
+                .addCondition(setPlantCasing(PlantCasingBlock.ALUMINIUM))
                 .inputItems(ChemicalHelper.get(dust, PhthalicAnhydride, 15))
                 .inputFluids(Ethylbenzene.getFluid(1000))
                 .outputFluids(EthylAnthraQuinone.getFluid(1000))
@@ -128,7 +128,7 @@ public class RocketFuel {
                 .duration(dur(8)).EUt(VA[HV]).save(provider);
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder("ethyl_anthra_hydro_quinone")
-                .addCondition(setPlantCasing(PlantCasingBlock.PlantCasing.ALUMINIUM))
+                .addCondition(setPlantCasing(PlantCasingBlock.ALUMINIUM))
                 .inputFluids(EthylAnthraQuinone.getFluid(1000))
                 .inputFluids(HydrogenPeroxide.getFluid(1000))
                 .chancedInput(ChemicalHelper.get(dust, OrangeMetalCatalyst, 1), 5000, -1000)
@@ -148,7 +148,7 @@ public class RocketFuel {
                 .save(provider);
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder("methyl_hydrazine")
-                .addCondition(setPlantCasing(PlantCasingBlock.PlantCasing.ALUMINIUM))
+                .addCondition(setPlantCasing(PlantCasingBlock.ALUMINIUM))
                 .inputItems(ChemicalHelper.get(dust, Carbon, 1))
                 .inputFluids(Hydrogen.getFluid(2000))
                 .inputFluids(Hydrazine.getFluid(1000))
@@ -157,7 +157,7 @@ public class RocketFuel {
                 .duration(dur(48)).EUt(VA[HV]).save(provider);
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder("methylhydrazine_nitrate_rocket_fuel")
-                .addCondition(setPlantCasing(PlantCasingBlock.PlantCasing.TUNGSTENSTEEL))
+                .addCondition(setPlantCasing(PlantCasingBlock.TUNGSTENSTEEL))
                 .inputFluids(MethylHydrazine.getFluid(2000))
                 .inputFluids(NitricAcid.getFluid(1000))
                 .outputFluids(MethylhydrazineNitrateRocketFuel.getFluid(2000))
