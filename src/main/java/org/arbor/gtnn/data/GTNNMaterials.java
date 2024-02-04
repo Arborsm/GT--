@@ -306,19 +306,17 @@ public class GTNNMaterials {
     public static final Material NaquadahOxideMixture = Builder("naquadah_oxide_mixture")
             .dust()
             .color(0x4c4c4c).iconSet(ROUGH)
-            .flags(DISABLE_DECOMPOSITION)
             .buildAndRegister()
             .setFormula("??NqTiGaAd??");
     public static final Material EnrichedNaquadahOxideMixture = Builder("enriched_naquadah_oxide_mixture")
             .dust()
             .color(0x826868).iconSet(ROUGH)
-            .flags(DISABLE_DECOMPOSITION)
             .buildAndRegister()
             .setFormula("??KeNq+??");
     public static final Material NaquadriaOxideMixture = Builder("naquadria_oxide_mixture")
             .dust()
-            .color(0x4d4d55).iconSet(RADIOACTIVE)
-            .flags(DISABLE_DECOMPOSITION)
+            .color(0x4d4d55).secondaryColor(0xe7e7ff)
+            .iconSet(RADIOACTIVE)
             .buildAndRegister()
             .setFormula("??*Nq*BaIn??");
 
