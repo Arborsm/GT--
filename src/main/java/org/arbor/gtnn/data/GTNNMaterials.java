@@ -15,9 +15,6 @@ import org.arbor.gtnn.data.materials.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.SHINY;
 
 public class GTNNMaterials {
-    // MaterialIconSet
-    public static MaterialIconSet InfinityIcon = new MaterialIconSet("infinity", SHINY);
-    // region first degree mats
     public static Material AndesiteAlloy;
     public static Material Desh;
     public static Material Ostrum;
@@ -25,7 +22,6 @@ public class GTNNMaterials {
     public static Material SpaceNeutronium;
     public static Material Infinity;
     public static Material InfinityCatalyst;
-    // Chemical Plant
     public static Material RP1;
     public static Material RP1RocketFuel;
     public static Material Kerosene;
@@ -49,13 +45,11 @@ public class GTNNMaterials {
     public static Material ZincSulfate;
     public static Material Wollastonite;
     public static Material ArcaneCrystal;
-    // Ingot
     public static Material ManaSteel;
     public static Material TerraSteel;
     public static Material Elementium;
     public static Material RefinedRadiance;
     public static Material ShadowSteel;
-    // Platinum
     public static Material PlatinumSalt;
     public static Material RefinedPlatinumSalt;
     public static Material PalladiumSalt;
@@ -81,7 +75,6 @@ public class GTNNMaterials {
     public static Material RhodiumSulfateGas;
     public static Material AcidicIridium;
     public static Material RutheniumTetroxideHot;
-    // Naquadah
     public static Material NaquadahOxideMixture;
     public static Material EnrichedNaquadahOxideMixture;
     public static Material NaquadriaOxideMixture;
@@ -129,5 +122,14 @@ public class GTNNMaterials {
 
     public static Material.Builder Builder(String id) {
         return new Material.Builder(GTCEu.id(id));
+    }
+
+    public static class MaterialIcons {
+        // MaterialIconSet
+        public static MaterialIconSet InfinityIcon;
+
+        public MaterialIcons() {
+            InfinityIcon = new MaterialIconSet("infinity", SHINY);
+        }
     }
 }

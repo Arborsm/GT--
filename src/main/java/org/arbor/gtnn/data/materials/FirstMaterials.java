@@ -18,7 +18,7 @@ public class FirstMaterials {
                 .buildAndRegister();
         Infinity = Builder("infinity")
                 .ingot().fluid().ore().dust()
-                .color(0xFFFFFF).iconSet(InfinityIcon)
+                .color(0xFFFFFF).iconSet(MaterialIcons.InfinityIcon)
                 .element(GTNNElement.IF2)
                 .blastTemp(10800, BlastProperty.GasTier.HIGHEST, GTValues.VA[GTValues.UHV], 54562)
                 .buildAndRegister();
