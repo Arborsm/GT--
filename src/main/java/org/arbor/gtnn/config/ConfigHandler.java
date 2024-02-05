@@ -14,10 +14,22 @@ public class ConfigHandler {
     }
     @Configurable
     public ClientConfigs Client = new ClientConfigs();
+    @Configurable
+    public ServerConfigs Server = new ServerConfigs();
+    public static class ServerConfigs{
+        @Configurable
+        @Configurable.Comment({"Enable Harder Platinum Line", "Default: true"})
+        public boolean enableHarderPlatinumLine = true;
+        @Configurable
+        @Configurable.Comment({"Enable Harder Naquadah Line", "Default: true"})
+        public boolean enableHarderNaquadahLine = true;
+        ServerConfigs(){
+        }
+    }
     public static class ClientConfigs{
         @Configurable
         @Configurable.Comment({"Use Extra Heart Renderer", "Default: true"})
-        public boolean ExtraHeartRenderer = true;
+        public boolean extraHeartRenderer = true;
         ClientConfigs(){
         }
     }

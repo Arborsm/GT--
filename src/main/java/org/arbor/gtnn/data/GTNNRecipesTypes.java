@@ -8,6 +8,8 @@ import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
 
+import static com.lowdragmc.lowdraglib.gui.texture.ProgressTexture.FillDirection.LEFT_TO_RIGHT;
+
 public class GTNNRecipesTypes {
     public static final GTRecipeType CHEMICAL_PLANT_RECIPES = GTRecipeTypes.register("chemical_plant", GTRecipeTypes.MULTIBLOCK)
             .setMaxIOSize(4, 4, 4, 2).setEUIO(IO.IN)
@@ -21,6 +23,11 @@ public class GTNNRecipesTypes {
             .setMaxIOSize(9, 9, 1, 1)
             .setMaxTooltips(5)
             .setSound(GTSoundEntries.COOLING);
+
+    public static final GTRecipeType DRYER_RECIPES = GTRecipeTypes.register("dryer", GTRecipeTypes.ELECTRIC).setMaxIOSize(2, 9, 1, 1).setEUIO(IO.IN)
+            .prepareBuilder(recipeBuilder -> recipeBuilder.EUt(5))
+            .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.CENTRIFUGE);
 
     public static void init() {
     }

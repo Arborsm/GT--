@@ -65,7 +65,7 @@ public class ExtraHeartRenderHandler {
   @SubscribeEvent(priority = EventPriority.LOW, receiveCanceled = true)
   public void renderHealthbar(RenderGuiOverlayEvent.Pre event) {
     GuiGraphics guiGraphics = event.getGuiGraphics();
-    if (event.isCanceled() || !ConfigHandler.INSTANCE.Client.ExtraHeartRenderer || event.getOverlay() != VanillaGuiOverlay.PLAYER_HEALTH.type()) {
+    if (event.isCanceled() || !ConfigHandler.INSTANCE.Client.extraHeartRenderer || event.getOverlay() != VanillaGuiOverlay.PLAYER_HEALTH.type()) {
       return;
     }
     // ensure its visible

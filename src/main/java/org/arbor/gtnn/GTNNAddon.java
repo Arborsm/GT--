@@ -34,7 +34,7 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void registerTagPrefixes() {
-        if (GTNN.isAdAstraLoaded()) {
+        if (GTNNIntegration.isAdAstraLoaded()) {
             AdAstraAddon.init();
         }
     }
@@ -87,7 +87,7 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void registerWorldgenLayers() {
-        if (GTNN.isAdAstraLoaded()){
+        if (GTNNIntegration.isAdAstraLoaded()){
             GTNNWorld.GTNNWorldGenLayers.init();
         }
     }

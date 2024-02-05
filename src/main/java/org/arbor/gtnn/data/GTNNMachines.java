@@ -6,18 +6,19 @@ import com.gregtechceu.gtceu.api.block.ICoilType;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
-import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
-import com.gregtechceu.gtceu.api.machine.MachineDefinition;
-import com.gregtechceu.gtceu.api.machine.MetaMachine;
-import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.machine.*;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
+import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
+import it.unimi.dsi.fastutil.ints.Int2LongFunction;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Blocks;
@@ -40,16 +41,17 @@ import org.arbor.gtnn.client.renderer.machine.GTPPMachineRenderer;
 import java.util.*;
 import java.util.function.BiFunction;
 
-import static com.gregtechceu.gtceu.api.GTValues.V;
-import static com.gregtechceu.gtceu.api.GTValues.VNF;
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.autoAbilities;
 import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
+import static com.gregtechceu.gtceu.utils.FormattingUtil.toEnglishName;
 import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 
 @SuppressWarnings("unused")
 public class GTNNMachines {
-    public static final int[] NA_TIERS = GTValues.tiersBetween(1, 8);
+    public static final int[] LV2UV = GTValues.tiersBetween(1, 8);
+    public static final int[] MV2ZPM = GTValues.tiersBetween(2, 7);
     static {
         REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.MAIN_TAB);
     }
@@ -70,7 +72,7 @@ public class GTNNMachines {
                     .overlayTieredHullRenderer("neutron_accelerator")
                     .compassNode("neutron_accelerator")
                     .register(),
-            NA_TIERS);
+            LV2UV);
 
     public static final MachineDefinition HIGH_SPEED_PIPE_BLOCK = REGISTRATE.machine("high_speed_pipe_block", HighSpeedPipeBlock::new)
             .renderer(() -> new BlockMachineRenderer(GTNN.id("block/machine/part/high_speed_pipe_block")))
@@ -100,6 +102,8 @@ public class GTNNMachines {
     //////////////////////////////////////
     //**********   Machine    **********//
     //////////////////////////////////////
+    public static final MachineDefinition[] DRYER =
+            registerSimpleMachines("dryer", GTNNRecipesTypes.DRYER_RECIPES, GTMachines.defaultTankSizeFunction, MV2ZPM);
     public static final MultiblockMachineDefinition CHEMICAL_PLANT = REGISTRATE.multiblock("chemical_plant", ChemicalPlant::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip1"))
@@ -229,6 +233,23 @@ public class GTNNMachines {
             definitions[tier] = builder.apply(tier, register);
         }
         return definitions;
+    }
+
+    public static MachineDefinition[] registerSimpleMachines(String name,
+                                                             GTRecipeType recipeType,
+                                                             Int2LongFunction tankScalingFunction,
+                                                             int... tiers) {
+        return registerTieredMachines(name, (holder, tier) -> new SimpleTieredMachine(holder, tier, tankScalingFunction), (tier, builder) -> builder
+                .langValue("%s %s %s".formatted(VLVH[tier], toEnglishName(name), VLVT[tier]))
+                .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCEu.id(name), recipeType))
+                .rotationState(RotationState.NON_Y_AXIS)
+                .recipeType(recipeType)
+                .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                .workableTieredHullRenderer(GTCEu.id("block/machines/" + name))
+                .tooltips(GTMachines.explosion())
+                .tooltips(GTMachines.workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64, recipeType, tankScalingFunction.apply(tier), true))
+                .compassNode(name)
+                .register(), tiers);
     }
 
     public static void init() {

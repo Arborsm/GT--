@@ -2,7 +2,6 @@ package org.arbor.gtnn;
 
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
-import com.lowdragmc.lowdraglib.LDLib;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,14 +24,6 @@ public class GTNN {
         eventBus.addGenericListener(MachineDefinition.class, GTNNRegistries::registerMachine);
         CommonProxy.init();
         ConfigHandler.init();
-    }
-
-    public static boolean isAdAstraLoaded(){
-        return LDLib.isModLoaded("ad_astra");
-    }
-
-    public static boolean isTwilightForestLoaded(){
-        return LDLib.isModLoaded("twilightforest");
     }
 
     public static ResourceLocation id(String path) {
