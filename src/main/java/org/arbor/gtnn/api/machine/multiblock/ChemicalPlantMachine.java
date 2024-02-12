@@ -21,7 +21,6 @@ import net.minecraft.MethodsReturnNonnullByDefault;
 import org.arbor.gtnn.api.block.MachineCasingType;
 import org.arbor.gtnn.api.block.PipeType;
 import org.arbor.gtnn.api.block.PlantCasingType;
-import org.arbor.gtnn.api.machine.feature.IChemicalPlantProvider;
 import org.arbor.gtnn.api.machine.feature.IGTPPMachine;
 import org.arbor.gtnn.api.recipe.PlantCasingCondition;
 
@@ -32,8 +31,8 @@ import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine implements IChemicalPlantProvider, IGTPPMachine {
-    private static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(ChemicalPlant.class, WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
+public class ChemicalPlantMachine extends CoilWorkableElectricMultiblockMachine implements IGTPPMachine {
+    private static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(ChemicalPlantMachine.class, WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
 
     @Getter
     @Persisted
@@ -44,11 +43,11 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
     private PipeType pipeType;
     private PlantCasingType plantCasingType;
 
-    public ChemicalPlant(IMachineBlockEntity holder) {
+    public ChemicalPlantMachine(IMachineBlockEntity holder) {
         super(holder);
     }
 
-        //////////////////////////////////////
+    //////////////////////////////////////
     //***    Multiblock LifeCycle    ***//
     //////////////////////////////////////
 
@@ -108,33 +107,33 @@ public class ChemicalPlant extends CoilWorkableElectricMultiblockMachine impleme
 
     @Nullable
     public static GTRecipe chemicalPlantRecipe(MetaMachine machine, @Nonnull GTRecipe recipe) {
-        if (machine instanceof ChemicalPlant chemicalPlant) {
-            if (RecipeHelper.getRecipeEUtTier(recipe) > chemicalPlant.getMachineCasingTier() + 1) {
+        if (machine instanceof ChemicalPlantMachine chemicalPlantMachine) {
+            if (RecipeHelper.getRecipeEUtTier(recipe) > chemicalPlantMachine.getMachineCasingTier() + 1) {
                 return null;
             }
             if (recipe.conditions.get(0) instanceof PlantCasingCondition plantCasingCondition) {
-                if (plantCasingCondition.getPlantCasing().getTier() > chemicalPlant.getPlantCasingTier()) {
+                if (plantCasingCondition.getPlantCasing().getTier() > chemicalPlantMachine.getPlantCasingTier()) {
                     return null;
                 }
             }
 
-            var maxParallel = 1 + 2 * chemicalPlant.getPipeTier();
-            var parallelLimit = Math.min(maxParallel, (int) (chemicalPlant.getMaxVoltage()));
+            var maxParallel = 1 + 2 * chemicalPlantMachine.getPipeTier();
+            var parallelLimit = Math.min(maxParallel, (int) (chemicalPlantMachine.getMaxVoltage()));
             var result = GTRecipeModifiers.accurateParallel(machine, recipe, parallelLimit, false);
             recipe = result.getA() == recipe ? result.getA().copy() : result.getA();
-            int parallelValue = result.getB();
+            var parallelValue = result.getB();
             recipe.duration = Math.max(1, 256 * parallelValue / maxParallel);
             recipe.tickInputs.put(EURecipeCapability.CAP, List.of(new Content((long) parallelValue, 1.0f, 0.0f, null, null)));
 
             GTRecipe finalRecipe = recipe;
             return RecipeHelper.applyOverclock(new OverclockingLogic((recipe1, recipeEUt, maxVoltage, duration, amountOC) -> {
-                var pair = OverclockingLogic.NON_PERFECT_OVERCLOCK.getLogic().runOverclockingLogic(finalRecipe, recipeEUt, maxVoltage, duration, amountOC);
-                if (chemicalPlant.getCoilTier() > 0) {
-                    var eu = pair.firstLong() * (1 - chemicalPlant.getCoilTier() * 0.5);
-                    pair.first((long) Math.max(1, eu));
+                var runOverclockingLogic = OverclockingLogic.NON_PERFECT_OVERCLOCK.getLogic().runOverclockingLogic(finalRecipe, recipeEUt, maxVoltage, duration, amountOC);
+                if (chemicalPlantMachine.getCoilTier() > 0) {
+                    var eu = runOverclockingLogic.firstLong() * (1 - chemicalPlantMachine.getCoilTier() * 0.5);
+                    runOverclockingLogic.first((long) Math.max(1, eu));
                 }
-                return pair;
-            }), recipe, chemicalPlant.getMaxVoltage());
+                return runOverclockingLogic;
+            }), recipe, chemicalPlantMachine.getMaxVoltage());
         }
         throw new RuntimeException("Machine is not a ChemicalPlant");
     }

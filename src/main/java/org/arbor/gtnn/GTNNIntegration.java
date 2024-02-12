@@ -1,21 +1,27 @@
 package org.arbor.gtnn;
 
 import com.lowdragmc.lowdraglib.LDLib;
+import net.minecraftforge.fml.loading.FMLLoader;
 
 public class GTNNIntegration {
     public static boolean isAdAstraLoaded() {
-        return LDLib.isModLoaded("ad_astra");
+        return isLoaded("ad_astra");
     }
     public static boolean isTwilightForestLoaded() {
-        return LDLib.isModLoaded("twilightforest");
+        return isLoaded("twilightforest");
     }
     public static boolean isBotaniaLoaded() {
-        return LDLib.isModLoaded("botania");
+        return isLoaded("botania");
     }
     public static boolean isForbiddenArcanusLoaded() {
-        return LDLib.isModLoaded("forbidden_arcanus");
+        return isLoaded("forbidden_arcanus");
     }
     public static boolean isCreateLoaded() {
-        return LDLib.isModLoaded("create");
+        return isLoaded("create");
     }
+
+    private static boolean isLoaded(String mod) {
+        return LDLib.isModLoaded(mod) || !FMLLoader.isProduction();
+    }
+
 }

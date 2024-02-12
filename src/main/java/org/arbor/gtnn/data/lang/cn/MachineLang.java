@@ -4,10 +4,13 @@ import org.arbor.gtnn.api.registry.CNLangProvider;
 
 public class MachineLang {
     public static void init(CNLangProvider provider) {
+        provider.add("block.gtnn.neutron_sensor", "中子传感器");
         provider.add("block.gtnn.chemical_plant", "埃克森美孚化工厂");
         provider.add("block.gtnn.neutron_activator", "中子活化器");
-        provider.add("block.gtnn.neutron_sensor", "中子传感器");
-        provider.add("gtnn.chemical_plant", "埃克森美孚化工厂");
+        provider.add("block.gtnn.naquadah_reactor", "硅岩发电机");
+        provider.add("gtceu.chemical_plant", "化工厂");
+        provider.add("gtceu.neutron_activator", "中子活化");
+        provider.add("gtceu.naquadah_reactor", "硅岩发电");
         provider.add("gtnn.recipe.condition.plant_casing.tooltip", "外壳等级: %s (%s)");
         provider.add("gtnn.multiblock.pattern.error.plant_casings", "所有外壳必须相同");
         provider.add("gtnn.multiblock.pattern.error.pipe", "所有管道必须相同");
@@ -24,7 +27,6 @@ public class MachineLang {
         provider.add("gtnn.machine.neutron_accelerator.tooltip2", "§6最大EU输入: %s");
         provider.add("gtnn.machine.neutron_accelerator.tooltip3", "§6最大EU消耗: %s");
         provider.add("gtnn.machine.neutron_accelerator.tooltip4", "§b每点EU都会转化为§e10~20-eV§b中子动能.");
-        provider.add("gtnn.neutron_activator", "中子活化器");
         provider.add("gtnn.multiblock.neutron_activator.tooltip1", "§o§7超光速运动!");
         provider.add("gtnn.multiblock.neutron_activator.tooltip2", "§6额外的高速管道方块提供配方时间减免，同时降低中子加速器的效率");
         provider.add("gtnn.multiblock.neutron_activator.tooltip3", "§6没有中子加速器运行时，中子动能每秒降低§e72KeV§6中子动能");
@@ -40,5 +42,7 @@ public class MachineLang {
         provider.add("gtnn.universal.desc.neutron_kinetic_energy.max", "最大中子动能\n(%s)");
         provider.add("gui.gtnn.neutron_sensor.invert.enabled", "输出：反转\n\n切换以反转红石逻辑\n默认情况下，中子动能介于所设定的最小值和最大值之间时传感器将发出红石信号，小于最小值时则停止发出红石信号");
         provider.add("gui.gtnn.neutron_sensor.invert.disabled", "输出：正常\n\n切换以反转红石逻辑\n默认情况下，中子动能介于所设定的最小值和最大值之间时传感器将发出红石信号，小于最小值时则停止发出红石信号");
+        provider.add("gtnn.machine.naquadah_reactor.tooltip", "效率: %s%%");
+        provider.add("gtnn.machine.rocket_engine.tooltip", "效率: %s%%");
     }
 }

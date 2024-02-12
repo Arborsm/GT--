@@ -11,8 +11,9 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static org.arbor.gtnn.data.GTNNMaterials.*;
-import static org.arbor.gtnn.data.GTNNRecipesTypes.CHEMICAL_PLANT_RECIPES;
-import static org.arbor.gtnn.data.GTNNRecipesTypes.DRYER_RECIPES;
+import static org.arbor.gtnn.data.GTNNRecipes.dur;
+import static org.arbor.gtnn.data.GTNNRecipes.setNA;
+import static org.arbor.gtnn.data.GTNNRecipesTypes.*;
 
 public class NaquadahLine {
     public static void init(Consumer<FinishedRecipe> consumer) {
@@ -233,7 +234,7 @@ public class NaquadahLine {
                 .duration(360)
                 .save(consumer);
 
-        //  Acidic Naquadria Caesiumfluoride -> Naquadria Sulfate + Caesium + Fluorine
+        /*  Acidic Naquadria Caesiumfluoride -> Naquadria Sulfate + Caesium + Fluorine
         ELECTROLYZER_RECIPES.recipeBuilder("acidic_naquadria_caesiumfluoride")
                 .inputFluids(AcidicNaquadriaCaesiumfluoride.getFluid(1000))
                 .outputItems(dust, NaquadriaSulfate)
@@ -241,7 +242,7 @@ public class NaquadahLine {
                 .outputFluids(Fluorine.getFluid(3000))
                 .EUt(VA[LuV])
                 .duration(120)
-                .save(consumer);
+                .save(consumer); */
 
         //  Acidic Naquadria Solution Cycle
         // todo BURNER_REACTOR_RECIPES
@@ -252,6 +253,51 @@ public class NaquadahLine {
                 .EUt(VA[ZPM])
                 .duration(1000)
                 .blastFurnaceTemp(1280)
+                .save(consumer);
+
+        NEUTRON_ACTIVATOR_RECIPES.recipeBuilder("naquadria")
+                .inputFluids(AcidicNaquadriaCaesiumfluoride.getFluid(9000))
+                .outputItems(dust, NaquadriaSulfate, 3)
+                .outputItems(dust, Caesium, 3)
+                .outputFluids(Fluorine.getFluid(18000))
+                .duration(dur(5))
+                .addCondition(setNA(1100, 1050))
+                .save(consumer);
+
+        NEUTRON_ACTIVATOR_RECIPES.recipeBuilder("enriched_naquadah")
+                .inputFluids(AcidicEnrichedNaquadahSolution.getFluid(16000))
+                .outputItems(dust, EnrichedNaquadahSulfate, 15)
+                .outputFluids(ImpureNaquadriaSolution.getFluid(1000))
+                .duration(dur(6))
+                .addCondition(setNA(480, 460))
+                .save(consumer);
+
+        NEUTRON_ACTIVATOR_RECIPES.recipeBuilder("naquadah")
+                .inputItems(dust, NaquadahOxideMixture, 4)
+                .inputFluids(FluoroantimonicAcid.getFluid(6000))
+                .outputItems(dust, TitaniumTrifluoride, 2)
+                .outputItems(dust, Naquadah, 2)
+                .chancedOutput(dust, Gallium, 5000, 0)
+                .duration(dur(5))
+                .addCondition(setNA(230, 220))
+                .save(consumer);
+
+        CHEMICAL_RECIPES.recipeBuilder(EnrichedNaquadahOxideMixture.getName())
+                .inputItems(dust, EnrichedNaquadahOxideMixture, 2)
+                .inputFluids(FluoroantimonicAcid.getFluid(3000))
+                .outputItems(dust, TitaniumTrifluoride, 1)
+                .outputFluids(ImpureEnrichedNaquadahSolution.getFluid(2000))
+                .EUt(VA[EV])
+                .duration(dur(10))
+                .save(consumer);
+
+        CHEMICAL_RECIPES.recipeBuilder(NaquadriaOxideMixture.getName())
+                .inputItems(dust, NaquadriaOxideMixture, 2)
+                .inputFluids(FluoroantimonicAcid.getFluid(3000))
+                .outputItems(dust, TitaniumTrifluoride, 1)
+                .outputFluids(ImpureNaquadriaSolution.getFluid(2000))
+                .EUt(VA[IV])
+                .duration(dur(20))
                 .save(consumer);
     }
 

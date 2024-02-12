@@ -16,18 +16,18 @@ public class NaquadahMaterials {
                 .dust()
                 .color(0x4c4c4c).iconSet(ROUGH)
                 .buildAndRegister()
-                .setFormula("??NqTiGaAd??");
+                .setFormula("??NqTiGa??");
         EnrichedNaquadahOxideMixture = Builder("enriched_naquadah_oxide_mixture")
                 .dust()
                 .color(0x826868).iconSet(ROUGH)
                 .buildAndRegister()
-                .setFormula("??KeNq+??");
+                .setFormula("??Nq+??");
         NaquadriaOxideMixture = Builder("naquadria_oxide_mixture")
                 .dust()
                 .color(0x4d4d55).secondaryColor(0xe7e7ff)
                 .iconSet(RADIOACTIVE)
                 .buildAndRegister()
-                .setFormula("??*Nq*BaIn??");
+                .setFormula("??*Nq*In??");
         HexafluorideEnrichedNaquadahSolution = Builder("hexafluoride_enriched_naquadah_solution")
                 .fluid()
                 .color(0x868D7F)

@@ -9,7 +9,7 @@ import lombok.Getter;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.GsonHelper;
-import org.arbor.gtnn.api.machine.multiblock.NeutronActivator;
+import org.arbor.gtnn.api.machine.multiblock.NeutronActivatorMachine;
 import org.jetbrains.annotations.NotNull;
 
 @Getter
@@ -39,7 +39,7 @@ public class NeutronActivatorCondition extends RecipeCondition {
 
     @Override
     public boolean test(@NotNull GTRecipe gtRecipe, @NotNull RecipeLogic recipeLogic) {
-        return NeutronActivator.checkNeutronActivatorCondition((MetaMachine) recipeLogic.machine, gtRecipe);
+        return NeutronActivatorMachine.checkNeutronActivatorCondition((MetaMachine) recipeLogic.machine, gtRecipe);
     }
 
     @Override

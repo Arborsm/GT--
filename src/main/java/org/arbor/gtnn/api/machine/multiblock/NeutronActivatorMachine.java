@@ -54,8 +54,8 @@ import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class NeutronActivator extends WorkableMultiblockMachine implements IFancyUIMachine, IDisplayUIMachine, IExplosionMachine {
-    public static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(NeutronActivator.class, WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
+public class NeutronActivatorMachine extends WorkableMultiblockMachine implements IFancyUIMachine, IDisplayUIMachine, IExplosionMachine {
+    public static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(NeutronActivatorMachine.class, WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
     @Getter
     @Persisted
     private int height = 0;
@@ -74,7 +74,8 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
     private static final int M = 1000000;
     private static final int K = 1000;
     private final static int MAX_ENERGY = 1200 * M;
-    public NeutronActivator(IMachineBlockEntity holder, Object... args) {
+
+    public NeutronActivatorMachine(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
         this.neutronEnergySubs = new ConditionalSubscriptionHandler(this, this::neutronEnergyUpdate, this::isFormed);
         this.moderateSubs = new ConditionalSubscriptionHandler(this, this::moderateUpdate, () -> eV > 0);
@@ -323,7 +324,7 @@ public class NeutronActivator extends WorkableMultiblockMachine implements IFanc
     }
 
     public static boolean checkNeutronActivatorCondition(MetaMachine machine, GTRecipe recipe){
-        if (machine instanceof NeutronActivator ) {
+        if (machine instanceof NeutronActivatorMachine) {
             return recipe.conditions.get(0) instanceof NeutronActivatorCondition;
         }
         return false;

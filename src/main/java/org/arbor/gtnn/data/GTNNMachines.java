@@ -3,6 +3,8 @@ package org.arbor.gtnn.data;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.block.ICoilType;
+import com.gregtechceu.gtceu.api.capability.recipe.FluidRecipeCapability;
+import com.gregtechceu.gtceu.api.capability.recipe.ItemRecipeCapability;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
@@ -11,9 +13,11 @@ import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
+import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder;
+import com.gregtechceu.gtceu.client.renderer.machine.SimpleGeneratorMachineRenderer;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
@@ -24,9 +28,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.arbor.gtnn.GTNN;
+import org.arbor.gtnn.api.machine.GTNNGeneratorMachine;
 import org.arbor.gtnn.api.machine.multiblock.APartAbility;
-import org.arbor.gtnn.api.machine.multiblock.ChemicalPlant;
-import org.arbor.gtnn.api.machine.multiblock.NeutronActivator;
+import org.arbor.gtnn.api.machine.multiblock.ChemicalPlantMachine;
+import org.arbor.gtnn.api.machine.multiblock.NeutronActivatorMachine;
 import org.arbor.gtnn.api.machine.multiblock.part.HighSpeedPipeBlock;
 import org.arbor.gtnn.api.machine.multiblock.part.NeutronAcceleratorMachine;
 import org.arbor.gtnn.api.machine.multiblock.part.NeutronSensorMachine;
@@ -52,6 +57,7 @@ import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 public class GTNNMachines {
     public static final int[] LV2UV = GTValues.tiersBetween(1, 8);
     public static final int[] MV2ZPM = GTValues.tiersBetween(2, 7);
+    public static final int[] EV2UV = GTValues.tiersBetween(4, 8);
     static {
         REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.MAIN_TAB);
     }
@@ -104,14 +110,21 @@ public class GTNNMachines {
     //////////////////////////////////////
     public static final MachineDefinition[] DRYER =
             registerSimpleMachines("dryer", GTNNRecipesTypes.DRYER_RECIPES, GTMachines.defaultTankSizeFunction, MV2ZPM);
-    public static final MultiblockMachineDefinition CHEMICAL_PLANT = REGISTRATE.multiblock("chemical_plant", ChemicalPlant::new)
+
+    public static final MachineDefinition[] NAQUADAH_REACTOR = registerGTNNGeneratorMachines(
+            "naquadah_reactor", GTNNRecipesTypes.NAQUADAH_REACTOR_RECIPES, GTNNGeneratorMachine::nonParallel, GTMachines.genericGeneratorTankSizeFunction, EV2UV);
+
+    public static final MachineDefinition[] Rocket_Engine = registerGTNNGeneratorMachines(
+            "rocket_engine", GTNNRecipesTypes.ROCKET_ENGINE_RECIPES, GTNNGeneratorMachine::parallel, GTMachines.genericGeneratorTankSizeFunction, EV, IV, LuV);
+
+    public static final MultiblockMachineDefinition CHEMICAL_PLANT = REGISTRATE.multiblock("chemical_plant", ChemicalPlantMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip1"))
             .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip2"))
             .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip3"))
             .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip4"))
             .recipeTypes(GTNNRecipesTypes.CHEMICAL_PLANT_RECIPES)
-            .recipeModifier(ChemicalPlant::chemicalPlantRecipe)
+            .recipeModifier(ChemicalPlantMachine::chemicalPlantRecipe)
             .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("VVVVVVV", "A#####A", "A#####A", "A#####A", "A#####A", "A#####A", "AAAAAAA")
@@ -180,15 +193,15 @@ public class GTNNMachines {
             .renderer(() -> new GTPPMachineRenderer(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
                     GTNN.id("block/multiblock/chemical_plant"), false))
             .additionalDisplay((controller, components) -> {
-                if (controller instanceof ChemicalPlant chemicalPlant && controller.isFormed()) {
-                    components.add(Component.translatable("gtnn.multiblock.chemical_plant.heating_coil", chemicalPlant.getCoilTier() * 50));
-                    components.add(Component.translatable("gtnn.multiblock.chemical_plant.parallel_level", chemicalPlant.getPipeTier() * 2));
-                    components.add(Component.translatable("gtnn.multiblock.chemical_plant.tier", VNF[chemicalPlant.getPlantCasingTier()]));
+                if (controller instanceof ChemicalPlantMachine chemicalPlantMachine && controller.isFormed()) {
+                    components.add(Component.translatable("gtnn.multiblock.chemical_plant.heating_coil", chemicalPlantMachine.getCoilTier() * 50));
+                    components.add(Component.translatable("gtnn.multiblock.chemical_plant.parallel_level", chemicalPlantMachine.getPipeTier() * 2));
+                    components.add(Component.translatable("gtnn.multiblock.chemical_plant.tier", VNF[chemicalPlantMachine.getPlantCasingTier()]));
                 }
             })
             .register();
 
-     public static final MultiblockMachineDefinition NEUTRON_ACTIVATOR = REGISTRATE.multiblock("neutron_activator", NeutronActivator::new)
+    public static final MultiblockMachineDefinition NEUTRON_ACTIVATOR = REGISTRATE.multiblock("neutron_activator", NeutronActivatorMachine::new)
              .rotationState(RotationState.NON_Y_AXIS)
              .tooltips(Component.translatable("gtnn.multiblock.neutron_activator.tooltip1"))
              .tooltips(Component.translatable("gtnn.multiblock.neutron_activator.tooltip2"))
@@ -248,6 +261,27 @@ public class GTNNMachines {
                 .workableTieredHullRenderer(GTCEu.id("block/machines/" + name))
                 .tooltips(GTMachines.explosion())
                 .tooltips(GTMachines.workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64, recipeType, tankScalingFunction.apply(tier), true))
+                .compassNode(name)
+                .register(), tiers);
+    }
+
+    public static MachineDefinition[] registerGTNNGeneratorMachines(String name,
+                                                                    GTRecipeType recipeType,
+                                                                    BiFunction<MetaMachine, GTRecipe, GTRecipe> recipeModifier,
+                                                                    Int2LongFunction tankScalingFunction,
+                                                                    int... tiers) {
+        return registerTieredMachines(name, (holder, tier) -> new GTNNGeneratorMachine(holder, tier, name, tankScalingFunction), (tier, builder) -> builder
+                .langValue("%s %s Generator %s".formatted(VLVH[tier], toEnglishName(name), LVT[tier - 3]))
+                .editableUI(SimpleGeneratorMachine.EDITABLE_UI_CREATOR.apply(GTNN.id(name), recipeType))
+                .rotationState(RotationState.ALL)
+                .recipeType(recipeType)
+                .recipeModifier(recipeModifier, true)
+                .addOutputLimit(ItemRecipeCapability.CAP, 0)
+                .addOutputLimit(FluidRecipeCapability.CAP, 0)
+                .renderer(() -> new SimpleGeneratorMachineRenderer(tier, GTNN.id("block/generators/" + name)))
+                .tooltips(Component.translatable("gtnn.machine." + name + ".tooltip", GTNNGeneratorMachine.getEfficiency(tier, name)))
+                .tooltips(GTMachines.explosion())
+                .tooltips(GTMachines.workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64, recipeType, tankScalingFunction.apply(tier), false))
                 .compassNode(name)
                 .register(), tiers);
     }

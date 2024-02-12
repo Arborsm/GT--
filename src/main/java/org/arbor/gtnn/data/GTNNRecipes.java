@@ -6,6 +6,7 @@ import org.arbor.gtnn.api.recipe.PlantCasingCondition;
 import org.arbor.gtnn.block.PlantCasingBlock;
 import org.arbor.gtnn.config.ConfigHandler;
 import org.arbor.gtnn.data.recipes.NaquadahLine;
+import org.arbor.gtnn.data.recipes.NaquadahReactor;
 import org.arbor.gtnn.data.recipes.PlatinumLine;
 import org.arbor.gtnn.data.recipes.RocketFuel;
 
@@ -14,6 +15,7 @@ import java.util.function.Consumer;
 @SuppressWarnings("unused")
 public class GTNNRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
+        NaquadahReactor.init(provider);
         RocketFuel.init(provider);
         if (ConfigHandler.INSTANCE.Server.enableHarderPlatinumLine) PlatinumLine.init(provider);
         if (ConfigHandler.INSTANCE.Server.enableHarderNaquadahLine) NaquadahLine.init(provider);

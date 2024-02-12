@@ -16,10 +16,12 @@ import static org.arbor.gtnn.data.GTNNMaterials.*;
 import static org.arbor.gtnn.data.GTNNRecipes.dur;
 import static org.arbor.gtnn.data.GTNNRecipes.setPlantCasing;
 import static org.arbor.gtnn.data.GTNNRecipesTypes.CHEMICAL_PLANT_RECIPES;
+import static org.arbor.gtnn.data.GTNNRecipesTypes.ROCKET_ENGINE_RECIPES;
 
 public class RocketFuel {
 
     public static void init(Consumer<FinishedRecipe> provider) {
+        rocketEngine(provider);
         MIXER_RECIPES.recipeBuilder("black_matter")
                 .inputItems(ChemicalHelper.get(dust, Lead, 3))
                 .inputItems(ChemicalHelper.get(dust, Manganese, 5))
@@ -163,5 +165,28 @@ public class RocketFuel {
                 .outputFluids(MethylhydrazineNitrateRocketFuel.getFluid(2000))
                 .circuitMeta(3)
                 .duration(dur(45)).EUt(VA[HV]).save(provider);
+    }
+
+    private static void rocketEngine(Consumer<FinishedRecipe> provider) {
+        ROCKET_ENGINE_RECIPES.recipeBuilder(RP1RocketFuel.getName())
+                .inputFluids(RP1RocketFuel.getFluid(4))
+                .EUt(-V[EV])
+                .duration(3)
+                .save(provider);
+        ROCKET_ENGINE_RECIPES.recipeBuilder(DenseHydrazineMixedFuel.getName())
+                .inputFluids(DenseHydrazineMixedFuel.getFluid(2))
+                .EUt(-V[EV])
+                .duration(3)
+                .save(provider);
+        ROCKET_ENGINE_RECIPES.recipeBuilder(MethylhydrazineNitrateRocketFuel.getName())
+                .inputFluids(MethylhydrazineNitrateRocketFuel.getFluid(1))
+                .EUt(-V[EV])
+                .duration(3)
+                .save(provider);
+        ROCKET_ENGINE_RECIPES.recipeBuilder(UDMHRocketFuel.getName())
+                .inputFluids(UDMHRocketFuel.getFluid(1))
+                .EUt(-V[EV])
+                .duration(6)
+                .save(provider);
     }
 }

@@ -1,6 +1,9 @@
 package org.arbor.gtnn.data.lang.cn;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import org.arbor.gtnn.api.registry.CNLangProvider;
+
+import static org.arbor.gtnn.data.GTNNMaterials.*;
 
 public class MaterialLang {
     public static void init(CNLangProvider provider) {
@@ -11,66 +14,98 @@ public class MaterialLang {
         provider.add("tagprefix.moon_stone", "月岩%s矿石");
         provider.add("tagprefix.soul_soil", "含%s灵魂土");
         provider.add("tagprefix.venus_stone", "锃金岩%s矿石");
-        provider.add("material.gtceu.andesite_alloy", "安山合金");
-        provider.add("material.gtceu.space_neutronium", "中子");
-        provider.add("material.gtceu.infinity", "无尽");
-        provider.add("material.gtceu.infinity_catalyst", "无尽催化剂");
-        provider.add("material.gtceu.desh", "戴斯");
-        provider.add("material.gtceu.ostrum", "紫金");
-        provider.add("material.gtceu.calorite", "耐热金属");
-        provider.add("material.gtceu.rp_1_mixed_fuel", "RP-1混合燃料");
-        provider.add("material.gtceu.rp_1_rocket_fuel", "RP-1火箭燃料");
-        provider.add("material.gtceu.kerosene", "煤油");
-        provider.add("material.gtceu.dense_hydrazine_mixed_fuel", "浓缩肼混合燃料");
-        provider.add("material.gtceu.hydrazine", "肼");
-        provider.add("material.gtceu.hydrogen_peroxide", "过氧化氢");
-        provider.add("material.gtceu.ethyl_anthra_quinone", "乙基蒽醌");
-        provider.add("material.gtceu.ethyl_anthra_hydro_quinone", "乙基蒽醌醇");
-        provider.add("material.gtceu.anthracene", "蒽");
-        provider.add("material.gtceu.methylhydrazine_nitrate_rocket_fuel", "CN3H7O3火箭燃料");
-        provider.add("material.gtceu.methyl_hydrazine", "甲基肼");
-        provider.add("material.gtceu.udmh_rocket_fuel", "H8N4C2O4火箭燃料");
-        provider.add("material.gtceu.udmh", "偏二甲肼");
-        provider.add("material.gtceu.orange_metal_catalyst", "橙色金属催化剂");
-        provider.add("material.gtceu.phthalic_anhydride", "邻苯二甲酸酐");
-        provider.add("material.gtceu.vanadium_pentoxide", "五氧化二钒");
-        provider.add("material.gtceu.black_matter", "黑物质");
-        provider.add("material.gtceu.cerrobase_140", "铋铅合金140");
-        provider.add("material.gtceu.mana_steel", "魔力钢");
-        provider.add("material.gtceu.terra_steel", "泰拉钢");
-        provider.add("material.gtceu.elementium", "源质钢");
-        provider.add("material.gtceu.shadow_steel", "暗影钢");
-        provider.add("material.gtceu.refined_radiance", "光辉石");
-        provider.add("material.gtceu.platinum_salt", "铂盐");
-        provider.add("material.gtceu.platinum_slag", "铂渣");
-        provider.add("material.gtceu.refined_platinum_salt", "精炼铂盐");
-        provider.add("material.gtceu.palladium_salt", "钯盐");
-        provider.add("material.gtceu.rhodium_filter_cake", "铑滤饼");
-        provider.add("material.gtceu.rhodium_nitrate", "硝酸铑");
-        provider.add("material.gtceu.roughly_rhodium_metal", "粗制铑金属");
-        provider.add("material.gtceu.palladium_metal", "钯金属");
-        provider.add("material.gtceu.sodium_rutheniate", "钌酸钠");
-        provider.add("material.gtceu.iridium_dioxide", "二氧化铱");
-        provider.add("material.gtceu.metal_sludge", "金属泥渣");
-        provider.add("material.gtceu.concentrated_platinum", "浓缩铂");
-        provider.add("material.gtceu.rhodium_sulfate_gas", "硫酸铑");
-        provider.add("material.gtceu.palladium_rich_ammonia", "富钯氨");
-        provider.add("material.gtceu.rhodium_salt", "铑盐");
-        provider.add("material.gtceu.ruthenium_tetroxide_hot", "热四氧化钌");
-        provider.add("material.gtceu.ruthenium_tetroxide_lq", "四氧化钌");
-        provider.add("material.gtceu.reprecipitated_rhodium", "再沉淀铑");
-        provider.add("material.gtceu.acidic_iridium", "酸性铱");
-        provider.add("material.gtceu.platinum_metal", "铂金属");
-        provider.add("material.gtceu.sodium_pyrosulfate", "焦硫酸钠");
-        provider.add("material.gtceu.sodium_formate", "甲酸钠");
-        provider.add("material.gtceu.formic_acid", "甲酸");
-        provider.add("material.gtceu.sodium_sulfate", "硫酸钠");
-        provider.add("material.gtceu.sodium_nitrate", "硝酸钠");
-        provider.add("material.gtceu.zinc_sulfate", "硫酸锌");
-        provider.add("material.gtceu.kaolinite", "高岭石");
-        provider.add("material.gtceu.dolomite", "白云石");
-        provider.add("material.gtceu.wollastonite", "硅灰石");
-        provider.add("material.gtceu.arcane_crystal", "神秘水晶");
+        materials(provider);
+        jeiOreveins(provider);
+    }
+
+    private static void materials(CNLangProvider provider) {
+        provider.add(getMaterialName(AndesiteAlloy), "安山合金");
+        provider.add(getMaterialName(SpaceNeutronium), "中子");
+        provider.add(getMaterialName(Infinity), "无尽");
+        provider.add(getMaterialName(InfinityCatalyst), "无尽催化剂");
+        provider.add(getMaterialName(Desh), "戴斯");
+        provider.add(getMaterialName(Ostrum), "紫金");
+        provider.add(getMaterialName(Calorite), "耐热金属");
+        provider.add(getMaterialName(RP1), "RP-1混合燃料");
+        provider.add(getMaterialName(RP1RocketFuel), "RP-1火箭燃料");
+        provider.add(getMaterialName(Kerosene), "煤油");
+        provider.add(getMaterialName(DenseHydrazineMixedFuel), "浓缩肼混合燃料");
+        provider.add(getMaterialName(Hydrazine), "肼");
+        provider.add(getMaterialName(HydrogenPeroxide), "过氧化氢");
+        provider.add(getMaterialName(EthylAnthraQuinone), "乙基蒽醌");
+        provider.add(getMaterialName(EthylAnthraHydroQuinone), "乙基蒽醌醇");
+        provider.add(getMaterialName(Anthracene), "蒽");
+        provider.add(getMaterialName(MethylhydrazineNitrateRocketFuel), "CN3H7O3火箭燃料");
+        provider.add(getMaterialName(MethylHydrazine), "甲基肼");
+        provider.add(getMaterialName(UDMHRocketFuel), "H8N4C2O4火箭燃料");
+        provider.add(getMaterialName(UDMH), "偏二甲肼");
+        provider.add(getMaterialName(OrangeMetalCatalyst), "橙色金属催化剂");
+        provider.add(getMaterialName(PhthalicAnhydride), "邻苯二甲酸酐");
+        provider.add(getMaterialName(VanadiumPentoxide), "五氧化二钒");
+        provider.add(getMaterialName(BlackMatter), "黑物质");
+        provider.add(getMaterialName(Cerrobase140), "铋铅合金140");
+        provider.add(getMaterialName(ManaSteel), "魔力钢");
+        provider.add(getMaterialName(TerraSteel), "泰拉钢");
+        provider.add(getMaterialName(Elementium), "源质钢");
+        provider.add(getMaterialName(ShadowSteel), "暗影钢");
+        provider.add(getMaterialName(RefinedRadiance), "光辉石");
+        provider.add(getMaterialName(PlatinumSalt), "铂盐");
+        provider.add(getMaterialName(PlatinumSlag), "铂渣");
+        provider.add(getMaterialName(RefinedPlatinumSalt), "精炼铂盐");
+        provider.add(getMaterialName(PalladiumSalt), "钯盐");
+        provider.add(getMaterialName(RhodiumFilterCake), "铑滤饼");
+        provider.add(getMaterialName(RhodiumNitrate), "硝酸铑");
+        provider.add(getMaterialName(RoughlyRhodiumMetal), "粗制铑金属");
+        provider.add(getMaterialName(PalladiumMetal), "钯金属");
+        provider.add(getMaterialName(SodiumRutheniate), "钌酸钠");
+        provider.add(getMaterialName(IridiumDioxide), "二氧化铱");
+        provider.add(getMaterialName(MetalSludge), "金属泥渣");
+        provider.add(getMaterialName(ConcentratedPlatinum), "浓缩铂");
+        provider.add(getMaterialName(RhodiumSulfateGas), "硫酸铑");
+        provider.add(getMaterialName(PalladiumRichAmmonia), "富钯氨");
+        provider.add(getMaterialName(RhodiumSalt), "铑盐");
+        provider.add(getMaterialName(RutheniumTetroxideHot), "热四氧化钌");
+        provider.add(getMaterialName(RutheniumTetroxideLQ), "四氧化钌");
+        provider.add(getMaterialName(ReprecipitatedRhodium), "再沉淀铑");
+        provider.add(getMaterialName(AcidicIridium), "酸性铱");
+        provider.add(getMaterialName(PlatinumMetal), "铂金属");
+        provider.add(getMaterialName(SodiumPyrosulfate), "焦硫酸钠");
+        provider.add(getMaterialName(SodiumFormate), "甲酸钠");
+        provider.add(getMaterialName(FormicAcid), "甲酸");
+        provider.add(getMaterialName(SodiumSulfate), "硫酸钠");
+        provider.add(getMaterialName(SodiumNitrate), "硝酸钠");
+        provider.add(getMaterialName(ZincSulfate), "硫酸锌");
+        provider.add(getMaterialName(Kaolinite), "高岭石");
+        provider.add(getMaterialName(Dolomite), "白云石");
+        provider.add(getMaterialName(Wollastonite), "硅灰石");
+        provider.add(getMaterialName(ArcaneCrystal), "神秘水晶");
+        provider.add(getMaterialName(NaquadahOxideMixture), "氧化硅岩混合物");
+        provider.add(getMaterialName(EnrichedNaquadahOxideMixture), "氧化富集硅岩混合物");
+        provider.add(getMaterialName(NaquadriaOxideMixture), "氧化超能硅岩混合物");
+        provider.add(getMaterialName(HexafluorideEnrichedNaquadahSolution), "六氟化富集硅岩溶液");
+        provider.add(getMaterialName(XenonHexafluoroEnrichedNaquadate), "六氟氙酸富集硅岩");
+        provider.add(getMaterialName(PalladiumOnCarbon), "钯碳催化剂");
+        provider.add(getMaterialName(GoldTrifluoride), "三氟化金");
+        provider.add(getMaterialName(EnrichedNaquadahResidueSolution), "富集硅岩残余物溶液");
+        provider.add(getMaterialName(XenoauricFluoroantimonicAcid), "氟锑酸二氙");
+        provider.add(getMaterialName(GoldChloride), "氯化金");
+        provider.add(getMaterialName(BromineTrifluoride), "三氟化溴");
+        provider.add(getMaterialName(HexafluorideNaquadriaSolution), "六氟化超能硅岩溶液");
+        provider.add(getMaterialName(RadonDifluoride), "二氟化氡");
+        provider.add(getMaterialName(RadonNaquadriaOctafluoride), "八氟超能硅岩酸氡");
+        provider.add(getMaterialName(NaquadriaResidueSolution), "超能硅岩残余物溶液");
+        provider.add(getMaterialName(CaesiumFluoride), "氟化铯");
+        provider.add(getMaterialName(XenonTrioxide), "三氧化氙");
+        provider.add(getMaterialName(CaesiumXenontrioxideFluoride), "二氟三氧氙酸铯");
+        provider.add(getMaterialName(NaquadriaCaesiumXenonnonfluoride), "九氟氙酸超能硅岩铯");
+        provider.add(getMaterialName(RadonTrioxide), "三氧化氡");
+        provider.add(getMaterialName(NaquadriaCaesiumfluoride), "二氟超能硅岩酸铯");
+        provider.add(getMaterialName(NitrosoniumOctafluoroxenate), "八氟氙酸亚硝酰");
+        provider.add(getMaterialName(NitrylFluoride), "硝酰氟");
+        provider.add(getMaterialName(AcidicNaquadriaCaesiumfluoride), "硫酸二氟超能硅岩酸铯");
+    }
+
+    private static void jeiOreveins(CNLangProvider provider) {
         provider.add("gtceu.jei.ore_vein.kaolinite_vein", "高岭石矿脉");
         provider.add("gtceu.jei.ore_vein.wollastonite_vein", "白云石矿脉");
         provider.add("gtceu.jei.ore_vein.galena_vein_tf", "方铅矿脉");
@@ -127,5 +162,9 @@ public class MaterialLang {
         provider.add("gtceu.jei.ore_vein.osmium_vein_ad", "锇矿脉");
         provider.add("gtceu.jei.ore_vein.neutronium_vein_ad", "中子素矿脉");
         provider.add("gtceu.jei.ore_vein.niobium_vein_ad", "铌矿脉");
+    }
+
+    private static String getMaterialName(Material material) {
+        return "material.gtceu." + material.getName();
     }
 }

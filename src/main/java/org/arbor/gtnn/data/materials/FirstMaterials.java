@@ -1,7 +1,9 @@
 package org.arbor.gtnn.data.materials;
 
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import org.arbor.gtnn.data.GTNNElement;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.SAND;
@@ -10,6 +12,8 @@ import static org.arbor.gtnn.data.GTNNMaterials.*;
 
 public class FirstMaterials {
     public static void init() {
+        GTMaterials.NaquadahEnriched.addFlags(MaterialFlags.GENERATE_BOLT_SCREW);
+        GTMaterials.NaquadahEnriched.addFlags(MaterialFlags.GENERATE_LONG_ROD);
         SpaceNeutronium = Builder("space_neutronium")
                 .ingot().fluid().ore().dust()
                 .color(0x11111b).iconSet(SHINY)
