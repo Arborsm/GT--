@@ -12,6 +12,8 @@ import org.arbor.gtnn.api.recipe.NeutronActivatorCondition;
 import org.arbor.gtnn.api.recipe.PlantCasingCondition;
 import org.arbor.gtnn.data.*;
 import org.arbor.gtnn.data.misc.adastra.AdAstraAddon;
+import org.arbor.gtnn.data.recipes.AdAstraRecipes;
+import org.arbor.gtnn.data.recipes.DefaultRecipes;
 
 import java.util.function.Consumer;
 
@@ -51,7 +53,8 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void removeRecipes(Consumer<ResourceLocation> consumer) {
-        IGTAddon.super.removeRecipes(consumer);
+        DefaultRecipes.Misc.removeRecipes(consumer);
+        if (GTNNIntegration.isAdAstraLoaded()) AdAstraRecipes.remove(consumer);
     }
 
     @Override

@@ -11,9 +11,9 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static org.arbor.gtnn.data.GTNNMaterials.*;
+import static org.arbor.gtnn.data.GTNNRecipeTypes.*;
 import static org.arbor.gtnn.data.GTNNRecipes.dur;
 import static org.arbor.gtnn.data.GTNNRecipes.setNA;
-import static org.arbor.gtnn.data.GTNNRecipesTypes.*;
 
 public class NaquadahLine {
     public static void init(Consumer<FinishedRecipe> consumer) {

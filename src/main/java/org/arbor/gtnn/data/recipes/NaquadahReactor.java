@@ -7,7 +7,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-import static org.arbor.gtnn.data.GTNNRecipesTypes.NAQUADAH_REACTOR_RECIPES;
+import static org.arbor.gtnn.data.GTNNRecipeTypes.NAQUADAH_REACTOR_RECIPES;
 
 public class NaquadahReactor {
     public static void init(Consumer<FinishedRecipe> consumer) {

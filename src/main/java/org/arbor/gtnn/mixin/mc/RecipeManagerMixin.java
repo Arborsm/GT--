@@ -27,9 +27,11 @@ public abstract class RecipeManagerMixin {
     @Inject(method = "apply*", at = @At(value = "TAIL"))
     private void gtceu$cloneVanillaRecipes(Map<ResourceLocation, JsonElement> map, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci) {
         for (RecipeType<?> recipeType : ForgeRegistries.RECIPE_TYPES) {
+            // GT recipes
             if (recipeType instanceof GTRecipeType) {
                 var recipes = this.recipes.get(recipeType);
                 if (recipes != null) {
+                    //replace gt recipes
                     recipes.values().forEach(OreReplace::init);
                 }
             }

@@ -11,6 +11,9 @@ public class MachineLang {
         provider.add("gtceu.chemical_plant", "化工厂");
         provider.add("gtceu.neutron_activator", "中子活化");
         provider.add("gtceu.naquadah_reactor", "硅岩发电");
+        provider.add("gtceu.dryer", "脱水");
+        provider.add("gtceu.rocket_engine", "火箭燃料发电");
+        provider.add("gtnn.precision_assembly.tooltip", "其他可用配方类型: 精密组装 (GT--)\n注意：在精密组装模式下无法并行");
         provider.add("gtnn.recipe.condition.plant_casing.tooltip", "外壳等级: %s (%s)");
         provider.add("gtnn.multiblock.pattern.error.plant_casings", "所有外壳必须相同");
         provider.add("gtnn.multiblock.pattern.error.pipe", "所有管道必须相同");

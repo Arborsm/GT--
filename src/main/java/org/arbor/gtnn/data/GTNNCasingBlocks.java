@@ -21,23 +21,25 @@ import java.util.function.BiFunction;
 
 import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 
-@SuppressWarnings("unused")
 public class GTNNCasingBlocks {
     static {
         REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.MAIN_TAB);
     }
-    public static final BlockEntry<Block> PROCESS_MACHINE_CASING = createCasingBlock("clean_machine_casing", GTNN.id("block/casings/solid/process_machine_casing"));
 
-    public static BlockEntry<Block> createCasingBlock(String name, ResourceLocation texture) {
-        return createCasingBlock(name, RendererBlock::new, texture, () -> Blocks.IRON_BLOCK);
-    }
+    public static final BlockEntry<Block> PROCESS_MACHINE_CASING = createCasingBlock(
+            "clean_machine_casing", "洁净机器方块", RendererBlock::new,
+            GTNN.id("block/casings/solid/process_machine_casing"), () -> Blocks.IRON_BLOCK);
 
-    public static BlockEntry<Block> createCasingBlock(String name, BiFunction<BlockBehaviour.Properties, IRenderer, ? extends RendererBlock> blockSupplier, ResourceLocation texture, NonNullSupplier<? extends Block> properties) {
+    @SuppressWarnings("all")
+    private static BlockEntry<Block> createCasingBlock(
+            String name, String displayName,
+            BiFunction<BlockBehaviour.Properties, IRenderer, ? extends RendererBlock> blockSupplier,
+            ResourceLocation texture, NonNullSupplier<? extends Block> properties) {
         return REGISTRATE.block(name, p -> (Block) blockSupplier.apply(p,
                         Platform.isClient() ? new TextureOverrideRenderer(new ResourceLocation("block/cube_all"),
                                 Map.of("all", texture)) : null))
                 .initialProperties(properties)
-                .lang("洁净机器方块")
+                .lang(displayName)
                 .blockstate(NonNullBiConsumer.noop())
                 .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
                 .item(RendererBlockItem::new)

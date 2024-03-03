@@ -116,6 +116,11 @@ public class GTNNMaterials {
         material.getProperty(PropertyKey.FLUID).getStorage().enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
     }
 
+    public static void addGas(Material material) {
+        material.setProperty(PropertyKey.FLUID, new FluidProperty());
+        material.getProperty(PropertyKey.FLUID).getStorage().enqueueRegistration(FluidStorageKeys.GAS, new FluidBuilder());
+    }
+
     public static void addOre(Material material){
         material.setProperty(PropertyKey.ORE, new OreProperty());
     }

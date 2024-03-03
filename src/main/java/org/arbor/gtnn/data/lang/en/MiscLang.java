@@ -16,5 +16,6 @@ public class MiscLang {
         provider.add("item.gtnn.chip_t2.tooltip", "§7§oUsed for making T2 rocket");
         provider.add("item.gtnn.chip_t3.tooltip", "§7§oUsed for making T3 rocket");
         provider.add("item.gtnn.chip_t4.tooltip", "§7§oUsed for making T4 rocket");
+        provider.add("gtnn.test", "§bTEST!!!");
     }
 }

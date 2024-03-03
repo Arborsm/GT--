@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.data.worldgen.generator.indicators.SurfaceIndic
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTOres;
 import earth.terrarium.adastra.common.registry.ModBlocks;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import org.arbor.gtnn.GTNN;
 import org.arbor.gtnn.GTNNIntegration;
@@ -54,7 +55,7 @@ public class GTNNOres {
             .weight(40)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -67,14 +68,14 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Galena)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     public static final GTOreDefinition SAPPHIRE_VEIN_TF = create("sapphire_vein_tf", vein -> vein
             .clusterSize(25)
             .weight(60)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -88,7 +89,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Sapphire)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 橄榄石
     public static final GTOreDefinition OLIVINE_VEIN_TF = create("olivine_vein_tf", vein -> vein
@@ -96,7 +97,7 @@ public class GTNNOres {
             .weight(20)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -110,7 +111,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Olivine)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 镍
     public static final GTOreDefinition NICKEL_VEIN_TF = create("nickel_vein_tf", vein -> vein
@@ -118,7 +119,7 @@ public class GTNNOres {
             .weight(40)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -132,7 +133,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Nickel)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 钻石
     public static final GTOreDefinition DIAMOND_VEIN_TF = create("diamond_vein_tf", vein -> vein
@@ -140,7 +141,7 @@ public class GTNNOres {
             .weight(40)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -153,7 +154,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Diamond)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 青金石
     public static final GTOreDefinition LAPIS_VEIN_TF = create("lapis_vein_tf", vein -> vein
@@ -161,7 +162,7 @@ public class GTNNOres {
             .weight(40)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -175,7 +176,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Lapis)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 钼
     public static final GTOreDefinition MOLYBDENITE_VEIN_TF = create("molybdenite_vein_tf", vein -> vein
@@ -183,7 +184,7 @@ public class GTNNOres {
             .weight(5)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -197,7 +198,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Molybdenite)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 煤
     public static final GTOreDefinition COAL_VEIN_TF = create("coal_vein_tf", vein -> vein
@@ -205,7 +206,7 @@ public class GTNNOres {
             .weight(80)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -217,7 +218,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Coal)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 皂石
     public static final GTOreDefinition LUBRICANT_VEIN_TF = create("lubricant_vein_tf", vein -> vein
@@ -225,7 +226,7 @@ public class GTNNOres {
             .weight(40)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -239,7 +240,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Soapstone)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 金
     public static final GTOreDefinition GOLD_VEIN_TF = create("gold_vein_tf", vein -> vein
@@ -247,7 +248,7 @@ public class GTNNOres {
             .weight(80)
             .layer(TF)
             .density(0.15f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -260,7 +261,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Gold)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 铁
     public static final GTOreDefinition IRON_VEIN_TF = create("iron_vein_tf", vein -> vein
@@ -268,7 +269,7 @@ public class GTNNOres {
             .weight(120)
             .layer(TF)
             .density(0.3f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -282,7 +283,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Goethite)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 磷灰石
     public static final GTOreDefinition APATITE_VEIN_TF = create("apatite_vein_tf", vein -> vein
@@ -290,7 +291,7 @@ public class GTNNOres {
             .weight(40)
             .layer(TF)
             .density(0.25f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -303,7 +304,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Apatite)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 盐
     public static final GTOreDefinition SALTS_VEIN_TF = create("salts_vein_tf", vein -> vein
@@ -311,7 +312,7 @@ public class GTNNOres {
             .weight(50)
             .layer(TF)
             .density(0.2f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -325,7 +326,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Salt)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // 锡
     public static final GTOreDefinition CASSITERITE_VEIN_TF = create("cassiterite_vein_tf", vein -> vein
@@ -333,7 +334,7 @@ public class GTNNOres {
             .weight(50)
             .layer(TF)
             .density(0.4f)
-            .dimensions(TWILIGHT_FOREST)
+            .dimensions(twilightForest())
             .heightRangeUniform(-30, 0)
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
@@ -345,7 +346,7 @@ public class GTNNOres {
                     .surfaceRock(GTMaterials.Tin)
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
                     .density(0.4f)
-                    .radius(5)), GTNNIntegration.isTwilightForestLoaded()
+                    .radius(5)), true
     );
     // moon
     // 独居石
@@ -980,8 +981,12 @@ public class GTNNOres {
                             .layer(l -> l.weight(2).mat(GTMaterials.Plutonium241).size(1, 2))
                     )));
 
-    public static GTOreDefinition create(String name, Consumer<GTOreDefinition> config, boolean t) {
-        if (t){
+    private static ResourceLocation twilightForest() {
+        return GTNNIntegration.isTwilightForestLoaded() ? TWILIGHT_FOREST : BuiltinDimensionTypes.OVERWORLD.location();
+    }
+
+    public static GTOreDefinition create(String name, Consumer<GTOreDefinition> config, boolean alwaysCreate) {
+        if (alwaysCreate) {
             return GTOres.create(GTNN.id(name), config);
         }else return GTOres.blankOreDefinition();
     }

@@ -13,10 +13,10 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.HULL;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static org.arbor.gtnn.data.GTNNMaterials.*;
+import static org.arbor.gtnn.data.GTNNRecipeTypes.CHEMICAL_PLANT_RECIPES;
+import static org.arbor.gtnn.data.GTNNRecipeTypes.ROCKET_ENGINE_RECIPES;
 import static org.arbor.gtnn.data.GTNNRecipes.dur;
 import static org.arbor.gtnn.data.GTNNRecipes.setPlantCasing;
-import static org.arbor.gtnn.data.GTNNRecipesTypes.CHEMICAL_PLANT_RECIPES;
-import static org.arbor.gtnn.data.GTNNRecipesTypes.ROCKET_ENGINE_RECIPES;
 
 public class RocketFuel {
 

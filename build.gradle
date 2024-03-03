@@ -14,6 +14,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 apply plugin: 'org.spongepowered.mixin'
@@ -123,8 +124,6 @@ dependencies {
     implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-${minecraft_version}:${ldLibVersion}") { transitive = false }
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrateForgeVersion}")
     runtimeOnly fg.deobf("curse.maven:jade-324717:4986594")
-    runtimeOnly fg.deobf("curse.maven:jei-238222:4712868")
-    implementation fg.deobf("dev.emi:emi-forge:${emiVersion}")
     implementation fg.deobf("curse.maven:shimmer-627824:4923047")
     implementation fg.deobf("com.simibubi.create:create-1.20.1:0.5.1.f-26:slim") { transitive = false }
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-1.20.1:0.6.10-7")
@@ -132,6 +131,15 @@ dependencies {
     implementation fg.deobf("earth.terrarium.adastra:ad_astra-forge-1.20.1:${ad_astra_version}")
     implementation fg.deobf("com.teamresourceful.resourcefullib:resourcefullib-forge-${minecraft_version}:${resourcefullib_version}")
     implementation fg.deobf("com.teamresourceful.resourcefulconfig:resourcefulconfig-forge-${minecraft_version}:${resourcefulconfig_version}")
+    implementation fg.deobf("curse.maven:supplementaries-412082:5147148")
+    implementation fg.deobf("curse.maven:cc-tweaked-282001:5118388")
+    implementation fg.deobf("curse.maven:selene-499980:5146536")
+
+    compileOnly fg.deobf("curse.maven:jei-238222:4712868")
+    compileOnly fg.deobf("dev.emi:emi-forge:${emiVersion}")
+    runtimeOnly fg.deobf("curse.maven:roughly-enough-items-310111:4951142")
+    runtimeOnly fg.deobf("curse.maven:architectury-api-419699:5084452")
+    runtimeOnly fg.deobf("curse.maven:cloth-config-348521:4973441")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.1"))

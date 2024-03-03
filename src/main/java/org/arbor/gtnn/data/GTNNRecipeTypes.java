@@ -10,7 +10,7 @@ import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
 
 import static com.lowdragmc.lowdraglib.gui.texture.ProgressTexture.FillDirection.LEFT_TO_RIGHT;
 
-public class GTNNRecipesTypes {
+public class GTNNRecipeTypes {
     public static final GTRecipeType CHEMICAL_PLANT_RECIPES = GTRecipeTypes.register("chemical_plant", GTRecipeTypes.MULTIBLOCK)
             .setMaxIOSize(4, 4, 4, 2).setEUIO(IO.IN)
             .prepareBuilder(gtRecipeBuilder -> gtRecipeBuilder.EUt(GTValues.VA[GTValues.LV]))
@@ -44,6 +44,13 @@ public class GTNNRecipesTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.CENTRIFUGE);
 
+    public static final GTRecipeType PRECISION_ASSEMBLY_RECIPES = GTRecipeTypes.register("precision_assembly", GTRecipeTypes.MULTIBLOCK)
+            .setMaxIOSize(4, 1, 4, 0).setEUIO(IO.IN)
+            .prepareBuilder(gtRecipeBuilder -> gtRecipeBuilder.EUt(GTValues.VA[GTValues.LV]))
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.COOLING);
+
     public static void init() {
     }
+
 }
