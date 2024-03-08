@@ -26,6 +26,8 @@ public class FirstMaterials {
         Nichrome.addFlags(MaterialFlags.GENERATE_GEAR);
         Zeron100.addFlags(MaterialFlags.GENERATE_GEAR);
         addGas(Oganesson);
+        addFluid(Californium);
+        addGas(Calcium);
         SpaceNeutronium = Builder("space_neutronium")
                 .ingot().fluid().ore().dust()
                 .color(0x11111b).iconSet(SHINY)

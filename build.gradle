@@ -128,11 +128,11 @@ dependencies {
     implementation fg.deobf("com.simibubi.create:create-1.20.1:0.5.1.f-26:slim") { transitive = false }
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-1.20.1:0.6.10-7")
     implementation fg.deobf("earth.terrarium.botarium:botarium-forge-${minecraft_version}:${botarium_version}")
-    implementation fg.deobf("earth.terrarium.adastra:ad_astra-forge-1.20.1:${ad_astra_version}")
+    compileOnly fg.deobf("earth.terrarium.adastra:ad_astra-forge-1.20.1:${ad_astra_version}")
     implementation fg.deobf("com.teamresourceful.resourcefullib:resourcefullib-forge-${minecraft_version}:${resourcefullib_version}")
     implementation fg.deobf("com.teamresourceful.resourcefulconfig:resourcefulconfig-forge-${minecraft_version}:${resourcefulconfig_version}")
     implementation fg.deobf("curse.maven:supplementaries-412082:5147148")
-    implementation fg.deobf("curse.maven:cc-tweaked-282001:5118388")
+    compileOnly fg.deobf("curse.maven:cc-tweaked-282001:5118388")
     implementation fg.deobf("curse.maven:selene-499980:5146536")
 
     compileOnly fg.deobf("curse.maven:jei-238222:4712868")

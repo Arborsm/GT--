@@ -7,18 +7,14 @@ import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import net.minecraft.data.recipes.FinishedRecipe;
-import org.arbor.gtnn.data.GTNNCasingBlocks;
-import org.arbor.gtnn.data.GTNNItems;
-import org.arbor.gtnn.data.GTNNMachines;
-import org.arbor.gtnn.data.GTNNRecipeTypes;
+import org.arbor.gtnn.data.*;
 
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLER_RECIPES;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLY_LINE_RECIPES;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static org.arbor.gtnn.data.GTNNMachines.NEUTRON_ACCELERATOR;
 import static org.arbor.gtnn.data.GTNNRecipes.dur;
 
@@ -124,7 +120,7 @@ public class SelfRecipes {
                 .inputItems(GTBlocks.MACHINE_CASING_IV.asStack())
                 .inputItems(GTItems.COVER_ACTIVITY_DETECTOR)
                 .inputItems(GTItems.COVER_SCREEN)
-                //.inputItems(plate, ) todo ?
+                .inputItems(plate, VanadiumGallium, 4)
                 .inputItems(CustomTags.EV_CIRCUITS)
                 .inputItems(GTItems.SENSOR_HV.asStack(2))
                 .circuitMeta(1)
@@ -144,15 +140,46 @@ public class SelfRecipes {
                 .inputItems(CustomTags.IV_CIRCUITS)
                 .outputItems(GTNNMachines.HIGH_SPEED_PIPE_BLOCK.asStack())
                 .EUt(VA[EV]).duration(dur(15)).save(provider);
+        GTNNRecipeTypes.PRECISION_ASSEMBLY_RECIPES.recipeBuilder("quark_core")
+                .inputItems(CustomTags.IV_CIRCUITS, 2)
+                .inputItems(lens, Diamond, 8)
+                .inputItems(GTItems.NAND_MEMORY_CHIP.asStack(16))
+                .inputItems(rotor, Aluminium)
+                .inputFluids(Polyethylene.getFluid(576))
+                .inputFluids(SodiumPotassium.getFluid(288))
+                .inputFluids(Lubricant.getFluid(144))
+                .inputFluids(StyreneButadieneRubber.getFluid(144))
+                .outputItems(GTNNItems.QuarkCore)
+                .EUt(VA[LuV]).duration(dur(5)).save(provider);
         GTNNRecipeTypes.PRECISION_ASSEMBLY_RECIPES.recipeBuilder("neutron_activator")
-                // .inputItems(GTBlocks.MACHINE_CASING_IV.asStack())
-                .inputItems(GTItems.SENSOR_EV)
-                //.inputItems(GTItems.COVER_ACTIVITY_DETECTOR)
+                .inputItems(GTNNItems.QuarkCore.asStack(2))
+                .inputItems(GTItems.SENSOR_EV.asStack(2))
+                .inputItems(GTNNItems.NeutronSource)
                 .inputFluids(StainlessSteel.getFluid(576))
                 .inputFluids(TungstenCarbide.getFluid(144))
                 .outputItems(GTNNMachines.NEUTRON_ACTIVATOR.asStack())
                 .EUt(VA[IV]).duration(dur(5)).save(provider);
-        VanillaRecipeHelper.addShapedRecipe(provider, true, "dryer_mv", GTNNMachines.DRYER[MV].asStack(),
+        MIXER_RECIPES.recipeBuilder("graphite_uranium_mixture")
+                .inputItems(dust, Graphite, 3)
+                .inputItems(dust, Uranium238)
+                .outputItems(dust, GTNNMaterials.GraphiteUraniumMixture, 4)
+                .EUt(VA[LV]).duration(dur(1.7)).save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("encapsulated_uranium_ingot")
+                .inputItems(dust, GTNNMaterials.GraphiteUraniumMixture, 4)
+                .inputItems(foil, TungstenCarbide, 2)
+                .outputItems(GTNNItems.EncapsulatedUraniumIngot)
+                .EUt(VA[HV]).duration(dur(70)).save(provider);
+        DefaultRecipes.addBOOMRecipes("enriched_uranium_nugget", GTNNItems.EncapsulatedUraniumIngot, GTNNItems.EnrichedUraniumNugget, VA[LV], dur(1), 1, provider);
+        COMPRESSOR_RECIPES.recipeBuilder("enriched_uranium")
+                .inputItems(GTNNItems.EnrichedUraniumNugget.asStack(9))
+                .outputItems(GTNNItems.EnrichedUranium)
+                .EUt(VA[HV]).duration(dur(30)).save(provider);
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "neutron_source", GTNNItems.NeutronSource.asStack(),
+                " A ", "ABA", " A ",
+                'A', new UnificationEntry(plateDense, Steel),
+                'B', GTNNItems.EnrichedUranium.asStack()
+        );
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "dehydrator_mv", GTNNMachines.DEHYDRATOR[MV].asStack(),
                 "ABA", "CDC", "EFE",
                 'A', new UnificationEntry(wireFine, RedAlloy),
                 'B', CustomTags.MV_CIRCUITS,
@@ -161,7 +188,7 @@ public class SelfRecipes {
                 'E', new UnificationEntry(gear, Steel),
                 'F', GTItems.ROBOT_ARM_MV
         );
-        VanillaRecipeHelper.addShapedRecipe(provider, true, "dryer_hv", GTNNMachines.DRYER[HV].asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "dehydrator_hv", GTNNMachines.DEHYDRATOR[HV].asStack(),
                 "ABA", "CDC", "EFE",
                 'A', new UnificationEntry(wireFine, Electrum),
                 'B', CustomTags.HV_CIRCUITS,
@@ -170,7 +197,7 @@ public class SelfRecipes {
                 'E', new UnificationEntry(gear, Potin),
                 'F', GTItems.ROBOT_ARM_HV
         );
-        VanillaRecipeHelper.addShapedRecipe(provider, true, "dryer_ev", GTNNMachines.DRYER[EV].asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "dehydrator_ev", GTNNMachines.DEHYDRATOR[EV].asStack(),
                 "ABA", "CDC", "EFE",
                 'A', GTItems.VOLTAGE_COIL_EV,
                 'B', CustomTags.EV_CIRCUITS,
@@ -179,7 +206,7 @@ public class SelfRecipes {
                 'E', new UnificationEntry(gear, TungstenSteel), //todo
                 'F', GTItems.ROBOT_ARM_EV
         );
-        VanillaRecipeHelper.addShapedRecipe(provider, true, "dryer_iv", GTNNMachines.DRYER[IV].asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "dehydrator_iv", GTNNMachines.DEHYDRATOR[IV].asStack(),
                 "ABA", "CDC", "EFE",
                 'A', GTItems.VOLTAGE_COIL_IV,
                 'B', CustomTags.IV_CIRCUITS,
@@ -188,7 +215,7 @@ public class SelfRecipes {
                 'E', new UnificationEntry(gear, Nichrome),
                 'F', GTItems.ROBOT_ARM_IV
         );
-        VanillaRecipeHelper.addShapedRecipe(provider, true, "dryer_luv", GTNNMachines.DRYER[LuV].asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "dehydrator_luv", GTNNMachines.DEHYDRATOR[LuV].asStack(),
                 "ABA", "CDC", "EFE",
                 'A', GTItems.VOLTAGE_COIL_LuV,
                 'B', CustomTags.LuV_CIRCUITS,
@@ -197,7 +224,7 @@ public class SelfRecipes {
                 'E', new UnificationEntry(gear, Ultimet), //todo
                 'F', GTItems.ROBOT_ARM_LuV
         );
-        VanillaRecipeHelper.addShapedRecipe(provider, true, "dryer_zpm", GTNNMachines.DRYER[ZPM].asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "dehydrator_zpm", GTNNMachines.DEHYDRATOR[ZPM].asStack(),
                 "ABA", "CDC", "EFE",
                 'A', GTItems.VOLTAGE_COIL_ZPM,
                 'B', CustomTags.ZPM_CIRCUITS,
@@ -273,5 +300,26 @@ public class SelfRecipes {
                 'D', GTMachines.HULL[UV].asStack(),
                 'E', new UnificationEntry(cableGtQuadruple, EnrichedNaquadahTriniumEuropiumDuranide)
         );
+        FUSION_RECIPES.recipeBuilder("californium")
+                .inputFluids(Plutonium239.getFluid(48))
+                .inputFluids(Beryllium.getFluid(48))
+                .outputFluids(Californium.getFluid(48))
+                .fusionStartEU(120_000_000)
+                .EUt(VA[ZPM]).duration(dur(12)).save(provider);
+        FUSION_RECIPES.recipeBuilder("oganesson")
+                .inputFluids(Californium.getFluid(32))
+                .inputFluids(Calcium.getFluid(720))
+                .outputFluids(Oganesson.getFluid(720))
+                .fusionStartEU(600_000_000)
+                .EUt(VA[ZPM]).duration(dur(12)).save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("inverter")
+                .inputItems(plate, NetherQuartz, 2)
+                .inputItems(CustomTags.MV_CIRCUITS)
+                .inputItems(GTItems.COVER_SCREEN)
+                .inputItems(GTItems.DIODE.asStack(16))
+                .inputItems(wireGtSingle, Aluminium, 8)
+                .inputFluids(SolderingAlloy.getFluid(144))
+                .outputItems(GTNNItems.INVERTER)
+                .EUt(VA[MV]).duration(dur(12)).save(provider);
     }
 }

@@ -92,11 +92,23 @@ public class GTNNItems {
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.chip_t4.tooltip")))))
             .register();
-
     public static ItemEntry<ComponentItem> INVERTER = REGISTRATE.item("inverter", ComponentItem::create)
             .lang("逆变器")
-            .onRegister(attach(new TooltipBehavior(text ->
-                    text.add(Component.translatable("item.gtnn.inverter.tooltip")))))
+            .register();
+    public static ItemEntry<ComponentItem> EncapsulatedUraniumIngot = REGISTRATE.item("encapsulated_uranium_ingot", ComponentItem::create)
+            .lang("封装铀锭")
+            .register();
+    public static ItemEntry<ComponentItem> EnrichedUraniumNugget = REGISTRATE.item("enriched_uranium_nugget", ComponentItem::create)
+            .lang("浓缩铀粒")
+            .register();
+    public static ItemEntry<ComponentItem> EnrichedUranium = REGISTRATE.item("enriched_uranium", ComponentItem::create)
+            .lang("浓缩铀")
+            .register();
+    public static ItemEntry<ComponentItem> NeutronSource = REGISTRATE.item("neutron_source", ComponentItem::create)
+            .lang("中子源")
+            .register();
+    public static ItemEntry<ComponentItem> QuarkCore = REGISTRATE.item("quark_core", ComponentItem::create)
+            .lang("夸克核心")
             .register();
 
     public static ItemEntry<ComponentItem> COMPUTER;
@@ -108,17 +120,13 @@ public class GTNNItems {
 
     public static void init() {
         if (!GTNNIntegration.isCCTweakedLoaded()) {
-            COMPUTER = REGISTRATE.item("computer", ComponentItem::create)
-                    .lang("计算机")
+            COMPUTER = REGISTRATE.item("computer_circuit", ComponentItem::create)
+                    .lang("计算机芯片")
                     .properties(p -> p.rarity(Rarity.UNCOMMON))
-                    .onRegister(attach(new TooltipBehavior(text ->
-                            text.add(Component.translatable("item.gtnn.computer.tooltip")))))
                     .register();
-            COMPUTER_ADVANCED = REGISTRATE.item("computer_advanced", ComponentItem::create)
-                    .lang("高级计算机")
+            COMPUTER_ADVANCED = REGISTRATE.item("computer_advanced_circuit", ComponentItem::create)
+                    .lang("高级计算机芯片")
                     .properties(p -> p.rarity(Rarity.RARE))
-                    .onRegister(attach(new TooltipBehavior(text ->
-                            text.add(Component.translatable("item.gtnn.computer_advanced.tooltip")))))
                     .register();
         }
     }

@@ -65,7 +65,7 @@ public class NaquadahLine {
                 .save(consumer);
 
         //  Enriched Naquadah Residue Solution -> Trinium Sulfide + Xenoauric Fluoroantimonic Acid
-        DRYER_RECIPES.recipeBuilder("xenoauric_fluoroantimonic_acid")
+        DEHYDRATOR_RECIPES.recipeBuilder("xenoauric_fluoroantimonic_acid")
                 .inputFluids(EnrichedNaquadahResidueSolution.getFluid(2000))
                 .outputItems(dust, TriniumSulfide)
                 .outputFluids(XenoauricFluoroantimonicAcid.getFluid(1000))
@@ -156,7 +156,7 @@ public class NaquadahLine {
                 .save(consumer);
 
         //  Naquadria Solution -> Sulfur + Naquadria Waste + Sulfur dust
-        DRYER_RECIPES.recipeBuilder("naquadria_waste")
+        DEHYDRATOR_RECIPES.recipeBuilder("naquadria_waste")
                 .inputFluids(NaquadriaSolution.getFluid(3000))
                 .outputItems(dust, Sulfur, 6)
                 .outputFluids(NaquadriaWaste.getFluid(1000))

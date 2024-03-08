@@ -33,7 +33,9 @@ public class GTNNGeneratorMachine extends SimpleGeneratorMachine {
         if (machine instanceof GTNNGeneratorMachine generator) {
             var EUt = RecipeHelper.getOutputEUt(recipe);
             var recipeModifier = recipe.copy();
-            RecipeHelper.setOutputEUt(recipeModifier, EUt * (generator.efficiency / 100));
+            RecipeHelper.setOutputEUt(recipeModifier, EUt * generator.efficiency / 100
+
+            );
             return recipeModifier;
         }
         return null;

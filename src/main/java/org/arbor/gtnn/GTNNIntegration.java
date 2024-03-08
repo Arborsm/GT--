@@ -1,7 +1,6 @@
 package org.arbor.gtnn;
 
 import com.lowdragmc.lowdraglib.LDLib;
-import net.minecraftforge.fml.loading.FMLLoader;
 
 public class GTNNIntegration {
     public static boolean isAdAstraLoaded() {
@@ -29,7 +28,7 @@ public class GTNNIntegration {
     }
 
     private static boolean isLoaded(String mod) {
-        return !FMLLoader.isProduction() || LDLib.isModLoaded(mod);
+        return LDLib.isModLoaded(mod);
     }
 
 }

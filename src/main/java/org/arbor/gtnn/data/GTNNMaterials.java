@@ -99,6 +99,7 @@ public class GTNNMaterials {
     public static Material NitrosoniumOctafluoroxenate;
     public static Material NitrylFluoride;
     public static Material AcidicNaquadriaCaesiumfluoride;
+    public static Material GraphiteUraniumMixture;
 
     public static void init() {
         FirstMaterials.init();

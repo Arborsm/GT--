@@ -118,5 +118,10 @@ public class SecondMaterials {
                 .color(0x9F9191).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .buildAndRegister();
+        GraphiteUraniumMixture = Builder("graphite_uranium_mixture")
+                .dust()
+                .components(Graphite, 3, Uranium238, 1)
+                .color(0x15231b).iconSet(ROUGH)
+                .buildAndRegister();
     }
 }

@@ -64,7 +64,7 @@ public class GTNNMachines {
 
     public static final MachineDefinition[] NEUTRON_ACCELERATOR = registerTieredMachines("neutron_accelerator",
             NeutronAcceleratorMachine::new,
-            (tier, builder) ->builder
+            (tier, builder) -> builder
                     .langValue(VNF[tier] + " 中子加速器")
                     .rotationState(RotationState.ALL)
                     .abilities(APartAbility.NEUTRON_ACCELERATOR)
@@ -105,14 +105,16 @@ public class GTNNMachines {
     //////////////////////////////////////
     //**********   Machine    **********//
     //////////////////////////////////////
-    public static final MachineDefinition[] DRYER =
-            registerSimpleMachines("dryer", GTNNRecipeTypes.DRYER_RECIPES, GTMachines.defaultTankSizeFunction, MV2ZPM);
+    public static final MachineDefinition[] DEHYDRATOR =
+            registerSimpleMachines("dehydrator", GTNNRecipeTypes.DEHYDRATOR_RECIPES, GTMachines.defaultTankSizeFunction, MV2ZPM);
 
     public static final MachineDefinition[] NAQUADAH_REACTOR = registerGTNNGeneratorMachines(
-            "naquadah_reactor", GTNNRecipeTypes.NAQUADAH_REACTOR_RECIPES, GTNNGeneratorMachine::nonParallel, GTMachines.genericGeneratorTankSizeFunction, EV2UV);
+            "naquadah_reactor", GTNNRecipeTypes.NAQUADAH_REACTOR_RECIPES, GTNNGeneratorMachine::nonParallel,
+            GTMachines.genericGeneratorTankSizeFunction, EV2UV);
 
     public static final MachineDefinition[] Rocket_Engine = registerGTNNGeneratorMachines(
-            "rocket_engine", GTNNRecipeTypes.ROCKET_ENGINE_RECIPES, GTNNGeneratorMachine::parallel, GTMachines.genericGeneratorTankSizeFunction, EV, IV, LuV);
+            "rocket_engine", GTNNRecipeTypes.ROCKET_ENGINE_RECIPES, GTNNGeneratorMachine::parallel,
+            GTMachines.genericGeneratorTankSizeFunction, EV, IV, LuV);
 
     public static final MultiblockMachineDefinition CHEMICAL_PLANT = REGISTRATE.multiblock("chemical_plant", ChemicalPlantMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
@@ -255,7 +257,7 @@ public class GTNNMachines {
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(recipeType)
                 .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                .workableTieredHullRenderer(GTCEu.id("block/machines/" + name))
+                .workableTieredHullRenderer(GTNN.id("block/machines/" + name))
                 .tooltips(GTMachines.explosion())
                 .tooltips(GTMachines.workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64, recipeType, tankScalingFunction.apply(tier), true))
                 .compassNode(name)
@@ -294,8 +296,10 @@ public class GTNNMachines {
         gtRecipeTypes.add(GTNNRecipeTypes.PRECISION_ASSEMBLY_RECIPES);
         GTRecipeType[] gtRecipeTypesArray = gtRecipeTypes.toArray(GTRecipeType[]::new);
         largeAssembler.setRecipeTypes(gtRecipeTypesArray);
-        largeAssembler.setTooltipBuilder(largeAssembler.getTooltipBuilder().andThen(
-                (itemStack, components) -> components.add(Component.translatable("gtnn.precision_assembly.tooltip"))));
+        largeAssembler.setTooltipBuilder(largeAssembler.getTooltipBuilder().andThen((itemStack, components) -> {
+            components.add(Component.translatable("gtnn.precision_assembly.tooltip.1"));
+            components.add(Component.translatable("gtnn.precision_assembly.tooltip.2"));
+        }));
         largeAssembler.setRecipeModifier(GTNNMachines::assemblyRecipeModifier);
     }
 

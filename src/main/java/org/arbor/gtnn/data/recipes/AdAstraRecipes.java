@@ -262,5 +262,7 @@ public class AdAstraRecipes {
         consumer.accept(new ResourceLocation("ad_astra:oxygen_gear"));
         consumer.accept(new ResourceLocation("ad_astra:oxygen_tank"));
         consumer.accept(new ResourceLocation("ad_astra:fan"));
+        consumer.accept(new ResourceLocation("ad_astra:gas_tank"));
+        consumer.accept(new ResourceLocation("ad_astra:oxygen_loader"));
     }
 }

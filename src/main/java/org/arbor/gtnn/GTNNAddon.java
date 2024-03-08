@@ -11,7 +11,6 @@ import net.minecraft.resources.ResourceLocation;
 import org.arbor.gtnn.api.recipe.NeutronActivatorCondition;
 import org.arbor.gtnn.api.recipe.PlantCasingCondition;
 import org.arbor.gtnn.data.*;
-import org.arbor.gtnn.data.misc.adastra.AdAstraAddon;
 import org.arbor.gtnn.data.recipes.AdAstraRecipes;
 import org.arbor.gtnn.data.recipes.DefaultRecipes;
 
@@ -36,9 +35,7 @@ public class GTNNAddon implements IGTAddon {
 
     @Override
     public void registerTagPrefixes() {
-        if (GTNNIntegration.isAdAstraLoaded()) {
-            AdAstraAddon.init();
-        }
+        GTNNTagPrefix.init();
     }
 
     @Override

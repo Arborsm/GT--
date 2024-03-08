@@ -24,7 +24,7 @@ public class GTNNRecipeTypes {
             .setMaxTooltips(5)
             .setSound(GTSoundEntries.COOLING);
 
-    public static final GTRecipeType DRYER_RECIPES = GTRecipeTypes.register("dryer", GTRecipeTypes.ELECTRIC).setMaxIOSize(2, 9, 1, 1).setEUIO(IO.IN)
+    public static final GTRecipeType DEHYDRATOR_RECIPES = GTRecipeTypes.register("dehydrator", GTRecipeTypes.ELECTRIC).setMaxIOSize(2, 9, 1, 1).setEUIO(IO.IN)
             .prepareBuilder(recipeBuilder -> recipeBuilder.EUt(5))
             .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.CENTRIFUGE);

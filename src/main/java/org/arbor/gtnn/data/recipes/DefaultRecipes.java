@@ -45,7 +45,7 @@ public class DefaultRecipes {
 
     }
 
-    private static void addBOOMRecipes(String name, Supplier<? extends Item> input, Supplier<? extends Item> output, int eu, int time, int level, Consumer<FinishedRecipe> provider) {
+    protected static void addBOOMRecipes(String name, Supplier<? extends Item> input, Supplier<? extends Item> output, int eu, int time, int level, Consumer<FinishedRecipe> provider) {
         IMPLOSION_RECIPES.recipeBuilder(name)
                 .inputItems(input)
                 .inputItems(Items.AIR)
