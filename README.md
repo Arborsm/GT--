@@ -1,4 +1,6 @@
-# 本模组为 GTM 添加一些来自GoodGenerator、GT++的机器：
+# GT-- by Arborsm
+
+## 本模组为 GTM 添加一些来自GoodGenerator、GT++的机器：
 
 * 火箭引擎：消耗火箭燃料发电的单方块机器
 
