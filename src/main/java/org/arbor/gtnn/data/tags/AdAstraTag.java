@@ -2,11 +2,13 @@ package org.arbor.gtnn.data.tags;
 
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import earth.terrarium.adastra.common.registry.ModBlocks;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.arbor.gtnn.data.GTNNTags;
+
+import java.util.Objects;
 
 public class AdAstraTag {
     public static void init(RegistrateTagsProvider<Block> provider) {
@@ -17,7 +19,7 @@ public class AdAstraTag {
     public static void create(RegistrateTagsProvider<Block> provider, TagKey<Block> tagKey, Block... rls) {
         var builder = provider.addTag(tagKey);
         for (Block block : rls) {
-            builder.addOptional(BuiltInRegistries.BLOCK.getKey(block));
+            builder.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)));
         }
     }
 }

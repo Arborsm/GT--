@@ -1,0 +1,40 @@
+{
+  "values": [
+    {
+      "id": "ad_astra:moon_stone",
+      "required": false
+    },
+    {
+      "id": "ad_astra:mars_stone",
+      "required": false
+    },
+    {
+      "id": "ad_astra:mercury_stone",
+      "required": false
+    },
+    {
+      "id": "ad_astra:venus_stone",
+      "required": false
+    },
+    {
+      "id": "ad_astra:glacio_stone",
+      "required": false
+    },
+    {
+      "id": "minecraft:blackstone",
+      "required": false
+    },
+    {
+      "id": "minecraft:basalt",
+      "required": false
+    },
+    {
+      "id": "minecraft:deepslate",
+      "required": false
+    },
+    {
+      "id": "minecraft:soul_soil",
+      "required": false
+    }
+  ]
+}

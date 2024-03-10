@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gtnn:item/encapsulated_uranium_ingot"
+    "layer0": "gtnn:item/enriched_plutonium"
   }
 }

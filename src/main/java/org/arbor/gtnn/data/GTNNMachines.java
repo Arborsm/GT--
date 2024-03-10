@@ -28,6 +28,7 @@ import org.arbor.gtnn.GTNN;
 import org.arbor.gtnn.api.machine.GTNNGeneratorMachine;
 import org.arbor.gtnn.api.machine.multiblock.APartAbility;
 import org.arbor.gtnn.api.machine.multiblock.ChemicalPlantMachine;
+import org.arbor.gtnn.api.machine.multiblock.LargeNaquadahReactorMachine;
 import org.arbor.gtnn.api.machine.multiblock.NeutronActivatorMachine;
 import org.arbor.gtnn.api.machine.multiblock.part.HighSpeedPipeBlock;
 import org.arbor.gtnn.api.machine.multiblock.part.NeutronAcceleratorMachine;
@@ -91,16 +92,6 @@ public class GTNNMachines {
             .tooltips(Component.translatable("block.gtnn.neutron_sensor.tooltip1"))
             .tooltips(Component.translatable("block.gtnn.neutron_sensor.tooltip2"))
             .register();
-
-    // public static final MachineDefinition CATALYTIC_HATCH = GTRegistries.REGISTRATE.machine("catalytic_hatch",
-    //                 (holder) -> new SteamItemBusPartMachine(holder, IO.IN))
-    //         .rotationState(RotationState.ALL)
-    //         .abilities(PartAbility.IMPORT_ITEMS)
-    //         .overlaySteamHullRenderer("item_bus.import")
-    //         .langValue("Catalytic Hatch")
-    //         .compassSections(GTCompassSections.PARTS)
-    //         .compassNode("item_bus")
-    //         .register();
 
     //////////////////////////////////////
     //**********   Machine    **********//
@@ -233,6 +224,50 @@ public class GTNNMachines {
                      GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                      GTNN.id("block/multiblock/neutron_activator"), false)
              .register();
+
+    public static final MultiblockMachineDefinition LargeNaquadahReactor = REGISTRATE.multiblock("large_naquadah_reactor", LargeNaquadahReactorMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .tooltips(Component.translatable("gtnn.multiblock.large_naquadah_reactor.tooltip1"))
+            .tooltips(Component.translatable("gtnn.multiblock.large_naquadah_reactor.tooltip2"))
+            .tooltips(Component.translatable("gtnn.multiblock.large_naquadah_reactor.tooltip3"))
+            .tooltips(Component.translatable("gtnn.multiblock.large_naquadah_reactor.tooltip4"))
+            .tooltips(Component.translatable("gtnn.multiblock.large_naquadah_reactor.tooltip5"))
+            .tooltips(Component.translatable("gtnn.multiblock.large_naquadah_reactor.tooltip6"))
+            .tooltips(Component.translatable("gtnn.multiblock.large_naquadah_reactor.tooltip7"))
+            .tooltips(Component.translatable("gtnn.multiblock.large_naquadah_reactor.tooltip8"))
+            .tooltips(Component.translatable("gtnn.multiblock.large_naquadah_reactor.tooltip9"))
+            .recipeTypes(GTNNRecipeTypes.LARGE_NAQUADAH_REACTOR_RECIPES)
+            .recipeModifier(LargeNaquadahReactorMachine::modifyRecipe)
+            .appearanceBlock(GTNNCasingBlocks.RADIATION_PROOF_MACHINE_CASING)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("AAAAAAA", "VBBBBBV", "VVVVVVV", "B#####B", "B#####B", "B#####B", "B#####B", "VVVVVVV")
+                    .aisle("AAAAAAA", "B#####B", "V#####V", "#######", "#######", "#######", "#######", "VVVVVVV")
+                    .aisle("AAAAAAA", "B#CCC#B", "V#CCC#V", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "VVVVVVV")
+                    .aisle("AAAAAAA", "B#CCC#B", "V#CDC#V", "##CDC##", "##CDC##", "##CDC##", "##CDC##", "VVVVVVV")
+                    .aisle("AAAAAAA", "B#CCC#B", "V#CCC#V", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "VVVVVVV")
+                    .aisle("AAAAAAA", "B#####B", "V#####V", "#######", "#######", "#######", "#######", "VVVVVVV")
+                    .aisle("AAASAAA", "VBBBBBV", "VVVVVVV", "B#####B", "B#####B", "B#####B", "B#####B", "VVVVVVV")
+                    .where("S", Predicates.controller(Predicates.blocks(definition.get())))
+                    .where("V", Predicates.blocks(GTNNCasingBlocks.RADIATION_PROOF_MACHINE_CASING.get()))
+                    .where("A", Predicates.blocks(GTNNCasingBlocks.RADIATION_PROOF_MACHINE_CASING.get())
+                            .or(autoAbilities(true, false, false))
+                            .or(abilities(PartAbility.OUTPUT_ENERGY).setMinGlobalLimited(1, 1))
+                            .or(abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
+                            .or(abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(1)))
+                    .where("B", Predicates.blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTNNMaterials.RadiationProtection)))
+                    .where("C", Predicates.blocks(GTNNCasingBlocks.MAR_CASING.get()))
+                    .where("D", Predicates.blocks(GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()))
+                    .where("#", Predicates.air())
+                    .build())
+            .workableCasingRenderer(
+                    GTNN.id("block/casings/solid/radiation_proof_machine_casing"),
+                    GTNN.id("block/multiblock/large_naquadah_reactor"), false)
+            .additionalDisplay((controller, components) -> {
+                if (controller instanceof LargeNaquadahReactorMachine largeNaquadahReactorMachine && controller.isFormed()) {
+                    components.add(Component.translatable("gtnn.multiblock.large_naquadah_reactor.power", largeNaquadahReactorMachine.getFinalPowerRate()));
+                }
+            })
+            .register();
 
     public static MachineDefinition[] registerTieredMachines(String name,
                                                              BiFunction<IMachineBlockEntity, Integer, MetaMachine> factory,

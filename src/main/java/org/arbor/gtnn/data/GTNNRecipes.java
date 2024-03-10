@@ -22,7 +22,7 @@ public class GTNNRecipes {
     }
 
     public static int dur(double seconds) {
-        return (int) seconds * 20;
+        return (int) (seconds * 20d);
     }
 
 

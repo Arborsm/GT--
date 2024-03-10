@@ -39,7 +39,7 @@ public class GTNNRecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.CENTRIFUGE);
 
-    public static final GTRecipeType NAQUADAH_REACTOR_MULTIBLOCK_RECIPES = GTRecipeTypes.register("naquadah_reactor_multiblock", GTRecipeTypes.MULTIBLOCK)
+    public static final GTRecipeType LARGE_NAQUADAH_REACTOR_RECIPES = GTRecipeTypes.register("large_naquadah_reactor", GTRecipeTypes.MULTIBLOCK)
             .setMaxIOSize(0, 0, 1, 1).setEUIO(IO.OUT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.CENTRIFUGE);

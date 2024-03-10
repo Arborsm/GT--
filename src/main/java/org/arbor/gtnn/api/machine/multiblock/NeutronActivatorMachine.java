@@ -50,7 +50,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
@@ -115,26 +114,21 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine implement
                 }
             }
             if (part instanceof ItemBusPartMachine itemBusPartMachine) {
-                busMachines = getOrDefault(busMachines, HashSet::new);
+                busMachines = APartAbility.getOrDefault(busMachines, HashSet::new);
                 busMachines.add(itemBusPartMachine);
             }
             if (part instanceof NeutronSensorMachine neutronSensorMachine) {
-                sensorMachines = getOrDefault(sensorMachines, HashSet::new);
+                sensorMachines = APartAbility.getOrDefault(sensorMachines, HashSet::new);
                 sensorMachines.add(neutronSensorMachine);
             }
             if (part instanceof NeutronAcceleratorMachine neutronAccelerator) {
-                acceleratorMachines = getOrDefault(acceleratorMachines, HashSet::new);
+                acceleratorMachines = APartAbility.getOrDefault(acceleratorMachines, HashSet::new);
                 acceleratorMachines.add(neutronAccelerator);
             }
             if (part instanceof HighSpeedPipeBlock) height++;
         }
 
         neutronEnergySubs.initialize(getLevel());
-    }
-
-    private static <T> T getOrDefault(@Nullable T value, Supplier<T> defaultSupplier) {
-        if (value == null) return defaultSupplier.get();
-        return value;
     }
 
     @Override

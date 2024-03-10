@@ -3,6 +3,7 @@ package org.arbor.gtnn.data;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
@@ -100,8 +101,24 @@ public class GTNNMaterials {
     public static Material NitrylFluoride;
     public static Material AcidicNaquadriaCaesiumfluoride;
     public static Material GraphiteUraniumMixture;
-
+    public static Material UraniumCarbideThoriumMixture;
+    public static Material PlutoniumOxideUraniumMixture;
+    public static Material Thorium232;
+    public static Material ThoriumBasedLiquidFuelExcited;
+    public static Material ThoriumBasedLiquidFuelDepleted;
+    public static Material ThoriumBasedLiquidFuel;
+    public static Material UraniumBasedLiquidFuelExcited;
+    public static Material UraniumBasedLiquidFuelDepleted;
+    public static Material UraniumBasedLiquidFuel;
+    public static Material PlutoniumBasedLiquidFuelExcited;
+    public static Material PlutoniumBasedLiquidFuelDepleted;
+    public static Material PlutoniumBasedLiquidFuel;
+    public static Material RadiationProtection;
+    public static Material NaquadahBasedLiquidFuel;
+    public static Material NaquadahBasedLiquidFuelExcited;
+    public static Material NaquadahBasedLiquidFuelDepleted;
     public static void init() {
+        AdjustGTMaterials.init();
         FirstMaterials.init();
         SecondMaterials.init();
         if (ConfigHandler.INSTANCE.Server.enableHarderPlatinumLine) PlatinumLineMaterials.init();
@@ -110,6 +127,10 @@ public class GTNNMaterials {
         if (GTNNIntegration.isBotaniaLoaded()) BotaniaMaterials.init();
         if (GTNNIntegration.isCreateLoaded()) CreateMaterials.init();
         if (GTNNIntegration.isForbiddenArcanusLoaded()) ForbiddenArcanusMaterials.init();
+    }
+
+    public static void addDust(Material material) {
+        material.setProperty(PropertyKey.DUST, new DustProperty());
     }
 
     public static void addFluid(Material material){

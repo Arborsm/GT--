@@ -11,7 +11,6 @@ import org.arbor.gtnn.GTNNIntegration;
 
 import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
 
-@SuppressWarnings("unused")
 public class GTNNItems {
     static {
         REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.MAIN_TAB);
@@ -95,8 +94,8 @@ public class GTNNItems {
     public static ItemEntry<ComponentItem> INVERTER = REGISTRATE.item("inverter", ComponentItem::create)
             .lang("逆变器")
             .register();
-    public static ItemEntry<ComponentItem> EncapsulatedUraniumIngot = REGISTRATE.item("encapsulated_uranium_ingot", ComponentItem::create)
-            .lang("封装铀锭")
+    public static ItemEntry<ComponentItem> EncapsulatedUranium = REGISTRATE.item("encapsulated_uranium", ComponentItem::create)
+            .lang("封装铀")
             .register();
     public static ItemEntry<ComponentItem> EnrichedUraniumNugget = REGISTRATE.item("enriched_uranium_nugget", ComponentItem::create)
             .lang("浓缩铀粒")
@@ -104,11 +103,32 @@ public class GTNNItems {
     public static ItemEntry<ComponentItem> EnrichedUranium = REGISTRATE.item("enriched_uranium", ComponentItem::create)
             .lang("浓缩铀")
             .register();
+    public static ItemEntry<ComponentItem> EncapsulatedThorium = REGISTRATE.item("encapsulated_thorium", ComponentItem::create)
+            .lang("封装钍")
+            .register();
+    public static ItemEntry<ComponentItem> EnrichedThoriumNugget = REGISTRATE.item("enriched_thorium_nugget", ComponentItem::create)
+            .lang("浓缩钍粒")
+            .register();
+    public static ItemEntry<ComponentItem> EnrichedThorium = REGISTRATE.item("enriched_thorium", ComponentItem::create)
+            .lang("浓缩钍")
+            .register();
+    public static ItemEntry<ComponentItem> EncapsulatedPlutonium = REGISTRATE.item("encapsulated_plutonium", ComponentItem::create)
+            .lang("封装钚")
+            .register();
+    public static ItemEntry<ComponentItem> EnrichedPlutoniumNugget = REGISTRATE.item("enriched_plutonium_nugget", ComponentItem::create)
+            .lang("浓缩钚粒")
+            .register();
+    public static ItemEntry<ComponentItem> EnrichedPlutonium = REGISTRATE.item("enriched_plutonium", ComponentItem::create)
+            .lang("浓缩钚")
+            .register();
     public static ItemEntry<ComponentItem> NeutronSource = REGISTRATE.item("neutron_source", ComponentItem::create)
             .lang("中子源")
             .register();
     public static ItemEntry<ComponentItem> QuarkCore = REGISTRATE.item("quark_core", ComponentItem::create)
             .lang("夸克核心")
+            .register();
+    public static ItemEntry<ComponentItem> PlateRadiationProtection = REGISTRATE.item("plate_radiation_protection", ComponentItem::create)
+            .lang("防辐射板")
             .register();
 
     public static ItemEntry<ComponentItem> COMPUTER;

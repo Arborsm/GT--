@@ -1,5 +1,7 @@
 {
   "values": [
-    "gtnn:clean_machine_casing"
+    "gtnn:clean_machine_casing",
+    "gtnn:radiation_proof_machine_casing",
+    "gtnn:mar_casing"
   ]
 }

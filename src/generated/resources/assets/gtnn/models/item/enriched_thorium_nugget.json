@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gtnn:item/computer_circuit"
+    "layer0": "gtnn:item/enriched_thorium_nugget"
   }
 }

@@ -121,7 +121,70 @@ public class SecondMaterials {
         GraphiteUraniumMixture = Builder("graphite_uranium_mixture")
                 .dust()
                 .components(Graphite, 3, Uranium238, 1)
-                .color(0x15231b).iconSet(ROUGH)
+                .color(0x2f734c).iconSet(METALLIC)
                 .buildAndRegister();
+        PlutoniumOxideUraniumMixture = Builder("plutonium_oxide_uranium_mixture")
+                .dust()
+                .components(Plutonium239, 10, Oxygen, 12, Uranium238, 2, Carbon, 8)
+                .color(0xc51d46).iconSet(METALLIC)
+                .buildAndRegister();
+        UraniumCarbideThoriumMixture = Builder("uranium_carbide_thorium_mixture")
+                .dust()
+                .components(Thorium, 11, Thorium232, 1, Uranium235, 1, Carbon, 3)
+                .color(0x15231b).iconSet(METALLIC)
+                .buildAndRegister();
+        ThoriumBasedLiquidFuel = Builder("thorium_based_liquid_fuel")
+                .fluid()
+                .color(0x3b264d).iconSet(METALLIC)
+                .buildAndRegister().setFormula("Th432Li4D2Hg");
+        ThoriumBasedLiquidFuelExcited = Builder("thorium_based_liquid_fuel_excited")
+                .fluid()
+                .color(0x3f2850).iconSet(METALLIC)
+                .buildAndRegister().setFormula("*(Th432Li4D2HG)*");
+        ThoriumBasedLiquidFuelDepleted = Builder("thorium_based_liquid_fuel_depleted")
+                .fluid()
+                .color(0x5d5166).iconSet(METALLIC)
+                .buildAndRegister().setFormula("Th?Pr?B?In?");
+        UraniumBasedLiquidFuel = Builder("uranium_based_liquid_fuel")
+                .fluid()
+                .color(0x02ba05).iconSet(METALLIC)
+                .buildAndRegister().setFormula("U36K8Qt4Rn");
+        UraniumBasedLiquidFuelExcited = Builder("uranium_based_liquid_fuel_excited")
+                .fluid()
+                .color(0x04bc04).iconSet(METALLIC)
+                .buildAndRegister().setFormula("*(U36K8Qt4Rn)*");
+        UraniumBasedLiquidFuelDepleted = Builder("uranium_based_liquid_fuel_depleted")
+                .fluid()
+                .color(0x576d31).iconSet(METALLIC)
+                .buildAndRegister().setFormula("PB?Bi?Ba?Xe?");
+        PlutoniumBasedLiquidFuel = Builder("plutonium_based_liquid_fuel")
+                .fluid()
+                .color(0xb71213).iconSet(METALLIC)
+                .buildAndRegister().setFormula("Pu45Nt8Cs16Nq2");
+        PlutoniumBasedLiquidFuelExcited = Builder("plutonium_based_liquid_fuel_excited")
+                .fluid()
+                .color(0xb81312).iconSet(METALLIC)
+                .buildAndRegister().setFormula("*(Pu45Nt8Cs16Nq2)*");
+        PlutoniumBasedLiquidFuelDepleted = Builder("plutonium_based_liquid_fuel_depleted")
+                .fluid()
+                .color(0x4e1414).iconSet(METALLIC)
+                .buildAndRegister().setFormula("Th?Ce?Au?Kr?");
+        RadiationProtection = Builder("radiation_protection")
+                .dust()
+                .flags(GENERATE_FRAME)
+                .color(0x4C4C4B).iconSet(METALLIC)
+                .buildAndRegister();
+        NaquadahBasedLiquidFuel = Builder("naquadah_based_liquid_fuel")
+                .fluid()
+                .color(0x43b54a).iconSet(METALLIC)
+                .buildAndRegister().setFormula("Nq42Ce16Nd16");
+        NaquadahBasedLiquidFuelExcited = Builder("naquadah_based_liquid_fuel_excited")
+                .fluid()
+                .color(0x41b349).iconSet(METALLIC)
+                .buildAndRegister().setFormula("*(Nq42Ce16Nd16)*");
+        NaquadahBasedLiquidFuelDepleted = Builder("naquadah_based_liquid_fuel_depleted")
+                .fluid()
+                .color(0x215825).iconSet(METALLIC)
+                .buildAndRegister().setFormula("Nq?Ke?Nd?");
     }
 }

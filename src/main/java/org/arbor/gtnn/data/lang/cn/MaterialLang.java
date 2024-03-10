@@ -14,7 +14,7 @@ public class MaterialLang {
         provider.add("tagprefix.soul_soil", "含%s灵魂土");
         provider.add("tagprefix.venus_stone", "锃金岩%s矿石");
         materials(provider);
-        jeiOreveins(provider);
+        jeiOreVeins(provider);
     }
 
     private static void materials(CNLangProvider provider) {
@@ -102,9 +102,25 @@ public class MaterialLang {
         provider.translateMaterial(NitrosoniumOctafluoroxenate, "八氟氙酸亚硝酰");
         provider.translateMaterial(NitrylFluoride, "硝酰氟");
         provider.translateMaterial(AcidicNaquadriaCaesiumfluoride, "硫酸二氟超能硅岩酸铯");
+        provider.translateMaterial(GraphiteUraniumMixture, "石墨-铀混合物");
+        provider.translateMaterial(PlutoniumOxideUraniumMixture, "氧化钚-铀混合物");
+        provider.translateMaterial(UraniumCarbideThoriumMixture, "碳化铀-钍混合物");
+        provider.translateMaterial(ThoriumBasedLiquidFuel, "钍基流体燃料");
+        provider.translateMaterial(ThoriumBasedLiquidFuelExcited, "钍基流体燃料(激发态)");
+        provider.translateMaterial(ThoriumBasedLiquidFuelDepleted, "钍基流体燃料(枯竭态)");
+        provider.translateMaterial(UraniumBasedLiquidFuel, "铀基流体燃料");
+        provider.translateMaterial(UraniumBasedLiquidFuelExcited, "铀基流体燃料(激发态)");
+        provider.translateMaterial(UraniumBasedLiquidFuelDepleted, "铀基流体燃料(枯竭态)");
+        provider.translateMaterial(PlutoniumBasedLiquidFuel, "钚基流体燃料");
+        provider.translateMaterial(PlutoniumBasedLiquidFuelExcited, "钚基流体燃料(激发态)");
+        provider.translateMaterial(PlutoniumBasedLiquidFuelDepleted, "钚基流体燃料(枯竭态)");
+        provider.translateMaterial(RadiationProtection, "防辐射");
+        provider.translateMaterial(NaquadahBasedLiquidFuel, "硅岩流体燃料");
+        provider.translateMaterial(NaquadahBasedLiquidFuelExcited, "硅岩流体燃料(激发态)");
+        provider.translateMaterial(NaquadahBasedLiquidFuelDepleted, "硅岩流体燃料(枯竭态)");
     }
 
-    private static void jeiOreveins(CNLangProvider provider) {
+    private static void jeiOreVeins(CNLangProvider provider) {
         provider.add("gtceu.jei.ore_vein.kaolinite_vein", "高岭石矿脉");
         provider.add("gtceu.jei.ore_vein.wollastonite_vein", "白云石矿脉");
         provider.add("gtceu.jei.ore_vein.galena_vein_tf", "方铅矿脉");

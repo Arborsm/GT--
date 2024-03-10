@@ -1,33 +1,16 @@
 package org.arbor.gtnn.data.materials;
 
 import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
+import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import org.arbor.gtnn.data.GTNNElement;
 
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.SAND;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.SHINY;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.EXT_METAL;
 import static org.arbor.gtnn.data.GTNNMaterials.*;
 
 public class FirstMaterials {
     public static void init() {
-        NaquadahEnriched.addFlags(MaterialFlags.GENERATE_BOLT_SCREW);
-        NaquadahEnriched.addFlags(MaterialFlags.GENERATE_LONG_ROD);
-        Brass.addFlags(MaterialFlags.GENERATE_DENSE);
-        Aluminium.addFlags(MaterialFlags.GENERATE_DENSE);
-        Steel.addFlags(MaterialFlags.GENERATE_DENSE);
-        IronMagnetic.addFlags(MaterialFlags.GENERATE_PLATE);
-        SteelMagnetic.addFlags(MaterialFlags.GENERATE_PLATE);
-        NeodymiumMagnetic.addFlags(MaterialFlags.GENERATE_PLATE);
-        SamariumMagnetic.addFlags(MaterialFlags.GENERATE_PLATE);
-        NickelZincFerrite.addFlags(MaterialFlags.GENERATE_LONG_ROD);
-        BlueAlloy.addFlags(MaterialFlags.GENERATE_FRAME);
-        Nichrome.addFlags(MaterialFlags.GENERATE_GEAR);
-        Zeron100.addFlags(MaterialFlags.GENERATE_GEAR);
-        addGas(Oganesson);
-        addFluid(Californium);
-        addGas(Calcium);
         SpaceNeutronium = Builder("space_neutronium")
                 .ingot().fluid().ore().dust()
                 .color(0x11111b).iconSet(SHINY)
@@ -44,6 +27,13 @@ public class FirstMaterials {
                 .dust().ore()
                 .color(0xE5E2E1).iconSet(SAND)
                 .element(GTNNElement.IF)
+                .buildAndRegister();
+        Thorium232 = Builder("thorium_232")
+                .ingot(3)
+                .liquid(new FluidBuilder().temperature(1405))
+                .color(0x2c9f2c).secondaryColor(0x33342c).iconSet(RADIOACTIVE)
+                .appendFlags(EXT_METAL)
+                .element(GTNNElement.Th232)
                 .buildAndRegister();
     }
 }

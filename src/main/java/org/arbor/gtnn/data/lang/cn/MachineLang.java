@@ -9,9 +9,11 @@ public class MachineLang {
         provider.add("block.gtnn.chemical_plant", "埃克森美孚化工厂");
         provider.add("block.gtnn.neutron_activator", "中子活化器");
         provider.add("block.gtnn.naquadah_reactor", "硅岩发电机");
+        provider.add("block.gtnn.large_naquadah_reactor", "大型硅岩发电堆");
         provider.add("gtceu.chemical_plant", "化工厂");
         provider.add("gtceu.neutron_activator", "中子活化");
         provider.add("gtceu.naquadah_reactor", "硅岩发电");
+        provider.add("gtceu.large_naquadah_reactor", "液态硅岩发电");
         provider.add("gtceu.dehydrator", "脱水");
         provider.add("gtceu.rocket_engine", "火箭燃料发电");
         provider.add("gtceu.precision_assembly", "精密组装");
@@ -38,6 +40,16 @@ public class MachineLang {
         provider.add("gtnn.multiblock.neutron_activator.tooltip3", "§6没有中子加速器运行时，中子动能每秒降低§e72KeV§6中子动能");
         provider.add("gtnn.multiblock.neutron_activator.tooltip4", "§6输入石墨/铍粉可以立即吸收§e10MeV§6中子动能");
         provider.add("gtnn.multiblock.neutron_activator.tooltip5", "§6当中子动能超过§41200MeV§6后将会爆炸！");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.tooltip1", "§o§7环境友好型!");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.tooltip2", "§6从高能流体中获取能量");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.tooltip3", "§6运行时需要消耗§e2400L/s§6液态空气， 否则你的燃料将会被销毁");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.tooltip4", "§6输入液态燃料, 输入仓内出现不止§4一种§6燃料时，反应堆将会爆炸");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.tooltip5", "§6可以消耗§e1000L/s§6冷却液获得§e150%效率提升");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.tooltip6", "§6消耗激发流体以提升输出功率");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.tooltip7", "熔融铯        | §e2x功率 | §6180L/s");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.tooltip8", "熔融铀-235  | §e3x功率 | §6180L/s");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.tooltip9", "熔融硅岩      | §e4x功率 | §620L/s");
+        provider.add("gtnn.multiblock.large_naquadah_reactor.power", "发电倍率: %s");
         provider.add("gtnn.multiblock.neutronactivator.ev", "当前中子动能: %deV");
         provider.add("gtnn.multiblock.neutronactivator.height", "高度: %s");
         provider.add("gtnn.multiblock.neutronactivator.efficiency", "耗时: %s%%");
