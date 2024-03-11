@@ -1,6 +1,6 @@
 # GT-- by Arborsm
 
-[中文介绍]()
+[中文介绍](https://github.com/Arborsm/GT--/blob/master/README_CN.md)
 
 ## This Mod adds some Generator machines from `GoodGenerator` and `GT++` to GTM :
 
