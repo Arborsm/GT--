@@ -134,6 +134,7 @@ dependencies {
     implementation fg.deobf("curse.maven:supplementaries-412082:5147148")
     implementation fg.deobf("curse.maven:cc-tweaked-282001:5118388")
     implementation fg.deobf("curse.maven:selene-499980:5146536")
+    implementation fg.deobf("curse.maven:gcyr-922713:5077849")
 
     compileOnly fg.deobf("curse.maven:jei-238222:4712868")
     compileOnly fg.deobf("dev.emi:emi-forge:${emiVersion}")
@@ -164,10 +165,6 @@ tasks.named('processResources', ProcessResources).configure {
     }
 }
 
-tasks.named('jarJar') {
-    // ...
-}
-
 // Example for how to get properties into the manifest for reading at runtime.
 tasks.named('jar', Jar).configure {
     manifest {
@@ -182,14 +179,19 @@ tasks.named('jar', Jar).configure {
         ])
     }
 
-    // The settings below make sure that your build is reproducible
-    // More information at https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives
-    preserveFileTimestamps = false
-    reproducibleFileOrder = true
-
-    // This is the preferred method to reobfuscate your jar file
+    archiveClassifier = 'slim'
     finalizedBy 'reobfJar'
 }
+
+tasks.named('jarJar').configure {
+    archiveClassifier = ''
+    finalizedBy 'reobfJarJar'
+}
+
+reobf {
+    jarJar {}
+}
+
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation

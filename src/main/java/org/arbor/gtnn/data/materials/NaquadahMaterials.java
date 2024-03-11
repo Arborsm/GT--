@@ -3,6 +3,7 @@ package org.arbor.gtnn.data.materials;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.attribute.FluidAttributes;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+import org.arbor.gtnn.GTNNIntegration;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.DISABLE_DECOMPOSITION;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
@@ -11,7 +12,7 @@ import static org.arbor.gtnn.data.GTNNMaterials.*;
 
 public class NaquadahMaterials {
     public static void init() {
-        addFluid(Bromine);
+        if (!GTNNIntegration.isGCYRLoaded()) addFluid(Bromine);
         NaquadahOxideMixture = Builder("naquadah_oxide_mixture")
                 .dust()
                 .color(0x4c4c4c).iconSet(ROUGH)
