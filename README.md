@@ -1,6 +1,6 @@
 # GT-- by Arborsm
 
-[中文介绍](https://github.com/Arborsm/GT--/blob/master/README_CN.md)
+[中文介绍](https://github.com/Arborsm/GT--/blob/master/README_CN.md) [Modrinth](https://modrinth.com/mod/gtnn) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/gt)
 
 ## This Mod adds some Generator machines from `GoodGenerator` and `GT++` to GTM :
 
