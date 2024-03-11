@@ -16,119 +16,119 @@ public class GTNNItems {
         REGISTRATE.creativeModeTab(() -> GTNNCreativeModeTabs.MAIN_TAB);
     }
     public static final ItemEntry<Item> RADIOACTIVE_WASTE = REGISTRATE.item("radioactive_waste", Item::new)
-            .lang("放射性废料")
+            .lang("Radioactive Waste")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .register();
     public static ItemEntry<ComponentItem> HEAVY_INGOT_T1 = REGISTRATE.item("heavy_ingot_t1", ComponentItem::create)
-            .lang("T1重型锭")
+            .lang("Heavy Alloy Ingot T1")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.heavy_ingot_t1.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> HEAVY_INGOT_T2 = REGISTRATE.item("heavy_ingot_t2", ComponentItem::create)
-            .lang("T2重型锭")
+            .lang("Heavy Alloy Ingot T2")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.heavy_ingot_t2.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> HEAVY_INGOT_T3 = REGISTRATE.item("heavy_ingot_t3", ComponentItem::create)
-            .lang("T3重型锭")
+            .lang("Heavy Alloy Ingot T3")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.heavy_ingot_t3.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> HEAVY_INGOT_T4 = REGISTRATE.item("heavy_ingot_t4", ComponentItem::create)
-            .lang("T4重型锭")
+            .lang("Heavy Alloy Ingot T4")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.heavy_ingot_t4.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> HEAVY_PLATE_T1 = REGISTRATE.item("heavy_plate_t1", ComponentItem::create)
-            .lang("T1重型合金板")
+            .lang("Heavy Alloy Plate T1")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.heavy_plate_t1.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> HEAVY_PLATE_T2 = REGISTRATE.item("heavy_plate_t2", ComponentItem::create)
-            .lang("T2重型合金板")
+            .lang("Heavy Alloy Plate T2")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.heavy_plate_t2.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> HEAVY_PLATE_T3 = REGISTRATE.item("heavy_plate_t3", ComponentItem::create)
-            .lang("T3重型合金板")
+            .lang("Heavy Alloy Plate T3")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.heavy_plate_t3.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> HEAVY_PLATE_T4 = REGISTRATE.item("heavy_plate_t4", ComponentItem::create)
-            .lang("T4重型合金板")
+            .lang("Heavy Alloy Plate T4")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.heavy_plate_t4.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> CHIP_T1 = REGISTRATE.item("t1_chip", ComponentItem::create)
-            .lang("T1芯片")
+            .lang("Chip T1")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.chip_t1.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> CHIP_T2 = REGISTRATE.item("t2_chip", ComponentItem::create)
-            .lang("T2芯片")
+            .lang("Chip T2")
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.chip_t2.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> CHIP_T3 = REGISTRATE.item("t3_chip", ComponentItem::create)
-            .lang("T3芯片")
+            .lang("Chip T3")
             .properties(p -> p.rarity(Rarity.EPIC))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.chip_t3.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> CHIP_T4 = REGISTRATE.item("t4_chip", ComponentItem::create)
-            .lang("T4芯片")
+            .lang("Chip T4")
             .properties(p -> p.rarity(Rarity.EPIC))
             .onRegister(attach(new TooltipBehavior(text ->
                     text.add(Component.translatable("item.gtnn.chip_t4.tooltip")))))
             .register();
     public static ItemEntry<ComponentItem> INVERTER = REGISTRATE.item("inverter", ComponentItem::create)
-            .lang("逆变器")
+            .lang("Inverter")
             .register();
     public static ItemEntry<ComponentItem> EncapsulatedUranium = REGISTRATE.item("encapsulated_uranium", ComponentItem::create)
-            .lang("封装铀")
+            .lang("Encapsulated Uranium")
             .register();
     public static ItemEntry<ComponentItem> EnrichedUraniumNugget = REGISTRATE.item("enriched_uranium_nugget", ComponentItem::create)
-            .lang("浓缩铀粒")
+            .lang("Enriched Uranium Nugget")
             .register();
     public static ItemEntry<ComponentItem> EnrichedUranium = REGISTRATE.item("enriched_uranium", ComponentItem::create)
-            .lang("浓缩铀")
+            .lang("Enriched Uranium")
             .register();
     public static ItemEntry<ComponentItem> EncapsulatedThorium = REGISTRATE.item("encapsulated_thorium", ComponentItem::create)
-            .lang("封装钍")
+            .lang("Encapsulated Thorium")
             .register();
     public static ItemEntry<ComponentItem> EnrichedThoriumNugget = REGISTRATE.item("enriched_thorium_nugget", ComponentItem::create)
-            .lang("浓缩钍粒")
+            .lang("Enriched Thorium Nugget")
             .register();
     public static ItemEntry<ComponentItem> EnrichedThorium = REGISTRATE.item("enriched_thorium", ComponentItem::create)
-            .lang("浓缩钍")
+            .lang("Enriched Thorium")
             .register();
     public static ItemEntry<ComponentItem> EncapsulatedPlutonium = REGISTRATE.item("encapsulated_plutonium", ComponentItem::create)
-            .lang("封装钚")
+            .lang("Encapsulated Plutonium")
             .register();
     public static ItemEntry<ComponentItem> EnrichedPlutoniumNugget = REGISTRATE.item("enriched_plutonium_nugget", ComponentItem::create)
-            .lang("浓缩钚粒")
+            .lang("Enriched Plutonium Nugget")
             .register();
     public static ItemEntry<ComponentItem> EnrichedPlutonium = REGISTRATE.item("enriched_plutonium", ComponentItem::create)
-            .lang("浓缩钚")
+            .lang("Enriched Plutonium")
             .register();
     public static ItemEntry<ComponentItem> NeutronSource = REGISTRATE.item("neutron_source", ComponentItem::create)
-            .lang("中子源")
+            .lang("Neutron Source")
             .register();
     public static ItemEntry<ComponentItem> QuarkCore = REGISTRATE.item("quark_core", ComponentItem::create)
-            .lang("夸克核心")
+            .lang("Quark Core")
             .register();
     public static ItemEntry<ComponentItem> PlateRadiationProtection = REGISTRATE.item("plate_radiation_protection", ComponentItem::create)
-            .lang("防辐射板")
+            .lang("Radiation Protection Plate")
             .register();
 
     public static ItemEntry<ComponentItem> COMPUTER;

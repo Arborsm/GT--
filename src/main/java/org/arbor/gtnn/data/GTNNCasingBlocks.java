@@ -27,15 +27,15 @@ public class GTNNCasingBlocks {
     }
 
     public static final BlockEntry<Block> PROCESS_MACHINE_CASING = createCasingBlock(
-            "clean_machine_casing", "洁净机器方块", RendererBlock::new,
+            "clean_machine_casing", "Clean Stainless Steel Machine Casing", RendererBlock::new,
             GTNN.id("block/casings/solid/process_machine_casing"), () -> Blocks.IRON_BLOCK);
 
     public static final BlockEntry<Block> RADIATION_PROOF_MACHINE_CASING = createCasingBlock(
-            "radiation_proof_machine_casing", "防辐射机械方块", RendererBlock::new,
+            "radiation_proof_machine_casing", "Radiation Proof Machine Casing", RendererBlock::new,
             GTNN.id("block/casings/solid/radiation_proof_machine_casing"), () -> Blocks.IRON_BLOCK);
 
     public static final BlockEntry<Block> MAR_CASING = createCasingBlock(
-            "mar_casing", "立场约束机械方块", RendererBlock::new,
+            "mar_casing", "Field Restriction Casing", RendererBlock::new,
             GTNN.id("block/casings/solid/mar_casing"), () -> Blocks.IRON_BLOCK);
 
     @SuppressWarnings("all")

@@ -11,6 +11,10 @@ import static org.arbor.gtnn.data.GTNNMaterials.*;
 
 public class SecondMaterials {
     public static void init(){
+        ArcaneCrystal = Builder("arcane_crystal")
+                .dust().ore().gem()
+                .color(0x93AEFF).iconSet(DIAMOND)
+                .buildAndRegister();
         RP1 = Builder("rp_1_mixed_fuel")
                 .fluid()
                 .color(0xC02928).iconSet(DULL)

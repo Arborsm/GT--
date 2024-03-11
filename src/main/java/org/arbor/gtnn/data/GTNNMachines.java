@@ -66,7 +66,7 @@ public class GTNNMachines {
     public static final MachineDefinition[] NEUTRON_ACCELERATOR = registerTieredMachines("neutron_accelerator",
             NeutronAcceleratorMachine::new,
             (tier, builder) -> builder
-                    .langValue(VNF[tier] + " 中子加速器")
+                    .langValue(VNF[tier] + "Neutron Accelerator")
                     .rotationState(RotationState.ALL)
                     .abilities(APartAbility.NEUTRON_ACCELERATOR)
                     .tooltips(Component.translatable("gtnn.machine.neutron_accelerator.tooltip1"))
@@ -107,7 +107,7 @@ public class GTNNMachines {
             "rocket_engine", GTNNRecipeTypes.ROCKET_ENGINE_RECIPES, GTNNGeneratorMachine::parallel,
             GTMachines.genericGeneratorTankSizeFunction, EV, IV, LuV);
 
-    public static final MultiblockMachineDefinition CHEMICAL_PLANT = REGISTRATE.multiblock("chemical_plant", ChemicalPlantMachine::new)
+    public static final MultiblockMachineDefinition CHEMICAL_PLANT = REGISTRATE.multiblock("exxonmobil_chemical_plant", ChemicalPlantMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip1"))
             .tooltips(Component.translatable("gtnn.multiblock.chemical_plant.tooltip2"))
