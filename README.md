@@ -21,6 +21,18 @@
 
 * Add precision assembly to GTM's large assembly machine
 
+## Integration
+
+* Note: Changes may be made in future versions.
+
+* Ad Astra!: Rewrite the end ore veins, add a large number of ore veins, and rewrite the rocket technologic process **Strongly recommend**;
+
+* Twilight Forest: Adding GT veins;
+
+* Supplementaries: makes bomb GT recipe;
+
+* CC: Tweaked: Add a little of recipes.
+
 ## Features that can be turned off :
 
 * Platinum process from GTNH
