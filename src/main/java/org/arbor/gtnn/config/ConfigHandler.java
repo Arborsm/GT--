@@ -8,9 +8,8 @@ import org.arbor.gtnn.GTNN;
 
 @Config(id = GTNN.MODID)
 public class ConfigHandler {
-    public static ConfigHandler INSTANCE;
+    public static final ConfigHandler INSTANCE = Configuration.registerConfig(ConfigHandler.class, ConfigFormats.json()).getConfigInstance();
     public static void init() {
-        INSTANCE = Configuration.registerConfig(ConfigHandler.class, ConfigFormats.json()).getConfigInstance();
     }
     @Configurable
     public ClientConfigs Client = new ClientConfigs();
@@ -23,13 +22,25 @@ public class ConfigHandler {
         @Configurable
         @Configurable.Comment({"Enable Harder Naquadah Line", "Default: true"})
         public boolean enableHarderNaquadahLine = true;
+        @Configurable
+        @Configurable.Comment({"Ban Create Fan Blasting", "Default: false"})
+        public boolean banCreateFanBlasting = false;
+        @Configurable
+        @Configurable.Comment({"Makes EMI Better", "Default: true"})
+        public boolean makesEMIBetter = true;
         ServerConfigs(){
         }
     }
     public static class ClientConfigs{
         @Configurable
-        @Configurable.Comment({"Use Extra Heart Renderer", "Default: true"})
-        public boolean extraHeartRenderer = true;
+        @Configurable.Comment({"Use Extra Heart Renderer", "Default: false"})
+        public boolean extraHeartRenderer = false;
+        @Configurable
+        @Configurable.Comment({"Kill Toast", "Default: false"})
+        public boolean killToast = false;
+        @Configurable
+        @Configurable.Comment({"Add Chat Animation", "Default: false"})
+        public boolean addChatAnimation = false;
         ClientConfigs(){
         }
     }

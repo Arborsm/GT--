@@ -6,6 +6,19 @@ public class MiscLang {
     public static void init() {
         blocks();
         items();
+        config();
+    }
+
+    private static void config() {
+        tsl("config.gtnn.option.Client", "客户端", "Client");
+        tsl("config.gtnn.option.Server", "服务器", "Server");
+        tsl("config.gtnn.option.enableHarderNaquadahLine", "开启更难的硅岩处理", "Enable Harder Naquadah Process Line");
+        tsl("config.gtnn.option.enableHarderPlatinumLine", "开启更难的铂处理", "Enable Harder Platinum Process Line");
+        tsl("config.gtnn.option.extraHeartRenderer", "启用血条渲染", "Enable extra Heart renderer");
+        tsl("config.gtnn.option.banCreateFanBlasting", "禁用机械动力风扇熔炼", "Disable Create Fan Blasting");
+        tsl("config.gtnn.option.makesEMIBetter", "使EMI更好用", "Makes EMI Better");
+        tsl("config.gtnn.option.killToast", "禁用弹窗", "Disable toast");
+        tsl("config.gtnn.option.addChatAnimation", "启用聊天动画", "Enable Chat Animation");
     }
 
     private static void blocks() {

@@ -1,25 +1,28 @@
 # GT-- by Arborsm
 
-## 本模组为 GTM 添加一些来自GoodGenerator、GT++的机器：
+[中文介绍]()
 
-* 火箭引擎：消耗火箭燃料发电的单方块机器
+## This Mod adds some Generator machines from `GoodGenerator` and `GT++` to GTM :
 
-* 硅岩发电机：消耗硅岩燃料发电的单方块机器
+* Rocket Engine: A block machine that consumes rocket fuel to generate electricity
 
-* 大型硅岩反应堆：消耗专用硅岩燃料实现极为疯狂的发电速率！
+* Naquadah Generator: A block machine that consumes Naquadah for power generation
 
-## 以及一些生产设备：
+* Large Naquadah Generator: A multiblock machine that consuming dedicated Naquadah fuel to achieve extremely crazy power
+  generation!
 
-* 脱水机：配方机器
+## And some production machine :
 
-* 中子活化器：为硅岩处理而生的专业化机器。
+* Dehydrator: Recipe machine
 
-* 化工厂：用于火箭燃料的制作
+* Neutron Activator: A specialized machine designed for processing Naquadah.
 
-* 给GTM的大组装机追加精密组装
+* Chemical plants: Used for the production of rocket fuel
 
-## 可关闭的特性：
+* Add precision assembly to GTM's large assembly machine
 
-* 来自GTNH的铂处理流程
+## Features that can be turned off :
 
-* 修改自Magic_Sweepy的硅岩处理流程
+* Platinum process from GTNH
+
+* Modify the Naquadah process from Magic-Sweepy
