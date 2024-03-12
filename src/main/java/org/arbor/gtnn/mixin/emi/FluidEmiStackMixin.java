@@ -4,6 +4,7 @@ import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.stack.FluidEmiStack;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
+import org.arbor.gtnn.GTNN;
 import org.spongepowered.asm.mixin.*;
 
 @SuppressWarnings("all")
@@ -19,9 +20,13 @@ public abstract class FluidEmiStackMixin extends EmiStack {
         this.fluid =fluid;
     }
 
+    @Override
     public ItemStack getItemStack(){
-        arborCore$stack = fluid.getBucket().getDefaultInstance();
-        arborCore$stack.setCount(1);
-        return arborCore$stack;
+        if (GTNN.getServerConfig().makesEMIBetter) {
+            arborCore$stack = fluid.getBucket().getDefaultInstance();
+            arborCore$stack.setCount(1);
+            return arborCore$stack;
+        }
+        return ItemStack.EMPTY;
     }
 }

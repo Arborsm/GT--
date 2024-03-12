@@ -17,6 +17,7 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static org.arbor.gtnn.data.GTNNMachines.NEUTRON_ACCELERATOR;
 import static org.arbor.gtnn.data.GTNNMaterials.NaquadahBasedLiquidFuel;
+import static org.arbor.gtnn.data.GTNNMaterials.Thorium232;
 import static org.arbor.gtnn.data.GTNNRecipes.dur;
 import static org.arbor.gtnn.data.GTNNRecipes.setNA;
 
@@ -62,7 +63,7 @@ public class SelfRecipes {
         ASSEMBLER_RECIPES.recipeBuilder("encapsulated_thorium")
                 .inputItems(dust, GTNNMaterials.UraniumCarbideThoriumMixture, 64)
                 .inputItems(foil, TungstenSteel, 4)
-                .outputItems(GTNNItems.EnrichedThorium)
+                .outputItems(GTNNItems.EncapsulatedThorium)
                 .EUt(VA[HV]).duration(dur(15)).save(provider);
         ASSEMBLER_RECIPES.recipeBuilder("plutonium_oxide_uranium_mixture")
                 .inputItems(dust, Plutonium239, 10)
@@ -253,6 +254,18 @@ public class SelfRecipes {
                 .chancedOutput(dust, Europium, 4, 2000, 0)
                 .outputFluids(Xenon.getFluid(18))
                 .EUt(VA[EV]).duration(dur(30));
+        GTNNRecipeTypes.CHEMICAL_PLANT_RECIPES.recipeBuilder(Thorium232.getName())
+                .inputItems(dust, Thorium, 16)
+                .inputItems(dust, Borax, 12)
+                .inputFluids(DistilledWater.getFluid(2000))
+                .inputFluids(HydrochloricAcid.getFluid(1000))
+                .outputItems(dustSmall, Thorium, 32)
+                .outputItems(dust, Thorium232, 2)
+                .chancedOutput(dustSmall, Thorium232, 2, 1000, 0)
+                //.chancedOutput(dustSmall, Uranium232, 2, 1000, 0)
+                .addCondition(GTNNRecipes.setPlantCasing(5))
+                .circuitMeta(1)
+                .EUt(VA[EV]).duration(dur(300)).save(provider);
     }
 
     private static void blockRecipes(Consumer<FinishedRecipe> provider) {

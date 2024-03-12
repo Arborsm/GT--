@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.common.data.GTItems;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.bom.TreeCost;
+import org.arbor.gtnn.GTNN;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,8 +26,10 @@ public abstract class EmiTreeCostMixin {
     @SuppressWarnings("SuspiciousMethodCalls")
     @Inject(method = "isCatalyst", at = @At("HEAD"), cancellable = true, remap = false)
     private static void $isCatalyst(EmiIngredient ing, CallbackInfoReturnable<Boolean> info) {
-        if (arborCore$CATALYST.contains(ing)) {
-            info.setReturnValue(true);
+        if (GTNN.getServerConfig().makesEMIBetter) {
+            if (arborCore$CATALYST.contains(ing)) {
+                info.setReturnValue(true);
+            }
         }
     }
 }

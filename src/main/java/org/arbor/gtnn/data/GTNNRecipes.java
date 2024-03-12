@@ -30,7 +30,7 @@ public class GTNNRecipes {
         return new NeutronActivatorCondition(max, min);
     }
     public static PlantCasingCondition setPlantCasing(int tier) {
-        return new PlantCasingCondition(PlantCasingBlock.getByTier(tier));
+        return new PlantCasingCondition(PlantCasingBlock.getByTier(tier - 1));
     }
 
     public static PlantCasingCondition setPlantCasing(PlantCasingBlock plantCasing) {

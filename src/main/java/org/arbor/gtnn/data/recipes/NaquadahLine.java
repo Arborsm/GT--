@@ -61,7 +61,7 @@ public class NaquadahLine {
                 .outputFluids(HydrofluoricAcid.getFluid(8000))
                 .EUt(VA[LuV])
                 .duration(1200)
-                .addCondition(GTNNRecipes.setPlantCasing(5))
+                .addCondition(GTNNRecipes.setPlantCasing(6))
                 .save(consumer);
 
         //  Enriched Naquadah Residue Solution -> Trinium Sulfide + Xenoauric Fluoroantimonic Acid

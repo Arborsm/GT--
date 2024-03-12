@@ -5,11 +5,12 @@ import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.arbor.gtnn.GTNN;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @SuppressWarnings("unused")
 @OnlyIn(Dist.CLIENT)
@@ -18,28 +19,21 @@ public class ToastKiller {
     @Inject(method = "render",at = @At("HEAD"),cancellable = true)
     public void killToasts(GuiGraphics p_283249_, CallbackInfo ci){
         //Debug.Log("Killed a toast that tried to draw");
-        ci.cancel();
+        if (GTNN.getClientConfig().killToast) ci.cancel();
     }
 
-    /**
-     * @author AnOpenSauceDev
-     * @reason forcefully overwrite toast behaviour
-     */
-    @Overwrite
-    public void addToast(Toast toast){
+    @Inject(method = "addToast", at = @At("HEAD"), cancellable = true)
+    public void addToast(Toast pToast, CallbackInfo ci) {
+        if (GTNN.getClientConfig().killToast) ci.cancel();
     }
 
     @OnlyIn(Dist.CLIENT)
     @Mixin(targets = "net.minecraft.client.gui.components.toasts.ToastComponent$ToastInstance")
     static class ToastInstance<T extends Toast> { // inner class of ToastManager
 
-        /**
-         * @author AnOpenSauceDev
-         * @reason prevent toasts rendering on the client
-         */
-        @Overwrite
-        public boolean render(int x, GuiGraphics context) { // lie about drawing
-            return true;
+        @Inject(method = "render", at = @At("HEAD"), cancellable = true)
+        public void render(int pScreenWidth, GuiGraphics pGuiGraphics, CallbackInfoReturnable<Boolean> cir) { // lie about drawing
+            if (GTNN.getClientConfig().killToast) cir.setReturnValue(true);
         }
     }
 

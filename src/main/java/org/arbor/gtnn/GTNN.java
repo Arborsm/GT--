@@ -23,7 +23,14 @@ public class GTNN {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addGenericListener(MachineDefinition.class, GTNNRegistries::registerMachine);
         CommonProxy.init();
-        ConfigHandler.init();
+    }
+
+    public static ConfigHandler.ClientConfigs getClientConfig() {
+        return ConfigHandler.INSTANCE.Client;
+    }
+
+    public static ConfigHandler.ServerConfigs getServerConfig() {
+        return ConfigHandler.INSTANCE.Server;
     }
 
     public static ResourceLocation id(String path) {

@@ -136,9 +136,9 @@ dependencies {
     implementation fg.deobf("curse.maven:selene-499980:5146536")
     compileOnly fg.deobf("curse.maven:gcyr-922713:5077849")
 
-    compileOnly fg.deobf("curse.maven:jei-238222:4712868")
-    compileOnly fg.deobf("dev.emi:emi-forge:${emiVersion}")
-    runtimeOnly fg.deobf("curse.maven:roughly-enough-items-310111:4951142")
+    implementation fg.deobf("curse.maven:jei-238222:4712868")
+    implementation fg.deobf("dev.emi:emi-forge:${emiVersion}")
+    compileOnly fg.deobf("curse.maven:roughly-enough-items-310111:4951142")
     runtimeOnly fg.deobf("curse.maven:architectury-api-419699:5084452")
     runtimeOnly fg.deobf("curse.maven:cloth-config-348521:4973441")
 

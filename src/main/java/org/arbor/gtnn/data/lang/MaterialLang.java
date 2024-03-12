@@ -122,6 +122,7 @@ public class MaterialLang {
         translateMaterial(NaquadahBasedLiquidFuel, "硅岩流体燃料");
         translateMaterial(NaquadahBasedLiquidFuelExcited, "硅岩流体燃料(激发态)");
         translateMaterial(NaquadahBasedLiquidFuelDepleted, "硅岩流体燃料(枯竭态)");
+        translateMaterial(Thorium232, "钍-232");
     }
 
     private static void jeiOreVeins() {

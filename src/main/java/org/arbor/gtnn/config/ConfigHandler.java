@@ -8,9 +8,7 @@ import org.arbor.gtnn.GTNN;
 
 @Config(id = GTNN.MODID)
 public class ConfigHandler {
-    public static final ConfigHandler INSTANCE = Configuration.registerConfig(ConfigHandler.class, ConfigFormats.json()).getConfigInstance();
-    public static void init() {
-    }
+    public static ConfigHandler INSTANCE = Configuration.registerConfig(ConfigHandler.class, ConfigFormats.json()).getConfigInstance();
     @Configurable
     public ClientConfigs Client = new ClientConfigs();
     @Configurable

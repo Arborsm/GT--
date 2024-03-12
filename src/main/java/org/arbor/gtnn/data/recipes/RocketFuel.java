@@ -168,8 +168,8 @@ public class RocketFuel {
     }
 
     private static void rocketEngine(Consumer<FinishedRecipe> provider) {
-        ROCKET_ENGINE_RECIPES.recipeBuilder(RP1RocketFuel.getName())
-                .inputFluids(RP1RocketFuel.getFluid(4))
+        ROCKET_ENGINE_RECIPES.recipeBuilder(RP1.getName())
+                .inputFluids(RP1.getFluid(4))
                 .EUt(-V[EV])
                 .duration(3)
                 .save(provider);
