@@ -5,7 +5,7 @@ license = "MIT"
 
 [[mods]]
 modId = "gtnn"
-version = "${mod_version}"
+version = "${version}"
 displayName = "GT--"
 authors = "Arborsm"
 description = '''${mod_description}'''
