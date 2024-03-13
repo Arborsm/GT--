@@ -1,7 +1,5 @@
 package org.arbor.gtnn.data.materials;
 
-import org.arbor.gtnn.GTNNIntegration;
-
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.METALLIC;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
@@ -24,7 +22,7 @@ public class AdAstraMaterials {
         addOre(Vanadium);
         addOre(Osmium);
         addOre(Iridium);
-        if (!GTNNIntegration.isGCYRLoaded()) addOre(Titanium);
+        addOre(Titanium);
         addOre(Manganese);
         addOre(Rutile);
         addOre(Tungsten);

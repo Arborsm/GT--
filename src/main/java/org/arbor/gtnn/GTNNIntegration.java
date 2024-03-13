@@ -27,10 +27,6 @@ public class GTNNIntegration {
         return isLoaded("computercraft");
     }
 
-    public static boolean isGCYRLoaded() {
-        return LDLib.isModLoaded("gcyr");
-    }
-
     private static boolean isLoaded(String mod) {
         return LDLib.isModLoaded(mod);
     }

@@ -9,8 +9,10 @@
     "create.CreateFanMixin",
     "emi.EmiTreeCostMixin",
     "emi.FluidEmiStackMixin",
+    "gt.FluidStorageMixin",
     "gt.GTOreMixin",
     "gt.GTRecipeTypeMixin",
+    "gt.MaterialMixin",
     "mc.MinecraftServerMixin",
     "mc.RecipeManagerMixin",
     "mc.WorldLoaderPackConfigMixin"

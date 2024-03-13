@@ -134,7 +134,7 @@ dependencies {
     implementation fg.deobf("curse.maven:supplementaries-412082:5147148")
     implementation fg.deobf("curse.maven:cc-tweaked-282001:5118388")
     implementation fg.deobf("curse.maven:selene-499980:5146536")
-    compileOnly fg.deobf("curse.maven:gcyr-922713:5077849")
+    runtimeOnly fg.deobf("curse.maven:gcyr-922713:5077849")
 
     implementation fg.deobf("curse.maven:jei-238222:4712868")
     implementation fg.deobf("dev.emi:emi-forge:${emiVersion}")
