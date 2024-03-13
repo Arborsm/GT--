@@ -125,7 +125,6 @@ dependencyResolutionManagement {
             def machete = version("machete", macheteVersion)
             plugin("machete", "io.github.p03w.machete").versionRef(machete)
         }
-        maven { url = 'https://maven.parchmentmc.org' }
     }
 }
 

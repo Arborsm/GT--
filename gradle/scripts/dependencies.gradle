@@ -70,4 +70,10 @@ dependencies {
     // lib
     modImplementation("org.arbor:arbormixin:1.0")
     include("org.arbor:arbormixin:1.0")
+
+    //others
+    modImplementation("curse.maven:supplementaries-412082:5147148")
+    modImplementation("curse.maven:cc-tweaked-282001:5118388")
+    modImplementation("curse.maven:selene-499980:5146536")
+    // modImplementation("curse.maven:gcyr-922713:5077849")
 }
