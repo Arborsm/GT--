@@ -7,6 +7,11 @@ public class MiscLang {
         blocks();
         items();
         config();
+        tsl("gtnn.recipe.eu", "耗能功率：%,d EU/t", "Usage: %,d EU/t");
+        tsl("gtnn.emi.tooltip.1", "最低：%s", "Min: %s");
+        tsl("gtnn.emi.tooltip.2", "左键以增加超频等级", "Left click to raise the OC");
+        tsl("gtnn.emi.tooltip.3", "右键以降低超频等级", "Right click to lower the OC");
+        tsl("gtnn.emi.tooltip.4", "中键以重置超频等级", "Middle click to reset the OC");
     }
 
     private static void config() {

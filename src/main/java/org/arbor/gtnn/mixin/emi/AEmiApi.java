@@ -1,4 +1,4 @@
-package org.arbor.gtnn.mixin.client;
+package org.arbor.gtnn.mixin.emi;
 
 import dev.emi.emi.api.EmiApi;
 import dev.emi.emi.api.recipe.EmiRecipe;

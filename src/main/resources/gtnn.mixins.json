@@ -7,9 +7,11 @@
   "plugin": "org.arbor.gtnn.mixin.GTNNMixinPlugin",
   "mixins": [
     "create.CreateFanMixin",
+    "emi.EmiPlayerInventoryMixin",
     "emi.EmiTreeCostMixin",
     "emi.FluidEmiStackMixin",
     "gt.FluidStorageMixin",
+    "gt.GTMEmiRewrite",
     "gt.GTOreMixin",
     "gt.GTRecipeTypeMixin",
     "gt.MaterialMixin",
@@ -18,11 +20,12 @@
     "mc.WorldLoaderPackConfigMixin"
   ],
   "client": [
-    "client.AEmiApi",
     "client.ChatMixin",
     "client.ShimmerMixin",
     "client.ToastKiller",
-    "client.ToastKiller$ToastInstance"
+    "client.ToastKiller$ToastInstance",
+    "emi.AEmiApi",
+    "emi.ARecipeScreen"
   ],
   "injectors": {
     "defaultRequire": 1

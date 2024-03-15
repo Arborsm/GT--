@@ -20,7 +20,7 @@ dependencyResolutionManagement {
         // Forge
         def jeiVersion = "15.2.0.27"
         def reiVersion = "12.0.684"
-        def emiVersion = "1.1.0"
+        def emiVersion = "1.1.3"
         def forgeVersion = "47.2.0"
         def registrateForgeVersion = "MC1.20-1.3.3"
         def createForgeVersion = "0.5.1.f-26"

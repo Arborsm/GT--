@@ -63,4 +63,11 @@ repositories {
         name = "Resourceful Bees Maven"
         url = "https://maven.resourcefulbees.com/repository/maven-public/"
     }
+    maven {
+        name = "SquidDev"
+        url = "https://squiddev.cc/maven"
+        content {
+            includeGroup("cc.tweaked.cobalt")
+        }
+    }
 }

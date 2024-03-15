@@ -266,6 +266,12 @@ public class SelfRecipes {
                 .addCondition(GTNNRecipes.setPlantCasing(5))
                 .circuitMeta(1)
                 .EUt(VA[EV]).duration(dur(300)).save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("ammonium_chloride")
+                .inputFluids(Ammonia.getFluid(1000))
+                .inputFluids(HydrochloricAcid.getFluid(1000))
+                .outputFluids(AmmoniumChloride.getFluid(1000))
+                .circuitMeta(1)
+                .EUt(VA[LV]).duration(dur(0.75)).save(provider);
     }
 
     private static void blockRecipes(Consumer<FinishedRecipe> provider) {

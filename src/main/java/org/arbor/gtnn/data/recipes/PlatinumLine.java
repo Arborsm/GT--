@@ -126,6 +126,7 @@ public class PlatinumLine {
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder("tiny_platinum_dusts")
                 .inputFluids(ConcentratedPlatinum.getFluid(2000))
+                .inputFluids(AmmoniumChloride.getFluid(400))
                 .circuitMeta(2)
                 .chancedOutput(dust, PlatinumSalt,16, 1111, 0)
                 .chancedOutput(dust, PlatinumRaw,4, 1111, 0)
@@ -136,6 +137,7 @@ public class PlatinumLine {
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder("large_platinum_dusts")
                 .inputFluids(ConcentratedPlatinum.getFluid(18000))
+                .inputFluids(AmmoniumChloride.getFluid(3600))
                 .circuitMeta(1)
                 .outputItems(dust, PlatinumSalt,16)
                 .outputItems(dust, PlatinumRaw,4)

@@ -32,16 +32,16 @@ dependencies {
     // JEI
     modCompileOnly(forge.jei.common.api) { transitive = false }
     modCompileOnly(forge.jei.forge.api) { transitive = false }
-    modCompileOnly(forge.jei.forge.impl) { transitive = false }
+    modImplementation(forge.jei.forge.impl) { transitive = false }
 
     // REI
     modCompileOnly forge.rei.plugin
     modCompileOnly forge.rei.api
-    modImplementation forge.rei.forge
+    modCompileOnly forge.rei.forge
 
     // EMI
     modCompileOnly("dev.emi:emi-forge:${forge.versions.emi.get()}:api")
-    modCompileOnly forge.emi
+    modImplementation forge.emi
 
     // Jade
     modImplementation(forge.jade)
@@ -74,6 +74,7 @@ dependencies {
     //others
     modImplementation("curse.maven:supplementaries-412082:5147148")
     modImplementation("curse.maven:cc-tweaked-282001:5118388")
+    forgeRuntimeLibrary("cc.tweaked:cobalt:0.9.1")
     modImplementation("curse.maven:selene-499980:5146536")
     // modImplementation("curse.maven:gcyr-922713:5077849")
 }
