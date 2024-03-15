@@ -48,6 +48,7 @@
   "config.gtnn.option.banCreateFanBlasting": "Disable Create Fan Blasting",
   "config.gtnn.option.enableHarderNaquadahLine": "Enable Harder Naquadah Process Line",
   "config.gtnn.option.enableHarderPlatinumLine": "Enable Harder Platinum Process Line",
+  "config.gtnn.option.enableRemakeGTMEMI": "Enable Remake GTM-EMI support",
   "config.gtnn.option.extraHeartRenderer": "Enable extra Heart renderer",
   "config.gtnn.option.killToast": "Disable toast",
   "config.gtnn.option.makesEMIBetter": "Makes EMI Better",

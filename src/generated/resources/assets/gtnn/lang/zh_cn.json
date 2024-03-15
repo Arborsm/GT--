@@ -47,6 +47,7 @@
   "config.gtnn.option.banCreateFanBlasting": "禁用机械动力风扇熔炼",
   "config.gtnn.option.enableHarderNaquadahLine": "开启更难的硅岩处理",
   "config.gtnn.option.enableHarderPlatinumLine": "开启更难的铂处理",
+  "config.gtnn.option.enableRemakeGTMEMI": "启用重制GTM-EMI支持",
   "config.gtnn.option.extraHeartRenderer": "启用血条渲染",
   "config.gtnn.option.killToast": "禁用弹窗",
   "config.gtnn.option.makesEMIBetter": "使EMI更好用",
