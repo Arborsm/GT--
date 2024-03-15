@@ -49,15 +49,15 @@ import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 @Getter
 @Deprecated
 public class GTEmiOreProcessingV2 implements EmiRecipe {
-    public static final int TEXTURE_WIDTH = 186;
-    public static final int TEXTURE_HEIGHT = 174;
-    public static final int WIDTH = 111 + 18 + 5 + 18 + 18;
-    public static final int HEIGHT = 102 + 18 + 1 + 18 + 3 + 18;
     public static final EmiTexture BASE = texture("base");
     public static final EmiTexture CHEM = texture("chem");
     public static final EmiTexture SEP = texture("sep");
     public static final EmiTexture SIFT = texture("sift");
     public static final EmiTexture SMELT = texture("smelt");
+    public static final int TEXTURE_WIDTH = 186;
+    public static final int TEXTURE_HEIGHT = 174;
+    public static final int WIDTH = 111 + 18 + 5 + 18 + 18;
+    public static final int HEIGHT = 102 + 18 + 1 + 18 + 3 + 18;
     public static final NumberFormat PERCENT_FORMAT;
     public static final EmiIngredient STONE_DUSTS;
     public static final EmiIngredient CAULDRON;
@@ -83,6 +83,82 @@ public class GTEmiOreProcessingV2 implements EmiRecipe {
         List<EmiIngredient> cauldronList = new ArrayList<>(getMachines(List.of(ORE_WASHER_RECIPES)));
         cauldronList.add(EmiStack.of(Items.CAULDRON));
         CAULDRON = EmiIngredient.of(cauldronList);
+    }
+
+    public static EmiTexture texture(String key) {
+        return new EmiTexture(GTCEu.id("textures/gui/arrows/oreby-" + key + ".png"), 3, 3, WIDTH, HEIGHT, WIDTH, HEIGHT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+    }
+
+    public static EmiIngredient getWorkstations(EmiRecipeCategory category) {
+        return EmiIngredient.of(EmiApi.getRecipeManager().getWorkstations(category));
+    }
+
+    public static EmiIngredient getWorkstations(GTRecipeType recipeType) {
+        Set<EmiIngredient> stacks = new LinkedHashSet<>();
+        stacks.add(getWorkstations(GTRecipeTypeEmiCategory.CATEGORIES.apply(recipeType)));
+        //for (MachineDefinition definition : GTMEMICompatEmiPlugin.RECIPE_MACHINES.get(recipeType)) {
+        //    stacks.add(EmiStack.of(definition.asStack()));
+        //}
+        return EmiIngredient.of(new ArrayList<>(stacks));
+    }
+
+    public static MutableComponent getTierBoostText(double boostPerTier) {
+        return Component.translatable("gtceu.gui.content.tier_boost", PERCENT_FORMAT.format(boostPerTier));
+    }
+
+    public static List<EmiStack> getMachines(Iterable<GTRecipeType> validTypes) {
+        Set<MachineDefinition> set = new HashSet<>();
+        for (GTRecipeType validType : validTypes) {
+            //    set.addAll(GTMEMICompatEmiPlugin.RECIPE_MACHINES.get(validType));
+        }
+        List<EmiStack> list = new ArrayList<>();
+        for (MachineDefinition definition : set) {
+            list.add(EmiStack.of(definition.asStack()));
+        }
+        //for (MachineDefinition machine : GTRegistries.MACHINES) {
+        //    if (machine.getRecipeTypes() == null) continue;
+        //    for (GTRecipeType type : machine.getRecipeTypes()) {
+        //        for (GTRecipeType validType : validTypes) {
+        //            if (type == validType && !set.contains(machine)) {
+        //                set.add(machine);
+        //                list.add(EmiStack.of(machine.asStack()));
+        //            }
+        //        }
+        //    }
+        //}
+        return list;
+    }
+
+    public static List<EmiIngredient> getCatalysts(Set<GTRecipeType> validTypes) {
+        List<EmiIngredient> catalysts = new ArrayList<>();
+        catalysts.add(EmiStack.of(Items.CAULDRON));
+        if (validTypes.contains(FURNACE_RECIPES)) {
+            catalysts.add(EmiStack.of(Items.FURNACE));
+        }
+        catalysts.addAll(getMachines(validTypes));
+        //GTMEMICompatEmiPlugin.normalizeCatalysts(catalysts);
+        return catalysts;
+    }
+
+    public static TankWidget addTank(WidgetHolder widgets, EmiIngredient stack, int x, int y) {
+        long amount = stack.getAmount();
+        long minHeight = 3;
+        long capacity = 16 * amount / FluidHelper.getBucket() < minHeight ? amount * 16 / minHeight : Math.max(amount, FluidHelper.getBucket());
+        return widgets.addTank(stack, x, y, EmiTexture.SLOT.width, EmiTexture.SLOT.height, (int) capacity);
+    }
+
+    @ApiStatus.Internal
+    public static void register(EmiRegistry registry) {
+        registry.removeRecipes(GTEmiOreProcessingV2::remove);
+        for (Material mat : GTCEuAPI.materialManager.getRegisteredMaterials()) {
+            if (mat.hasProperty(ORE)) {
+                registry.addRecipe(new GTEmiOreProcessingV2(mat));
+            }
+        }
+    }
+
+    private static boolean remove(EmiRecipe r) {
+        return r.getCategory() == GTOreProcessingEmiCategory.CATEGORY && (r.getId() == null || !r.getId().getPath().startsWith("/"));
     }
 
     private final Material material;
@@ -116,6 +192,7 @@ public class GTEmiOreProcessingV2 implements EmiRecipe {
     private final EmiStack gem;
     private final EmiStack gemFlawed;
     private final EmiStack gemChipped;
+
     public GTEmiOreProcessingV2(Material material) {
         this.material = material;
         id = GTCEu.id("/ore_processing/" + material.getName());
@@ -254,82 +331,6 @@ public class GTEmiOreProcessingV2 implements EmiRecipe {
         //EmiIngredient catalyst = EmiIngredient.of(catalysts);
         //catalysts.clear();
         //catalysts.add(catalyst);
-    }
-
-    public static EmiTexture texture(String key) {
-        return new EmiTexture(GTCEu.id("textures/gui/arrows/oreby-" + key + ".png"), 3, 3, WIDTH, HEIGHT, WIDTH, HEIGHT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-    }
-
-    public static EmiIngredient getWorkstations(EmiRecipeCategory category) {
-        return EmiIngredient.of(EmiApi.getRecipeManager().getWorkstations(category));
-    }
-
-    public static EmiIngredient getWorkstations(GTRecipeType recipeType) {
-        Set<EmiIngredient> stacks = new LinkedHashSet<>();
-        stacks.add(getWorkstations(GTRecipeTypeEmiCategory.CATEGORIES.apply(recipeType)));
-        //for (MachineDefinition definition : GTMEMICompatEmiPlugin.RECIPE_MACHINES.get(recipeType)) {
-        //    stacks.add(EmiStack.of(definition.asStack()));
-        //}
-        return EmiIngredient.of(new ArrayList<>(stacks));
-    }
-
-    public static MutableComponent getTierBoostText(double boostPerTier) {
-        return Component.translatable("gtceu.gui.content.tier_boost", PERCENT_FORMAT.format(boostPerTier));
-    }
-
-    public static List<EmiStack> getMachines(Iterable<GTRecipeType> validTypes) {
-        Set<MachineDefinition> set = new HashSet<>();
-        for (GTRecipeType validType : validTypes) {
-            //    set.addAll(GTMEMICompatEmiPlugin.RECIPE_MACHINES.get(validType));
-        }
-        List<EmiStack> list = new ArrayList<>();
-        for (MachineDefinition definition : set) {
-            list.add(EmiStack.of(definition.asStack()));
-        }
-        //for (MachineDefinition machine : GTRegistries.MACHINES) {
-        //    if (machine.getRecipeTypes() == null) continue;
-        //    for (GTRecipeType type : machine.getRecipeTypes()) {
-        //        for (GTRecipeType validType : validTypes) {
-        //            if (type == validType && !set.contains(machine)) {
-        //                set.add(machine);
-        //                list.add(EmiStack.of(machine.asStack()));
-        //            }
-        //        }
-        //    }
-        //}
-        return list;
-    }
-
-    public static List<EmiIngredient> getCatalysts(Set<GTRecipeType> validTypes) {
-        List<EmiIngredient> catalysts = new ArrayList<>();
-        catalysts.add(EmiStack.of(Items.CAULDRON));
-        if (validTypes.contains(FURNACE_RECIPES)) {
-            catalysts.add(EmiStack.of(Items.FURNACE));
-        }
-        catalysts.addAll(getMachines(validTypes));
-        //GTMEMICompatEmiPlugin.normalizeCatalysts(catalysts);
-        return catalysts;
-    }
-
-    public static TankWidget addTank(WidgetHolder widgets, EmiIngredient stack, int x, int y) {
-        long amount = stack.getAmount();
-        long minHeight = 3;
-        long capacity = 16 * amount / FluidHelper.getBucket() < minHeight ? amount * 16 / minHeight : Math.max(amount, FluidHelper.getBucket());
-        return widgets.addTank(stack, x, y, EmiTexture.SLOT.width, EmiTexture.SLOT.height, (int) capacity);
-    }
-
-    @ApiStatus.Internal
-    public static void register(EmiRegistry registry) {
-        registry.removeRecipes(GTEmiOreProcessingV2::remove);
-        for (Material mat : GTCEuAPI.materialManager.getRegisteredMaterials()) {
-            if (mat.hasProperty(ORE)) {
-                registry.addRecipe(new GTEmiOreProcessingV2(mat));
-            }
-        }
-    }
-
-    private static boolean remove(EmiRecipe r) {
-        return r.getCategory() == GTOreProcessingEmiCategory.CATEGORY && (r.getId() == null || !r.getId().getPath().startsWith("/"));
     }
 
     @Override

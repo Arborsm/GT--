@@ -26,23 +26,19 @@ class EmiPlayerInventoryMixin {
         }
         return 0;
     }
-
     @Unique
     private static int gtnn$getDamage(EmiStack emiStack) {
         return gtnn$getDamageAmount(emiStack, true);
     }
-
     @Unique
     private static int gtnn$getAmount(EmiStack emiStack) {
         return gtnn$getDamageAmount(emiStack, false);
     }
-
     @Redirect(method = "lambda$addStack$1", at = @At(value = "INVOKE", target = "Ldev/emi/emi/api/stack/EmiStack;getAmount()J"))
     private static long getRestDamageAmount(EmiStack emiStack) {
         int amount = gtnn$getAmount(emiStack);
         return amount != 0 ? amount : emiStack.getAmount();
     }
-
     @Redirect(method = "canCraft(Ldev/emi/emi/api/recipe/EmiRecipe;J)Z", at = @At(value = "INVOKE", target = "Ldev/emi/emi/api/stack/EmiStack;getAmount()J", ordinal = 0))
     private long getDamageAmount(EmiStack emiStack) {
         int damage = gtnn$getDamage(emiStack);

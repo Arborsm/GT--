@@ -20,7 +20,7 @@ import static com.gregtechceu.gtceu.integration.emi.recipe.GTRecipeTypeEmiCatego
 public class GTMEmiRewrite {
     @Inject(method = "registerDisplays", at = @At("HEAD"), cancellable = true)
     private static void registerDisplays(EmiRegistry registry, CallbackInfo ci) {
-        if (GTNN.getServerConfig().makesEMIBetter) {
+        if (GTNN.getClientConfig().enableRemakeGTMEMI) {
             for (RecipeType<?> recipeType : ForgeRegistries.RECIPE_TYPES) {
                 if (recipeType instanceof GTRecipeType gtRecipeType) {
                     ClientLevel level = Minecraft.getInstance().level;

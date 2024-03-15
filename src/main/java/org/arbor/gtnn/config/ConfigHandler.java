@@ -39,6 +39,10 @@ public class ConfigHandler {
         @Configurable
         @Configurable.Comment({"Add Chat Animation", "Default: false"})
         public boolean addChatAnimation = false;
+
+        @Configurable
+        @Configurable.Comment({"Enable Remake GTM EMI Integration", "Default: true"})
+        public boolean enableRemakeGTMEMI = true;
         ClientConfigs(){
         }
     }

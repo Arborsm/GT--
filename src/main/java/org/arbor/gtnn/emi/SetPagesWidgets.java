@@ -18,13 +18,12 @@ import java.util.List;
 import java.util.Map;
 
 public class SetPagesWidgets extends Widget {
+    protected final Bounds bounds;
     public final Map<EmiRecipeCategory, List<EmiRecipe>> recipes;
     public final Collection<EmiIngredient> stacks;
     public final int startX;
     public final int startY;
     public final List<Integer> turns;
-    protected final Bounds bounds;
-
     public SetPagesWidgets(Bounds bounds, Map<EmiRecipeCategory, List<EmiRecipe>> recipes, Collection<EmiIngredient> stacks, int startX, int startY, List<Integer> turns) {
         this.bounds = bounds;
         this.recipes = recipes;
@@ -36,12 +35,10 @@ public class SetPagesWidgets extends Widget {
         this.stacks = stacks;
         this.turns = turns;
     }
-
     @Override
     public Bounds getBounds() {
         return bounds;
     }
-
     @Override
     public void render(GuiGraphics draw, int mouseX, int mouseY, float delta) {
         if (!getBounds().contains(mouseX, mouseY)) return;
@@ -70,14 +67,12 @@ public class SetPagesWidgets extends Widget {
             vertical ^= true;
         }
     }
-
     @Override
     public List<ClientTooltipComponent> getTooltip(int mouseX, int mouseY) {
         List<ClientTooltipComponent> tooltip = new ArrayList<>(super.getTooltip(mouseX, mouseY));
         tooltip.add(ClientTooltipComponent.create(Component.literal("中键以查看具体配方").getVisualOrderText()));
         return tooltip;
     }
-
     @Override
     public boolean mouseClicked(int mouseX, int mouseY, int button) {
         if (button == GLFW.GLFW_MOUSE_BUTTON_MIDDLE && getBounds().contains(mouseX, mouseY)) {

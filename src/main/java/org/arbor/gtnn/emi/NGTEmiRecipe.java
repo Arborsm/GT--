@@ -27,10 +27,11 @@ import java.util.List;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 
 public class NGTEmiRecipe extends ModularEmiRecipe<WidgetGroup> {
-    private static final ResourceLocation BUTTONS = GTNN.id("textures/gui/buttons.png");
     final GTRecipeTypeEmiCategory category;
     final GTRecipe recipe;
     final NGTRecipeWidget gtRecipeWidget;
+
+    private static final ResourceLocation BUTTONS = GTNN.id("textures/gui/buttons.png");
 
     public NGTEmiRecipe(GTRecipeTypeEmiCategory category, GTRecipe recipe) {
         super(() -> new NGTRecipeWidget(recipe));

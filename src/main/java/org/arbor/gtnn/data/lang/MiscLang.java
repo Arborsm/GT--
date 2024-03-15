@@ -24,6 +24,7 @@ public class MiscLang {
         tsl("config.gtnn.option.makesEMIBetter", "使EMI更好用", "Makes EMI Better");
         tsl("config.gtnn.option.killToast", "禁用弹窗", "Disable toast");
         tsl("config.gtnn.option.addChatAnimation", "启用聊天动画", "Enable Chat Animation");
+        tsl("config.gtnn.option.enableRemakeGTMEMI", "启用重制GTM-EMI支持", "Enable Remake GTM-EMI support");
     }
 
     private static void blocks() {

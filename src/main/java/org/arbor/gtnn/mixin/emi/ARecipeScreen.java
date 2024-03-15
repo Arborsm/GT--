@@ -8,10 +8,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface ARecipeScreen {
     @Accessor
     int getTabPage();
-
     @Accessor
     int getTab();
-
     @Accessor
     int getPage();
 }
