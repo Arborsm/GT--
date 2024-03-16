@@ -326,6 +326,8 @@ public class GTNNMachines {
 
     private static void modifyGT() {
         if (GTRecipeTypes.ASSEMBLER_RECIPES.getMaxTooltips() == 3) GTRecipeTypes.ASSEMBLER_RECIPES.setMaxTooltips(4);
+        if (GTRecipeTypes.BREWING_RECIPES.getMaxTooltips() == 3) GTRecipeTypes.ASSEMBLER_RECIPES.setMaxTooltips(4);
+        if (GTRecipeTypes.FLUID_HEATER_RECIPES.getMaxTooltips() == 3) GTRecipeTypes.ASSEMBLER_RECIPES.setMaxTooltips(4);
         var largeAssembler = GCyMMachines.LARGE_ASSEMBLER;
         var gtRecipeTypes = new ArrayList<>(Arrays.asList(Objects.requireNonNull(largeAssembler.getRecipeTypes())));
         gtRecipeTypes.add(GTNNRecipeTypes.PRECISION_ASSEMBLY_RECIPES);

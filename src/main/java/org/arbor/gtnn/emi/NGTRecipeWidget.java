@@ -35,12 +35,19 @@ public class NGTRecipeWidget extends WidgetGroup {
     private int tier;
     @Getter
     private int yOffset;
+    private static int xOffset;
 
     public NGTRecipeWidget(GTRecipe recipe) {
-        super(0, 0, recipe.recipeType.getRecipeUI().getJEISize().width, recipe.recipeType.getRecipeUI().getJEISize().height);
+        super(getXOffset(recipe), 0, Math.max(recipe.recipeType.getRecipeUI().getJEISize().width, 140), recipe.recipeType.getRecipeUI().getJEISize().height);
         this.recipe = recipe;
         register();
         setTierToMin();
+    }
+
+    private static int getXOffset(GTRecipe recipe) {
+        int x = recipe.recipeType.getRecipeUI().getJEISize().width;
+        xOffset = (140 - x) / 2;
+        return x < 140 ? xOffset : 0;
     }
 
     public void register() {
@@ -198,10 +205,10 @@ public class NGTRecipeWidget extends WidgetGroup {
         yOffset += EUt > 0 ? 20 : 0;
         for (RecipeCondition condition : recipe.conditions) {
             if (condition.getTooltips() == null) continue;
-            addWidget(new LabelWidget(3, yOffset += 10, condition.getTooltips().getString()));
+            addWidget(new LabelWidget(3 - xOffset, yOffset += 10, condition.getTooltips().getString()));
         }
         for (Function<CompoundTag, String> dataInfo : recipe.recipeType.getDataInfos()) {
-            addWidget(new LabelWidget(3, yOffset += 10, dataInfo.apply(recipe.data)));
+            addWidget(new LabelWidget(3 - xOffset, yOffset += 10, dataInfo.apply(recipe.data)));
         }
         recipe.recipeType.getRecipeUI().appendJEIUI(recipe, this);
     }
