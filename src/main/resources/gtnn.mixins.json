@@ -8,6 +8,7 @@
   "mixins": [
     "create.CreateFanMixin",
     "emi.EmiPlayerInventoryMixin",
+    "emi.EmiRecipeHandlerMixin",
     "emi.EmiTreeCostMixin",
     "emi.FluidEmiStackMixin",
     "gt.FluidStorageMixin",
