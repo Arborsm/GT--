@@ -342,7 +342,7 @@ public class GTNNMachines {
         if (gtRecipe.recipeType == GTNNRecipeTypes.PRECISION_ASSEMBLY_RECIPES) {
             return GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK).apply(machine, gtRecipe);
         } else {
-            return GCyMMachines.LARGE_ASSEMBLER.getRecipeModifier().apply(machine, gtRecipe);
+            return GTRecipeModifiers.PARALLEL_HATCH.apply(OverclockingLogic.PERFECT_OVERCLOCK, GTRecipeModifiers.ELECTRIC_OVERCLOCK).apply(machine, gtRecipe);
         }
     }
 }
