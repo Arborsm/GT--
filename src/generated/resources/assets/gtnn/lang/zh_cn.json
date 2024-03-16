@@ -120,6 +120,8 @@
   "item.gtnn.chip_t2.tooltip": "§7§o用于制作2阶火箭",
   "item.gtnn.chip_t3.tooltip": "§7§o用于制作3阶火箭",
   "item.gtnn.chip_t4.tooltip": "§7§o用于制作4阶火箭",
+  "item.gtnn.computer_advanced_circuit": "高级计算机芯片",
+  "item.gtnn.computer_circuit": "计算机芯片",
   "item.gtnn.encapsulated_plutonium": "封装钚",
   "item.gtnn.encapsulated_thorium": "封装钍",
   "item.gtnn.encapsulated_uranium": "封装铀",

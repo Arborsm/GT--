@@ -28,6 +28,7 @@ public class AdjustGTMaterials {
         addGas(Calcium);
         addFluid(Californium);
         addFluid(Caesium);
+        addFluid(AmmoniumChloride);
         addDust(Praseodymium);
     }
 }

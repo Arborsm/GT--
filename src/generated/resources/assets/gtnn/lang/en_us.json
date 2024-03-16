@@ -121,6 +121,8 @@
   "item.gtnn.chip_t2.tooltip": "§7Used for making Rocket T2",
   "item.gtnn.chip_t3.tooltip": "§7Used for making Rocket T3",
   "item.gtnn.chip_t4.tooltip": "§7Used for making Rocket T4",
+  "item.gtnn.computer_advanced_circuit": "Advanced Computer Chip",
+  "item.gtnn.computer_circuit": "Computer Chip",
   "item.gtnn.encapsulated_plutonium": "Encapsulated Plutonium",
   "item.gtnn.encapsulated_thorium": "Encapsulated Thorium",
   "item.gtnn.encapsulated_uranium": "Encapsulated Uranium",

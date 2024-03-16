@@ -7,6 +7,7 @@ import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.fml.loading.FMLLoader;
 import org.arbor.gtnn.GTNNIntegration;
 
 import static org.arbor.gtnn.GTNNRegistries.REGISTRATE;
@@ -139,13 +140,13 @@ public class GTNNItems {
     }
 
     public static void init() {
-        if (!GTNNIntegration.isCCTweakedLoaded()) {
+        if (!GTNNIntegration.isCCTweakedLoaded() || !FMLLoader.isProduction()) {
             COMPUTER = REGISTRATE.item("computer_circuit", ComponentItem::create)
-                    .lang("计算机芯片")
+                    .lang("Computer Chip")
                     .properties(p -> p.rarity(Rarity.UNCOMMON))
                     .register();
             COMPUTER_ADVANCED = REGISTRATE.item("computer_advanced_circuit", ComponentItem::create)
-                    .lang("高级计算机芯片")
+                    .lang("Advanced Computer Chip")
                     .properties(p -> p.rarity(Rarity.RARE))
                     .register();
         }

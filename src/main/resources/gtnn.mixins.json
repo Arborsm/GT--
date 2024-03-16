@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "org.arbor.gtnn.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "gtnn.refmap.json",
+  "refmap": "gtnn-1.20.1-refmap.json",
   "plugin": "org.arbor.gtnn.mixin.GTNNMixinPlugin",
   "mixins": [
     "create.CreateFanMixin",

@@ -73,5 +73,7 @@ public class MiscLang {
         tsl("item.gtnn.t2_chip", "T2芯片");
         tsl("item.gtnn.t3_chip", "T3芯片");
         tsl("item.gtnn.t4_chip", "T4芯片");
+        tsl("item.gtnn.computer_circuit", "计算机芯片");
+        tsl("item.gtnn.computer_advanced_circuit", "高级计算机芯片");
     }
 }

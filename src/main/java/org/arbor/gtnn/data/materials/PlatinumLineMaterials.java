@@ -9,7 +9,6 @@ public class PlatinumLineMaterials {
     public static void init() {
         addFluid(RutheniumTetroxide);
         addFluid(OsmiumTetroxide);
-        addFluid(AmmoniumChloride);
         addFluid(CalciumChloride);
         PlatinumSalt = Builder("platinum_salt")
                 .dust()
