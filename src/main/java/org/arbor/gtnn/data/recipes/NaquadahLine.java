@@ -95,10 +95,10 @@ public class NaquadahLine {
                 .duration(200)
                 .save(consumer);
 
-        //  Bromine + Chlorine -> Bromine Trifluoride
+        //  Bromine + Fluorine -> Bromine Trifluoride
         CHEMICAL_RECIPES.recipeBuilder("bromine_trifluoride")
                 .inputFluids(Bromine.getFluid(1000))
-                .inputFluids(Chlorine.getFluid(3000))
+                .inputFluids(Fluorine.getFluid(3000))
                 .circuitMeta(3)
                 .outputFluids(BromineTrifluoride.getFluid(1000))
                 .EUt(VA[LV])

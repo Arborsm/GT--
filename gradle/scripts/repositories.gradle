@@ -70,4 +70,8 @@ repositories {
             includeGroup("cc.tweaked.cobalt")
         }
     }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
 }

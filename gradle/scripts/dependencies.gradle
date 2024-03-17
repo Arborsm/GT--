@@ -76,5 +76,10 @@ dependencies {
     modImplementation("curse.maven:cc-tweaked-282001:5118388")
     forgeRuntimeLibrary("cc.tweaked:cobalt:0.9.1")
     modImplementation("curse.maven:selene-499980:5146536")
+    //modImplementation("maven.modrinth:greate:0.0.17")
+    //modImplementation("maven.modrinth:kubejs-create:2001.2.5-build.2+forge")
+    //modImplementation("maven.modrinth:kubejs:2001.6.4-build.138+forge")
+    //modImplementation("maven.modrinth:rhino:2001.2.2-build.18+forge")
+    //modImplementation("maven.modrinth:architectury-api:9.2.14+forge")
     // modImplementation("curse.maven:gcyr-922713:5077849")
 }

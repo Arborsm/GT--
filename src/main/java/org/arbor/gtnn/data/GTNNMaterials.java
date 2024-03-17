@@ -125,7 +125,7 @@ public class GTNNMaterials {
         if (ConfigHandler.INSTANCE.Server.enableHarderNaquadahLine) NaquadahMaterials.init();
         if (GTNNIntegration.isAdAstraLoaded()) AdAstraMaterials.init();
         if (GTNNIntegration.isBotaniaLoaded()) BotaniaMaterials.init();
-        if (GTNNIntegration.isCreateLoaded()) CreateMaterials.init();
+        if (GTNNIntegration.isCreateLoaded() && !GTNNIntegration.isGreateLoaded()) CreateMaterials.init();
     }
 
     public static void addDust(Material material) {

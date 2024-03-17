@@ -19,6 +19,9 @@ public class GTNNIntegration {
         return isLoaded("create");
     }
 
+    public static boolean isGreateLoaded() {
+        return isLoaded("greate");
+    }
     public static boolean isSupplementariesLoaded() {
         return isLoaded("supplementaries");
     }
