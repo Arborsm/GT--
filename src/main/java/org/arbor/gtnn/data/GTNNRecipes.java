@@ -16,6 +16,7 @@ public class GTNNRecipes {
         DefaultRecipes.init(provider);
         NaquadahReactor.init(provider);
         RocketFuel.init(provider);
+        BrineChain.init(provider);
         if (ConfigHandler.INSTANCE.Server.enableHarderPlatinumLine) PlatinumLine.init(provider);
         if (ConfigHandler.INSTANCE.Server.enableHarderNaquadahLine) NaquadahLine.init(provider);
         if (GTNNIntegration.isAdAstraLoaded()) AdAstraRecipes.init(provider);

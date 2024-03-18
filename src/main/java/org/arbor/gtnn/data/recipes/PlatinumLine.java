@@ -205,15 +205,22 @@ public class PlatinumLine {
                 .outputFluids(Water.getFluid(1000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
-        EXTRACTOR_RECIPES.recipeBuilder("sodium_pyrosulfate_dust")
-                .inputItems(dust, SodiumPyrosulfate)
-                .outputFluids(SodiumPyrosulfate.getFluid(FluidStorageKeys.MOLTEN, 144))
+        CHEMICAL_RECIPES.recipeBuilder("potassium_pyrosulfate_dust")
+                .inputItems(dust, Potassium, 2)
+                .inputItems(dust, Sulfur, 2)
+                .inputFluids(Oxygen.getFluid(7000))
+                .outputItems(dust, PotassiumPyrosulfate, 11)
+                .duration(dur(2.1)).EUt(VA[MV]).save(provider);
+
+        EXTRACTOR_RECIPES.recipeBuilder("potassium_pyrosulfate_dust")
+                .inputItems(dust, PotassiumPyrosulfate)
+                .outputFluids(PotassiumPyrosulfate.getFluid(FluidStorageKeys.MOLTEN, 144))
                 .duration(23).EUt(30).save(provider);
 
         BLAST_RECIPES.recipeBuilder("leach_residue_one")
                 .inputItems(dust, PlatinumSlag)
                 .circuitMeta(11)
-                .inputFluids(SodiumPyrosulfate.getFluid(FluidStorageKeys.MOLTEN, 360))
+                .inputFluids(PotassiumPyrosulfate.getFluid(FluidStorageKeys.MOLTEN, 360))
                 .outputItems(dust, InertMetalMixture)
                 .outputFluids(RhodiumSulfateGas.getFluid(360))
                 .blastFurnaceTemp(775)

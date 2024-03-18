@@ -72,7 +72,7 @@ public class MaterialLang {
         translateMaterial(ReprecipitatedRhodium, "再沉淀铑");
         translateMaterial(AcidicIridium, "酸性铱");
         translateMaterial(PlatinumMetal, "铂金属");
-        translateMaterial(SodiumPyrosulfate, "焦硫酸钠");
+        translateMaterial(PotassiumPyrosulfate, "焦硫酸钾");
         translateMaterial(SodiumFormate, "甲酸钠");
         translateMaterial(FormicAcid, "甲酸");
         translateMaterial(SodiumSulfate, "硫酸钠");
@@ -123,6 +123,15 @@ public class MaterialLang {
         translateMaterial(NaquadahBasedLiquidFuelExcited, "硅岩流体燃料(激发态)");
         translateMaterial(NaquadahBasedLiquidFuelDepleted, "硅岩流体燃料(枯竭态)");
         translateMaterial(Thorium232, "钍-232");
+        translateMaterial(IodizedBrine, "含碘盐水");
+        translateMaterial(IodineBrineMixture, "浓缩碘盐水混合物");
+        translateMaterial(BrominatedBrine, "含溴盐水");
+        translateMaterial(IodineSlurry, "碘浆液");
+        translateMaterial(AcidicBrominatedBrine, "酸化含溴盐水");
+        translateMaterial(BromineSulfateSolution, "硫酸溴溶液");
+        translateMaterial(OverheatedBromineSulfateSolution, "过热硫酸溴气");
+        translateMaterial(WetBromine, "湿溴气");
+        translateMaterial(DebrominatedWater, "脱溴盐水");
     }
 
     private static void jeiOreVeins() {

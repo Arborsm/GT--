@@ -92,7 +92,7 @@ public class SecondMaterials {
                 .color(0x9e9e9e).iconSet(METALLIC)
                 .blastTemp(1230)
                 .buildAndRegister();
-        SodiumPyrosulfate = Builder("sodium_pyrosulfate")
+        PotassiumPyrosulfate = Builder("potassium_pyrosulfate")
                 .dust().fluid(FluidStorageKeys.MOLTEN, new FluidBuilder())
                 .components(Potassium, 2, Sulfur, 2, Oxygen, 7)
                 .color(0xff9900).iconSet(METALLIC)

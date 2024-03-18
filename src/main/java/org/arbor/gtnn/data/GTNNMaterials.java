@@ -9,13 +9,15 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+import net.minecraft.resources.ResourceLocation;
 import org.arbor.gtnn.GTNNIntegration;
 import org.arbor.gtnn.config.ConfigHandler;
 import org.arbor.gtnn.data.materials.*;
+import org.arbor.gtnn.data.recipes.BrineChain;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.SHINY;
 
-public class GTNNMaterials {
+public class GTNNMaterials extends Material {
     public static Material AndesiteAlloy;
     public static Material Desh;
     public static Material Ostrum;
@@ -41,7 +43,7 @@ public class GTNNMaterials {
     public static Material VanadiumPentoxide;
     public static Material BlackMatter;
     public static Material Cerrobase140;
-    public static Material SodiumPyrosulfate;
+    public static Material PotassiumPyrosulfate;
     public static Material SodiumSulfate;
     public static Material ZincSulfate;
     public static Material Wollastonite;
@@ -117,10 +119,25 @@ public class GTNNMaterials {
     public static Material NaquadahBasedLiquidFuel;
     public static Material NaquadahBasedLiquidFuelExcited;
     public static Material NaquadahBasedLiquidFuelDepleted;
+    public static Material IodizedBrine;
+    public static Material IodineBrineMixture;
+    public static Material BrominatedBrine;
+    public static Material IodineSlurry;
+    public static Material AcidicBrominatedBrine;
+    public static Material BromineSulfateSolution;
+    public static Material OverheatedBromineSulfateSolution;
+    public static Material WetBromine;
+    public static Material DebrominatedWater;
+
+    protected GTNNMaterials(ResourceLocation resourceLocation) {
+        super(resourceLocation);
+    }
+
     public static void init() {
         AdjustGTMaterials.init();
         FirstMaterials.init();
         SecondMaterials.init();
+        BrineChain.init();
         if (ConfigHandler.INSTANCE.Server.enableHarderPlatinumLine) PlatinumLineMaterials.init();
         if (ConfigHandler.INSTANCE.Server.enableHarderNaquadahLine) NaquadahMaterials.init();
         if (GTNNIntegration.isAdAstraLoaded()) AdAstraMaterials.init();
@@ -146,8 +163,8 @@ public class GTNNMaterials {
         material.setProperty(PropertyKey.ORE, new OreProperty());
     }
 
-    public static Material.Builder Builder(String id) {
-        return new Material.Builder(GTCEu.id(id));
+    public static GTNNBuilder Builder(String id) {
+        return new GTNNBuilder(GTCEu.id(id));
     }
 
     public static class MaterialIcons {

@@ -15,6 +15,7 @@
     "gt.GTMEmiRewrite",
     "gt.GTOreMixin",
     "gt.GTRecipeTypeMixin",
+    "gt.MaterialBuilderMixin",
     "gt.MaterialMixin",
     "mc.MinecraftServerMixin",
     "mc.RecipeManagerMixin",

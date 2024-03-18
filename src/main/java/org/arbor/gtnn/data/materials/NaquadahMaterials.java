@@ -11,7 +11,6 @@ import static org.arbor.gtnn.data.GTNNMaterials.*;
 
 public class NaquadahMaterials {
     public static void init() {
-        addFluid(Bromine);
         NaquadahOxideMixture = Builder("naquadah_oxide_mixture")
                 .dust()
                 .color(0x4c4c4c).iconSet(ROUGH)
