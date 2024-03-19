@@ -378,7 +378,7 @@ public class PlatinumLine {
                 .duration(300).EUt(VA[LV]).save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder("iridium_chloride")
-                .inputItems(dust, AmmoniumChloride, 11)
+                .inputFluids(AmmoniumChloride.getFluid(3000))
                 .inputFluids(AcidicIridium.getFluid(1000))
                 .outputItems(dust,IridiumChloride)
                 .outputFluids(Ammonia.getFluid(3000))

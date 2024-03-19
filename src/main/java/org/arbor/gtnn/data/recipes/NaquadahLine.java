@@ -64,6 +64,13 @@ public class NaquadahLine {
                 .addCondition(GTNNRecipes.setPlantCasing(6))
                 .save(consumer);
 
+        MIXER_RECIPES.recipeBuilder("palladium_on_carbon")
+                .inputItems(dust, Carbon)
+                .inputItems(dust, Palladium)
+                .outputItems(dust, PalladiumOnCarbon)
+                .circuitMeta(32)
+                .duration(dur(8)).EUt(VA[HV]).save(consumer);
+
         //  Enriched Naquadah Residue Solution -> Trinium Sulfide + Xenoauric Fluoroantimonic Acid
         DEHYDRATOR_RECIPES.recipeBuilder("xenoauric_fluoroantimonic_acid")
                 .inputFluids(EnrichedNaquadahResidueSolution.getFluid(2000))
