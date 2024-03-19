@@ -96,6 +96,7 @@ public class BrineChain {
                 .inputFluids(SaltWater.getFluid(1000))
                 .outputItems(dust, Potassium)
                 .outputFluids(IodizedBrine.getFluid(1000))
+                .circuitMeta(1)
                 .EUt(1280)
                 .duration(240)
                 .blastFurnaceTemp(1128)
