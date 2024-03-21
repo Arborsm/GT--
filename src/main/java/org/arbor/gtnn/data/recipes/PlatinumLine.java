@@ -132,7 +132,7 @@ public class PlatinumLine {
                 .chancedOutput(dust, PlatinumRaw,4, 1111, 0)
                 .outputFluids(PalladiumRichAmmonia.getFluid(400))
                 .outputFluids(NitrogenDioxide.getFluid(1000))
-                .outputFluids(DilutedSulfuricAcid.getFluid(1000))
+                .outputFluids(DilutedHydrochloricAcid.getFluid(1000))
                 .duration(1200).EUt(VA[LV]).save(provider);
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder("large_platinum_dusts")
@@ -143,7 +143,7 @@ public class PlatinumLine {
                 .outputItems(dust, PlatinumRaw,4)
                 .outputFluids(PalladiumRichAmmonia.getFluid(3600))
                 .outputFluids(NitrogenDioxide.getFluid(9000))
-                .outputFluids(DilutedSulfuricAcid.getFluid(9000))
+                .outputFluids(DilutedHydrochloricAcid.getFluid(9000))
                 .duration(1400).EUt(VA[HV]).save(provider);
 
         BLAST_RECIPES.recipeBuilder("refined_platinum_salt_dust_ebf")

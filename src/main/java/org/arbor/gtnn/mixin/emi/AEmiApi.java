@@ -17,6 +17,5 @@ import java.util.Map;
 public interface AEmiApi {
     @Invoker
     static void invokeSetPages(Map<EmiRecipeCategory, List<EmiRecipe>> recipes, EmiIngredient stack) {
-
     }
 }

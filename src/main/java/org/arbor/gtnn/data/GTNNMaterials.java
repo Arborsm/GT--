@@ -11,6 +11,7 @@ import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import net.minecraft.resources.ResourceLocation;
 import org.arbor.gtnn.GTNNIntegration;
+import org.arbor.gtnn.api.recipe.GTNNBuilder;
 import org.arbor.gtnn.config.ConfigHandler;
 import org.arbor.gtnn.data.materials.*;
 import org.arbor.gtnn.data.recipes.BrineChain;

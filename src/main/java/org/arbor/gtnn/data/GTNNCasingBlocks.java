@@ -27,7 +27,7 @@ public class GTNNCasingBlocks {
     }
 
     public static final BlockEntry<Block> PROCESS_MACHINE_CASING = createCasingBlock(
-            "clean_machine_casing", "Clean Stainless Steel Machine Casing", RendererBlock::new,
+            "clean_machine_casing", "Clean Machine Casing", RendererBlock::new,
             GTNN.id("block/casings/solid/process_machine_casing"), () -> Blocks.IRON_BLOCK);
 
     public static final BlockEntry<Block> RADIATION_PROOF_MACHINE_CASING = createCasingBlock(

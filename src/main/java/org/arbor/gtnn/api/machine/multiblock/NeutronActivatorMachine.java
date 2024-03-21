@@ -227,7 +227,7 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine implement
             if (recipeLogic.isWaiting()) {
                 textList.add(Component.translatable("gtceu.multiblock.waiting").setStyle(Style.EMPTY.withColor(ChatFormatting.RED)));
             }
-            textList.add(Component.translatable("gtceu.multiblock.neutronactivator.ev", processNumber(eV)));
+            textList.add(Component.translatable("gtnn.multiblock.neutronactivator.ev", processNumber(eV)));
             textList.add(Component.translatable("gtnn.multiblock.neutronactivator.height", FormattingUtil.formatNumbers(height)));
             textList.add(Component.translatable("gtnn.multiblock.neutronactivator.efficiency", FormattingUtil.formatNumbers(getEfficiencyFactor() * 100)));
         }

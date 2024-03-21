@@ -45,9 +45,12 @@ public class NGTRecipeWidget extends WidgetGroup {
     }
 
     private static int getXOffset(GTRecipe recipe) {
+        xOffset = 0;
         int x = recipe.recipeType.getRecipeUI().getJEISize().width;
-        xOffset = (140 - x) / 2;
-        return x < 140 ? xOffset : 0;
+        if (x < 140) {
+            xOffset = (140 - x) / 2;
+        }
+        return xOffset;
     }
 
     public void register() {
@@ -115,7 +118,7 @@ public class NGTRecipeWidget extends WidgetGroup {
                         tooltips.add(chance == 0 ?
                                 Component.translatable("gtceu.gui.content.chance_0") :
                                 FormattingUtil.formatPercentage2Places("gtceu.gui.content.chance_1", chance * 100));
-                        if (content.tierChanceBoost > 0) {
+                        if (content.tierChanceBoost != 0) {
                             tooltips.add(FormattingUtil.formatPercentage2Places("gtceu.gui.content.tier_boost", content.tierChanceBoost * 100));
                         }
                     }
@@ -138,7 +141,7 @@ public class NGTRecipeWidget extends WidgetGroup {
                         tooltips.add(chance == 0 ?
                                 Component.translatable("gtceu.gui.content.chance_0") :
                                 FormattingUtil.formatPercentage2Places("gtceu.gui.content.chance_1", chance * 100));
-                        if (content.tierChanceBoost > 0) {
+                        if (content.tierChanceBoost != 0) {
                             tooltips.add(FormattingUtil.formatPercentage2Places("gtceu.gui.content.tier_boost", content.tierChanceBoost * 100));
                         }
                     }
@@ -161,7 +164,7 @@ public class NGTRecipeWidget extends WidgetGroup {
                         tooltips.add(chance == 0 ?
                                 Component.translatable("gtceu.gui.content.chance_0") :
                                 FormattingUtil.formatPercentage2Places("gtceu.gui.content.chance_1", chance * 100));
-                        if (content.tierChanceBoost > 0) {
+                        if (content.tierChanceBoost != 0) {
                             tooltips.add(FormattingUtil.formatPercentage2Places("gtceu.gui.content.tier_boost", content.tierChanceBoost * 100));
                         }
                     }
@@ -184,7 +187,7 @@ public class NGTRecipeWidget extends WidgetGroup {
                         tooltips.add(chance == 0 ?
                                 Component.translatable("gtceu.gui.content.chance_0") :
                                 FormattingUtil.formatPercentage2Places("gtceu.gui.content.chance_1", chance * 100));
-                        if (content.tierChanceBoost > 0) {
+                        if (content.tierChanceBoost != 0) {
                             tooltips.add(FormattingUtil.formatPercentage2Places("gtceu.gui.content.tier_boost", content.tierChanceBoost * 100));
                         }
                     }

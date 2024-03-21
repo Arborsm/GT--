@@ -2,7 +2,7 @@ package org.arbor.gtnn.data;
 
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import org.arbor.gtnn.GTNNIntegration;
-import org.arbor.gtnn.data.misc.adastra.AdAstraAddon;
+import org.arbor.gtnn.data.misc.AdAstraAddon;
 
 public class GTNNTagPrefix {
     public static TagPrefix oreMoonStone;

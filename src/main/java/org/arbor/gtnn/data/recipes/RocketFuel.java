@@ -132,7 +132,7 @@ public class RocketFuel {
         CHEMICAL_PLANT_RECIPES.recipeBuilder("ethyl_anthra_hydro_quinone")
                 .addCondition(setPlantCasing(PlantCasingBlock.ALUMINIUM))
                 .inputFluids(EthylAnthraQuinone.getFluid(1000))
-                .inputFluids(HydrogenPeroxide.getFluid(1000))
+                .inputFluids(Hydrogen.getFluid(2000))
                 .chancedInput(ChemicalHelper.get(dust, OrangeMetalCatalyst, 1), 5000, -1000)
                 .outputFluids(EthylAnthraHydroQuinone.getFluid(1000))
                 .circuitMeta(4)

@@ -1,4 +1,4 @@
-package org.arbor.gtnn.data.materials;
+package org.arbor.gtnn.api.recipe;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;

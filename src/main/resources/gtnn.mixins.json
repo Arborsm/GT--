@@ -11,6 +11,7 @@
     "emi.EmiRecipeHandlerMixin",
     "emi.EmiTreeCostMixin",
     "emi.FluidEmiStackMixin",
+    "gt.Ae2PatternTerminalHandlerMixin",
     "gt.FluidStorageMixin",
     "gt.GTMEmiRewrite",
     "gt.GTOreMixin",

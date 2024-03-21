@@ -1,4 +1,4 @@
-package org.arbor.gtnn.data.misc.adastra;
+package org.arbor.gtnn.data.misc;
 
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import earth.terrarium.adastra.common.registry.ModBlocks;

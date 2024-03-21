@@ -28,7 +28,7 @@ public class MiscLang {
     }
 
     private static void blocks() {
-        tsl("block.gtnn.clean_machine_casing", "洁净不锈钢机械方块");
+        tsl("block.gtnn.clean_machine_casing", "洁净机械方块");
         tsl("block.gtnn.mar_casing", "立场约束机械方块");
         tsl("block.gtnn.radiation_proof_machine_casing", "防辐射机械方块");
         tsl("block.gtnn.high_speed_pipe_block", "高速管道方块");
