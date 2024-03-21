@@ -38,3 +38,5 @@
 * Platinum process from GTNH
 
 * Modify the Naquadah process from Magic-Sweepy
+
+* ToastKiller early code from [Methane](https://modrinth.com/mod/methane)
