@@ -53,12 +53,12 @@ public class PlatinumLineMaterials {
                 .dust()
                 .color(0xD40849).iconSet(SAND)
                 .flags(DISABLE_DECOMPOSITION)
-                .buildAndRegister().setFormula("Rh2NH40");
+                .buildAndRegister().setFormula("Rh2NH4");
         SodiumNitrate = Builder("sodium_nitrate")
                 .dust()
                 .color(0x4e2a40).iconSet(SAND)
                 .flags(DISABLE_DECOMPOSITION)
-                .buildAndRegister().setFormula("Na2NO3");
+                .buildAndRegister().setFormula("NaNO3");
         RhodiumSalt = Builder("rhodium_salt")
                 .dust().fluid()
                 .color(0x61200A).iconSet(SAND)
