@@ -42,14 +42,14 @@ public class PlatinumLine {
         CHEMICAL_RECIPES.recipeBuilder("dissolve_platinum_metallic_powder")
                 .inputItems(dust, PlatinumMetal)
                 .circuitMeta(1)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(1000))
+                .inputFluids(NitrationMixture.getFluid(1000))
                 .chancedOutput(dust, PlatinumSlag, 1111, 0)
                 .outputFluids(ConcentratedPlatinum.getFluid(1000))
                 .duration(250).EUt(VA[LV]).save(provider);
         CHEMICAL_RECIPES.recipeBuilder("dissolve_platinum_metallic_powder9")
                 .inputItems(dust, PlatinumMetal, 9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -455,84 +455,84 @@ public class PlatinumLine {
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_tetrahedrite")
                 .inputItems(crushedPurified, Tetrahedrite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(2250).EUt(VA[LV]).save(provider);
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_bornite")
                 .inputItems(crushedPurified, Bornite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_chalcopyrite")
                 .inputItems(crushedPurified, Chalcopyrite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_pentlandite")
                 .inputItems(crushedPurified, Pentlandite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_cooperite")
                 .inputItems(crushedPurified, Cooperite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_chalcocite")
                 .inputItems(crushedPurified, Chalcocite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_tetrahedrite")
                 .inputItems(crushedPurified, Tetrahedrite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_bornite")
                 .inputItems(crushedPurified, Bornite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_chalcopyrite")
                 .inputItems(crushedPurified, Chalcopyrite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_pentlandite")
                 .inputItems(crushedPurified, Pentlandite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_cooperite")
                 .inputItems(crushedPurified, Cooperite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_chalcocite")
                 .inputItems(crushedPurified, Chalcocite,9)
                 .circuitMeta(9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(9000))
+                .inputFluids(NitrationMixture.getFluid(9000))
                 .outputFluids(ConcentratedPlatinum.getFluid(9000))
                 .duration(250).EUt(VA[LV]).save(provider);
 
@@ -540,7 +540,7 @@ public class PlatinumLine {
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_tetrahedrite_p")
                 .inputItems(crushedPurified, Tetrahedrite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -548,7 +548,7 @@ public class PlatinumLine {
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_bornite_p")
                 .inputItems(crushedPurified, Bornite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -556,7 +556,7 @@ public class PlatinumLine {
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_chalcopyrite_p")
                 .inputItems(crushedPurified, Chalcopyrite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -564,7 +564,7 @@ public class PlatinumLine {
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_pentlandite_p")
                 .inputItems(crushedPurified, Pentlandite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -572,7 +572,7 @@ public class PlatinumLine {
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_cooperite_p")
                 .inputItems(crushedPurified, Cooperite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -580,7 +580,7 @@ public class PlatinumLine {
         LARGE_CHEMICAL_RECIPES.recipeBuilder("pgs_from_chalcocite_p")
                 .inputItems(crushedPurified, Chalcocite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -588,7 +588,7 @@ public class PlatinumLine {
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_tetrahedrite_p")
                 .inputItems(crushedPurified, Tetrahedrite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -596,7 +596,7 @@ public class PlatinumLine {
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_bornite_p")
                 .inputItems(crushedPurified, Bornite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -604,7 +604,7 @@ public class PlatinumLine {
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_chalcopyrite_p")
                 .inputItems(crushedPurified, Chalcopyrite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -612,7 +612,7 @@ public class PlatinumLine {
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_pentlandite_p")
                 .inputItems(crushedPurified, Pentlandite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -620,7 +620,7 @@ public class PlatinumLine {
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_cooperite_p")
                 .inputItems(crushedPurified, Cooperite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);
@@ -628,7 +628,7 @@ public class PlatinumLine {
         CHEMICAL_RECIPES.recipeBuilder("pgs_from_chalcocite_p")
                 .inputItems(crushedPurified, Chalcocite,9)
                 .inputItems(dust, PlatinumMetal, 9)
-                .inputFluids(NitrateSulfurMixedAcid.getFluid(10000))
+                .inputFluids(NitrationMixture.getFluid(10000))
                 .outputItems(dust, PlatinumSlag)
                 .outputFluids(ConcentratedPlatinum.getFluid(10000))
                 .duration(2250).EUt(VA[LV]).save(provider);

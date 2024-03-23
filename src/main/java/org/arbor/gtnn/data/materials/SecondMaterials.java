@@ -190,11 +190,5 @@ public class SecondMaterials {
                 .fluid()
                 .color(0x215825).iconSet(METALLIC)
                 .buildAndRegister().setFormula("Nq?Ke?Nd?");
-        NitrateSulfurMixedAcid = Builder("nitrate_sulfur_mixed_acid")
-                .acid()
-                .components(SulfuricAcid, 1, NitricAcid, 1)
-                .color(0xc0872a).iconSet(ROUGH)
-                .flags(DISABLE_DECOMPOSITION)
-                .buildAndRegister();
     }
 }

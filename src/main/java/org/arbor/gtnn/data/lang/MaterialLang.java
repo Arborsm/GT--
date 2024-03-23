@@ -132,7 +132,6 @@ public class MaterialLang {
         translateMaterial(OverheatedBromineSulfateSolution, "过热硫酸溴气");
         translateMaterial(WetBromine, "湿溴气");
         translateMaterial(DebrominatedWater, "脱溴盐水");
-        translateMaterial(NitrateSulfurMixedAcid, "硝硫混酸");
     }
 
     private static void jeiOreVeins() {
