@@ -26,12 +26,12 @@ dependencyResolutionManagement {
         def createForgeVersion = "0.5.1.f-26"
         def flywheelForgeVersion = "0.6.10-7"
         def jadeForgeVersion = "11.7.1"
-        def botarium_version = "2.3.1"
-        def ad_astra_version = "1.15.10"
-        def resourcefullib_version = "2.1.20"
+        def botarium_version = "2.3.3"
+        def ad_astra_version = "1.15.18"
+        def resourcefullib_version = "2.1.23"
         def resourcefulconfig_version = "2.1.2"
-        def gtmVersion = "1.1.3.b"
-        def ldLibVersion = "1.0.23.a"
+        def gtmVersion = "1.1.4"
+        def ldLibVersion = "1.0.24.a"
         def shimmerVersion = "0.2.2"
 
         // Libs

@@ -5,7 +5,6 @@ import com.gregtechceu.gtceu.api.data.worldgen.WorldGenLayers;
 import com.gregtechceu.gtceu.api.data.worldgen.generator.indicators.SurfaceIndicatorGenerator;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTOres;
-import earth.terrarium.adastra.common.registry.ModBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import org.arbor.gtnn.GTNN;
@@ -375,7 +374,6 @@ public class GTNNOres {
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
                     .buildLayerPattern(pattern -> pattern
-                            .layer(l -> l.weight(2).state(() -> ModBlocks.MOON_STONE.get().defaultBlockState()).size(1, 6))
                             .layer(l -> l.weight(2).mat(GTMaterials.Bauxite).size(1, 4))
                             .layer(l -> l.weight(1).mat(GTMaterials.Ilmenite).size(1, 2))
                             .layer(l -> l.weight(1).mat(GTMaterials.Aluminium).size(1, 1))
@@ -836,7 +834,6 @@ public class GTNNOres {
             .discardChanceOnAirExposure(0)
             .layeredVeinGenerator(generator -> generator
                     .buildLayerPattern(pattern -> pattern
-                            .layer(l -> l.weight(2).state(() -> ModBlocks.MERCURY_STONE.get().defaultBlockState()))
                             .layer(l -> l.weight(3).mat(GTMaterials.Saltpeter).size(2, 4))
                             .layer(l -> l.weight(2).mat(GTMaterials.Diatomite).size(1, 1))
                             .layer(l -> l.weight(2).mat(GTMaterials.Electrotine).size(1, 1))
