@@ -7,7 +7,6 @@
   "plugin": "org.arbor.gtnn.mixin.GTNNMixinPlugin",
   "mixins": [
     "create.CreateFanMixin",
-    "emi.EmiPlayerInventoryMixin",
     "emi.EmiRecipeHandlerMixin",
     "emi.EmiTreeCostMixin",
     "emi.FluidEmiStackMixin",
