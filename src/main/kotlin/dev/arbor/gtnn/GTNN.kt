@@ -18,7 +18,15 @@ object GTNN {
 
     @JvmStatic
     fun init() {
-        DistExecutor.unsafeRunForDist({Supplier{ClientProxy()}}, {Supplier{CommonProxy()}})
+        DistExecutor.unsafeRunForDist({
+            Supplier {
+                ClientProxy()
+            }
+        }, {
+            Supplier {
+                CommonProxy()
+            }
+        }).init()
     }
 
     fun getClientConfig(): GTNNConfigHandler.ClientConfigs {
