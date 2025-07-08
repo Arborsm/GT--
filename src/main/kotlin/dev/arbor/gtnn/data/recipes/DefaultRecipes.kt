@@ -23,7 +23,6 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.level.ItemLike
-import org.jetbrains.annotations.ApiStatus
 import java.util.function.Consumer
 import java.util.function.Supplier
 
@@ -32,9 +31,20 @@ object DefaultRecipes {
         Misc.init(provider)
         SelfRecipes.init(provider)
 
-        @ApiStatus.ScheduledForRemoval(inVersion = "1.3.0")
         VanillaRecipeHelper.addShapelessRecipe(provider, "cover_ender_fluid_link_gtnn",
-            GTItems.COVER_ENDER_FLUID_LINK.asStack(), GTNNItems.COVER_ENDER_FLUID_LINK.asStack())
+            GTNNItems.COVER_ENDER_FLUID_LINK.asStack(), GTItems.COVER_ENDER_FLUID_LINK.asStack())
+
+        GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTNN.id("cover_ender_fluid_link"))
+            .inputItems(TagPrefix.plate, GTMaterials.EnderPearl, 9)
+            .inputItems(TagPrefix.plateDouble, GTMaterials.StainlessSteel)
+            .inputItems(GTItems.SENSOR_HV)
+            .inputItems(GTItems.EMITTER_HV)
+            .inputItems(GTItems.ELECTRIC_PUMP_HV)
+            .inputFluids(GTMaterials.Polyethylene.getFluid(GTValues.L * 2))
+            .outputItems(GTNNItems.COVER_ENDER_FLUID_LINK)
+            .EUt(GTValues.VA[GTValues.HV].toLong()).duration(320)
+            .circuitMeta(13)
+            .save(provider)
 
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTNN.id("cover_ender_item_link"))
             .inputItems(TagPrefix.plate, GTMaterials.EnderPearl, 9)

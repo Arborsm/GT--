@@ -19,6 +19,7 @@ import dev.arbor.gtnn.data.GTNNMachines
 import dev.arbor.gtnn.data.GTNNMaterials
 import dev.arbor.gtnn.data.GTNNRecipes
 import dev.arbor.gtnn.data.lang.MachineLang
+import dev.arbor.gtnn.temp.VirtualEnderRegistry
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.packs.FilePackResources
 import net.minecraft.server.packs.PackResources
@@ -27,6 +28,7 @@ import net.minecraftforge.client.event.RenderLevelStageEvent
 import net.minecraftforge.client.event.RenderLevelStageEvent.Stage
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.event.RegisterCommandsEvent
+import net.minecraftforge.event.server.ServerStoppedEvent
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import org.apache.commons.io.FileUtils
 import java.io.File
@@ -47,6 +49,11 @@ object GTNNRegistries {
     @JvmStatic
     fun registerGeometryLoaders(event: RegisterGeometryLoaders) {
         event.register("item_custom_layers", ItemCustomLayerModel.INSTANCE)
+    }
+
+    @JvmStatic
+    fun serverStopped(event: ServerStoppedEvent) {
+        VirtualEnderRegistry.release()
     }
 
     @JvmStatic

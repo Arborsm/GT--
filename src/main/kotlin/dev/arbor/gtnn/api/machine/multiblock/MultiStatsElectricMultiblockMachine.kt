@@ -5,10 +5,12 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMa
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder
 import dev.arbor.gtnn.api.machine.feature.IEnhanceFancyUIMachine
 import dev.arbor.gtnn.api.machine.trait.MultiblockTrait
+import lombok.Getter
 import net.minecraft.network.chat.Component
 
 open class MultiStatsElectricMultiblockMachine(holder: IMachineBlockEntity, vararg args: Any) :
     WorkableElectricMultiblockMachine(holder, *args), IEnhanceFancyUIMachine {
+    @Getter
     protected var multiblockStats = ArrayList<MultiblockTrait>()
 
     override fun onStructureFormed() {
