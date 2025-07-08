@@ -5,7 +5,6 @@ import com.gregtechceu.gtceu.api.item.IComponentItem
 import com.gregtechceu.gtceu.api.item.component.ICustomRenderer
 import com.gregtechceu.gtceu.api.item.component.IItemComponent
 import com.gregtechceu.gtceu.common.data.GTItems
-import com.gregtechceu.gtceu.common.item.CoverPlaceBehavior
 import com.gregtechceu.gtceu.common.item.TooltipBehavior
 import com.lowdragmc.lowdraglib.Platform
 import com.tterrag.registrate.Registrate
@@ -238,7 +237,7 @@ object GTNNItems {
                 it.add(Component.translatable("item.gtnn.ender_item_link_cover.tooltip"))
                 if (!GTNN.getServerConfig().isTurnOnEnderItemCover) it.add(
                     Component.translatable("tooltip.gtnn.banItem"))
-            }, CoverPlaceBehavior(GTNNCovers.ENDER_ITEM_LINK)))
+            }))
             .register()
 
     val DEBUG_STRUCTURE_WRITER: ItemEntry<ComponentItem> =
