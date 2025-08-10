@@ -18,6 +18,7 @@ public final class GTNNConfigHandler {
     public ServerConfigs Server = new ServerConfigs();
 
     public static class ServerConfigs {
+
         @Configurable
         @Configurable.Synchronized
         @Configurable.Comment({ "Enable Harder Platinum Line", "Default: true" })
@@ -61,6 +62,7 @@ public final class GTNNConfigHandler {
     }
 
     public static class ClientConfigs {
+
         @Configurable
         public ItemConfigs items = new ItemConfigs();
         @Configurable

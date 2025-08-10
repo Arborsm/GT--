@@ -1,7 +1,13 @@
 {
   "variants": {
-    "": {
-      "model": "gtnn:block/high_speed_pipe_block"
+    "facing=down": {
+      "model": "gtnn:block/machine/high_speed_pipe_block",
+      "x": 90
+    },
+    "facing=up": {
+      "gtceu:z": 180,
+      "model": "gtnn:block/machine/high_speed_pipe_block",
+      "x": 270
     }
   }
 }

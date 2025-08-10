@@ -1,5 +1,5 @@
 [versions]
-kotlinforforge = "4.20.0"
+kotlinforforge = "4.11.0"
 ldlib = "1.0.40.b"
 shimmer = "1.20.1-0.2.4"
 registrate = "MC1.20-1.3.11"

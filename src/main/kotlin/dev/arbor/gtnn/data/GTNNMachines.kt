@@ -21,7 +21,6 @@ import com.gregtechceu.gtceu.common.data.GTMaterials
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers
 import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils
 import com.gregtechceu.gtceu.common.data.models.GTMachineModels
-import com.gregtechceu.gtceu.common.data.models.GTModels
 import com.gregtechceu.gtceu.utils.FormattingUtil
 import dev.arbor.gtnn.GTNN
 import dev.arbor.gtnn.GTNNRegistries.REGISTRATE
@@ -57,9 +56,9 @@ object GTNNMachines {
     //**********    Block     **********//
     //////////////////////////////////////
     val HIGH_SPEED_PIPE_BLOCK: MachineDefinition = REGISTRATE.machine("high_speed_pipe_block", ::HighSpeedPipeBlock)
-        .blockModel(GTModels.cubeAllModel("block/speedingpipe".nn()))
-        .itemBuilder { it.model { ctx, prov -> prov.withExistingParent(ctx.name, ("block/" + ctx.name).nn()) } }
-        .rotationState(RotationState.Y_AXIS).register()
+        .simpleModel("block/machine/part/high_speed_pipe_block".nn())
+        .rotationState(RotationState.Y_AXIS)
+        .register()
 
     //////////////////////////////////////
     //**********     Part     **********//
