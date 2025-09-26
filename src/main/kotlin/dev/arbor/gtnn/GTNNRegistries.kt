@@ -3,6 +3,7 @@ package dev.arbor.gtnn
 import com.gregtechceu.gtceu.api.GTCEuAPI
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent
+import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry
 import com.gregtechceu.gtceu.api.machine.MachineDefinition
 import dev.arbor.gtnn.api.registry.GTRecipeEvent
@@ -83,6 +84,11 @@ object GTNNRegistries {
     @JvmStatic
     fun registerMaterials(event: MaterialEvent) {
         GTNNMaterials.init()
+    }
+
+    @JvmStatic
+    fun modifyMaterials(event: PostMaterialEvent) {
+        GTNNMaterials.modify()
     }
 
     @JvmStatic

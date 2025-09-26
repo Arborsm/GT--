@@ -153,6 +153,10 @@ public class GTNNMaterials extends Material {
         AdjustGTMaterials.INSTANCE.init();
     }
 
+    public static void modify() {
+        if (GTNNIntegration.INSTANCE.isBotaniaLoaded()) BotaniaMaterialsModification.INSTANCE.init();
+    }
+
     public static void addDust(Material material) {
         if (!material.hasProperty(PropertyKey.DUST)) {
             material.setProperty(PropertyKey.DUST, new DustProperty());

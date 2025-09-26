@@ -33,6 +33,7 @@ open class CommonProxy() {
         @JvmStatic
         fun serverEventBusSubscriberRegister(modBus: IEventBus) {
             modBus.addListener(GTNNRegistries::registerMaterials)
+            modBus.addListener(GTNNRegistries::modifyMaterials)
             modBus.addListener(GTNNRegistries::registerRecipeHandler)
             modBus.addListener(GTNNRegistries::registerMaterialRegistryEvent)
         }
