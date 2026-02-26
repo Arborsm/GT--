@@ -25,7 +25,7 @@ object MachineReg {
     fun registerTieredMachines(
         name: String,
         factory: BiFunction<IMachineBlockEntity, Int, MetaMachine>,
-        builder: BiFunction<Int, MachineBuilder<MachineDefinition>, MachineDefinition>,
+        builder: BiFunction<Int, MachineBuilder<MachineDefinition, *>, MachineDefinition>,
         tiers: IntArray
     ): Array<MachineDefinition?> {
         return Array(size = GTValues.TIER_COUNT) {
