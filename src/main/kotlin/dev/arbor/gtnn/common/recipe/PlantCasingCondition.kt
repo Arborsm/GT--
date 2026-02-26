@@ -11,7 +11,7 @@ import dev.arbor.gtnn.data.GTNNRecipeConditions.PLANT_CASING
 import net.minecraft.network.chat.Component
 import net.minecraft.util.Mth
 
-class PlantCasingCondition : RecipeCondition {
+class PlantCasingCondition : RecipeCondition<PlantCasingCondition> {
     private var tier = 0
 
     constructor()
@@ -24,7 +24,7 @@ class PlantCasingCondition : RecipeCondition {
         this.tier = Mth.clamp(tier, 1, 6)
     }
 
-    override fun getType(): RecipeConditionType<*> {
+    override fun getType(): RecipeConditionType<PlantCasingCondition> {
         return PLANT_CASING
     }
 
@@ -43,7 +43,7 @@ class PlantCasingCondition : RecipeCondition {
         return false
     }
 
-    override fun createTemplate(): RecipeCondition {
+    override fun createTemplate(): PlantCasingCondition {
         return PlantCasingCondition()
     }
 

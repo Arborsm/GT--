@@ -11,7 +11,7 @@ import dev.arbor.gtnn.common.machine.multiblock.NeutronActivatorMachine.Companio
 import dev.arbor.gtnn.data.GTNNRecipeConditions
 import net.minecraft.network.chat.Component
 
-class NeutronActivatorCondition(max: Int, min: Int) : RecipeCondition() {
+class NeutronActivatorCondition(max: Int, min: Int) : RecipeCondition<NeutronActivatorCondition>() {
     companion object {
         val CODEC: Codec<NeutronActivatorCondition> = RecordCodecBuilder
             .create { instance: RecordCodecBuilder.Instance<NeutronActivatorCondition> ->
@@ -37,7 +37,7 @@ class NeutronActivatorCondition(max: Int, min: Int) : RecipeCondition() {
         this.evRange = max * 10000 + min
     }
 
-    override fun getType(): RecipeConditionType<*> {
+    override fun getType(): RecipeConditionType<NeutronActivatorCondition> {
         return GTNNRecipeConditions.NEUTRON_ACTIVATOR
     }
 
@@ -51,7 +51,7 @@ class NeutronActivatorCondition(max: Int, min: Int) : RecipeCondition() {
         return checkNeutronActivatorCondition((recipeLogic.machine as MetaMachine), gtRecipe)
     }
 
-    override fun createTemplate(): RecipeCondition {
+    override fun createTemplate(): NeutronActivatorCondition {
         return NeutronActivatorCondition()
     }
 }

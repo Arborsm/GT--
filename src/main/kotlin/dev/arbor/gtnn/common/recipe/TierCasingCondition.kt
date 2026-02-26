@@ -12,7 +12,7 @@ import dev.arbor.gtnn.data.GTNNRecipeConditions
 import net.minecraft.network.chat.Component
 import net.minecraft.util.Mth
 
-class TierCasingCondition(tier: Int) : RecipeCondition() {
+class TierCasingCondition(tier: Int) : RecipeCondition<TierCasingCondition>() {
     var tier = tier
         set(value) {
             field = Mth.clamp(value, 0, 14)
@@ -24,7 +24,7 @@ class TierCasingCondition(tier: Int) : RecipeCondition() {
         super.isReverse = isReverse
     }
 
-    override fun getType(): RecipeConditionType<*> {
+    override fun getType(): RecipeConditionType<TierCasingCondition> {
         return GTNNRecipeConditions.TIER_CASING
     }
 
@@ -40,7 +40,7 @@ class TierCasingCondition(tier: Int) : RecipeCondition() {
         return false
     }
 
-    override fun createTemplate(): RecipeCondition {
+    override fun createTemplate(): TierCasingCondition {
         return TierCasingCondition()
     }
 
