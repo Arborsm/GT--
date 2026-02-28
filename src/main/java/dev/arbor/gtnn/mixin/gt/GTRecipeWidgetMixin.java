@@ -28,7 +28,7 @@ public abstract class GTRecipeWidgetMixin {
     private int xOffset;
 
     @Inject(method = "initializeRecipeTextWidget", at = @At("TAIL"))
-    private void injectVoltageBorder(CallbackInfo ci) {
+    private void injectVoltagweBorder(CallbackInfo ci) {
         GTRecipeWidget self = (GTRecipeWidget) (Object) this;
         if (recipe.getInputEUt().getTotalEU() > 0 &&
                 self.widgets.stream().noneMatch(w -> w instanceof VoltageBorderWidget)) {

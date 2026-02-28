@@ -9,6 +9,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMa
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine
 import com.gregtechceu.gtceu.api.recipe.GTRecipe
 import com.gregtechceu.gtceu.api.recipe.content.Content
+import com.gregtechceu.gtceu.api.recipe.ingredient.EnergyStack
 import com.gregtechceu.gtceu.api.recipe.modifier.ModifierFunction
 import com.gregtechceu.gtceu.common.data.GTMaterials
 import com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachine
@@ -97,7 +98,7 @@ class LargeNaquadahReactorMachine(holder: IMachineBlockEntity) : WorkableElectri
         if (fluid.fluid.isSame(GTMaterials.LiquidAir.fluid)) {
             val airAmount = 2400 / 20 * duration
             if (fluid.amount >= airAmount) {
-                fluid.amount = fluid.amount - airAmount
+                fluid.amount -= airAmount
                 return true
             } else {
                 return false
@@ -113,7 +114,7 @@ class LargeNaquadahReactorMachine(holder: IMachineBlockEntity) : WorkableElectri
             val activeFluidPower = activeFluid[fluid.fluid]
             if (machine.activeFluidPower <= activeFluidPower!! && fluid.amount >= activeFluidCostI) {
                 machine.activeFluidPower = activeFluidPower
-                fluid.amount = fluid.amount - activeFluidCostI
+                fluid.amount -= activeFluidCostI
             }
         }
     }
@@ -122,7 +123,7 @@ class LargeNaquadahReactorMachine(holder: IMachineBlockEntity) : WorkableElectri
         if (fluid.fluid.isSame(GTMaterials.PCBCoolant.fluid)) {
             val coldAmount = 1000 / 20 * duration
             if (fluid.amount >= coldAmount) {
-                fluid.amount = fluid.amount - coldAmount
+                fluid.amount -= coldAmount
                 return true
             }
         }
@@ -189,11 +190,12 @@ class LargeNaquadahReactorMachine(holder: IMachineBlockEntity) : WorkableElectri
                         copyRecipe.outputs.clear()
                         return@ModifierFunction copyRecipe
                     }
-                    var eut = copyRecipe.outputEUt.totalEU
+                    var eu = copyRecipe.outputEUt.totalEU
                     if (machine.hasCool) {
-                        eut = (eut * 1.5).toLong()
+                        eu = (eu * 1.5).toLong()
                     }
-                    eut *= machine.activeFluidPower
+                    eu *= machine.activeFluidPower
+                    val eut = EnergyStack(eu)
                     copyRecipe.tickOutputs[EURecipeCapability.CAP] = listOf(Content(eut, 1, 1, 0))
                     return@ModifierFunction copyRecipe
                 }
