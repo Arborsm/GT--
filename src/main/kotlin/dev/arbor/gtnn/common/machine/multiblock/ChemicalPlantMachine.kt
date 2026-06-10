@@ -112,7 +112,7 @@ class ChemicalPlantMachine(holder: IMachineBlockEntity) : WorkableElectricMultib
         }
     }
 
-    override val maxParallel: Int get() = max(((tubeTier) - 1) * 2 + 1, 1)
+    override val maxParallel: Int get() = max(tubeTier * 2, 1)
 
     //////////////////////////////////////
     // ***       Multiblock Data      ***//
