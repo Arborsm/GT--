@@ -8,7 +8,7 @@ import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity
 import com.gregtechceu.gtceu.api.machine.TickableSubscription
 import com.gregtechceu.gtceu.api.machine.multiblock.part.TieredIOPartMachine
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableItemStackHandler
-import com.gregtechceu.gtceu.api.recipe.GTRecipe
+import com.gregtechceu.gtceu.api.machine.trait.RecipeHandlerList
 import com.gregtechceu.gtceu.api.transfer.item.CustomItemStackHandler
 import com.lowdragmc.lowdraglib.gui.texture.ResourceTexture
 import com.lowdragmc.lowdraglib.gui.widget.ImageWidget
@@ -18,15 +18,10 @@ import com.lowdragmc.lowdraglib.syncdata.ISubscription
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder
 import dev.arbor.gtnn.common.item.behaviors.CatalystBehavior
-import dev.arbor.gtnn.common.machine.multiblock.ChemicalPlantMachine
 import net.minecraft.MethodsReturnNonnullByDefault
-import net.minecraft.core.NonNullList
-import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.crafting.Ingredient
+import net.minecraft.world.item.Item
 import java.util.function.IntFunction
 import javax.annotation.ParametersAreNonnullByDefault
-import kotlin.math.ceil
-import kotlin.math.sqrt
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
@@ -39,6 +34,10 @@ class CatalystHatchPartMachine(holder: IMachineBlockEntity) : TieredIOPartMachin
     private var bufferSubs: ISubscription? = null
     private var inventorySubs: ISubscription? = null
     private var transferSubs: TickableSubscription? = null
+
+    override fun getRecipeHandlers(): List<RecipeHandlerList> {
+        return listOf(RecipeHandlerList.of(IO.IN, paintingColor, inventory))
+    }
 
 
     //////////////////////////////////////
@@ -66,68 +65,7 @@ class CatalystHatchPartMachine(holder: IMachineBlockEntity) : TieredIOPartMachin
                         return 1
                     }
                 }
-            }) {
-
-            override fun handleRecipeInner(
-                io: IO?,
-                recipe: GTRecipe,
-                left: MutableList<Ingredient>,
-                simulate: Boolean
-            ): MutableList<Ingredient>? {
-                if (io != handlerIO) return left
-
-                val capability = if (simulate) {
-                    val items = NonNullList.create<ItemStack>()
-                    for (i in 0 until storage.slots) {
-                        items.add(storage.getStackInSlot(i))
-                    }
-                    CustomItemStackHandler(items)
-                } else storage
-                val iterator = left.iterator()
-                if (io == IO.IN) {
-                    while (iterator.hasNext()) {
-                        val ingredient = iterator.next()
-                        SLOT_LOOKUP@ for (i in 0 until capability.slots) {
-                            val item = capability.getStackInSlot(i)
-                            val itemStack = if (simulate) item.copy() else item
-                            // Does not look like a good implementation, but I think it's at least equal to
-                            // vanilla Ingredient::test
-                            if (ingredient.test(itemStack)) {
-                                val ingredientStacks = ingredient.items
-                                for (ingredientStack in ingredientStacks) {
-                                    if (ingredientStack.`is`(itemStack.item)) {
-                                        val behavior: CatalystBehavior? = CatalystBehavior.getBehaviour(itemStack)
-                                        var count = ingredientStack.count
-                                        if (!simulate) {
-                                            val chance = getChance()
-                                            val u = (count * chance).toDouble()
-                                            val e = (count * chance * (1 - chance)).toDouble()
-                                            count = ceil(sqrt(e) * GTValues.RNG.nextGaussian() + u).toInt()
-                                        }
-                                        if (behavior != null) {
-                                            val damage = count.coerceAtMost(behavior.getDurability(itemStack))
-                                            behavior.applyDamage(itemStack, damage)
-                                            ingredientStack.shrink(damage)
-                                            if (itemStack.isEmpty || ingredientStack.isEmpty) {
-                                                transferItems()
-                                            }
-                                        } else {
-                                            val extracted = capability.extractItem(i, count, false)
-                                            ingredientStack.shrink(extracted.count)
-                                        }
-                                        if (ingredientStack.isEmpty) {
-                                            iterator.remove()
-                                            break@SLOT_LOOKUP
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                return if (left.isEmpty()) null else left
-            }
-        }
+            }) {}
 
 
     //////////////////////////////////////
@@ -201,13 +139,33 @@ class CatalystHatchPartMachine(holder: IMachineBlockEntity) : TieredIOPartMachin
     //////////////////////////////////////
     // **********     Data     **********//
     //////////////////////////////////////
-    private fun getChance(): Float {
-        for (controller in controllers) {
-            if (controller is ChemicalPlantMachine) {
-                return controller.getChance() / 100f
-            }
+    fun getCatalystDurability(items: Set<Item>): Int {
+        transferItems()
+        var durability = 0
+        for (i in 0 until inventory.slots) {
+            val stack = inventory.getStackInSlot(i)
+            if (stack.item !in items) continue
+            val behavior = CatalystBehavior.getBehaviour(stack) ?: continue
+            durability += behavior.getDurability(stack)
         }
-        return 1f
+        return durability
+    }
+
+    fun consumeCatalyst(items: Set<Item>, amount: Int): Int {
+        transferItems()
+        var remaining = amount
+        for (i in 0 until inventory.slots) {
+            if (remaining == 0) break
+
+            val stack = inventory.getStackInSlot(i)
+            if (stack.item !in items) continue
+            val behavior = CatalystBehavior.getBehaviour(stack) ?: continue
+            val damage = remaining.coerceAtMost(behavior.getDurability(stack))
+            behavior.applyDamage(stack, damage)
+            remaining -= damage
+            if (stack.isEmpty) transferItems()
+        }
+        return remaining
     }
 
     override fun setWorkingEnabled(workingEnabled: Boolean) {
