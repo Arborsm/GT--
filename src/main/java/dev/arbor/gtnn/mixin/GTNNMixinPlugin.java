@@ -22,7 +22,7 @@ public class GTNNMixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.contains("dev.arbor.gtnn.mixin.emi")) {
-            return MixinPluginShared.isClassFound("dev.emi.emi.api.EmiPlugin");
+            return MixinPluginShared.IS_EMI_LOADED;
         } else if (mixinClassName.contains("dev.arbor.gtnn.mixin.create")) {
             return MixinPluginShared.isClassFound("com.simibubi.create.compat.Mods");
         } else if (mixinClassName.contains("dev.arbor.gtnn.mixin.adastra")) {
