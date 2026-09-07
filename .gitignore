@@ -7,3 +7,5 @@
 /run/
 /src/generated/resources/.cache
 /out/
+.bitfun/
+/.bitfun/search/flashgrep-index/

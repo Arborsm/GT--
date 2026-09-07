@@ -1,7 +1,5 @@
 package dev.arbor.gtnn.mixin;
 
-import com.lowdragmc.lowdraglib.core.mixins.MixinPluginShared;
-
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -19,18 +17,23 @@ public class GTNNMixinPlugin implements IMixinConfigPlugin {
         return null;
     }
 
+    // Checks class presence via the classpath resource
+    private static boolean isClassFound(String className) {
+        return GTNNMixinPlugin.class.getClassLoader().getResource(className.replace('.', '/') + ".class") != null;
+    }
+
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.contains("dev.arbor.gtnn.mixin.emi")) {
-            return MixinPluginShared.isClassFound("dev.emi.emi.api.EmiPlugin");
+            return isClassFound("dev.emi.emi.api.EmiPlugin");
         } else if (mixinClassName.contains("dev.arbor.gtnn.mixin.create")) {
-            return MixinPluginShared.isClassFound("com.simibubi.create.compat.Mods");
+            return isClassFound("com.simibubi.create.compat.Mods");
         } else if (mixinClassName.contains("dev.arbor.gtnn.mixin.adastra")) {
-            return MixinPluginShared.isClassFound("earth.terrarium.ad_astra.forge.AdAstraForge");
+            return isClassFound("earth.terrarium.ad_astra.forge.AdAstraForge");
         } else if (mixinClassName.contains("dev.arbor.gtnn.client.mixin.ShimmerMixin")) {
-            return MixinPluginShared.isClassFound("com.lowdragmc.shimmer.Utils");
+            return isClassFound("com.lowdragmc.shimmer.Utils");
         } else if (mixinClassName.contains("GTRecipeWidgetMixin")) {
-            return !MixinPluginShared.isClassFound("io.github.cpearl0.ctnhcore.CTNHCore");
+            return !isClassFound("io.github.cpearl0.ctnhcore.CTNHCore");
         }
         return true;
     }

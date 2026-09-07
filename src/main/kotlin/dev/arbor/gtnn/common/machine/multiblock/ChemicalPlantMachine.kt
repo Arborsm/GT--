@@ -38,7 +38,6 @@ import net.minecraft.world.level.BlockAndTintGetter
 import net.minecraft.world.level.block.state.BlockState
 import kotlin.math.ceil
 import kotlin.math.max
-import kotlin.math.min
 import kotlin.math.sqrt
 
 class ChemicalPlantMachine(holder: IMachineBlockEntity) : WorkableElectricMultiblockMachine(holder),
@@ -122,7 +121,7 @@ class ChemicalPlantMachine(holder: IMachineBlockEntity) : WorkableElectricMultib
             )
             components.add(
                 Component.translatable(
-                    "gtnn.multiblock.chemical_plant.parallel_level", tubeTier * 2
+                    "gtnn.multiblock.chemical_plant.parallel_level", maxParallel
                 )
             )
             components.add(
@@ -144,7 +143,7 @@ class ChemicalPlantMachine(holder: IMachineBlockEntity) : WorkableElectricMultib
     // ***       Multiblock Data      ***//
     //////////////////////////////////////
     fun getChance(): Int {
-        return min((100 - 20 * (tubeTier - 1)).toDouble(), 100.0).toInt()
+        return (100 - 20 * (tubeTier - 1)).coerceIn(0, 100)
     }
 
     private fun stripCatalystInputs(recipe: GTRecipe): GTRecipe {
@@ -300,7 +299,7 @@ class ChemicalPlantMachine(holder: IMachineBlockEntity) : WorkableElectricMultib
 
     override fun getAppearance(): BlockState {
         if (isFormed()) {
-            return APPEARANCE_MAP[casingTier]!!
+            return APPEARANCE_MAP[casingTier] ?: APPEARANCE_MAP[1]!!
         }
         return APPEARANCE_MAP[1]!!
     }

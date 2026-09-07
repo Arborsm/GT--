@@ -6,6 +6,7 @@ plugins {
     alias libs.plugins.spotless
     alias libs.plugins.kotlin.jvm
     alias libs.plugins.kotlin.plugin
+    // id "org.jetbrains.kotlin.kapt" version '2.1.20'
 }
 
 group = maven_group
@@ -71,4 +72,10 @@ generateModMetadata.doFirst {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = "UTF-8"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
 }
