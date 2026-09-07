@@ -1,3 +1,5 @@
+import me.modmuss50.mpp.ReleaseType
+
 plugins {
     id 'java-library'
     id 'eclipse'
@@ -6,7 +8,8 @@ plugins {
     alias libs.plugins.spotless
     alias libs.plugins.kotlin.jvm
     alias libs.plugins.kotlin.plugin
-    // id "org.jetbrains.kotlin.kapt" version '2.1.20'
+    // id "org.jetbrains.kotlin.kapt" version '2.1.20' // kills the java-side mixin AP via -proc:none, keep disabled
+    id "me.modmuss50.mod-publish-plugin" version "2.2.0"
 }
 
 group = maven_group
@@ -54,6 +57,10 @@ configurations {
 obfuscation {
     createRemappingConfiguration(configurations.extraRuntimeOnly)
 }
+
+// Scripts applied via 'apply from' cannot see classes from the plugins{} block,
+// so pass the ReleaseType enum through ext
+ext.publishStableType = ReleaseType.STABLE
 
 apply from: "$rootDir/gradle/scripts/moddevgradle.gradle"
 apply from: "$rootDir/gradle/scripts/repositories.gradle"

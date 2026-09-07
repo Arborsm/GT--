@@ -1,31 +1,49 @@
-//publishing {
-//    publications {
-//        mavenForge(MavenPublication) {
-//            artifact(remapJar) {
-//                artifactId = archivesBaseName
-//                builtBy remapJar
-//            }
-//            artifact(remapSourcesJar) {
-//                artifactId = archivesBaseName
-//                builtBy remapSourcesJar
-//            }
-//            artifact(remapSlimJar) {
-//                artifactId = archivesBaseName
-//                builtBy remapSlimJar
-//            }
-//        }
-//    }
-//
-//    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-//    repositories {
-//        // Add repositories to publish to here.
-//        maven {
-////            url "https://maven.firstdarkdev.xyz/snapshots"
-////            credentials {
-////                username System.getenv("MAVEN_USER")
-////                password System.getenv("MAVEN_PASS")
-////            }
-//        }
-//    }
-//}
-//
+// Publish to Modrinth / CurseForge via mod-publish-plugin (same approach as ExtraSoundsNext)
+// Usage:
+//   set env MODRINTH_API_TOKEN / CURSEFORGE_API_TOKEN
+//   dryRun by default (build + print only, no upload); set ENABLE_PUBLISHING=true to actually publish
+//   .\gradlew publishMods
+
+publishMods {
+    file.set(tasks.named('reobfJar').flatMap { it.archiveFile })
+    additionalFiles.from(tasks.named('sourcesJar').flatMap { it.archiveFile })
+    version = project.version.toString()
+    type = publishStableType
+    modLoaders.add('forge')
+    displayName = "${mod_name} ${project.version} Forge ${libs.versions.minecraft.get()}"
+
+    def changelogFile = rootProject.file('CHANGELOG.md')
+    changelog = changelogFile.exists() ? changelogFile.text : 'See commit history.'
+
+    dryRun = System.getenv('ENABLE_PUBLISHING') != 'true'
+
+    def modrinthId = project.findProperty('publish.modrinth')?.toString()
+    if (modrinthId) {
+        modrinth {
+            projectId = modrinthId
+            accessToken = System.getenv('MODRINTH_API_TOKEN')
+            minecraftVersions.add(libs.versions.minecraft.get())
+            requires('gregtechceu-modern')
+            requires('ldlib')
+        }
+    }
+
+    def curseforgeId = project.findProperty('publish.curseforge')?.toString()
+    if (curseforgeId) {
+        curseforge {
+            projectId = curseforgeId
+            accessToken = System.getenv('CURSEFORGE_API_TOKEN')
+            minecraftVersions.add(libs.versions.minecraft.get())
+            client = true
+            server = true
+        }
+    }
+}
+
+// Disable the publish task of any platform without a configured project id
+if (!project.findProperty('publish.modrinth')?.toString()) {
+    tasks.named('publishModrinth') { enabled = false }
+}
+if (!project.findProperty('publish.curseforge')?.toString()) {
+    tasks.named('publishCurseforge') { enabled = false }
+}

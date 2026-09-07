@@ -11,6 +11,7 @@ obfuscation {
 
 tasks.register('sourcesJar', Jar) {
     archiveClassifier = "sources"
+    from sourceSets.main.allSource
 }
 
 jar.archiveClassifier = "dev"
